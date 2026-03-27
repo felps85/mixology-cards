@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(227, 170, 76, 0.12), transparent 28%),
+    linear-gradient(180deg, #080507 0%, #050306 100%);
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(227, 170, 76, 0.12), transparent 28%),
+    linear-gradient(180deg, #080507 0%, #050306 100%);
+  color: #f7edd8;
+}
+
+::selection {
+  background: rgba(227, 170, 76, 0.28);
+  color: #fff8ea;
+}
+
+@keyframes amberFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes spotlightSweep {
+  0%,
+  100% {
+    transform: translate3d(-6%, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(6%, 0, 0);
+  }
+}
+
+.speakeasy-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+.speakeasy-stage::before,
+.speakeasy-stage::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.speakeasy-stage::before {
+  top: -10rem;
+  left: -8rem;
+  width: 28rem;
+  height: 28rem;
+  background: rgba(227, 170, 76, 0.12);
+  animation: amberFloat 18s ease-in-out infinite;
+}
+
+.speakeasy-stage::after {
+  right: -10rem;
+  top: 18%;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(135, 78, 42, 0.16);
+  animation: amberFloat 24s ease-in-out infinite reverse;
+}
+
+.speakeasy-grid {
+  position: relative;
+}
+
+.speakeasy-grid::before {
+  content: "";
+  position: absolute;
+  inset: -2rem 0 auto;
+  height: 20rem;
+  background: radial-gradient(circle at top, rgba(227, 170, 76, 0.08), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: spotlightSweep 20s ease-in-out infinite;
+}

@@ -1,0 +1,10 @@
+node_modules
+.next
+.next-dev
+.next-check
+.next-prod
+.next.bak.*
+.env
+.env.local
+prisma/dev.db
+prisma/dev.db-journal
