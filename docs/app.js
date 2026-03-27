@@ -21,6 +21,7 @@ const dialogCuriosity = document.getElementById("dialogCuriosity");
 const dialogIngredientCount = document.getElementById("dialogIngredientCount");
 const dialogIngredients = document.getElementById("dialogIngredients");
 const dialogSteps = document.getElementById("dialogSteps");
+const dialogPanel = document.querySelector(".drink-dialog__panel");
 
 const filterButtons = Object.fromEntries(
   Array.from(document.querySelectorAll("[data-filter-button]")).map((button) => [
@@ -50,6 +51,36 @@ const store = {
   otherIngredients: [],
   tags: []
 };
+
+function parseStateFromLocation() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    query: params.get("q") ?? "",
+    ingredientSlugs: params.getAll("ing"),
+    tagSlugs: params.getAll("tag"),
+    abvMax:
+      params.get("abvMax") && /^\d+$/.test(params.get("abvMax"))
+        ? Number(params.get("abvMax"))
+        : null,
+    selectedSlug: params.get("sel"),
+    openPanel: null
+  };
+}
+
+function syncLocation() {
+  const params = new URLSearchParams();
+  if (state.query.trim()) params.set("q", state.query.trim());
+  for (const slug of state.tagSlugs) params.append("tag", slug);
+  for (const slug of state.ingredientSlugs) params.append("ing", slug);
+  if (state.abvMax !== null) params.set("abvMax", String(state.abvMax));
+  if (state.selectedSlug) params.set("sel", state.selectedSlug);
+  const query = params.toString();
+  const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+  const currentUrl = `${window.location.pathname}${window.location.search}`;
+  if (nextUrl !== currentUrl) {
+    window.history.replaceState({}, "", nextUrl);
+  }
+}
 
 function slugify(input) {
   return input
@@ -472,7 +503,9 @@ function syncDialog(items) {
   const drink = activeDrinkFrom(items);
 
   if (!drink) {
-    if (dialog.open) dialog.close();
+    dialog.classList.add("is-hidden");
+    dialog.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
     return;
   }
 
@@ -522,11 +555,15 @@ function syncDialog(items) {
     )
     .join("");
 
-  if (!dialog.open) dialog.showModal();
+  dialog.classList.remove("is-hidden");
+  dialog.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
 
 function render() {
   const items = filteredDrinks();
+  searchInput.value = state.query;
+  syncLocation();
   renderActiveFilters();
   renderPanel();
   renderGrid(items);
@@ -637,20 +674,13 @@ dialogMeta.addEventListener("click", (event) => {
 
 closeDialog.addEventListener("click", () => {
   state.selectedSlug = null;
-  dialog.close();
+  render();
 });
 
 dialog.addEventListener("click", (event) => {
-  const rect = dialog.getBoundingClientRect();
-  const inside =
-    event.clientX >= rect.left &&
-    event.clientX <= rect.right &&
-    event.clientY >= rect.top &&
-    event.clientY <= rect.bottom;
-
-  if (!inside) {
+  if (!dialogPanel.contains(event.target)) {
     state.selectedSlug = null;
-    dialog.close();
+    render();
   }
 });
 
@@ -664,9 +694,9 @@ document.addEventListener("mousedown", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
 
-  if (dialog.open) {
+  if (!dialog.classList.contains("is-hidden")) {
     state.selectedSlug = null;
-    dialog.close();
+    render();
     return;
   }
 
@@ -680,6 +710,17 @@ window.addEventListener("resize", () => {
   if (state.openPanel) renderPanel();
 });
 
+window.addEventListener("popstate", () => {
+  const next = parseStateFromLocation();
+  state.query = next.query;
+  state.ingredientSlugs = next.ingredientSlugs;
+  state.tagSlugs = next.tagSlugs;
+  state.abvMax = next.abvMax;
+  state.selectedSlug = next.selectedSlug;
+  state.openPanel = null;
+  render();
+});
+
 async function loadDrinks() {
   try {
     grid.innerHTML = '<div class="loading">Loading drinks from the repository…</div>';
@@ -688,6 +729,12 @@ async function loadDrinks() {
     const json = await response.json();
     const drinks = json.map(normalizeDrink);
     buildCatalog(drinks);
+    const next = parseStateFromLocation();
+    state.query = next.query;
+    state.ingredientSlugs = next.ingredientSlugs;
+    state.tagSlugs = next.tagSlugs;
+    state.abvMax = next.abvMax;
+    state.selectedSlug = next.selectedSlug;
     render();
   } catch (error) {
     resultCount.textContent = "Static showcase unavailable";
