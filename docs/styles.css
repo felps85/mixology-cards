@@ -66,9 +66,10 @@ body::after {
 .page-shell {
   position: relative;
   z-index: 1;
-  width: min(1680px, calc(100vw - 32px));
+  width: 100%;
+  max-width: 1680px;
   margin: 0 auto;
-  padding: 20px 0 56px;
+  padding: 20px 16px 56px;
 }
 
 .topbar {
@@ -372,7 +373,7 @@ body::after {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 18px 4px 18px;
+  padding: 16px 4px 16px;
   color: #a9977d;
   font-size: 13px;
   text-transform: uppercase;
@@ -383,7 +384,7 @@ body::after {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .card-grid::before {
@@ -838,9 +839,70 @@ body::after {
   }
 }
 
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: 24px;
+  }
+
+  .stats {
+    padding-bottom: 18px;
+  }
+
+  .card-grid {
+    gap: 20px;
+  }
+
+  .drink-dialog {
+    padding: 20px;
+  }
+
+  .drink-dialog__panel {
+    width: min(1700px, calc(100vw - 40px));
+    height: calc(100vh - 40px);
+  }
+}
+
+@media (min-width: 768px) {
+  .topbar {
+    padding: 24px;
+  }
+
+  .drink-dialog__body {
+    padding: 32px;
+  }
+
+  .ingredient-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-shell {
+    padding: 32px 40px 56px;
+  }
+
+  .drink-dialog {
+    padding: 24px;
+  }
+
+  .drink-dialog__panel {
+    width: min(1700px, calc(100vw - 48px));
+    height: calc(100vh - 48px);
+  }
+
+  .drink-dialog__body {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
 @media (max-width: 840px) {
   .page-shell {
-    width: min(100vw - 20px, 1680px);
     padding-top: 16px;
   }
 
