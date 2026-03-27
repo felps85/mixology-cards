@@ -475,9 +475,7 @@ function renderGrid(items) {
       return `
         <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""}" type="button" data-action="open-drink" data-slug="${drink.slug}">
           <img src="${drink.imageThumbUrl}" alt="${escapeHtml(drink.name)}" loading="lazy" />
-          <div class="drink-card__overlay" style="background:radial-gradient(circle at top right, ${accent}55, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0.1) 0%, rgba(7,5,7,0.7) 56%, rgba(7,5,7,0.95) 100%);"></div>
-          <div class="drink-card__fade"></div>
-          <div class="drink-card__glow" style="background:radial-gradient(circle at top, rgba(226,174,86,0.18), transparent 70%);"></div>
+          <div class="drink-card__overlay" style="background:radial-gradient(circle at bottom left, ${accent}40, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0) 0%, rgba(7,5,7,0.08) 18%, rgba(7,5,7,0.42) 52%, rgba(7,5,7,0.94) 100%);"></div>
           <div class="drink-card__body">
             <div class="pill-row">
               ${chips

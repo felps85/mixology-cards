@@ -30,13 +30,6 @@ export function DrinkCard({
         selected ? "ring-1 ring-[#dca450]/70 ring-offset-2 ring-offset-[#090507]" : ""
       ].join(" ")}
     >
-      <div
-        className="absolute inset-0 opacity-70 transition duration-500 group-hover:opacity-100"
-        aria-hidden="true"
-        style={{
-          background: `radial-gradient(circle at top right, ${accent}55, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0.1) 0%, rgba(7,5,7,0.7) 56%, rgba(7,5,7,0.95) 100%)`
-        }}
-      />
       <div className="relative h-full w-full">
         <Image
           src={galleryImageSrc(drink.imagePath)}
@@ -47,8 +40,13 @@ export function DrinkCard({
           quality={72}
           priority={false}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,5,7,0.08),rgba(7,5,7,0.32)_45%,rgba(7,5,7,0.94)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,rgba(226,174,86,0.18),transparent_70%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+        <div
+          className="absolute inset-x-0 bottom-0 h-[52%] opacity-85 transition duration-500 group-hover:opacity-100"
+          aria-hidden="true"
+          style={{
+            background: `radial-gradient(circle at bottom left, ${accent}40, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0) 0%, rgba(7,5,7,0.08) 18%, rgba(7,5,7,0.42) 52%, rgba(7,5,7,0.94) 100%)`
+          }}
+        />
 
         <div className="absolute inset-x-[14px] bottom-[14px] flex flex-col gap-[8px]">
           <div className="flex flex-wrap gap-[6px]">
