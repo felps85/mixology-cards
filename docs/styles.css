@@ -78,7 +78,7 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 18px;
+  padding: 16px;
   border-radius: 30px;
   background: rgba(14, 10, 12, 0.78);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
@@ -89,27 +89,27 @@ body::after {
 .topbar__controls {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .topbar__logo-shell {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   background: linear-gradient(180deg, #21181c, #0f0a0c);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
 }
 
 .topbar__logo {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .topbar__title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ body::after {
 
 .topbar__subtitle {
   margin-top: 4px;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: rgba(247, 237, 216, 0.7);
@@ -131,12 +131,12 @@ body::after {
 .search-shell {
   display: flex;
   align-items: center;
-  min-height: 46px;
+  min-height: 42px;
   min-width: min(100%, 260px);
   flex: 1 1 320px;
   border-radius: 999px;
   background: #120d10;
-  padding: 0 20px;
+  padding: 0 18px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 14px 28px rgba(0, 0, 0, 0.26);
@@ -149,8 +149,8 @@ body::after {
   color: white;
   outline: none;
   font: inherit;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .search-shell input::placeholder {
@@ -162,10 +162,10 @@ body::after {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   border-radius: 999px;
   background: rgba(13, 9, 11, 0.7);
-  padding: 6px;
+  padding: 5px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 16px 30px rgba(0, 0, 0, 0.24);
@@ -175,15 +175,15 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 42px;
+  min-height: 40px;
   border: 0;
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 7px 13px;
   background: #120d10;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   cursor: pointer;
   transition:
@@ -230,10 +230,10 @@ body::after {
   top: calc(100% + 8px);
   z-index: 30;
   max-width: calc(100vw - 48px);
-  border-radius: 24px;
+  border-radius: 22px;
   border: 1px solid rgba(225, 173, 88, 0.16);
   background: rgba(17, 12, 14, 0.98);
-  padding: 16px;
+  padding: 14px;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(18px);
 }
@@ -250,15 +250,15 @@ body::after {
   color: #f3ddb2;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 20px;
 }
 
 .panel-description {
   color: #a89270;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 17px;
 }
 
 .panel-search {
@@ -266,11 +266,11 @@ body::after {
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: #120d10;
-  padding: 10px 12px;
+  padding: 9px 12px;
   color: var(--text);
   outline: none;
   font: inherit;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .panel-search::placeholder {
@@ -299,7 +299,7 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   background: #171115;
-  padding: 10px 12px;
+  padding: 9px 11px;
   color: var(--text);
   text-align: left;
   cursor: pointer;
@@ -375,7 +375,7 @@ body::after {
   align-items: center;
   padding: 16px 4px 16px;
   color: #a9977d;
-  font-size: 13px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
 }
@@ -401,7 +401,7 @@ body::after {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
+  border-radius: 26px;
   padding: 0;
   cursor: pointer;
   background: #120d10;
@@ -449,7 +449,7 @@ body::after {
 }
 
 .drink-card__overlay {
-  opacity: 0.7;
+  opacity: 0.58;
   transition: opacity 500ms ease;
 }
 
@@ -460,9 +460,9 @@ body::after {
 .drink-card__fade {
   background: linear-gradient(
     180deg,
-    rgba(7, 5, 7, 0.08),
-    rgba(7, 5, 7, 0.32) 45%,
-    rgba(7, 5, 7, 0.94) 100%
+    rgba(7, 5, 7, 0.04),
+    rgba(7, 5, 7, 0.22) 45%,
+    rgba(7, 5, 7, 0.86) 100%
   );
 }
 
@@ -480,11 +480,11 @@ body::after {
 
 .drink-card__body {
   position: absolute;
-  inset: auto 14px 14px;
+  inset: auto 18px 16px;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 .pill-row {
@@ -497,8 +497,8 @@ body::after {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  padding: 3px 8px;
-  font-size: 10px;
+  padding: 4px 10px;
+  font-size: 9px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -508,8 +508,8 @@ body::after {
 
 .drink-card h3 {
   margin: 0;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 22px;
   letter-spacing: -0.03em;
   color: #fff4df;
 }
@@ -521,8 +521,8 @@ body::after {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   color: rgba(244, 234, 213, 0.72);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 11px;
+  line-height: 17px;
 }
 
 .drink-dialog {
@@ -863,9 +863,7 @@ body::after {
 }
 
 @media (min-width: 768px) {
-  .topbar {
-    padding: 24px;
-  }
+  .topbar { padding: 18px; }
 
   .drink-dialog__body {
     padding: 32px;
@@ -890,14 +888,14 @@ body::after {
     height: calc(100vh - 48px);
   }
 
-  .drink-dialog__body {
-    padding: 40px;
-  }
+  .topbar__controls { flex-wrap: nowrap; }
+
+  .drink-dialog__body { padding: 40px; }
 }
 
 @media (min-width: 1280px) {
   .card-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 }
 
