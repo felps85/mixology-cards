@@ -1,0 +1,425 @@
+:root {
+  color-scheme: dark;
+  --bg: #070507;
+  --bg-soft: rgba(18, 12, 14, 0.82);
+  --panel: rgba(20, 14, 16, 0.92);
+  --panel-strong: rgba(14, 10, 12, 0.98);
+  --text: #f7edd8;
+  --muted: rgba(247, 237, 216, 0.66);
+  --accent: #dfa74f;
+  --line: rgba(255, 255, 255, 0.08);
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(223, 167, 79, 0.12), transparent 28%),
+    linear-gradient(180deg, #080507 0%, #040204 100%);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+.page-shell {
+  width: min(1480px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero {
+  padding: 28px;
+  border-radius: 32px;
+  background: var(--bg-soft);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero__eyebrow,
+.dialog-eyebrow,
+.dialog-label,
+.field span,
+.stats__note {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.hero__row {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.hero h1 {
+  margin: 12px 0 0;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease,
+    background 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, #ebb663, #98652d);
+  color: #1a100a;
+}
+
+.button--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+.controls {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(240px, 1.2fr) repeat(3, minmax(140px, 0.45fr));
+  margin: 20px 0 14px;
+  padding: 16px;
+  border-radius: 28px;
+  background: rgba(14, 10, 12, 0.7);
+  box-shadow: var(--shadow);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 18px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  outline: none;
+  font: inherit;
+}
+
+.field input::placeholder {
+  color: rgba(247, 237, 216, 0.42);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 2px 4px 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.drink-card {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  border-radius: 26px;
+  padding: 0;
+  cursor: pointer;
+  background: #120d10;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
+  min-height: 320px;
+  text-align: left;
+  color: inherit;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.drink-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 58px rgba(0, 0, 0, 0.44);
+}
+
+.drink-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drink-card__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, var(--accent-color, rgba(223, 167, 79, 0.55)), transparent 34%),
+    linear-gradient(180deg, rgba(7, 5, 7, 0.08), rgba(7, 5, 7, 0.3) 48%, rgba(7, 5, 7, 0.94) 100%);
+}
+
+.drink-card__body {
+  position: absolute;
+  inset: auto 14px 14px;
+  z-index: 1;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff6e3;
+}
+
+.drink-card h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.drink-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 13px;
+}
+
+.drink-dialog {
+  width: min(1480px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: 34px;
+  background: var(--panel-strong);
+  color: var(--text);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.58);
+}
+
+.drink-dialog::backdrop {
+  background: rgba(4, 2, 4, 0.76);
+  backdrop-filter: blur(10px);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.drink-dialog__content {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  min-height: min(860px, calc(100vh - 32px));
+}
+
+.drink-dialog__image-wrap {
+  position: relative;
+  min-height: 360px;
+}
+
+.drink-dialog__image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 5, 7, 0.08), rgba(8, 5, 7, 0.72));
+}
+
+.drink-dialog__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drink-dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 32px;
+  overflow: auto;
+}
+
+.drink-dialog__body h2 {
+  margin: 8px 0 0;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.dialog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dialog-panel,
+.dialog-section {
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--panel);
+}
+
+.dialog-panel p,
+.dialog-section p,
+.dialog-section li {
+  color: var(--muted);
+}
+
+.dialog-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ingredient-list,
+.step-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.ingredient-list {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ingredient-list li,
+.step-list li {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ingredient-list strong,
+.step-list strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.loading,
+.empty-state,
+.error-state {
+  padding: 32px;
+  border-radius: 26px;
+  background: var(--bg-soft);
+  color: var(--muted);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 960px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .drink-dialog__content {
+    grid-template-columns: 1fr;
+  }
+
+  .drink-dialog__image-wrap {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100vw - 20px, 1480px);
+    padding-top: 16px;
+  }
+
+  .hero,
+  .controls {
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .drink-dialog {
+    width: calc(100vw - 18px);
+    max-height: calc(100vh - 18px);
+  }
+
+  .drink-dialog__body {
+    padding: 22px 18px;
+  }
+}
