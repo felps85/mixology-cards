@@ -27,9 +27,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background:
-    radial-gradient(circle at top, rgba(223, 167, 79, 0.12), transparent 28%),
-    linear-gradient(180deg, #080507 0%, #040204 100%);
+  background: #000;
   color: var(--text);
 }
 
@@ -39,28 +37,7 @@ body {
 
 body::before,
 body::after {
-  content: "";
-  position: fixed;
-  border-radius: 9999px;
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::before {
-  top: -10rem;
-  left: -8rem;
-  width: 28rem;
-  height: 28rem;
-  background: rgba(227, 170, 76, 0.12);
-}
-
-body::after {
-  right: -10rem;
-  top: 18%;
-  width: 24rem;
-  height: 24rem;
-  background: rgba(135, 78, 42, 0.16);
+  display: none;
 }
 
 .page-shell {
@@ -90,8 +67,11 @@ body::after {
   min-width: 0;
   flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 14px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   padding: 14px;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -106,7 +86,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 14px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .topbar__lead {
@@ -146,13 +126,14 @@ body::after {
 .topbar__controls {
   min-width: 0;
   flex: 1 1 auto;
+  overflow-x: auto;
 }
 
 .search-shell {
   display: flex;
   align-items: center;
   min-height: 48px;
-  min-width: min(100%, 260px);
+  min-width: 220px;
   flex: 1 1 340px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.04);
@@ -178,7 +159,8 @@ body::after {
 .filter-cluster {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex: none;
   align-items: center;
   gap: 4px;
   border-radius: 18px;
@@ -417,17 +399,6 @@ body::after {
   color: white;
 }
 
-.stats {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 16px 4px 16px;
-  color: #a9977d;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-}
-
 .card-grid {
   position: relative;
   display: grid;
@@ -436,13 +407,7 @@ body::after {
 }
 
 .card-grid::before {
-  content: "";
-  position: absolute;
-  inset: -2rem 0 auto;
-  height: 20rem;
-  background: radial-gradient(circle at top, rgba(227, 170, 76, 0.08), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .drink-card {
@@ -851,10 +816,6 @@ body::after {
     padding-inline: 24px;
   }
 
-  .stats {
-    padding-bottom: 18px;
-  }
-
   .card-grid {
     gap: 20px;
   }
@@ -918,10 +879,6 @@ body::after {
     width: 100%;
   }
 
-  .filter-cluster {
-    width: 100%;
-  }
-
   .buyButton {
     display: inline-flex;
     position: fixed;
@@ -938,10 +895,6 @@ body::after {
 
   .buyButtonMobile {
     display: inline-flex;
-  }
-
-  .stats {
-    justify-content: flex-start;
   }
 
   .option-grid,

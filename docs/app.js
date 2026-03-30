@@ -11,7 +11,6 @@ const filterCluster = document.getElementById("filterCluster");
 const dropdownPanel = document.getElementById("dropdownPanel");
 const activeFilters = document.getElementById("activeFilters");
 const grid = document.getElementById("grid");
-const resultCount = document.getElementById("resultCount");
 
 const dialog = document.getElementById("drinkDialog");
 const closeDialog = document.getElementById("closeDialog");
@@ -128,9 +127,11 @@ function isAlcoholIngredientName(name) {
   ].some((keyword) => n.includes(keyword));
 }
 
-function galleryImageSrc(path, slug) {
+function galleryImageSrc(path) {
   if (/^\/drinks\/.+\.(png|jpe?g)$/i.test(path)) {
-    return `${THUMB_BASE}/${slug}.jpg`;
+    return path
+      .replace("/drinks/", `${THUMB_BASE}/`)
+      .replace(/\.(png|jpe?g)$/i, ".jpg");
   }
 
   return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
@@ -173,7 +174,7 @@ function normalizeDrink(drink) {
     ingredientSlugs: ingredients.map((ingredient) => ingredient.slug),
     steps,
     abv: parseAbv(drink.alcoholInfo),
-    imageThumbUrl: galleryImageSrc(drink.imagePath, slug),
+    imageThumbUrl: galleryImageSrc(drink.imagePath),
     imageFullUrl: fullImageSrc(drink.imagePath)
   };
 }
@@ -472,8 +473,6 @@ function renderPanel() {
 }
 
 function renderGrid(items) {
-  resultCount.textContent = `${items.length} drinks on file`;
-
   if (!items.length) {
     grid.innerHTML =
       '<div class="empty-state">No drinks matched that search. Try clearing one of the filters.</div>';
@@ -745,6 +744,7 @@ async function loadDrinks() {
     const json = await response.json();
     const drinks = json.map(normalizeDrink);
     buildCatalog(drinks);
+    searchInput.placeholder = `Search ${store.drinks.length} drinks...`;
     const next = parseStateFromLocation();
     state.query = next.query;
     state.ingredientSlugs = next.ingredientSlugs;
@@ -753,7 +753,7 @@ async function loadDrinks() {
     state.selectedSlug = next.selectedSlug;
     render();
   } catch (error) {
-    resultCount.textContent = "Static showcase unavailable";
+    searchInput.placeholder = "Search drinks...";
     grid.innerHTML = `<div class="error-state">${
       error instanceof Error ? error.message : "Something went wrong."
     }</div>`;

@@ -19,9 +19,10 @@ export default async function HomePage({
   const selectedSlug = galleryQuery.sel ?? "";
   const selectedAbvMax = galleryQuery.abvMax;
 
-  const [tags, ingredients, drinks, selectedDrink] = await Promise.all([
+  const [tags, ingredients, totalDrinks, drinks, selectedDrink] = await Promise.all([
     prisma.tag.findMany({ orderBy: { name: "asc" } }),
     prisma.ingredient.findMany({ orderBy: { name: "asc" } }),
+    prisma.drink.count(),
     prisma.drink.findMany({
       where: {
         ...(q
@@ -101,7 +102,7 @@ export default async function HomePage({
   }
 
   return (
-    <div className="speakeasy-stage min-h-screen overflow-hidden bg-transparent text-[#f7edd8]">
+    <div className="speakeasy-stage min-h-screen overflow-hidden bg-black text-[#f7edd8]">
       <main className="relative z-10 mx-auto w-full max-w-[1680px] px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
         <div className="flex flex-col gap-6">
           <section className="relative z-50 isolate">
@@ -112,16 +113,11 @@ export default async function HomePage({
               selectedTagSlugs={tagSlugs}
               selectedIngredientSlugs={ingredientSlugs}
               selectedAbvMax={selectedAbvMax}
+              searchPlaceholder={`Search ${totalDrinks} drinks…`}
             />
           </section>
 
           <section className="speakeasy-grid relative">
-            <div className="relative mb-4 flex justify-end px-1">
-              <p className="text-[13px] uppercase tracking-[0.18em] text-[#a9977d]">
-                {filteredDrinks.length} drinks on file
-              </p>
-            </div>
-
             <div className="relative grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 sm:gap-5 xl:grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
               {filteredDrinks.map((drink) => (
                 <DrinkCard
