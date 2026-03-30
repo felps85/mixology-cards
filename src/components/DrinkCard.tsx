@@ -3,9 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 function galleryImageSrc(imagePath: string) {
-  return imagePath.endsWith(".png")
-    ? imagePath.replace("/drinks/", "/drinks/thumbs/").replace(/\.png$/, ".jpg")
-    : imagePath;
+  if (/^\/drinks\/.+\.(png|jpe?g)$/i.test(imagePath)) {
+    return imagePath
+      .replace("/drinks/", "/drinks/thumbs/")
+      .replace(/\.(png|jpe?g)$/i, ".jpg");
+  }
+
+  return imagePath;
 }
 
 export function DrinkCard({

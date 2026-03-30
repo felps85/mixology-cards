@@ -127,9 +127,11 @@ function isAlcoholIngredientName(name) {
 }
 
 function galleryImageSrc(path, slug) {
-  return path.endsWith(".png")
-    ? `${THUMB_BASE}/${slug}.jpg`
-    : `${RAW_PUBLIC_BASE}${path}`;
+  if (/^\/drinks\/.+\.(png|jpe?g)$/i.test(path)) {
+    return `${THUMB_BASE}/${slug}.jpg`;
+  }
+
+  return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
 }
 
 function normalizeDrink(drink) {
@@ -162,7 +164,9 @@ function normalizeDrink(drink) {
     steps,
     abv: parseAbv(drink.alcoholInfo),
     imageThumbUrl: galleryImageSrc(drink.imagePath, slug),
-    imageFullUrl: `${RAW_PUBLIC_BASE}${drink.imagePath}`
+    imageFullUrl: drink.imagePath.startsWith("http")
+      ? drink.imagePath
+      : `${RAW_PUBLIC_BASE}${drink.imagePath}`
   };
 }
 

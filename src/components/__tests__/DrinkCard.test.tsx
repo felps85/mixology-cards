@@ -35,6 +35,6 @@ describe("DrinkCard", () => {
     expect(link).toHaveAttribute("href", "/?sel=mojito");
 
     const img = screen.getByRole("img", { name: "Mojito" });
-    expect(img).toHaveAttribute("src", "/drinks/mojito.png");
+    expect(img).toHaveAttribute("src", "/drinks/thumbs/mojito.jpg");
   });
 });
