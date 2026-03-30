@@ -352,48 +352,44 @@ function updateFilterButtons() {
 }
 
 function renderActiveFilters() {
-  const chips = [];
+  activeFilters.replaceChildren();
+
+  function appendChip(label, action, { slug = null, clear = false } = {}) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = clear ? "chip-btn chip-btn--clear" : "chip-btn";
+    button.dataset.action = action;
+    if (slug) {
+      button.dataset.slug = slug;
+    }
+    button.textContent = label;
+    activeFilters.append(button);
+  }
 
   if (state.query.trim()) {
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="clear-query">Search: ${escapeHtml(
-        state.query.trim()
-      )} ×</button>`
-    );
+    appendChip(`Search: ${state.query.trim()} ×`, "clear-query");
   }
 
   for (const slug of state.ingredientSlugs) {
     const item = store.ingredients.find((entry) => entry.slug === slug);
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="remove-ingredient" data-slug="${slug}">${escapeHtml(
-        item?.name ?? slug
-      )} ×</button>`
-    );
+    appendChip(`${item?.name ?? slug} ×`, "remove-ingredient", { slug });
   }
 
   for (const slug of state.tagSlugs) {
     const item = store.tags.find((entry) => entry.slug === slug);
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="remove-tag" data-slug="${slug}">${escapeHtml(
-        item?.name ?? slug
-      )} ×</button>`
-    );
+    appendChip(`${item?.name ?? slug} ×`, "remove-tag", { slug });
   }
 
   if (state.abvMax !== null) {
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="clear-abv">Up to ${state.abvMax}% ×</button>`
-    );
+    appendChip(`Up to ${state.abvMax}% ×`, "clear-abv");
   }
 
-  if (chips.length) {
-    chips.push(
-      `<button type="button" class="chip-btn chip-btn--clear" data-action="clear-all">Clear all</button>`
-    );
+  const hasChips = activeFilters.childElementCount > 0;
+  if (hasChips) {
+    appendChip("Clear all", "clear-all", { clear: true });
   }
 
-  activeFilters.innerHTML = chips.join("");
-  activeFilters.classList.toggle("is-hidden", chips.length === 0);
+  activeFilters.classList.toggle("is-hidden", !hasChips);
 }
 
 function renderPanel() {
