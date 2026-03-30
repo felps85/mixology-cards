@@ -118,7 +118,7 @@ export default async function HomePage({
           </section>
 
           <section className="speakeasy-grid relative">
-            <div className="relative grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4 sm:gap-5 xl:grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
+            <div className="relative grid grid-cols-[repeat(auto-fill,minmax(198px,1fr))] gap-4 sm:gap-5 xl:grid-cols-[repeat(auto-fill,minmax(216px,1fr))]">
               {filteredDrinks.map((drink) => (
                 <DrinkCard
                   key={drink.id}
