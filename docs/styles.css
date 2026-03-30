@@ -47,6 +47,7 @@ body::after {
   max-width: 1680px;
   margin: 0 auto;
   padding: 20px 16px 56px;
+  overflow: visible;
 }
 
 .topbar {
@@ -55,12 +56,14 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: visible;
 }
 
 .topbar__toolbar {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  overflow: visible;
 }
 
 .topbar__main {
@@ -71,13 +74,13 @@ body::after {
   align-items: center;
   gap: 14px;
   flex-wrap: nowrap;
-  overflow-x: auto;
   padding: 14px;
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(32, 39, 54, 0.96);
   box-shadow: 0 14px 34px rgba(11, 16, 32, 0.24);
   backdrop-filter: blur(14px);
+  overflow: visible;
 }
 
 .topbar__brand,
@@ -132,6 +135,7 @@ body::after {
   position: relative;
   min-width: 0;
   flex: 1 1 auto;
+  overflow: visible;
 }
 
 .toolbarSearchUnified {

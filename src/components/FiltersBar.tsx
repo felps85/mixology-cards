@@ -264,9 +264,9 @@ export function FiltersBar({
   }
 
   return (
-    <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 text-[#f7edd8]">
-      <div className="flex items-start gap-3 md:gap-4">
-        <div className="flex min-w-0 flex-1 items-center gap-3 rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3">
+    <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 overflow-visible text-[#f7edd8]">
+      <div className="flex items-start gap-3 overflow-visible md:gap-4">
+        <div className="flex min-w-0 flex-1 items-center gap-3 overflow-visible rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3">
           <div className="flex shrink-0 items-center gap-3 pr-1">
             <button
               type="button"
@@ -288,7 +288,7 @@ export function FiltersBar({
             </div>
           </div>
 
-          <div ref={dockRef} className="relative min-w-0 flex-1">
+          <div ref={dockRef} className="relative min-w-0 flex-1 overflow-visible">
             <div className="flex min-w-max items-center gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <label className="flex min-h-[48px] min-w-[220px] flex-[1_1_320px] items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
                 <input

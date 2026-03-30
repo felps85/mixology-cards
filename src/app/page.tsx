@@ -102,7 +102,7 @@ export default async function HomePage({
   }
 
   return (
-    <div className="speakeasy-stage min-h-screen overflow-hidden bg-black text-[#f7edd8]">
+    <div className="speakeasy-stage min-h-screen bg-black text-[#f7edd8]">
       <main className="relative z-10 mx-auto w-full max-w-[1680px] px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
         <div className="flex flex-col gap-6">
           <section className="relative z-50 isolate">
