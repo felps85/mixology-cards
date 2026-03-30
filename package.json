@@ -19,7 +19,8 @@
     "db:setup": "npm run db:push && npm run db:seed",
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
-    "import:bbc": "node scripts/import-bbc-good-food.mjs"
+    "import:bbc": "node scripts/import-bbc-good-food.mjs",
+    "enrich:bbc-curiosities": "node scripts/enrich-bbc-curiosities.mjs"
   },
   "prisma": {
     "seed": "node prisma/seed.mjs"

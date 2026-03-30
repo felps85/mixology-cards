@@ -1,8 +1,10 @@
 const DATA_URL =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/prisma/drinksSeed.json";
+const PAGES_ASSET_BASE = "./drinks";
 const RAW_PUBLIC_BASE =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
-const THUMB_BASE = `${RAW_PUBLIC_BASE}/drinks/thumbs`;
+const THUMB_BASE = `${PAGES_ASSET_BASE}/thumbs`;
+const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 
 const searchInput = document.getElementById("searchInput");
 const filterCluster = document.getElementById("filterCluster");
@@ -134,6 +136,14 @@ function galleryImageSrc(path, slug) {
   return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
 }
 
+function fullImageSrc(path) {
+  if (/^\/drinks\/.+\.(png|jpe?g|svg)$/i.test(path)) {
+    return `.${path}`;
+  }
+
+  return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
+}
+
 function normalizeDrink(drink) {
   const slug = drink.slug ?? slugify(drink.name);
   const tags = (drink.tags ?? []).map((tag) => ({
@@ -164,9 +174,7 @@ function normalizeDrink(drink) {
     steps,
     abv: parseAbv(drink.alcoholInfo),
     imageThumbUrl: galleryImageSrc(drink.imagePath, slug),
-    imageFullUrl: drink.imagePath.startsWith("http")
-      ? drink.imagePath
-      : `${RAW_PUBLIC_BASE}${drink.imagePath}`
+    imageFullUrl: fullImageSrc(drink.imagePath)
   };
 }
 
@@ -478,7 +486,9 @@ function renderGrid(items) {
       const chips = [drink.baseSpirit, drink.alcoholInfo, drink.season].filter(Boolean);
       return `
         <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""}" type="button" data-action="open-drink" data-slug="${drink.slug}">
-          <img src="${drink.imageThumbUrl}" alt="${escapeHtml(drink.name)}" loading="lazy" />
+          <img src="${drink.imageThumbUrl}" alt="${escapeHtml(
+            drink.name
+          )}" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" />
           <div class="drink-card__overlay" style="background:radial-gradient(circle at bottom left, ${accent}40, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0) 0%, rgba(7,5,7,0.08) 18%, rgba(7,5,7,0.42) 52%, rgba(7,5,7,0.94) 100%);"></div>
           <div class="drink-card__body">
             <div class="pill-row">
@@ -514,6 +524,10 @@ function syncDialog(items) {
   const accent = drink.frontBg ?? "#FFE86C";
   dialogImage.src = drink.imageFullUrl;
   dialogImage.alt = drink.name;
+  dialogImage.onerror = () => {
+    dialogImage.onerror = null;
+    dialogImage.src = PLACEHOLDER_IMAGE;
+  };
   dialogAccentBar.style.backgroundColor = accent;
   dialogTitle.textContent = drink.name;
   dialogCuriosity.textContent = drink.curiosity;

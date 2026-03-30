@@ -102,16 +102,6 @@ export function GalleryDrinkPanel({
             aria-hidden="true"
             style={{ backgroundColor: accent }}
           />
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <div className="max-w-[20rem] rounded-[24px] border border-white/10 bg-[rgba(9,6,8,0.54)] p-5 backdrop-blur-sm">
-              <div className="text-[11px] uppercase tracking-[0.24em] text-[#d8a857]">
-                House Pour
-              </div>
-              <p className="mt-3 text-[13px] leading-[21px] text-[#f4ead7]/78">
-                A cinematic recipe view with the full method, ingredients, and quick facts in one place.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div
