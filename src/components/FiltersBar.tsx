@@ -43,6 +43,7 @@ function isAlcoholIngredientName(name: string) {
 }
 
 type DropdownKey = "ingredients" | "alcohol" | "tags" | "abv";
+const SUPPORT_LINK = "https://buymeacoffee.com/agorafodeuy";
 
 function FilterButton({
   label,
@@ -65,17 +66,17 @@ function FilterButton({
       aria-expanded={open}
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
-        "pointer-events-auto flex min-h-[42px] items-center gap-[8px] rounded-full px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition",
+        "pointer-events-auto flex min-h-[40px] items-center gap-[8px] rounded-full px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition",
         open
-          ? "bg-[linear-gradient(135deg,#e7b15a,#9d6d31)] text-[#1b120d] shadow-[0_16px_32px_rgba(0,0,0,0.28)]"
+          ? "bg-[rgba(255,199,92,0.12)] text-[#ffd899]"
           : activeCount
-            ? "bg-[#161014] text-white hover:bg-[#21171c]"
-            : "bg-[#120d10] text-white hover:bg-[#181114]"
+            ? "bg-[rgba(255,255,255,0.06)] text-white hover:bg-[rgba(255,255,255,0.08)]"
+            : "bg-transparent text-white/90 hover:bg-[rgba(255,255,255,0.05)]"
       ].join(" ")}
     >
       <div className="min-w-0 text-left">{label}</div>
       {activeCount ? (
-        <span className="ml-auto rounded-full bg-black/20 px-1.5 text-[10px] leading-[16px] text-white">
+        <span className="ml-auto rounded-full bg-black/20 px-1.5 text-[10px] leading-[16px] text-white/92">
           {activeCount}
         </span>
       ) : null}
@@ -113,6 +114,7 @@ export function FiltersBar({
   const [panelLeft, setPanelLeft] = useState(0);
   const controlsRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const triggerRefs = {
     ingredients: useRef<HTMLButtonElement>(null),
     alcohol: useRef<HTMLButtonElement>(null),
@@ -258,137 +260,165 @@ export function FiltersBar({
 
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 text-[#f7edd8]">
-      <div className="flex w-full flex-wrap items-center gap-4">
-        <div className="flex items-center gap-3 pr-1">
-          <div className="flex h-12 w-12 items-center justify-center rounded-[16px] bg-[linear-gradient(180deg,#21181c,#0f0a0c)] shadow-[0_12px_28px_rgba(0,0,0,0.34)]">
-            <Image src="/ui/logo.svg" alt="Sipsmith" width={24} height={24} />
-          </div>
-          <div className="leading-none">
-            <div className="text-[13px] font-semibold tracking-[0.2em] text-white">
-              Sipsmith
-            </div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
-              Speakeasy Index
-            </div>
-          </div>
-        </div>
-
-        <div className="relative flex min-w-0 flex-1 flex-col gap-3 lg:flex-row lg:items-center">
-          <label className="flex min-h-[46px] min-w-[260px] flex-1 items-center gap-3 rounded-full bg-[#120d10] px-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_14px_28px_rgba(0,0,0,0.26)]">
-            <input
-              key={q}
-              type="search"
-              defaultValue={q}
-              placeholder="Search drinks…"
-              onChange={(e) => {
-                const nextQ = e.target.value;
-                if (debouncedTimer.current) window.clearTimeout(debouncedTimer.current);
-                debouncedTimer.current = window.setTimeout(() => {
-                  replaceUrl({ nextQ });
-                }, 200);
+      <div className="flex items-start gap-3 md:gap-4">
+        <div className="flex min-w-0 flex-1 flex-col gap-3 rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:flex-row md:items-center md:gap-4 md:px-4 md:py-3">
+          <div className="flex shrink-0 items-center gap-3 pr-1">
+            <button
+              type="button"
+              onClick={() => {
+                searchInputRef.current?.focus();
               }}
-              className="pointer-events-auto min-w-0 flex-1 bg-transparent text-[13px] leading-[20px] text-white placeholder:text-white/45 outline-none"
-            />
-          </label>
-
-          <div
-            ref={controlsRef}
-            className="relative flex flex-wrap items-center gap-2 rounded-full bg-[#0d090b]/70 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03),0_16px_30px_rgba(0,0,0,0.24)]"
-          >
-            <FilterButton
-              label="Ingredients"
-              open={openKey === "ingredients"}
-              onClick={() => togglePanel("ingredients")}
-              activeCount={ingredientSlugsInOther.length}
-              buttonRef={triggerRefs.ingredients}
-            />
-            <FilterButton
-              label="Alcohol"
-              open={openKey === "alcohol"}
-              onClick={() => togglePanel("alcohol")}
-              activeCount={ingredientSlugsInAlcohol.length}
-              buttonRef={triggerRefs.alcohol}
-            />
-            <FilterButton
-              label="Tags"
-              open={openKey === "tags"}
-              onClick={() => togglePanel("tags")}
-              activeCount={selectedTagSlugs.length}
-              buttonRef={triggerRefs.tags}
-            />
-            <FilterButton
-              label="%"
-              open={openKey === "abv"}
-              onClick={() => togglePanel("abv")}
-              activeCount={selectedAbvMax !== null ? 1 : 0}
-              buttonRef={triggerRefs.abv}
-            />
-            {openKey ? (
-              <div
-                ref={panelRef}
-                role="dialog"
-                aria-label={`${openKey} filters`}
-                className="absolute top-[calc(100%+8px)] z-[70] max-w-[calc(100vw-48px)] rounded-[24px] border border-[#e1ad58]/16 bg-[rgba(17,12,14,0.98)] p-4 shadow-[0_28px_80px_rgba(0,0,0,0.5)] backdrop-blur-xl"
-                style={{
-                  left: panelLeft,
-                  width: `${panelWidthForKey(openKey)}px`
-                }}
-              >
-                {openKey === "ingredients" ? (
-                  <MultiSelectPanel
-                    items={otherIngredients}
-                    selected={ingredientSlugsInOther}
-                    searchPlaceholder="Search ingredients…"
-                    title="Ingredients"
-                    description="Non-alcohol ingredients used in the drinks."
-                    onToggle={(slug) => {
-                      const next = toggleSlug(selectedIngredientSlugs, slug);
-                      replaceUrl({ nextIngredientSlugs: next });
-                    }}
-                  />
-                ) : null}
-                {openKey === "alcohol" ? (
-                  <MultiSelectPanel
-                    items={alcoholIngredients}
-                    selected={ingredientSlugsInAlcohol}
-                    searchPlaceholder="Search alcohol…"
-                    title="Alcohol"
-                    description="Spirits, liqueurs, bitters, and wine-based ingredients."
-                    onToggle={(slug) => {
-                      const next = toggleSlug(selectedIngredientSlugs, slug);
-                      replaceUrl({ nextIngredientSlugs: next });
-                    }}
-                  />
-                ) : null}
-                {openKey === "tags" ? (
-                  <MultiSelectPanel
-                    items={nonPercentTags}
-                    selected={selectedTagSlugs}
-                    searchPlaceholder="Search tags…"
-                    title="Tags"
-                    description="Flavor, season, and style tags from the drink cards."
-                    onToggle={(slug) => {
-                      const next = toggleSlug(selectedTagSlugs, slug);
-                      replaceUrl({ nextTagSlugs: next });
-                    }}
-                  />
-                ) : null}
-                {openKey === "abv" ? (
-                  <AbvPanel
-                    selected={selectedAbvMax}
-                    title="Alcohol %"
-                    description="Choose a maximum ABV in 5% increments."
-                    onSelect={(next) => {
-                      replaceUrl({ nextAbvMax: next });
-                      setOpenKey(null);
-                    }}
-                  />
-                ) : null}
+              aria-label="Focus drink search"
+              className="grid h-9 w-9 place-items-center rounded-full bg-transparent text-[#d8a215]"
+            >
+              <Image src="/ui/logo.svg" alt="" width={20} height={20} />
+            </button>
+            <div className="leading-none">
+              <div className="text-[13px] font-semibold tracking-[0.2em] text-white">
+                Sipsmith
               </div>
-            ) : null}
+              <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                Speakeasy Index
+              </div>
+            </div>
+          </div>
+
+          <div className="relative flex min-w-0 flex-1 flex-col gap-3 md:flex-row md:items-center">
+            <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
+              <input
+                ref={searchInputRef}
+                key={q}
+                type="search"
+                defaultValue={q}
+                placeholder="Search drinks…"
+                onChange={(e) => {
+                  const nextQ = e.target.value;
+                  if (debouncedTimer.current) window.clearTimeout(debouncedTimer.current);
+                  debouncedTimer.current = window.setTimeout(() => {
+                    replaceUrl({ nextQ });
+                  }, 200);
+                }}
+                className="pointer-events-auto min-w-0 flex-1 bg-transparent text-[15px] font-medium leading-[22px] text-white placeholder:text-white/56 outline-none"
+              />
+            </label>
+
+            <div
+              ref={controlsRef}
+              className="relative flex flex-wrap items-center gap-1 rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1"
+            >
+              <FilterButton
+                label="Ingredients"
+                open={openKey === "ingredients"}
+                onClick={() => togglePanel("ingredients")}
+                activeCount={ingredientSlugsInOther.length}
+                buttonRef={triggerRefs.ingredients}
+              />
+              <FilterButton
+                label="Alcohol"
+                open={openKey === "alcohol"}
+                onClick={() => togglePanel("alcohol")}
+                activeCount={ingredientSlugsInAlcohol.length}
+                buttonRef={triggerRefs.alcohol}
+              />
+              <FilterButton
+                label="Tags"
+                open={openKey === "tags"}
+                onClick={() => togglePanel("tags")}
+                activeCount={selectedTagSlugs.length}
+                buttonRef={triggerRefs.tags}
+              />
+              <FilterButton
+                label="%"
+                open={openKey === "abv"}
+                onClick={() => togglePanel("abv")}
+                activeCount={selectedAbvMax !== null ? 1 : 0}
+                buttonRef={triggerRefs.abv}
+              />
+              {openKey ? (
+                <div
+                  ref={panelRef}
+                  role="dialog"
+                  aria-label={`${openKey} filters`}
+                  className="absolute top-[calc(100%+12px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
+                  style={{
+                    left: panelLeft,
+                    width: `${panelWidthForKey(openKey)}px`
+                  }}
+                >
+                  {openKey === "ingredients" ? (
+                    <MultiSelectPanel
+                      items={otherIngredients}
+                      selected={ingredientSlugsInOther}
+                      searchPlaceholder="Search ingredients…"
+                      title="Ingredients"
+                      description="Non-alcohol ingredients used in the drinks."
+                      onToggle={(slug) => {
+                        const next = toggleSlug(selectedIngredientSlugs, slug);
+                        replaceUrl({ nextIngredientSlugs: next });
+                      }}
+                    />
+                  ) : null}
+                  {openKey === "alcohol" ? (
+                    <MultiSelectPanel
+                      items={alcoholIngredients}
+                      selected={ingredientSlugsInAlcohol}
+                      searchPlaceholder="Search alcohol…"
+                      title="Alcohol"
+                      description="Spirits, liqueurs, bitters, and wine-based ingredients."
+                      onToggle={(slug) => {
+                        const next = toggleSlug(selectedIngredientSlugs, slug);
+                        replaceUrl({ nextIngredientSlugs: next });
+                      }}
+                    />
+                  ) : null}
+                  {openKey === "tags" ? (
+                    <MultiSelectPanel
+                      items={nonPercentTags}
+                      selected={selectedTagSlugs}
+                      searchPlaceholder="Search tags…"
+                      title="Tags"
+                      description="Flavor, season, and style tags from the drink cards."
+                      onToggle={(slug) => {
+                        const next = toggleSlug(selectedTagSlugs, slug);
+                        replaceUrl({ nextTagSlugs: next });
+                      }}
+                    />
+                  ) : null}
+                  {openKey === "abv" ? (
+                    <AbvPanel
+                      selected={selectedAbvMax}
+                      title="Alcohol %"
+                      description="Choose a maximum ABV in 5% increments."
+                      onSelect={(next) => {
+                        replaceUrl({ nextAbvMax: next });
+                        setOpenKey(null);
+                      }}
+                    />
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
+
+        <a
+          href={SUPPORT_LINK}
+          target="_blank"
+          rel="noreferrer"
+          className="hidden min-h-[48px] shrink-0 items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-4 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] md:inline-flex"
+        >
+          Buy me a drink!
+        </a>
       </div>
+
+      <a
+        href={SUPPORT_LINK}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-[max(14px,env(safe-area-inset-bottom))] left-4 z-40 inline-flex min-h-[42px] items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-3 py-2 text-[14px] font-semibold text-white shadow-[0_14px_34px_rgba(11,16,32,0.24)] transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] md:hidden"
+      >
+        Buy me a drink!
+      </a>
 
       {activeFilterCount ? (
         <div className="flex w-full flex-wrap items-center gap-2 pt-1">
@@ -398,7 +428,7 @@ export function FiltersBar({
               onClick={() => {
                 replaceUrl({ nextQ: "" });
               }}
-              className="rounded-full border border-[#e1ad58]/18 bg-[#171115] px-3 py-1 text-[11px] font-medium leading-[18px] text-[#f7edd8]"
+              className="rounded-[14px] border border-white/12 bg-white/[0.04] px-4 py-2 text-[14px] font-semibold text-white/84"
             >
               Search: {q.trim()} ×
             </button>
@@ -412,7 +442,7 @@ export function FiltersBar({
                 const next = selectedIngredientSlugs.filter((value) => value !== slug);
                 replaceUrl({ nextIngredientSlugs: next });
               }}
-              className="rounded-full border border-[#e1ad58]/18 bg-[#171115] px-3 py-1 text-[11px] font-medium leading-[18px] text-[#f7edd8]"
+              className="rounded-[14px] border border-white/12 bg-white/[0.04] px-4 py-2 text-[14px] font-semibold text-white/84"
             >
               {ingredientNameBySlug.get(slug) ?? slug} ×
             </button>
@@ -426,7 +456,7 @@ export function FiltersBar({
                 const next = selectedTagSlugs.filter((value) => value !== slug);
                 replaceUrl({ nextTagSlugs: next });
               }}
-              className="rounded-full border border-[#e1ad58]/18 bg-[#171115] px-3 py-1 text-[11px] font-medium leading-[18px] text-[#f7edd8]"
+              className="rounded-[14px] border border-white/12 bg-white/[0.04] px-4 py-2 text-[14px] font-semibold text-white/84"
             >
               {tagNameBySlug.get(slug) ?? slug} ×
             </button>
@@ -438,7 +468,7 @@ export function FiltersBar({
               onClick={() => {
                 replaceUrl({ nextAbvMax: null });
               }}
-              className="rounded-full border border-[#e1ad58]/18 bg-[#171115] px-3 py-1 text-[11px] font-medium leading-[18px] text-[#f7edd8]"
+              className="rounded-[14px] border border-white/12 bg-white/[0.04] px-4 py-2 text-[14px] font-semibold text-white/84"
             >
               Up to {selectedAbvMax}% ×
             </button>
@@ -454,7 +484,7 @@ export function FiltersBar({
                 nextAbvMax: null
               });
             }}
-            className="rounded-full border border-white/10 bg-transparent px-3 py-1 text-[11px] font-medium leading-[18px] text-[#ae9a79] hover:border-[#e1ad58]/22 hover:text-[#f7edd8]"
+            className="rounded-[14px] border border-white/12 bg-transparent px-4 py-2 text-[14px] font-semibold text-white/58 hover:border-white/18 hover:text-white"
           >
             Clear all
           </button>
@@ -490,10 +520,10 @@ function MultiSelectPanel({
   return (
     <div>
       <div className="mb-3">
-        <div className="text-[13px] font-semibold uppercase leading-[20px] tracking-[0.14em] text-[#f3ddb2]">
+        <div className="text-[12px] font-semibold uppercase leading-[20px] tracking-[0.14em] text-[#f3ddb2]">
           {title}
         </div>
-        <div className="text-[12px] leading-[18px] text-[#a89270]">
+        <div className="text-[12px] leading-[18px] text-white/56">
           {description}
         </div>
       </div>
@@ -502,17 +532,17 @@ function MultiSelectPanel({
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder={searchPlaceholder}
-        className="w-full rounded-[14px] border border-white/8 bg-[#120d10] px-3 py-2.5 text-[12px] text-[#f7edd8] outline-none placeholder:text-[#8b7a60]"
+        className="w-full rounded-[14px] border border-white/8 bg-white/[0.04] px-3 py-2.5 text-[14px] text-[#f7edd8] outline-none placeholder:text-white/42"
       />
-      <div className="mt-3 grid max-h-72 gap-2 overflow-auto pr-1 text-[12px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-3 grid max-h-72 gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
         {filteredItems.map((item) => (
           <label
             key={item.id}
             className={[
               "flex cursor-pointer items-center gap-2 rounded-[14px] border px-3 py-2.5 transition",
               selected.includes(item.slug)
-                ? "border-[#e1ad58]/34 bg-[rgba(227,170,76,0.18)] text-[#fff5df]"
-                : "border-white/8 bg-[#171115] hover:border-[#e1ad58]/18 hover:bg-[#1b1418]"
+                ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
+                : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
             ].join(" ")}
           >
             <input
@@ -525,9 +555,7 @@ function MultiSelectPanel({
             <span>{item.name}</span>
           </label>
         ))}
-        {!filteredItems.length ? (
-          <div className="px-2 py-6 text-[#a89270]">No matches</div>
-        ) : null}
+        {!filteredItems.length ? <div className="px-2 py-6 text-white/48">No matches</div> : null}
       </div>
     </div>
   );
@@ -553,22 +581,22 @@ function AbvPanel({
   return (
     <div>
       <div className="mb-3">
-        <div className="text-[13px] font-semibold uppercase leading-[20px] tracking-[0.14em] text-[#f3ddb2]">
+        <div className="text-[12px] font-semibold uppercase leading-[20px] tracking-[0.14em] text-[#f3ddb2]">
           {title}
         </div>
-        <div className="text-[12px] leading-[18px] text-[#a89270]">
+        <div className="text-[12px] leading-[18px] text-white/56">
           {description}
         </div>
       </div>
-      <div className="grid max-h-72 gap-2 overflow-auto pr-1 text-[12px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid max-h-72 gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
       <button
         type="button"
         onClick={() => onSelect(null)}
         className={[
           "rounded-[14px] border px-3 py-2.5 text-left transition",
           selected === null
-            ? "border-[#e1ad58]/34 bg-[rgba(227,170,76,0.18)] text-[#fff5df]"
-            : "border-white/8 bg-[#171115] hover:border-[#e1ad58]/18 hover:bg-[#1b1418]"
+            ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
+            : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
         ].join(" ")}
       >
         Any %
@@ -581,8 +609,8 @@ function AbvPanel({
           className={[
             "rounded-[14px] border px-3 py-2.5 text-left transition",
             selected === n
-              ? "border-[#e1ad58]/34 bg-[rgba(227,170,76,0.18)] text-[#fff5df]"
-              : "border-white/8 bg-[#171115] hover:border-[#e1ad58]/18 hover:bg-[#1b1418]"
+              ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
+              : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
           ].join(" ")}
         >
           Up to {n}%

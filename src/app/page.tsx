@@ -104,7 +104,7 @@ export default async function HomePage({
     <div className="speakeasy-stage min-h-screen overflow-hidden bg-transparent text-[#f7edd8]">
       <main className="relative z-10 mx-auto w-full max-w-[1680px] px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
         <div className="flex flex-col gap-6">
-          <section className="relative z-50 isolate rounded-[30px] bg-[rgba(14,10,12,0.78)] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-xl md:p-6">
+          <section className="relative z-50 isolate">
             <FiltersBar
               q={q}
               tags={tags}
