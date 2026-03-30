@@ -1,6 +1,7 @@
 "use client";
 
 import { buildGalleryHref, type GalleryQueryState } from "@/lib/gallery-query";
+import { isLowResImage } from "@/lib/low-res-images";
 import { slugify } from "@/lib/slugify";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,6 +51,7 @@ export function GalleryDrinkPanel({
   const router = useRouter();
   const accent = drink.frontBg ?? "#FFE86C";
   const ingredientCount = drink.ingredients.length;
+  const lowRes = isLowResImage(drink.imagePath);
 
   useEffect(() => {
     if (!fullscreen) return;
@@ -86,11 +88,21 @@ export function GalleryDrinkPanel({
             fullscreen ? "lg:h-full" : "lg:min-h-[780px]"
           ].join(" ")}
         >
+          {lowRes ? (
+            <div
+              className="absolute inset-0 scale-[1.06] bg-cover bg-center blur-3xl opacity-45"
+              aria-hidden="true"
+              style={{ backgroundImage: `url(${drink.imagePath})` }}
+            />
+          ) : null}
           <Image
             src={drink.imagePath}
             alt={drink.name}
             fill
-            className="object-cover object-center scale-[1.02]"
+            className={[
+              "object-center",
+              lowRes ? "object-contain p-6" : "object-cover scale-[1.02]"
+            ].join(" ")}
             sizes="(max-width: 1024px) 100vw, 40vw"
             quality={82}
             priority

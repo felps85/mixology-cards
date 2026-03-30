@@ -25,36 +25,37 @@
               </div>
             </div>
 
-            <div class="topbar__controls">
-              <label class="search-shell">
-                <span class="sr-only">Search drinks</span>
-                <input id="searchInput" type="search" placeholder="Search drinks..." />
-              </label>
+            <div id="searchDock" class="searchDock">
+              <div class="toolbarSearchUnified">
+                <label class="search-shell">
+                  <span class="sr-only">Search drinks</span>
+                  <input id="searchInput" type="search" placeholder="Search drinks..." />
+                </label>
 
-              <div id="filterCluster" class="filter-cluster">
-                <button class="filter-btn" type="button" data-filter-button="ingredients">
-                  <span>Ingredients</span>
-                  <span class="filter-btn__count" data-count-for="ingredients"></span>
-                  <span class="filter-btn__caret">▾</span>
-                </button>
-                <button class="filter-btn" type="button" data-filter-button="alcohol">
-                  <span>Alcohol</span>
-                  <span class="filter-btn__count" data-count-for="alcohol"></span>
-                  <span class="filter-btn__caret">▾</span>
-                </button>
-                <button class="filter-btn" type="button" data-filter-button="tags">
-                  <span>Tags</span>
-                  <span class="filter-btn__count" data-count-for="tags"></span>
-                  <span class="filter-btn__caret">▾</span>
-                </button>
-                <button class="filter-btn" type="button" data-filter-button="abv">
-                  <span>%</span>
-                  <span class="filter-btn__count" data-count-for="abv"></span>
-                  <span class="filter-btn__caret">▾</span>
-                </button>
-
-                <div id="dropdownPanel" class="dropdown-panel is-hidden" aria-live="polite"></div>
+                <div id="filterCluster" class="filter-cluster">
+                  <button class="filter-btn" type="button" data-filter-button="ingredients">
+                    <span>Ingredients</span>
+                    <span class="filter-btn__count" data-count-for="ingredients"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="alcohol">
+                    <span>Alcohol</span>
+                    <span class="filter-btn__count" data-count-for="alcohol"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="tags">
+                    <span>Tags</span>
+                    <span class="filter-btn__count" data-count-for="tags"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="abv">
+                    <span>%</span>
+                    <span class="filter-btn__count" data-count-for="abv"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                </div>
               </div>
+              <div id="dropdownPanel" class="dropdown-panel is-hidden" aria-live="polite"></div>
             </div>
           </div>
           <a
@@ -86,8 +87,9 @@
 
     <div id="drinkDialog" class="drink-dialog is-hidden" aria-hidden="true">
       <div class="drink-dialog__panel">
-      <div class="drink-dialog__content">
+        <div class="drink-dialog__content">
         <div class="drink-dialog__image-wrap">
+          <div id="dialogImageBackdrop" class="drink-dialog__image-backdrop" aria-hidden="true"></div>
           <img id="dialogImage" alt="" />
           <div id="dialogAccentBar" class="dialog-accent-bar" aria-hidden="true"></div>
         </div>

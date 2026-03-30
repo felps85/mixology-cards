@@ -1,16 +1,7 @@
 import type { Drink } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-
-function galleryImageSrc(imagePath: string) {
-  if (/^\/drinks\/.+\.(png|jpe?g)$/i.test(imagePath)) {
-    return imagePath
-      .replace("/drinks/", "/drinks/thumbs/")
-      .replace(/\.(png|jpe?g)$/i, ".jpg");
-  }
-
-  return imagePath;
-}
+import { isLowResImage } from "@/lib/low-res-images";
 
 export function DrinkCard({
   drink,
@@ -24,6 +15,7 @@ export function DrinkCard({
   chips: string[];
 }) {
   const accent = drink.frontBg || "#FFE86C";
+  const lowRes = isLowResImage(drink.imagePath);
 
   return (
     <Link
@@ -35,13 +27,25 @@ export function DrinkCard({
       ].join(" ")}
     >
       <div className="relative h-full w-full">
+        {lowRes ? (
+          <div
+            className="absolute inset-0 scale-[1.08] bg-cover bg-center blur-2xl opacity-45"
+            aria-hidden="true"
+            style={{ backgroundImage: `url(${drink.imagePath})` }}
+          />
+        ) : null}
         <Image
-          src={galleryImageSrc(drink.imagePath)}
+          src={drink.imagePath}
           alt={drink.name}
           fill
-          className="object-cover transition duration-700 group-hover:scale-[1.08]"
+          className={[
+            "transition duration-700",
+            lowRes
+              ? "object-contain p-4 group-hover:scale-[1.04]"
+              : "object-cover group-hover:scale-[1.08]"
+          ].join(" ")}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 33vw, 25vw"
-          quality={72}
+          quality={88}
           priority={false}
         />
         <div

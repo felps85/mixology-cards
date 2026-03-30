@@ -3,10 +3,67 @@ const DATA_URL =
 const PAGES_ASSET_BASE = "./drinks";
 const RAW_PUBLIC_BASE =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
-const THUMB_BASE = `${PAGES_ASSET_BASE}/thumbs`;
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
+const LOW_RES_IMAGES = new Set([
+  "/drinks/aperol-and-limoncello.jpg",
+  "/drinks/apple-and-elderflower-gin.jpg",
+  "/drinks/apple-prosecco-punch.jpg",
+  "/drinks/appleberry-mulled-wine.jpg",
+  "/drinks/bicyclette.jpg",
+  "/drinks/bitter-orange-and-cardamom-martinis.jpg",
+  "/drinks/blood-beetroot-cocktails.jpg",
+  "/drinks/blueberry-mojito.jpg",
+  "/drinks/bourbon.jpg",
+  "/drinks/bramble.jpg",
+  "/drinks/chocolate-orange.jpg",
+  "/drinks/claridge-s-sazerac.jpg",
+  "/drinks/coco-fizz.jpg",
+  "/drinks/courgette-martini.jpg",
+  "/drinks/crangria.jpg",
+  "/drinks/dark-and-stormy-coffee.jpg",
+  "/drinks/eastern-breeze.jpg",
+  "/drinks/easy-sangria.jpg",
+  "/drinks/elderflower-and-cucumber-g-and-ts.jpg",
+  "/drinks/elderflower-and-herb-cooler.jpg",
+  "/drinks/espresso-eggnog-martini.jpg",
+  "/drinks/frozen-caipirinha.jpg",
+  "/drinks/frozen-margarita.jpg",
+  "/drinks/gimlet.jpg",
+  "/drinks/gooseberry-and-elderflower-fizz.jpg",
+  "/drinks/grasshopper.jpg",
+  "/drinks/hibiscus-and-prosecco.jpg",
+  "/drinks/hurricane.jpg",
+  "/drinks/mango-and-pineapple-mojito.jpg",
+  "/drinks/mezcalita-verde.jpg",
+  "/drinks/mulled-gin.jpg",
+  "/drinks/mulled-orange-wine.jpg",
+  "/drinks/non-alcoholic-punch.jpg",
+  "/drinks/orange-blossom-bellinis.jpg",
+  "/drinks/passion-fruit-martini.jpg",
+  "/drinks/peach-punch.jpg",
+  "/drinks/pink-gin-iced-tea.jpg",
+  "/drinks/prosecco-and-elderflower.jpg",
+  "/drinks/rhubarb-and-custard.jpg",
+  "/drinks/rhubarb-gin.jpg",
+  "/drinks/salted-caramel-pecan-sour.jpg",
+  "/drinks/sloe-gin.jpg",
+  "/drinks/snowball.jpg",
+  "/drinks/sparkling-mint-and-lemon-juleps.jpg",
+  "/drinks/spiced-apple-strudel-and-brandy.jpg",
+  "/drinks/strawberry-daiquiri.jpg",
+  "/drinks/summer-punch.jpg",
+  "/drinks/sweet-manhattan.jpg",
+  "/drinks/toffee-apple-sour.jpg",
+  "/drinks/vodka-and-cranberry-blush.jpg",
+  "/drinks/watermelon-gin-spritzer.jpg",
+  "/drinks/white-rabbit.jpg",
+  "/drinks/winter-spritz.jpg",
+  "/drinks/woo-woo.jpg",
+  "/drinks/zombie.jpg"
+]);
 
 const searchInput = document.getElementById("searchInput");
+const searchDock = document.getElementById("searchDock");
 const filterCluster = document.getElementById("filterCluster");
 const dropdownPanel = document.getElementById("dropdownPanel");
 const activeFilters = document.getElementById("activeFilters");
@@ -15,6 +72,7 @@ const grid = document.getElementById("grid");
 const dialog = document.getElementById("drinkDialog");
 const closeDialog = document.getElementById("closeDialog");
 const dialogImage = document.getElementById("dialogImage");
+const dialogImageBackdrop = document.getElementById("dialogImageBackdrop");
 const dialogAccentBar = document.getElementById("dialogAccentBar");
 const dialogTitle = document.getElementById("dialogTitle");
 const dialogMeta = document.getElementById("dialogMeta");
@@ -128,13 +186,7 @@ function isAlcoholIngredientName(name) {
 }
 
 function galleryImageSrc(path) {
-  if (/^\/drinks\/.+\.(png|jpe?g)$/i.test(path)) {
-    return path
-      .replace("/drinks/", `${THUMB_BASE}/`)
-      .replace(/\.(png|jpe?g)$/i, ".jpg");
-  }
-
-  return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
+  return fullImageSrc(path);
 }
 
 function fullImageSrc(path) {
@@ -354,12 +406,12 @@ function renderPanel() {
   }
 
   const button = filterButtons[state.openPanel];
-  const clusterRect = filterCluster.getBoundingClientRect();
+  const dockRect = searchDock.getBoundingClientRect();
   const buttonRect = button.getBoundingClientRect();
   const panelWidth = panelWidthForKey(state.openPanel);
-  const relativeLeft = buttonRect.left - clusterRect.left;
-  const minLeft = -clusterRect.left + 24;
-  const maxLeft = window.innerWidth - clusterRect.left - panelWidth - 24;
+  const relativeLeft = buttonRect.left - dockRect.left;
+  const minLeft = 0;
+  const maxLeft = Math.max(0, dockRect.width - panelWidth);
   const left = Math.max(minLeft, Math.min(relativeLeft, maxLeft));
 
   dropdownPanel.style.left = `${left}px`;
@@ -483,8 +535,10 @@ function renderGrid(items) {
     .map((drink) => {
       const accent = drink.frontBg ?? "#dfa74f";
       const chips = [drink.baseSpirit, drink.alcoholInfo, drink.season].filter(Boolean);
+      const lowResClass = LOW_RES_IMAGES.has(drink.imagePath) ? "is-low-res" : "";
       return `
-        <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""}" type="button" data-action="open-drink" data-slug="${drink.slug}">
+        <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""} ${lowResClass}" type="button" data-action="open-drink" data-slug="${drink.slug}">
+          <div class="drink-card__image-backdrop" style="background-image:url('${drink.imageThumbUrl}')"></div>
           <img src="${drink.imageThumbUrl}" alt="${escapeHtml(
             drink.name
           )}" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" />
@@ -521,6 +575,12 @@ function syncDialog(items) {
   }
 
   const accent = drink.frontBg ?? "#FFE86C";
+  dialog
+    .querySelector(".drink-dialog__image-wrap")
+    ?.classList.toggle("is-low-res", LOW_RES_IMAGES.has(drink.imagePath));
+  if (dialogImageBackdrop) {
+    dialogImageBackdrop.style.backgroundImage = `url('${drink.imageFullUrl}')`;
+  }
   dialogImage.src = drink.imageFullUrl;
   dialogImage.alt = drink.name;
   dialogImage.onerror = () => {
@@ -612,6 +672,12 @@ searchInput.addEventListener("input", (event) => {
   render();
 });
 
+searchInput.addEventListener("focus", () => {
+  if (!state.openPanel) return;
+  state.openPanel = null;
+  renderPanel();
+});
+
 filterCluster.addEventListener("click", (event) => {
   const filterButton = event.target.closest("[data-filter-button]");
   if (filterButton) {
@@ -699,9 +765,9 @@ dialog.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("mousedown", (event) => {
+document.addEventListener("pointerdown", (event) => {
   if (!state.openPanel) return;
-  if (filterCluster.contains(event.target)) return;
+  if (searchDock.contains(event.target)) return;
   state.openPanel = null;
   renderPanel();
 });

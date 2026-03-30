@@ -114,7 +114,7 @@ export function FiltersBar({
 
   const [openKey, setOpenKey] = useState<DropdownKey | null>(null);
   const [panelLeft, setPanelLeft] = useState(0);
-  const controlsRef = useRef<HTMLDivElement | null>(null);
+  const dockRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const triggerRefs = {
@@ -125,26 +125,29 @@ export function FiltersBar({
   };
 
   useEffect(() => {
-    function onEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpenKey(null);
-    }
+    if (!openKey) return;
 
-    document.addEventListener("keydown", onEscape);
-    return () => document.removeEventListener("keydown", onEscape);
-  }, []);
-
-  useEffect(() => {
-    function onPointerDown(event: MouseEvent) {
+    function onPointerDown(event: PointerEvent) {
       const target = event.target as Node;
-      if (controlsRef.current?.contains(target) || panelRef.current?.contains(target)) {
+      if (dockRef.current?.contains(target) || panelRef.current?.contains(target)) {
         return;
       }
       setOpenKey(null);
     }
 
-    document.addEventListener("mousedown", onPointerDown);
-    return () => document.removeEventListener("mousedown", onPointerDown);
-  }, []);
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenKey(null);
+      }
+    }
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [openKey]);
 
   useEffect(() => {
     return () => {
@@ -244,14 +247,14 @@ export function FiltersBar({
       return;
     }
 
-    const controlsRect = controlsRef.current?.getBoundingClientRect();
+    const dockRect = dockRef.current?.getBoundingClientRect();
     const triggerRect = triggerRefs[key].current?.getBoundingClientRect();
     const panelWidth = panelWidthForKey(key);
 
-    if (controlsRect && triggerRect) {
-      const relativeLeft = triggerRect.left - controlsRect.left;
-      const minLeft = -controlsRect.left + 24;
-      const maxLeft = window.innerWidth - controlsRect.left - panelWidth - 24;
+    if (dockRect && triggerRect) {
+      const relativeLeft = triggerRect.left - dockRect.left;
+      const minLeft = 0;
+      const maxLeft = Math.max(0, dockRect.width - panelWidth);
       setPanelLeft(Math.max(minLeft, Math.min(relativeLeft, maxLeft)));
     } else {
       setPanelLeft(0);
@@ -263,7 +266,7 @@ export function FiltersBar({
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 text-[#f7edd8]">
       <div className="flex items-start gap-3 md:gap-4">
-        <div className="flex min-w-0 flex-1 items-center gap-3 overflow-x-auto rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3">
+        <div className="flex min-w-0 flex-1 items-center gap-3 rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3">
           <div className="flex shrink-0 items-center gap-3 pr-1">
             <button
               type="button"
@@ -285,121 +288,123 @@ export function FiltersBar({
             </div>
           </div>
 
-          <div className="relative flex min-w-0 flex-1 items-center gap-3">
-            <label className="flex min-h-[48px] min-w-[220px] flex-[1_1_320px] items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
-              <input
-                ref={searchInputRef}
-                key={q}
-                type="search"
-                defaultValue={q}
-                placeholder={searchPlaceholder}
-                onChange={(e) => {
-                  const nextQ = e.target.value;
-                  if (debouncedTimer.current) window.clearTimeout(debouncedTimer.current);
-                  debouncedTimer.current = window.setTimeout(() => {
-                    replaceUrl({ nextQ });
-                  }, 200);
-                }}
-                className="pointer-events-auto min-w-0 flex-1 bg-transparent text-[15px] font-medium leading-[22px] text-white placeholder:text-white/56 outline-none"
-              />
-            </label>
-
-            <div
-              ref={controlsRef}
-              className="relative flex shrink-0 items-center gap-1 rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1"
-            >
-              <FilterButton
-                label="Ingredients"
-                open={openKey === "ingredients"}
-                onClick={() => togglePanel("ingredients")}
-                activeCount={ingredientSlugsInOther.length}
-                buttonRef={triggerRefs.ingredients}
-              />
-              <FilterButton
-                label="Alcohol"
-                open={openKey === "alcohol"}
-                onClick={() => togglePanel("alcohol")}
-                activeCount={ingredientSlugsInAlcohol.length}
-                buttonRef={triggerRefs.alcohol}
-              />
-              <FilterButton
-                label="Tags"
-                open={openKey === "tags"}
-                onClick={() => togglePanel("tags")}
-                activeCount={selectedTagSlugs.length}
-                buttonRef={triggerRefs.tags}
-              />
-              <FilterButton
-                label="%"
-                open={openKey === "abv"}
-                onClick={() => togglePanel("abv")}
-                activeCount={selectedAbvMax !== null ? 1 : 0}
-                buttonRef={triggerRefs.abv}
-              />
-              {openKey ? (
-                <div
-                  ref={panelRef}
-                  role="dialog"
-                  aria-label={`${openKey} filters`}
-                  className="absolute top-[calc(100%+12px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
-                  style={{
-                    left: panelLeft,
-                    width: `${panelWidthForKey(openKey)}px`
+          <div ref={dockRef} className="relative min-w-0 flex-1">
+            <div className="flex min-w-max items-center gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <label className="flex min-h-[48px] min-w-[220px] flex-[1_1_320px] items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
+                <input
+                  ref={searchInputRef}
+                  key={q}
+                  type="search"
+                  defaultValue={q}
+                  placeholder={searchPlaceholder}
+                  onFocus={() => setOpenKey(null)}
+                  onClick={() => setOpenKey(null)}
+                  onChange={(e) => {
+                    const nextQ = e.target.value;
+                    if (debouncedTimer.current) window.clearTimeout(debouncedTimer.current);
+                    debouncedTimer.current = window.setTimeout(() => {
+                      replaceUrl({ nextQ });
+                    }, 200);
                   }}
-                >
-                  {openKey === "ingredients" ? (
-                    <MultiSelectPanel
-                      items={otherIngredients}
-                      selected={ingredientSlugsInOther}
-                      searchPlaceholder="Search ingredients…"
-                      title="Ingredients"
-                      description="Non-alcohol ingredients used in the drinks."
-                      onToggle={(slug) => {
-                        const next = toggleSlug(selectedIngredientSlugs, slug);
-                        replaceUrl({ nextIngredientSlugs: next });
-                      }}
-                    />
-                  ) : null}
-                  {openKey === "alcohol" ? (
-                    <MultiSelectPanel
-                      items={alcoholIngredients}
-                      selected={ingredientSlugsInAlcohol}
-                      searchPlaceholder="Search alcohol…"
-                      title="Alcohol"
-                      description="Spirits, liqueurs, bitters, and wine-based ingredients."
-                      onToggle={(slug) => {
-                        const next = toggleSlug(selectedIngredientSlugs, slug);
-                        replaceUrl({ nextIngredientSlugs: next });
-                      }}
-                    />
-                  ) : null}
-                  {openKey === "tags" ? (
-                    <MultiSelectPanel
-                      items={nonPercentTags}
-                      selected={selectedTagSlugs}
-                      searchPlaceholder="Search tags…"
-                      title="Tags"
-                      description="Flavor, season, and style tags from the drink cards."
-                      onToggle={(slug) => {
-                        const next = toggleSlug(selectedTagSlugs, slug);
-                        replaceUrl({ nextTagSlugs: next });
-                      }}
-                    />
-                  ) : null}
-                  {openKey === "abv" ? (
-                    <AbvPanel
-                      selected={selectedAbvMax}
-                      title="Alcohol %"
-                      description="Choose a maximum ABV in 5% increments."
-                      onSelect={(next) => {
-                        replaceUrl({ nextAbvMax: next });
-                        setOpenKey(null);
-                      }}
-                    />
-                  ) : null}
-                </div>
-              ) : null}
+                  className="pointer-events-auto min-w-0 flex-1 bg-transparent text-[15px] font-medium leading-[22px] text-white placeholder:text-white/56 outline-none"
+                />
+              </label>
+
+              <div className="relative flex shrink-0 items-center gap-1 rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+                <FilterButton
+                  label="Ingredients"
+                  open={openKey === "ingredients"}
+                  onClick={() => togglePanel("ingredients")}
+                  activeCount={ingredientSlugsInOther.length}
+                  buttonRef={triggerRefs.ingredients}
+                />
+                <FilterButton
+                  label="Alcohol"
+                  open={openKey === "alcohol"}
+                  onClick={() => togglePanel("alcohol")}
+                  activeCount={ingredientSlugsInAlcohol.length}
+                  buttonRef={triggerRefs.alcohol}
+                />
+                <FilterButton
+                  label="Tags"
+                  open={openKey === "tags"}
+                  onClick={() => togglePanel("tags")}
+                  activeCount={selectedTagSlugs.length}
+                  buttonRef={triggerRefs.tags}
+                />
+                <FilterButton
+                  label="%"
+                  open={openKey === "abv"}
+                  onClick={() => togglePanel("abv")}
+                  activeCount={selectedAbvMax !== null ? 1 : 0}
+                  buttonRef={triggerRefs.abv}
+                />
+              </div>
             </div>
+
+            {openKey ? (
+              <div
+                ref={panelRef}
+                role="dialog"
+                aria-label={`${openKey} filters`}
+                className="absolute left-0 top-[calc(100%+12px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
+                style={{
+                  left: panelLeft,
+                  width: `${panelWidthForKey(openKey)}px`
+                }}
+              >
+                {openKey === "ingredients" ? (
+                  <MultiSelectPanel
+                    items={otherIngredients}
+                    selected={ingredientSlugsInOther}
+                    searchPlaceholder="Search ingredients…"
+                    title="Ingredients"
+                    description="Non-alcohol ingredients used in the drinks."
+                    onToggle={(slug) => {
+                      const next = toggleSlug(selectedIngredientSlugs, slug);
+                      replaceUrl({ nextIngredientSlugs: next });
+                    }}
+                  />
+                ) : null}
+                {openKey === "alcohol" ? (
+                  <MultiSelectPanel
+                    items={alcoholIngredients}
+                    selected={ingredientSlugsInAlcohol}
+                    searchPlaceholder="Search alcohol…"
+                    title="Alcohol"
+                    description="Spirits, liqueurs, bitters, and wine-based ingredients."
+                    onToggle={(slug) => {
+                      const next = toggleSlug(selectedIngredientSlugs, slug);
+                      replaceUrl({ nextIngredientSlugs: next });
+                    }}
+                  />
+                ) : null}
+                {openKey === "tags" ? (
+                  <MultiSelectPanel
+                    items={nonPercentTags}
+                    selected={selectedTagSlugs}
+                    searchPlaceholder="Search tags…"
+                    title="Tags"
+                    description="Flavor, season, and style tags from the drink cards."
+                    onToggle={(slug) => {
+                      const next = toggleSlug(selectedTagSlugs, slug);
+                      replaceUrl({ nextTagSlugs: next });
+                    }}
+                  />
+                ) : null}
+                {openKey === "abv" ? (
+                  <AbvPanel
+                    selected={selectedAbvMax}
+                    title="Alcohol %"
+                    description="Choose a maximum ABV in 5% increments."
+                    onSelect={(next) => {
+                      replaceUrl({ nextAbvMax: next });
+                      setOpenKey(null);
+                    }}
+                  />
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
 
