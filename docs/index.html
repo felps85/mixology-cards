@@ -13,54 +13,72 @@
   <body>
     <div class="page-shell">
       <section class="topbar" aria-label="Filters">
-        <div class="topbar__brand" aria-hidden="true">
-          <div class="topbar__logo-shell">
-            <img src="./logo.svg" alt="" class="topbar__logo" />
-          </div>
-          <div class="topbar__copy">
-            <div class="topbar__title">Sipsmith</div>
-            <div class="topbar__subtitle">Speakeasy Index</div>
-          </div>
-        </div>
+        <div class="topbar__toolbar">
+          <div class="topbar__main">
+            <div class="topbar__brand" aria-hidden="true">
+              <button class="topbar__lead" type="button" tabindex="-1" aria-hidden="true">
+                <img src="./logo.svg" alt="" class="topbar__logo" />
+              </button>
+              <div class="topbar__copy">
+                <div class="topbar__title">Sipsmith</div>
+                <div class="topbar__subtitle">Speakeasy Index</div>
+              </div>
+            </div>
 
-        <div class="topbar__controls">
-          <label class="search-shell">
-            <span class="sr-only">Search drinks</span>
-            <input id="searchInput" type="search" placeholder="Search drinks..." />
-          </label>
+            <div id="searchDock" class="searchDock">
+              <div class="toolbarSearchUnified">
+                <label class="search-shell">
+                  <span class="sr-only">Search drinks</span>
+                  <input id="searchInput" type="search" placeholder="Search drinks..." />
+                </label>
 
-          <div id="filterCluster" class="filter-cluster">
-            <button class="filter-btn" type="button" data-filter-button="ingredients">
-              <span>Ingredients</span>
-              <span class="filter-btn__count" data-count-for="ingredients"></span>
-              <span class="filter-btn__caret">▾</span>
-            </button>
-            <button class="filter-btn" type="button" data-filter-button="alcohol">
-              <span>Alcohol</span>
-              <span class="filter-btn__count" data-count-for="alcohol"></span>
-              <span class="filter-btn__caret">▾</span>
-            </button>
-            <button class="filter-btn" type="button" data-filter-button="tags">
-              <span>Tags</span>
-              <span class="filter-btn__count" data-count-for="tags"></span>
-              <span class="filter-btn__caret">▾</span>
-            </button>
-            <button class="filter-btn" type="button" data-filter-button="abv">
-              <span>%</span>
-              <span class="filter-btn__count" data-count-for="abv"></span>
-              <span class="filter-btn__caret">▾</span>
-            </button>
-
-            <div id="dropdownPanel" class="dropdown-panel is-hidden" aria-live="polite"></div>
+                <div id="filterCluster" class="filter-cluster">
+                  <button class="filter-btn" type="button" data-filter-button="ingredients">
+                    <span>Ingredients</span>
+                    <span class="filter-btn__count" data-count-for="ingredients"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="alcohol">
+                    <span>Alcohol</span>
+                    <span class="filter-btn__count" data-count-for="alcohol"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="tags">
+                    <span>Tags</span>
+                    <span class="filter-btn__count" data-count-for="tags"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                  <button class="filter-btn" type="button" data-filter-button="abv">
+                    <span>%</span>
+                    <span class="filter-btn__count" data-count-for="abv"></span>
+                    <span class="filter-btn__caret">▾</span>
+                  </button>
+                </div>
+              </div>
+              <div id="dropdownPanel" class="dropdown-panel is-hidden" aria-live="polite"></div>
+            </div>
           </div>
+          <a
+            class="buyButton buyButtonDesktop"
+            href="https://buymeacoffee.com/agorafodeuy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Buy me a drink!
+          </a>
         </div>
 
         <div id="activeFilters" class="active-filters is-hidden"></div>
       </section>
 
-      <section class="stats">
-        <div id="resultCount">Loading drinks…</div>
-      </section>
+      <a
+        class="buyButton buyButtonMobile"
+        href="https://buymeacoffee.com/agorafodeuy"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Buy me a drink!
+      </a>
 
       <main>
         <section id="grid" class="card-grid" aria-live="polite"></section>
@@ -69,17 +87,11 @@
 
     <div id="drinkDialog" class="drink-dialog is-hidden" aria-hidden="true">
       <div class="drink-dialog__panel">
-      <div class="drink-dialog__content">
+        <div class="drink-dialog__content">
         <div class="drink-dialog__image-wrap">
+          <div id="dialogImageBackdrop" class="drink-dialog__image-backdrop" aria-hidden="true"></div>
           <img id="dialogImage" alt="" />
           <div id="dialogAccentBar" class="dialog-accent-bar" aria-hidden="true"></div>
-          <div class="dialog-house-card">
-            <div class="dialog-house-card__eyebrow">House Pour</div>
-            <p>
-              A cinematic recipe view with the full method, ingredients, and quick
-              facts in one place.
-            </p>
-          </div>
         </div>
         <div class="drink-dialog__body">
           <div class="dialog-header">

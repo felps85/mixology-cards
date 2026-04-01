@@ -1,19 +1,78 @@
 const DATA_URL =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/prisma/drinksSeed.json";
+const PAGES_ASSET_BASE = "./drinks";
 const RAW_PUBLIC_BASE =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
-const THUMB_BASE = `${RAW_PUBLIC_BASE}/drinks/thumbs`;
+const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
+const LOW_RES_IMAGES = new Set([
+  "/drinks/aperol-and-limoncello.jpg",
+  "/drinks/apple-and-elderflower-gin.jpg",
+  "/drinks/apple-prosecco-punch.jpg",
+  "/drinks/appleberry-mulled-wine.jpg",
+  "/drinks/bicyclette.jpg",
+  "/drinks/bitter-orange-and-cardamom-martinis.jpg",
+  "/drinks/blood-beetroot-cocktails.jpg",
+  "/drinks/blueberry-mojito.jpg",
+  "/drinks/bourbon.jpg",
+  "/drinks/bramble.jpg",
+  "/drinks/chocolate-orange.jpg",
+  "/drinks/claridge-s-sazerac.jpg",
+  "/drinks/coco-fizz.jpg",
+  "/drinks/courgette-martini.jpg",
+  "/drinks/crangria.jpg",
+  "/drinks/dark-and-stormy-coffee.jpg",
+  "/drinks/eastern-breeze.jpg",
+  "/drinks/easy-sangria.jpg",
+  "/drinks/elderflower-and-cucumber-g-and-ts.jpg",
+  "/drinks/elderflower-and-herb-cooler.jpg",
+  "/drinks/espresso-eggnog-martini.jpg",
+  "/drinks/frozen-caipirinha.jpg",
+  "/drinks/frozen-margarita.jpg",
+  "/drinks/gimlet.jpg",
+  "/drinks/gooseberry-and-elderflower-fizz.jpg",
+  "/drinks/grasshopper.jpg",
+  "/drinks/hibiscus-and-prosecco.jpg",
+  "/drinks/hurricane.jpg",
+  "/drinks/mango-and-pineapple-mojito.jpg",
+  "/drinks/mezcalita-verde.jpg",
+  "/drinks/mulled-gin.jpg",
+  "/drinks/mulled-orange-wine.jpg",
+  "/drinks/non-alcoholic-punch.jpg",
+  "/drinks/orange-blossom-bellinis.jpg",
+  "/drinks/passion-fruit-martini.jpg",
+  "/drinks/peach-punch.jpg",
+  "/drinks/pink-gin-iced-tea.jpg",
+  "/drinks/prosecco-and-elderflower.jpg",
+  "/drinks/rhubarb-and-custard.jpg",
+  "/drinks/rhubarb-gin.jpg",
+  "/drinks/salted-caramel-pecan-sour.jpg",
+  "/drinks/sloe-gin.jpg",
+  "/drinks/snowball.jpg",
+  "/drinks/sparkling-mint-and-lemon-juleps.jpg",
+  "/drinks/spiced-apple-strudel-and-brandy.jpg",
+  "/drinks/strawberry-daiquiri.jpg",
+  "/drinks/summer-punch.jpg",
+  "/drinks/sweet-manhattan.jpg",
+  "/drinks/toffee-apple-sour.jpg",
+  "/drinks/vodka-and-cranberry-blush.jpg",
+  "/drinks/watermelon-gin-spritzer.jpg",
+  "/drinks/white-rabbit.jpg",
+  "/drinks/winter-spritz.jpg",
+  "/drinks/woo-woo.jpg",
+  "/drinks/zombie.jpg"
+]);
 
 const searchInput = document.getElementById("searchInput");
+const searchDock = document.getElementById("searchDock");
 const filterCluster = document.getElementById("filterCluster");
 const dropdownPanel = document.getElementById("dropdownPanel");
 const activeFilters = document.getElementById("activeFilters");
 const grid = document.getElementById("grid");
-const resultCount = document.getElementById("resultCount");
 
 const dialog = document.getElementById("drinkDialog");
 const closeDialog = document.getElementById("closeDialog");
 const dialogImage = document.getElementById("dialogImage");
+const dialogImageBackdrop = document.getElementById("dialogImageBackdrop");
 const dialogAccentBar = document.getElementById("dialogAccentBar");
 const dialogTitle = document.getElementById("dialogTitle");
 const dialogMeta = document.getElementById("dialogMeta");
@@ -126,10 +185,16 @@ function isAlcoholIngredientName(name) {
   ].some((keyword) => n.includes(keyword));
 }
 
-function galleryImageSrc(path, slug) {
-  return path.endsWith(".png")
-    ? `${THUMB_BASE}/${slug}.jpg`
-    : `${RAW_PUBLIC_BASE}${path}`;
+function galleryImageSrc(path) {
+  return fullImageSrc(path);
+}
+
+function fullImageSrc(path) {
+  if (/^\/drinks\/.+\.(png|jpe?g|svg)$/i.test(path)) {
+    return `.${path}`;
+  }
+
+  return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
 }
 
 function normalizeDrink(drink) {
@@ -161,8 +226,8 @@ function normalizeDrink(drink) {
     ingredientSlugs: ingredients.map((ingredient) => ingredient.slug),
     steps,
     abv: parseAbv(drink.alcoholInfo),
-    imageThumbUrl: galleryImageSrc(drink.imagePath, slug),
-    imageFullUrl: `${RAW_PUBLIC_BASE}${drink.imagePath}`
+    imageThumbUrl: galleryImageSrc(drink.imagePath),
+    imageFullUrl: fullImageSrc(drink.imagePath)
   };
 }
 
@@ -287,48 +352,44 @@ function updateFilterButtons() {
 }
 
 function renderActiveFilters() {
-  const chips = [];
+  activeFilters.replaceChildren();
+
+  function appendChip(label, action, { slug = null, clear = false } = {}) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = clear ? "chip-btn chip-btn--clear" : "chip-btn";
+    button.dataset.action = action;
+    if (slug) {
+      button.dataset.slug = slug;
+    }
+    button.textContent = label;
+    activeFilters.append(button);
+  }
 
   if (state.query.trim()) {
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="clear-query">Search: ${escapeHtml(
-        state.query.trim()
-      )} ×</button>`
-    );
+    appendChip(`Search: ${state.query.trim()} ×`, "clear-query");
   }
 
   for (const slug of state.ingredientSlugs) {
     const item = store.ingredients.find((entry) => entry.slug === slug);
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="remove-ingredient" data-slug="${slug}">${escapeHtml(
-        item?.name ?? slug
-      )} ×</button>`
-    );
+    appendChip(`${item?.name ?? slug} ×`, "remove-ingredient", { slug });
   }
 
   for (const slug of state.tagSlugs) {
     const item = store.tags.find((entry) => entry.slug === slug);
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="remove-tag" data-slug="${slug}">${escapeHtml(
-        item?.name ?? slug
-      )} ×</button>`
-    );
+    appendChip(`${item?.name ?? slug} ×`, "remove-tag", { slug });
   }
 
   if (state.abvMax !== null) {
-    chips.push(
-      `<button type="button" class="chip-btn" data-action="clear-abv">Up to ${state.abvMax}% ×</button>`
-    );
+    appendChip(`Up to ${state.abvMax}% ×`, "clear-abv");
   }
 
-  if (chips.length) {
-    chips.push(
-      `<button type="button" class="chip-btn chip-btn--clear" data-action="clear-all">Clear all</button>`
-    );
+  const hasChips = activeFilters.childElementCount > 0;
+  if (hasChips) {
+    appendChip("Clear all", "clear-all", { clear: true });
   }
 
-  activeFilters.innerHTML = chips.join("");
-  activeFilters.classList.toggle("is-hidden", chips.length === 0);
+  activeFilters.classList.toggle("is-hidden", !hasChips);
 }
 
 function renderPanel() {
@@ -341,12 +402,12 @@ function renderPanel() {
   }
 
   const button = filterButtons[state.openPanel];
-  const clusterRect = filterCluster.getBoundingClientRect();
+  const dockRect = searchDock.getBoundingClientRect();
   const buttonRect = button.getBoundingClientRect();
   const panelWidth = panelWidthForKey(state.openPanel);
-  const relativeLeft = buttonRect.left - clusterRect.left;
-  const minLeft = -clusterRect.left + 24;
-  const maxLeft = window.innerWidth - clusterRect.left - panelWidth - 24;
+  const relativeLeft = buttonRect.left - dockRect.left;
+  const minLeft = 0;
+  const maxLeft = Math.max(0, dockRect.width - panelWidth);
   const left = Math.max(minLeft, Math.min(relativeLeft, maxLeft));
 
   dropdownPanel.style.left = `${left}px`;
@@ -460,8 +521,6 @@ function renderPanel() {
 }
 
 function renderGrid(items) {
-  resultCount.textContent = `${items.length} drinks on file`;
-
   if (!items.length) {
     grid.innerHTML =
       '<div class="empty-state">No drinks matched that search. Try clearing one of the filters.</div>';
@@ -472,9 +531,13 @@ function renderGrid(items) {
     .map((drink) => {
       const accent = drink.frontBg ?? "#dfa74f";
       const chips = [drink.baseSpirit, drink.alcoholInfo, drink.season].filter(Boolean);
+      const lowResClass = LOW_RES_IMAGES.has(drink.imagePath) ? "is-low-res" : "";
       return `
-        <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""}" type="button" data-action="open-drink" data-slug="${drink.slug}">
-          <img src="${drink.imageThumbUrl}" alt="${escapeHtml(drink.name)}" loading="lazy" />
+        <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""} ${lowResClass}" type="button" data-action="open-drink" data-slug="${drink.slug}">
+          <div class="drink-card__image-backdrop" style="background-image:url('${drink.imageThumbUrl}')"></div>
+          <img src="${drink.imageThumbUrl}" alt="${escapeHtml(
+            drink.name
+          )}" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" />
           <div class="drink-card__overlay" style="background:radial-gradient(circle at bottom left, ${accent}40, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0) 0%, rgba(7,5,7,0.08) 18%, rgba(7,5,7,0.42) 52%, rgba(7,5,7,0.94) 100%);"></div>
           <div class="drink-card__body">
             <div class="pill-row">
@@ -508,8 +571,18 @@ function syncDialog(items) {
   }
 
   const accent = drink.frontBg ?? "#FFE86C";
+  dialog
+    .querySelector(".drink-dialog__image-wrap")
+    ?.classList.toggle("is-low-res", LOW_RES_IMAGES.has(drink.imagePath));
+  if (dialogImageBackdrop) {
+    dialogImageBackdrop.style.backgroundImage = `url('${drink.imageFullUrl}')`;
+  }
   dialogImage.src = drink.imageFullUrl;
   dialogImage.alt = drink.name;
+  dialogImage.onerror = () => {
+    dialogImage.onerror = null;
+    dialogImage.src = PLACEHOLDER_IMAGE;
+  };
   dialogAccentBar.style.backgroundColor = accent;
   dialogTitle.textContent = drink.name;
   dialogCuriosity.textContent = drink.curiosity;
@@ -593,6 +666,12 @@ function applyModalChip(chip) {
 searchInput.addEventListener("input", (event) => {
   state.query = event.target.value;
   render();
+});
+
+searchInput.addEventListener("focus", () => {
+  if (!state.openPanel) return;
+  state.openPanel = null;
+  renderPanel();
 });
 
 filterCluster.addEventListener("click", (event) => {
@@ -682,9 +761,9 @@ dialog.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("mousedown", (event) => {
+document.addEventListener("pointerdown", (event) => {
   if (!state.openPanel) return;
-  if (filterCluster.contains(event.target)) return;
+  if (searchDock.contains(event.target)) return;
   state.openPanel = null;
   renderPanel();
 });
@@ -727,6 +806,7 @@ async function loadDrinks() {
     const json = await response.json();
     const drinks = json.map(normalizeDrink);
     buildCatalog(drinks);
+    searchInput.placeholder = `Search ${store.drinks.length} drinks...`;
     const next = parseStateFromLocation();
     state.query = next.query;
     state.ingredientSlugs = next.ingredientSlugs;
@@ -735,7 +815,7 @@ async function loadDrinks() {
     state.selectedSlug = next.selectedSlug;
     render();
   } catch (error) {
-    resultCount.textContent = "Static showcase unavailable";
+    searchInput.placeholder = "Search drinks...";
     grid.innerHTML = `<div class="error-state">${
       error instanceof Error ? error.message : "Something went wrong."
     }</div>`;

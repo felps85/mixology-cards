@@ -1,6 +1,7 @@
 "use client";
 
 import { buildGalleryHref, type GalleryQueryState } from "@/lib/gallery-query";
+import { isLowResImage } from "@/lib/low-res-images";
 import { slugify } from "@/lib/slugify";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,6 +51,7 @@ export function GalleryDrinkPanel({
   const router = useRouter();
   const accent = drink.frontBg ?? "#FFE86C";
   const ingredientCount = drink.ingredients.length;
+  const lowRes = isLowResImage(drink.imagePath);
 
   useEffect(() => {
     if (!fullscreen) return;
@@ -86,11 +88,21 @@ export function GalleryDrinkPanel({
             fullscreen ? "lg:h-full" : "lg:min-h-[780px]"
           ].join(" ")}
         >
+          {lowRes ? (
+            <div
+              className="absolute inset-0 scale-[1.06] bg-cover bg-center blur-3xl opacity-45"
+              aria-hidden="true"
+              style={{ backgroundImage: `url(${drink.imagePath})` }}
+            />
+          ) : null}
           <Image
             src={drink.imagePath}
             alt={drink.name}
             fill
-            className="object-cover object-center scale-[1.02]"
+            className={[
+              "object-center",
+              lowRes ? "object-contain p-6" : "object-cover scale-[1.02]"
+            ].join(" ")}
             sizes="(max-width: 1024px) 100vw, 40vw"
             quality={82}
             priority
@@ -102,16 +114,6 @@ export function GalleryDrinkPanel({
             aria-hidden="true"
             style={{ backgroundColor: accent }}
           />
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <div className="max-w-[20rem] rounded-[24px] border border-white/10 bg-[rgba(9,6,8,0.54)] p-5 backdrop-blur-sm">
-              <div className="text-[11px] uppercase tracking-[0.24em] text-[#d8a857]">
-                House Pour
-              </div>
-              <p className="mt-3 text-[13px] leading-[21px] text-[#f4ead7]/78">
-                A cinematic recipe view with the full method, ingredients, and quick facts in one place.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div

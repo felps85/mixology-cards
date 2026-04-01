@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Ingredient, Tag } from "@prisma/client";
 
 export function Filters({
@@ -79,14 +80,13 @@ export function Filters({
         >
           Apply
         </button>
-        <a
+        <Link
           href="/"
           className="rounded-xl border border-white/10 px-4 py-2 text-sm text-white/80 hover:bg-white/5"
         >
           Reset
-        </a>
+        </Link>
       </div>
     </form>
   );
 }
-
