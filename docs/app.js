@@ -7,27 +7,16 @@ const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 const LOW_RES_IMAGES = new Set([
   "/drinks/aperol-and-limoncello.jpg",
   "/drinks/apple-and-elderflower-gin.jpg",
-  "/drinks/apple-prosecco-punch.jpg",
   "/drinks/appleberry-mulled-wine.jpg",
-  "/drinks/bicyclette.jpg",
   "/drinks/bitter-orange-and-cardamom-martinis.jpg",
-  "/drinks/blood-beetroot-cocktails.jpg",
-  "/drinks/blueberry-mojito.jpg",
-  "/drinks/bourbon.jpg",
   "/drinks/bramble.jpg",
   "/drinks/chocolate-orange.jpg",
   "/drinks/claridge-s-sazerac.jpg",
   "/drinks/coco-fizz.jpg",
   "/drinks/courgette-martini.jpg",
-  "/drinks/crangria.jpg",
   "/drinks/dark-and-stormy-coffee.jpg",
-  "/drinks/eastern-breeze.jpg",
-  "/drinks/easy-sangria.jpg",
   "/drinks/elderflower-and-cucumber-g-and-ts.jpg",
   "/drinks/elderflower-and-herb-cooler.jpg",
-  "/drinks/espresso-eggnog-martini.jpg",
-  "/drinks/frozen-caipirinha.jpg",
-  "/drinks/frozen-margarita.jpg",
   "/drinks/gimlet.jpg",
   "/drinks/gooseberry-and-elderflower-fizz.jpg",
   "/drinks/grasshopper.jpg",
@@ -59,7 +48,7 @@ const LOW_RES_IMAGES = new Set([
   "/drinks/white-rabbit.jpg",
   "/drinks/winter-spritz.jpg",
   "/drinks/woo-woo.jpg",
-  "/drinks/zombie.jpg"
+  "/drinks/zombie.jpg",
 ]);
 
 const searchInput = document.getElementById("searchInput");

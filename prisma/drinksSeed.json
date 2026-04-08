@@ -1,7 +1,7 @@
 [
   {
     "name": "Amaretto espresso martini",
-    "imagePath": "/drinks/amaretto-espresso-martini.jpg",
+    "imagePath": "/drinks/amaretto-espresso-martini.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Amaretto espresso martini stands out for the way it brings together espresso, vodka and amaretto.",
     "tags": [
@@ -267,7 +267,7 @@
   },
   {
     "name": "Apple prosecco punch",
-    "imagePath": "/drinks/apple-prosecco-punch.jpg",
+    "imagePath": "/drinks/apple-prosecco-punch.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Apple prosecco punch stands out for the way it brings together apple juice, vodka and lemon.",
     "tags": [
@@ -745,7 +745,7 @@
   },
   {
     "name": "Between the sheets",
-    "imagePath": "/drinks/between-the-sheets.jpg",
+    "imagePath": "/drinks/between-the-sheets.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Between the Sheets is usually credited to Harry MacElhone at Harry’s New York Bar in Paris in the 1930s, where it emerged as a rum-and-cognac riff on the Sidecar.",
     "tags": [
@@ -806,7 +806,7 @@
   },
   {
     "name": "Bicyclette cocktail",
-    "imagePath": "/drinks/bicyclette.jpg",
+    "imagePath": "/drinks/bicyclette-cocktail.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Bicyclette stands out for the way it layers the classic bitter, Campari - add wedges of lemon for a refreshing fruity hit into a more memorable serve.",
     "tags": [
@@ -964,7 +964,7 @@
   },
   {
     "name": "Blackberry vodka",
-    "imagePath": "/drinks/blackberry-vodka.jpg",
+    "imagePath": "/drinks/blackberry-vodka.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Blackberry vodka doubles as a bottle-worthy homemade liqueur — once made, it keeps surprisingly well for months.",
     "tags": [
@@ -1019,7 +1019,7 @@
   },
   {
     "name": "Blood beetroot cocktails",
-    "imagePath": "/drinks/blood-beetroot-cocktails.jpg",
+    "imagePath": "/drinks/blood-beetroot-cocktails.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Blood beetroot cocktails leans into Halloween theatre with its blood-red look, making the colour as much a talking point as the flavour.",
     "tags": [
@@ -1155,7 +1155,7 @@
   },
   {
     "name": "Blueberry mojito",
-    "imagePath": "/drinks/blueberry-mojito.jpg",
+    "imagePath": "/drinks/blueberry-mojito.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Blueberry mojito stands out for the way it brings together blueberries, lemon and white rum.",
     "tags": [
@@ -1216,7 +1216,7 @@
   },
   {
     "name": "Bourbon cocktail",
-    "imagePath": "/drinks/bourbon.jpg",
+    "imagePath": "/drinks/bourbon-cocktail.png",
     "frontBg": "#C399F9",
     "curiosity": "Bourbon stands out for the way it brings together bourbon, crème de cacao and lemon juice.",
     "tags": [
@@ -1590,7 +1590,7 @@
   },
   {
     "name": "Classic champagne cocktail",
-    "imagePath": "/drinks/classic-champagne.jpg",
+    "imagePath": "/drinks/classic-champagne-cocktail.png",
     "frontBg": "#FFE86C",
     "curiosity": "A classic champagne cocktail gets a little table-side theatre from the sugar cube at the bottom of the flute, which helps drive the bubbles upward.",
     "tags": [
@@ -1645,7 +1645,7 @@
   },
   {
     "name": "Clementina frizzante",
-    "imagePath": "/drinks/clementina-frizzante.jpg",
+    "imagePath": "/drinks/clementina-frizzante.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Clementina frizzante gives the cocktail format a colder-weather turn, with clementine, campari and prosecco shaping the flavour more than sheer strength.",
     "tags": [
@@ -1748,7 +1748,7 @@
   },
   {
     "name": "Corpse reviver no. 2",
-    "imagePath": "/drinks/corpse-reviver-no-2.jpg",
+    "imagePath": "/drinks/corpse-reviver-no-2.png",
     "frontBg": "#F580FF",
     "curiosity": "Corpse reviver no. 2 is the brighter, more citrus-led relative of Corpse Reviver No. 1, with absinthe giving it its extra edge.",
     "tags": [
@@ -1943,7 +1943,7 @@
   },
   {
     "name": "Cranberry whiskey sour",
-    "imagePath": "/drinks/cranberry-whiskey-sour.jpg",
+    "imagePath": "/drinks/cranberry-whiskey-sour.png",
     "frontBg": "#C399F9",
     "curiosity": "Cranberry whiskey sour gives the cocktail format a colder-weather turn, with bourbon, cranberry juice and lemon juice shaping the flavour more than sheer strength.",
     "tags": [
@@ -2004,7 +2004,7 @@
   },
   {
     "name": "Crangria",
-    "imagePath": "/drinks/crangria.jpg",
+    "imagePath": "/drinks/crangria.png",
     "frontBg": "#8085FF",
     "curiosity": "Crangria gives the cocktail format a colder-weather turn, with cranberry juice, pineapple juice and pineapple shaping the flavour more than sheer strength.",
     "tags": [
@@ -2272,7 +2272,7 @@
   },
   {
     "name": "Eastern breeze",
-    "imagePath": "/drinks/eastern-breeze.jpg",
+    "imagePath": "/drinks/eastern-breeze.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Eastern breeze gives the cocktail format a colder-weather turn, with vodka, mint leaves and seeds shaping the flavour more than sheer strength.",
     "tags": [
@@ -2326,7 +2326,7 @@
   },
   {
     "name": "Easy bloody mary",
-    "imagePath": "/drinks/easy-bloody-mary.jpg",
+    "imagePath": "/drinks/easy-bloody-mary.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Easy bloody mary stands out for the way it brings together tomato juice, vodka and amontillado sherry.",
     "tags": [
@@ -2416,7 +2416,7 @@
   },
   {
     "name": "Easy sangria",
-    "imagePath": "/drinks/easy-sangria.jpg",
+    "imagePath": "/drinks/easy-sangria.png",
     "frontBg": "#F999C7",
     "curiosity": "Sangria takes its name from the Spanish word for 'bloodletting' and grew out of Spain’s long tradition of wine-and-fruit punches before taking off internationally in the 20th century.",
     "tags": [
@@ -2622,7 +2622,7 @@
   },
   {
     "name": "Electric lemonade",
-    "imagePath": "/drinks/electric-lemonade.jpg",
+    "imagePath": "/drinks/electric-lemonade.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Electric lemonade is often remembered as much for its garnish as for the mix itself — a maraschino cherry and lemon slice to serve.",
     "tags": [
@@ -2684,7 +2684,7 @@
   },
   {
     "name": "Espresso eggnog martini",
-    "imagePath": "/drinks/espresso-eggnog-martini.jpg",
+    "imagePath": "/drinks/espresso-eggnog-martini.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Espresso eggnog martini gives the cocktail format a colder-weather turn, with espresso, spiced rum and coffee liqueur shaping the flavour more than sheer strength.",
     "tags": [
@@ -2800,7 +2800,7 @@
   },
   {
     "name": "Festive rum & ginger punch",
-    "imagePath": "/drinks/festive-rum-and-ginger-punch.jpg",
+    "imagePath": "/drinks/festive-rum-and-ginger-punch.png",
     "frontBg": "#F580FF",
     "curiosity": "Festive rum & ginger punch gives the cocktail format a colder-weather turn, with mince pie rum, dark rum and grenadine shaping the flavour more than sheer strength.",
     "tags": [
@@ -2869,7 +2869,7 @@
   },
   {
     "name": "Frozen caipirinha",
-    "imagePath": "/drinks/frozen-caipirinha.jpg",
+    "imagePath": "/drinks/frozen-caipirinha.png",
     "frontBg": "#6CFFA7",
     "curiosity": "Even in frozen form, this drink points back to Brazil’s national cocktail: the caipirinha became so culturally central that it was later recognized as Brazilian cultural heritage.",
     "tags": [
@@ -2917,7 +2917,7 @@
   },
   {
     "name": "Frozen margarita",
-    "imagePath": "/drinks/frozen-margarita.jpg",
+    "imagePath": "/drinks/frozen-margarita.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Frozen margaritas became a modern bar icon after Dallas restaurateur Mariano Martinez adapted a soft-serve machine into the first frozen margarita machine in 1971.",
     "tags": [
@@ -2978,7 +2978,7 @@
   },
   {
     "name": "Frozen strawberry margarita",
-    "imagePath": "/drinks/frozen-strawberry-margarita.jpg",
+    "imagePath": "/drinks/frozen-strawberry-margarita.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Frozen strawberry margarita stands out for the way it brings together sea salt flakes, strawberries and tequila.",
     "tags": [
