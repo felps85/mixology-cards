@@ -1,10 +1,21 @@
-import { prisma } from "@/lib/prisma";
 import { FiltersBar } from "@/components/FiltersBar";
 import { DrinkCard } from "@/components/DrinkCard";
 import { GalleryDrinkPanel } from "@/components/GalleryDrinkPanel";
 import { buildGalleryHref, parseGalleryQuery } from "@/lib/gallery-query";
+import {
+  getDrinkBySlug,
+  getFilteredDrinks,
+  getGalleryMetadata
+} from "@/lib/drinks-data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+function parseAlcoholMax(info: string | null): number | null {
+  if (!info) return null;
+  const nums = info.match(/\d+/g)?.map((n) => Number(n)).filter(Number.isFinite);
+  if (!nums?.length) return null;
+  return Math.max(...nums);
+}
 
 export default async function HomePage({
   searchParams
@@ -19,65 +30,11 @@ export default async function HomePage({
   const selectedSlug = galleryQuery.sel ?? "";
   const selectedAbvMax = galleryQuery.abvMax;
 
-  const [tags, ingredients, totalDrinks, drinks, selectedDrink] = await Promise.all([
-    prisma.tag.findMany({ orderBy: { name: "asc" } }),
-    prisma.ingredient.findMany({ orderBy: { name: "asc" } }),
-    prisma.drink.count(),
-    prisma.drink.findMany({
-      where: {
-        ...(q
-          ? {
-              name: {
-                contains: q
-              }
-            }
-          : {}),
-        ...(tagSlugs.length
-          ? {
-              tags: {
-                some: {
-                  tag: {
-                    slug: { in: tagSlugs }
-                  }
-                }
-              }
-            }
-          : {}),
-        ...(ingredientSlugs.length
-          ? {
-              ingredients: {
-                some: {
-                  ingredient: {
-                    slug: { in: ingredientSlugs }
-                  }
-                }
-              }
-            }
-          : {})
-      },
-      orderBy: { name: "asc" }
-    }),
-    selectedSlug
-      ? prisma.drink.findUnique({
-          where: { slug: selectedSlug },
-          include: {
-            tags: { include: { tag: true } },
-            ingredients: {
-              include: { ingredient: true },
-              orderBy: { sortOrder: "asc" }
-            },
-            steps: { orderBy: { sortOrder: "asc" } }
-          }
-        })
-      : Promise.resolve(null)
+  const [{ tags, ingredients, totalDrinks }, drinks, selectedDrink] = await Promise.all([
+    getGalleryMetadata(),
+    getFilteredDrinks(q, tagSlugs, ingredientSlugs),
+    getDrinkBySlug(selectedSlug)
   ]);
-
-  function parseAlcoholMax(info: string | null): number | null {
-    if (!info) return null;
-    const nums = info.match(/\d+/g)?.map((n) => Number(n)).filter(Number.isFinite);
-    if (!nums?.length) return null;
-    return Math.max(...nums);
-  }
 
   const filteredDrinks =
     selectedAbvMax === null
@@ -103,18 +60,20 @@ export default async function HomePage({
 
   return (
     <div className="speakeasy-stage min-h-screen bg-black text-[#f7edd8]">
-      <main className="relative z-10 mx-auto w-full max-w-[1680px] px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
+      <main className="relative z-10 mx-auto w-full max-w-[1680px] px-4 pb-5 pt-[140px] sm:px-6 sm:pb-6 sm:pt-[152px] lg:px-10 lg:py-8">
         <div className="flex flex-col gap-6">
-          <section className="relative z-50 isolate">
-            <FiltersBar
-              q={q}
-              tags={tags}
-              ingredients={ingredients}
-              selectedTagSlugs={tagSlugs}
-              selectedIngredientSlugs={ingredientSlugs}
-              selectedAbvMax={selectedAbvMax}
-              searchPlaceholder={`Search ${totalDrinks} drinks…`}
-            />
+          <section className="fixed inset-x-0 top-0 z-50 isolate px-4 pt-[max(12px,env(safe-area-inset-top))] sm:px-6 lg:static lg:px-0 lg:pt-0">
+            <div className="mx-auto w-full max-w-[1680px]">
+              <FiltersBar
+                q={q}
+                tags={tags}
+                ingredients={ingredients}
+                selectedTagSlugs={tagSlugs}
+                selectedIngredientSlugs={ingredientSlugs}
+                selectedAbvMax={selectedAbvMax}
+                searchPlaceholder={`Search ${totalDrinks} drinks…`}
+              />
+            </div>
           </section>
 
           <section className="speakeasy-grid relative">

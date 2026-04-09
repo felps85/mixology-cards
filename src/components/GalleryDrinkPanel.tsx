@@ -70,16 +70,28 @@ export function GalleryDrinkPanel({
   return (
     <div
       className={[
-        "overflow-hidden",
+        fullscreen ? "overflow-y-auto md:overflow-hidden" : "overflow-hidden",
         fullscreen
           ? "h-full w-full rounded-[32px] border border-[#e0ac59]/12 bg-[rgba(12,8,10,0.96)] shadow-[0_40px_120px_rgba(0,0,0,0.6)] backdrop-blur-2xl"
           : "rounded-[28px] border border-[#e0ac59]/12 bg-[rgba(12,8,10,0.96)] shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
       ].join(" ")}
     >
+      {fullscreen ? (
+        <div className="sticky top-0 z-20 flex justify-end p-4 md:hidden">
+          <Link
+            href={buildGalleryHref(galleryQuery, { sel: null })}
+            className="rounded-full border border-[#d8a857]/24 bg-[rgba(20,15,18,0.92)] p-3 text-[#f8ead0] shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#d8a857]/45 hover:bg-[#191115]"
+            aria-label="Close"
+          >
+            <Image src="/ui/close.svg" alt="" width={20} height={20} className="invert" />
+          </Link>
+        </div>
+      ) : null}
+
       <div
         className={[
-          "grid h-full grid-cols-1 lg:grid-cols-[minmax(320px,0.84fr)_minmax(0,1.16fr)]",
-          fullscreen ? "min-h-full" : "lg:min-h-[780px]"
+          "grid grid-cols-1 lg:grid-cols-[minmax(320px,0.84fr)_minmax(0,1.16fr)]",
+          fullscreen ? "md:h-full md:min-h-full" : "lg:min-h-[780px]"
         ].join(" ")}
       >
         <div
@@ -103,8 +115,8 @@ export function GalleryDrinkPanel({
               "object-center",
               lowRes ? "object-contain p-6" : "object-cover scale-[1.02]"
             ].join(" ")}
-            sizes="(max-width: 1024px) 100vw, 40vw"
-            quality={82}
+            sizes="(max-width: 1024px) 100vw, 36vw"
+            quality={80}
             priority
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,5,7,0.1),rgba(8,5,7,0.32)_40%,rgba(8,5,7,0.84)_100%)]" />
@@ -119,10 +131,10 @@ export function GalleryDrinkPanel({
         <div
           className={[
             "flex min-h-0 flex-col bg-[linear-gradient(180deg,rgba(226,174,86,0.07),transparent_22%)]",
-            fullscreen ? "h-full" : ""
+            fullscreen ? "md:h-full" : ""
           ].join(" ")}
         >
-          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-6 md:p-8 lg:p-10">
+          <div className="flex min-h-0 flex-1 flex-col p-6 md:overflow-y-auto md:p-8 lg:p-10">
             <div className="flex items-start gap-4">
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] uppercase tracking-[0.28em] text-[#d8a857]">
@@ -134,7 +146,7 @@ export function GalleryDrinkPanel({
               </div>
               <Link
                 href={buildGalleryHref(galleryQuery, { sel: null })}
-                className="mt-1 shrink-0 rounded-full border border-[#d8a857]/24 bg-[#140f12] p-3 text-[#f8ead0] transition hover:border-[#d8a857]/45 hover:bg-[#191115]"
+                className="mt-1 hidden shrink-0 rounded-full border border-[#d8a857]/24 bg-[#140f12] p-3 text-[#f8ead0] transition hover:border-[#d8a857]/45 hover:bg-[#191115] md:inline-flex"
                 aria-label="Close"
               >
                 <Image src="/ui/close.svg" alt="" width={20} height={20} className="invert" />

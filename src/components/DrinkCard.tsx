@@ -1,7 +1,7 @@
-import type { Drink } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { isLowResImage } from "@/lib/low-res-images";
+import type { GalleryDrink } from "@/lib/drinks-data";
 
 export function DrinkCard({
   drink,
@@ -9,7 +9,7 @@ export function DrinkCard({
   selected,
   chips
 }: {
-  drink: Drink;
+  drink: GalleryDrink;
   href: string;
   selected: boolean;
   chips: string[];
@@ -20,6 +20,7 @@ export function DrinkCard({
   return (
     <Link
       href={href}
+      prefetch={false}
       className={[
         "group relative block aspect-[0.78] w-full overflow-hidden rounded-[24px] border border-white/8 bg-[#120d10] shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition duration-500",
         "hover:-translate-y-2 hover:scale-[1.01] hover:border-[#d8a14d]/35 hover:shadow-[0_32px_60px_rgba(0,0,0,0.5)]",
@@ -44,8 +45,8 @@ export function DrinkCard({
               ? "object-contain p-4 group-hover:scale-[1.04]"
               : "object-cover group-hover:scale-[1.08]"
           ].join(" ")}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 33vw, 25vw"
-          quality={88}
+          sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, (max-width: 1280px) 30vw, (max-width: 1680px) 220px, 220px"
+          quality={76}
           priority={false}
         />
         <div

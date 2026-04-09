@@ -66,7 +66,7 @@ function FilterButton({
       aria-expanded={open}
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
-        "pointer-events-auto flex min-h-[40px] items-center gap-[8px] rounded-full px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition",
+        "pointer-events-auto flex min-h-[40px] w-full items-center justify-between gap-[8px] rounded-full px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
         open
           ? "bg-[rgba(255,199,92,0.12)] text-[#ffd899]"
           : activeCount
@@ -266,19 +266,19 @@ export function FiltersBar({
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 overflow-visible text-[#f7edd8]">
       <div className="flex items-start gap-3 overflow-visible md:gap-4">
-        <div className="flex min-w-0 flex-1 items-center gap-3 overflow-visible rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3">
-          <div className="flex shrink-0 items-center gap-3 pr-1">
+        <div className="flex min-w-0 flex-1 flex-col gap-3 overflow-visible rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3 lg:flex-row lg:items-center">
+          <div className="flex min-w-0 items-center gap-3 lg:flex-1">
             <button
               type="button"
               onClick={() => {
                 searchInputRef.current?.focus();
               }}
               aria-label="Focus drink search"
-              className="grid h-9 w-9 place-items-center rounded-full bg-transparent text-[#d8a215]"
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-transparent text-[#d8a215]"
             >
               <Image src="/ui/logo.svg" alt="" width={20} height={20} />
             </button>
-            <div className="leading-none">
+            <div className="hidden shrink-0 leading-none sm:block">
               <div className="text-[13px] font-semibold tracking-[0.2em] text-white">
                 Sipsmith
               </div>
@@ -286,11 +286,7 @@ export function FiltersBar({
                 Speakeasy Index
               </div>
             </div>
-          </div>
-
-          <div ref={dockRef} className="relative min-w-0 flex-1 overflow-visible">
-            <div className="flex min-w-max items-center gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <label className="flex min-h-[48px] min-w-[220px] flex-[1_1_320px] items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
+            <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
                 <input
                   ref={searchInputRef}
                   key={q}
@@ -308,9 +304,12 @@ export function FiltersBar({
                   }}
                   className="pointer-events-auto min-w-0 flex-1 bg-transparent text-[15px] font-medium leading-[22px] text-white placeholder:text-white/56 outline-none"
                 />
-              </label>
+            </label>
+          </div>
 
-              <div className="relative flex shrink-0 items-center gap-1 rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+          <div ref={dockRef} className="relative min-w-0 overflow-visible lg:w-auto">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-1">
+              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
                 <FilterButton
                   label="Ingredients"
                   open={openKey === "ingredients"}
@@ -318,6 +317,8 @@ export function FiltersBar({
                   activeCount={ingredientSlugsInOther.length}
                   buttonRef={triggerRefs.ingredients}
                 />
+              </div>
+              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
                 <FilterButton
                   label="Alcohol"
                   open={openKey === "alcohol"}
@@ -325,6 +326,8 @@ export function FiltersBar({
                   activeCount={ingredientSlugsInAlcohol.length}
                   buttonRef={triggerRefs.alcohol}
                 />
+              </div>
+              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
                 <FilterButton
                   label="Tags"
                   open={openKey === "tags"}
@@ -332,6 +335,8 @@ export function FiltersBar({
                   activeCount={selectedTagSlugs.length}
                   buttonRef={triggerRefs.tags}
                 />
+              </div>
+              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
                 <FilterButton
                   label="%"
                   open={openKey === "abv"}
@@ -347,7 +352,7 @@ export function FiltersBar({
                 ref={panelRef}
                 role="dialog"
                 aria-label={`${openKey} filters`}
-                className="absolute left-0 top-[calc(100%+12px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
+                className="absolute left-0 top-[calc(100%+10px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
                 style={{
                   left: panelLeft,
                   width: `${panelWidthForKey(openKey)}px`
@@ -412,7 +417,7 @@ export function FiltersBar({
           href={SUPPORT_LINK}
           target="_blank"
           rel="noreferrer"
-          className="hidden min-h-[48px] shrink-0 items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-4 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] md:inline-flex"
+          className="hidden min-h-[48px] shrink-0 items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-4 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] lg:inline-flex"
         >
           Buy me a drink!
         </a>
@@ -428,7 +433,7 @@ export function FiltersBar({
       </a>
 
       {activeFilterCount ? (
-        <div className="flex w-full flex-wrap items-center gap-2 pt-1">
+        <div className="hidden w-full flex-wrap items-center gap-2 pt-1 md:flex">
           {q.trim() ? (
             <button
               type="button"
