@@ -1527,7 +1527,7 @@
   },
   {
     "name": "Claridge’s sazerac",
-    "imagePath": "/drinks/claridges-sazerac.png",
+    "imagePath": "/drinks/claridge-s-sazerac.png",
     "frontBg": "#C399F9",
     "curiosity": "Claridge’s version still nods to the 19th-century Sazerac of New Orleans, a drink closely associated with Peychaud’s bitters, rye whiskey and the city’s cocktail heritage.",
     "tags": [
@@ -3033,7 +3033,7 @@
   },
   {
     "name": "Garibaldi cocktail",
-    "imagePath": "/drinks/garibaldi.jpg",
+    "imagePath": "/drinks/garibaldi-cocktail.png",
     "frontBg": "#FF6C6C",
     "curiosity": "The Garibaldi is named after Giuseppe Garibaldi, and its classic Campari-and-orange pairing is often read as a symbol of northern and southern Italy coming together.",
     "tags": [
@@ -3080,7 +3080,7 @@
   },
   {
     "name": "Gibson cocktail",
-    "imagePath": "/drinks/gibson.jpg",
+    "imagePath": "/drinks/gibson-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "The Gibson’s identity was already being defined in print by 1908, and the cocktail became famous for swapping the martini’s olive for a pickled onion.",
     "tags": [
@@ -3129,7 +3129,7 @@
   },
   {
     "name": "Gimlet cocktail",
-    "imagePath": "/drinks/gimlet.jpg",
+    "imagePath": "/drinks/gimlet-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "The Gimlet has long been linked to British naval lime rations and is often associated—though not definitively—with surgeon Sir Thomas Gimlette.",
     "tags": [
@@ -3276,7 +3276,7 @@
   },
   {
     "name": "Gooseberry & elderflower fizz",
-    "imagePath": "/drinks/gooseberry-and-elderflower-fizz.jpg",
+    "imagePath": "/drinks/gooseberry-and-elderflower-fizz.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Gooseberry & elderflower fizz stands out for the way it brings together gooseberry, lemon and elderflower cordial.",
     "tags": [
@@ -3330,7 +3330,7 @@
   },
   {
     "name": "Grapefruit negroni",
-    "imagePath": "/drinks/grapefruit-negroni.jpg",
+    "imagePath": "/drinks/grapefruit-negroni.png",
     "frontBg": "#F580FF",
     "curiosity": "Grapefruit negroni leans warm-weather and easygoing, with gin, sweet vermouth and campari doing most of the character work in the glass.",
     "tags": [
@@ -3392,7 +3392,7 @@
   },
   {
     "name": "Grasshopper cocktail",
-    "imagePath": "/drinks/grasshopper.jpg",
+    "imagePath": "/drinks/grasshopper-cocktail.png",
     "frontBg": "#8085FF",
     "curiosity": "Grasshopper earned Halloween status thanks to its bright green colour and minty, dessert-like profile.",
     "tags": [
@@ -3454,7 +3454,7 @@
   },
   {
     "name": "Hibiscus & prosecco cocktail",
-    "imagePath": "/drinks/hibiscus-and-prosecco.jpg",
+    "imagePath": "/drinks/hibiscus-and-prosecco-cocktail.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Hibiscus & prosecco stands out for the way it brings together vodka, ginger cordial and orange.",
     "tags": [
@@ -3523,7 +3523,7 @@
   },
   {
     "name": "Hugo cocktail",
-    "imagePath": "/drinks/hugo.jpg",
+    "imagePath": "/drinks/hugo-cocktail.png",
     "frontBg": "#FFBC6C",
     "curiosity": "The Hugo is a relatively young classic: it was created in South Tyrol in 2005 by bartender Roland Gruber as an alternative to the Spritz Veneziano.",
     "tags": [
@@ -3592,7 +3592,7 @@
   },
   {
     "name": "Hurricane cocktail",
-    "imagePath": "/drinks/hurricane.jpg",
+    "imagePath": "/drinks/hurricane-cocktail.png",
     "frontBg": "#6CFFE2",
     "curiosity": "The New Orleans Hurricane is closely tied to Pat O’Brien’s, where the drink is said to have been popularized in hurricane-lamp-shaped glasses during the rum-heavy 1940s.",
     "tags": [
@@ -3676,7 +3676,7 @@
   },
   {
     "name": "Jessica rabbit cocktail",
-    "imagePath": "/drinks/jessica-rabbit.jpg",
+    "imagePath": "/drinks/jessica-rabbit-cocktail.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Jessica rabbit stands out for the way it brings together strawberries, cherry tomatoes and lime juice.",
     "tags": [
@@ -3759,7 +3759,7 @@
   },
   {
     "name": "Kneecapper cocktail",
-    "imagePath": "/drinks/kneecapper.jpg",
+    "imagePath": "/drinks/kneecapper-cocktail.png",
     "frontBg": "#8085FF",
     "curiosity": "Kneecapper stands out for the way it brings together poitín, lemon juice and honey water.",
     "tags": [
@@ -3799,7 +3799,7 @@
   },
   {
     "name": "Lemongrass gimlet",
-    "imagePath": "/drinks/lemongrass-gimlet.jpg",
+    "imagePath": "/drinks/lemongrass-gimlet.png",
     "frontBg": "#F580FF",
     "curiosity": "Lemongrass gimlet stands out for the way it brings together lemongrass stalk, lime and gin.",
     "tags": [
@@ -3907,7 +3907,7 @@
   },
   {
     "name": "Limoncello mojito",
-    "imagePath": "/drinks/limoncello-mojito.jpg",
+    "imagePath": "/drinks/limoncello-mojito.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Limoncello mojito is often remembered as much for its garnish as for the mix itself — the remaining mint leaves to serve.",
     "tags": [
@@ -4043,7 +4043,7 @@
   },
   {
     "name": "Lychee spritz",
-    "imagePath": "/drinks/lychee-spritz.jpg",
+    "imagePath": "/drinks/lychee-spritz.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Lychee spritz leans warm-weather and easygoing, with lychee juice, rosewater and prosecco doing most of the character work in the glass.",
     "tags": [
@@ -4164,7 +4164,7 @@
   },
   {
     "name": "Mango & pineapple mojito",
-    "imagePath": "/drinks/mango-and-pineapple-mojito.jpg",
+    "imagePath": "/drinks/mango-and-pineapple-mojito.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Mango & pineapple mojito leans warm-weather and easygoing, with pineapple, mango and limes doing most of the character work in the glass.",
     "tags": [
@@ -4391,7 +4391,7 @@
   },
   {
     "name": "Marzipan old fashioned",
-    "imagePath": "/drinks/marzipan-old-fashioned.jpg",
+    "imagePath": "/drinks/marzipan-old-fashioned.png",
     "frontBg": "#FFE86C",
     "curiosity": "Marzipan old fashioned is often remembered as much for its garnish as for the mix itself — an orange peel twist for citrussy notes.",
     "tags": [
@@ -4460,7 +4460,7 @@
   },
   {
     "name": "Mezcalita verde cocktail",
-    "imagePath": "/drinks/mezcalita-verde.jpg",
+    "imagePath": "/drinks/mezcalita-verde-cocktail.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Mezcalita verde stands out for the way it brings together pineapple, parsley and lime.",
     "tags": [
@@ -4529,7 +4529,7 @@
   },
   {
     "name": "Midori sour",
-    "imagePath": "/drinks/midori-sour.jpg",
+    "imagePath": "/drinks/midori-sour.png",
     "frontBg": "#6CFFE2",
     "curiosity": "The Midori Sour became a neon emblem of late-1970s and ’80s cocktail culture after Midori’s U.S. debut at New York’s Studio 54 in 1978.",
     "tags": [
@@ -4722,7 +4722,7 @@
   },
   {
     "name": "Mrs momoiro cocktail",
-    "imagePath": "/drinks/mrs-momoiro.jpg",
+    "imagePath": "/drinks/mrs-momoiro-cocktail.png",
     "frontBg": "#F999C7",
     "curiosity": "Mrs momoiro leans warm-weather and easygoing, with japanese vodka, strawberry liqueur and rosé wine doing most of the character work in the glass.",
     "tags": [
@@ -4839,7 +4839,7 @@
   },
   {
     "name": "Mulled gin",
-    "imagePath": "/drinks/mulled-gin.jpg",
+    "imagePath": "/drinks/mulled-gin.png",
     "frontBg": "#F580FF",
     "curiosity": "Mulled gin gives the cocktail format a colder-weather turn, with gin, apple juice and bay leaf shaping the flavour more than sheer strength.",
     "tags": [
@@ -4936,7 +4936,7 @@
   },
   {
     "name": "Mulled orange wine",
-    "imagePath": "/drinks/mulled-orange-wine.jpg",
+    "imagePath": "/drinks/mulled-orange-wine.png",
     "frontBg": "#F999C7",
     "curiosity": "Mulled orange wine gives the cocktail format a colder-weather turn, with wine, orange and apple shaping the flavour more than sheer strength.",
     "tags": [
@@ -5127,7 +5127,7 @@
   },
   {
     "name": "Non-alcoholic punch",
-    "imagePath": "/drinks/non-alcoholic-punch.jpg",
+    "imagePath": "/drinks/non-alcoholic-punch.png",
     "frontBg": "#8085FF",
     "curiosity": "Non-alcoholic punch proves a booze-free serve can still feel layered and bar-worthy, especially with cranberry, cranberry juice and orange juice in the mix.",
     "tags": [
@@ -5249,7 +5249,7 @@
   },
   {
     "name": "Orange blossom Bellinis",
-    "imagePath": "/drinks/orange-blossom-bellinis.jpg",
+    "imagePath": "/drinks/orange-blossom-bellinis.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Orange blossom Bellinis stands out for the way it brings together orange juice, orange blossom water and prosecco.",
     "tags": [
@@ -5350,7 +5350,7 @@
   },
   {
     "name": "Palomezcal",
-    "imagePath": "/drinks/palomezcal.jpg",
+    "imagePath": "/drinks/palomezcal.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Palomezcal leans warm-weather and easygoing, with lime juice, espadin mezcal and grapefruit juice doing most of the character work in the glass.",
     "tags": [
@@ -5420,7 +5420,7 @@
   },
   {
     "name": "Passion fruit martini",
-    "imagePath": "/drinks/passion-fruit-martini.jpg",
+    "imagePath": "/drinks/passion-fruit-martini.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Passion fruit martini is a modern London classic created by Douglas Ankrah in the early 2000s, originally under the more provocative Porn Star Martini name.",
     "tags": [
@@ -5481,7 +5481,7 @@
   },
   {
     "name": "Passion fruit mule",
-    "imagePath": "/drinks/passion-fruit-mule.jpg",
+    "imagePath": "/drinks/passion-fruit-mule.png",
     "frontBg": "#F580FF",
     "curiosity": "Passion fruit mule works as a riff on a familiar classic, changing the mood with a fruit-forward twist rather than rebuilding the structure from scratch.",
     "tags": [
@@ -5543,7 +5543,7 @@
   },
   {
     "name": "Peach punch",
-    "imagePath": "/drinks/peach-punch.jpg",
+    "imagePath": "/drinks/peach-punch.png",
     "frontBg": "#F999C7",
     "curiosity": "Peach punch leans warm-weather and easygoing, with lemon, rosé wine and schnapps doing most of the character work in the glass.",
     "tags": [
@@ -5619,7 +5619,7 @@
   },
   {
     "name": "Picante",
-    "imagePath": "/drinks/picante.jpg",
+    "imagePath": "/drinks/picante.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Picante is a modern club-era classic that evolved from a spicier Miami Margarita-style serve before settling into the now-famous Picante de la Casa format in the 2010s.",
     "tags": [
@@ -5682,7 +5682,7 @@
   },
   {
     "name": "Pimm's",
-    "imagePath": "/drinks/pimm-s.jpg",
+    "imagePath": "/drinks/pimm-s.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Pimm’s traces back to James Pimm’s 1820s London oyster bar, where his No. 1 Cup was first served as a house digestive before becoming a summer staple.",
     "tags": [
@@ -5723,7 +5723,7 @@
   {
     "name": "Piña Colada",
     "slug": "pina-colada",
-    "imagePath": "/drinks/pina-colada.png",
+    "imagePath": "/drinks/pi-a-colada.png",
     "frontBg": "#6CFFE2",
     "curiosity": "According to the legend, it was invented by a Robert Cofresí who was born rich in Puerto Rico but turned into a pirate when the state began failing in the 1800s.",
     "tags": [
@@ -5766,7 +5766,7 @@
   },
   {
     "name": "Pink gin 75",
-    "imagePath": "/drinks/pink-gin-75.jpg",
+    "imagePath": "/drinks/pink-gin-75.png",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin 75 stands out for the way it brings together pink gin, raspberries and pink grapefruit juice.",
     "tags": [
@@ -5835,7 +5835,7 @@
   },
   {
     "name": "Pink gin iced tea",
-    "imagePath": "/drinks/pink-gin-iced-tea.jpg",
+    "imagePath": "/drinks/pink-gin-iced-tea.png",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin iced tea stands out for the way it layers spiced rum, elderflower and pink grapefruit into a more memorable serve.",
     "tags": [
@@ -5904,7 +5904,7 @@
   },
   {
     "name": "Pink gin spritz",
-    "imagePath": "/drinks/pink-gin-spritz.jpg",
+    "imagePath": "/drinks/pink-gin-spritz.png",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin spritz leans warm-weather and easygoing, with gin and lychee liqueur doing most of the character work in the glass.",
     "tags": [
@@ -5952,7 +5952,7 @@
   },
   {
     "name": "Pink negroni",
-    "imagePath": "/drinks/pink-negroni.jpg",
+    "imagePath": "/drinks/pink-negroni.png",
     "frontBg": "#F580FF",
     "curiosity": "Pink negroni became an easy Valentine's Day riff on the classic, turning blush-toned with pink gin and Aperol.",
     "tags": [
@@ -6007,7 +6007,7 @@
   },
   {
     "name": "Pomegranate martini mocktail",
-    "imagePath": "/drinks/pomegranate-martini-mocktail.jpg",
+    "imagePath": "/drinks/pomegranate-martini-mocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "Pomegranate martini mocktail gives the cocktail format a colder-weather turn, with gin, pomegranate juice and orange shaping the flavour more than sheer strength.",
     "tags": [
@@ -6055,7 +6055,7 @@
   },
   {
     "name": "Prosecco & elderflower cocktail",
-    "imagePath": "/drinks/prosecco-and-elderflower.jpg",
+    "imagePath": "/drinks/prosecco-and-elderflower-cocktail.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Prosecco & elderflower stands out for its edible flower ice cubes, leaning into a more decorative spritz style than a standard prosecco serve.",
     "tags": [
@@ -6132,7 +6132,7 @@
   },
   {
     "name": "Ramos gin fizz",
-    "imagePath": "/drinks/ramos-gin-fizz.jpg",
+    "imagePath": "/drinks/ramos-gin-fizz.png",
     "frontBg": "#F580FF",
     "curiosity": "Henry C. Ramos created the Ramos Gin Fizz in New Orleans in 1888, and its famously long shake once required teams of 'shaker boys' during Carnival.",
     "tags": [
@@ -6223,7 +6223,7 @@
   },
   {
     "name": "Rhubarb & custard cocktail",
-    "imagePath": "/drinks/rhubarb-and-custard.jpg",
+    "imagePath": "/drinks/rhubarb-and-custard-cocktail.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Rhubarb & custard stands out for the way it layers creamy advocaat liqueur and homemade fruit syrup into a more memorable serve.",
     "tags": [
@@ -6281,7 +6281,7 @@
   },
   {
     "name": "Rhubarb & elderflower gin punch",
-    "imagePath": "/drinks/rhubarb-and-elderflower-gin-punch.jpg",
+    "imagePath": "/drinks/rhubarb-and-elderflower-gin-punch.png",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb & elderflower gin punch is built like a crowd-pleaser, with rhubarb, lemon and london dry gin giving it most of its personality.",
     "tags": [
@@ -6378,7 +6378,7 @@
   },
   {
     "name": "Rhubarb fizz",
-    "imagePath": "/drinks/rhubarb-fizz.jpg",
+    "imagePath": "/drinks/rhubarb-fizz.png",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb fizz stands out for the way it layers a blend of sparkling wine and gin into a more memorable serve.",
     "tags": [
@@ -6454,7 +6454,7 @@
   },
   {
     "name": "Rhubarb gin",
-    "imagePath": "/drinks/rhubarb-gin.jpg",
+    "imagePath": "/drinks/rhubarb-gin.png",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb gin leans warm-weather and easygoing, with rhubarb and gin doing most of the character work in the glass.",
     "tags": [
@@ -6495,7 +6495,7 @@
   },
   {
     "name": "Rhubarb vodka",
-    "imagePath": "/drinks/rhubarb-vodka.jpg",
+    "imagePath": "/drinks/rhubarb-vodka.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Rhubarb vodka leans warm-weather and easygoing, with rhubarb, vodka and golden granulated sugar doing most of the character work in the glass.",
     "tags": [
@@ -6543,7 +6543,7 @@
   },
   {
     "name": "Salted caramel pecan sour",
-    "imagePath": "/drinks/salted-caramel-pecan-sour.jpg",
+    "imagePath": "/drinks/salted-caramel-pecan-sour.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Salted caramel pecan sour gives the cocktail format a colder-weather turn, with pecan, sea salt and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -6714,7 +6714,7 @@
   },
   {
     "name": "Scotch & soda",
-    "imagePath": "/drinks/scotch-and-soda.jpg",
+    "imagePath": "/drinks/scotch-and-soda.png",
     "frontBg": "#C399F9",
     "curiosity": "Scotch & soda is often remembered as much for its garnish as for the mix itself — a lemon slice to serve.",
     "tags": [
@@ -6815,7 +6815,7 @@
   },
   {
     "name": "Shirley temple",
-    "imagePath": "/drinks/shirley-temple.jpg",
+    "imagePath": "/drinks/shirley-temple.png",
     "frontBg": "#F580FF",
     "curiosity": "The Shirley Temple is usually linked to Hollywood’s Chasen’s restaurant, where bartenders are said to have mixed it for the child star—who later fought commercial uses of her name.",
     "tags": [
@@ -6918,7 +6918,7 @@
   },
   {
     "name": "Sloe gin cocktail",
-    "imagePath": "/drinks/sloe-gin.jpg",
+    "imagePath": "/drinks/sloe-gin-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "Sloe gin has been a bar-book ingredient since at least Harry Johnson’s 1900 Bartenders Manual, so even newer serves like this one lean on a much older British liqueur tradition.",
     "tags": [
@@ -6980,7 +6980,7 @@
   },
   {
     "name": "Snowball cocktail",
-    "imagePath": "/drinks/snowball.jpg",
+    "imagePath": "/drinks/snowball-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "The Snowball dates back to the 1940s but became a full-on British Christmas icon in the 1970s, when advocaat-and-lemonade drinks turned into festive party shorthand.",
     "tags": [
@@ -7035,7 +7035,7 @@
   },
   {
     "name": "Sparkling mint & lemon juleps",
-    "imagePath": "/drinks/sparkling-mint-and-lemon-juleps.jpg",
+    "imagePath": "/drinks/sparkling-mint-and-lemon-juleps.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Sparkling mint & lemon juleps stands out for the way it brings together lemon juice, wine and fresh mint.",
     "tags": [
@@ -7083,7 +7083,7 @@
   },
   {
     "name": "Spiced Aperol spritz",
-    "imagePath": "/drinks/spiced-aperol-spritz.jpg",
+    "imagePath": "/drinks/spiced-aperol-spritz.png",
     "frontBg": "#F580FF",
     "curiosity": "Spiced Aperol spritz gives the cocktail format a colder-weather turn, with aperol, prosecco and angostura bitters shaping the flavour more than sheer strength.",
     "tags": [
@@ -7144,7 +7144,7 @@
   },
   {
     "name": "Spiced apple strudel & brandy cocktail",
-    "imagePath": "/drinks/spiced-apple-strudel-and-brandy.jpg",
+    "imagePath": "/drinks/spiced-apple-strudel-and-brandy-cocktail.png",
     "frontBg": "#6CB0FF",
     "curiosity": "Spiced apple strudel & brandy stands out for the way it brings together apple juice, cinnamon stick and cognac.",
     "tags": [
@@ -7221,7 +7221,7 @@
   },
   {
     "name": "Spiced clementine mulled whisky",
-    "imagePath": "/drinks/spiced-clementine-mulled-whisky.jpg",
+    "imagePath": "/drinks/spiced-clementine-mulled-whisky.png",
     "frontBg": "#F580FF",
     "curiosity": "Spiced clementine mulled whisky gives the cocktail format a colder-weather turn, with ginger beer, clementine juice and cinnamon sticks shaping the flavour more than sheer strength.",
     "tags": [
@@ -7290,7 +7290,7 @@
   },
   {
     "name": "Spicy margarita",
-    "imagePath": "/drinks/spicy-margarita.jpg",
+    "imagePath": "/drinks/spicy-margarita.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Spicy margarita stands out for the way it brings together tequila, triple sec and chilli syrup.",
     "tags": [
@@ -7403,7 +7403,7 @@
   },
   {
     "name": "Strawberry daiquiri",
-    "imagePath": "/drinks/strawberry-daiquiri.jpg",
+    "imagePath": "/drinks/strawberry-daiquiri.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Strawberry Daiquiris piggyback on the older Cuban daiquiri tradition, but the fruit-blended version really took off once bar blenders and frozen cocktails boomed in the 20th century.",
     "tags": [
@@ -7479,7 +7479,7 @@
   },
   {
     "name": "Summer punch",
-    "imagePath": "/drinks/summer-punch.jpg",
+    "imagePath": "/drinks/summer-punch.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Summer punch leans warm-weather and easygoing, with lemon juice, elderflower liqueur and vodka doing most of the character work in the glass.",
     "tags": [
@@ -7561,7 +7561,7 @@
   },
   {
     "name": "Sweet manhattan cocktail",
-    "imagePath": "/drinks/sweet-manhattan.jpg",
+    "imagePath": "/drinks/sweet-manhattan-cocktail.png",
     "frontBg": "#C399F9",
     "curiosity": "Sweet manhattan stands out for the way it layers whiskey, vermouth and bitters into a more memorable serve.",
     "tags": [
@@ -7682,7 +7682,7 @@
   },
   {
     "name": "Toffee apple sour cocktail",
-    "imagePath": "/drinks/toffee-apple-sour.jpg",
+    "imagePath": "/drinks/toffee-apple-sour-cocktail.png",
     "frontBg": "#6CB0FF",
     "curiosity": "Toffee apple sour has become a Halloween-friendly serve, picked as much for its dramatic look as for the drink itself.",
     "tags": [
@@ -7786,7 +7786,7 @@
   },
   {
     "name": "Vodka & cranberry blush",
-    "imagePath": "/drinks/vodka-and-cranberry-blush.jpg",
+    "imagePath": "/drinks/vodka-and-cranberry-blush.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Vodka & cranberry blush is built like a crowd-pleaser, with vodka, cranberry juice and orange juice giving it most of its personality.",
     "tags": [
@@ -7841,7 +7841,7 @@
   },
   {
     "name": "Watermelon gin spritzer",
-    "imagePath": "/drinks/watermelon-gin-spritzer.jpg",
+    "imagePath": "/drinks/watermelon-gin-spritzer.png",
     "frontBg": "#F580FF",
     "curiosity": "Watermelon gin spritzer leans warm-weather and easygoing, with lime, watermelon and gin doing most of the character work in the glass.",
     "tags": [
@@ -7950,7 +7950,7 @@
   },
   {
     "name": "Whisky mac",
-    "imagePath": "/drinks/whisky-mac.jpg",
+    "imagePath": "/drinks/whisky-mac.png",
     "frontBg": "#C399F9",
     "curiosity": "The Whisky Mac is generally attributed to Colonel Hector 'Fighting Mac' MacDonald, who is said to have mixed Scotch with ginger wine while serving in British India.",
     "tags": [
@@ -7997,7 +7997,7 @@
   },
   {
     "name": "White rabbit cocktail",
-    "imagePath": "/drinks/white-rabbit.jpg",
+    "imagePath": "/drinks/white-rabbit-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "White rabbit stands out for the way it brings together gin, amaretto and double cream.",
     "tags": [
@@ -8394,6 +8394,225 @@
       "Pour the rums and fruit juices into a cocktail shaker filled with ice and shake hard until the outside of the shaker feels really cold.",
       "Strain the mixture into a tall glass or hurricane glass filled with ice, then slowly pour in the grenadine to colour the drink.",
       "Skewer the orange wedge and cherries on a cocktail stick. Garnish the drink with mint sprigs and the skewered fruit."
+    ]
+  },
+  {
+    "name": "Apricot Anise Sour",
+    "imagePath": "/drinks/apricot-anise-sour.png",
+    "frontBg": "#FFE86C",
+    "curiosity": "This sour leans into the theater of the garnish — star anise perfumes the drink before the apricot and lemon even hit your palate.",
+    "tags": [
+      "Gin",
+      "Digestif",
+      "20 – 25% Alcohol"
+    ],
+    "baseSpirit": "Gin",
+    "season": "Digestif",
+    "alcoholInfo": "20 – 25% Alcohol",
+    "ingredients": [
+      {
+        "name": "Shortcross gin",
+        "amount": "50",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Apricot brandy",
+        "amount": "15",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Apricot jam",
+        "amount": "1",
+        "unit": "bar spoon",
+        "isGarnish": false
+      },
+      {
+        "name": "Lemon juice",
+        "amount": "25",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Sugar syrup",
+        "amount": "10",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Egg white",
+        "amount": "1",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Star anise",
+        "note": "To garnish",
+        "isGarnish": true
+      }
+    ],
+    "steps": [
+      "Add all ingredients to a shaker and dry shake first to build the foam.",
+      "Add ice, shake again until well chilled, then fine-strain into a coupe glass.",
+      "Garnish with a star anise pod and serve immediately."
+    ]
+  },
+  {
+    "name": "Apricot Gin",
+    "imagePath": "/drinks/apricot-gin.png",
+    "frontBg": "#FFBC6C",
+    "curiosity": "Homemade apricot gin rewards patience — the best trick is to stash the bottle somewhere safe enough to forget about it for a while.",
+    "tags": [
+      "Gin",
+      "Summer",
+      "25 – 30% Alcohol"
+    ],
+    "baseSpirit": "Gin",
+    "season": "Summer",
+    "alcoholInfo": "25 – 30% Alcohol",
+    "ingredients": [
+      {
+        "name": "Fresh apricots",
+        "amount": "8",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Caster sugar",
+        "amount": "150",
+        "unit": "g",
+        "isGarnish": false
+      },
+      {
+        "name": "Gin",
+        "amount": "700",
+        "unit": "ml",
+        "isGarnish": false
+      }
+    ],
+    "steps": [
+      "Halve the apricots, remove the stones and place the fruit in a sterilised jar with the sugar.",
+      "Pour over the gin, seal, then shake until the sugar starts dissolving.",
+      "Leave to infuse in a cool dark place, shaking occasionally, then strain before serving."
+    ]
+  },
+  {
+    "name": "Asian Pear Martini",
+    "imagePath": "/drinks/asian-pear-martini.png",
+    "frontBg": "#D0FF6C",
+    "curiosity": "Asian pears are often called apple pears — they stay crisp instead of going buttery-soft, which makes them great for bright, chilled cocktails.",
+    "tags": [
+      "Vodka",
+      "Autumn",
+      "20 – 25% Alcohol"
+    ],
+    "baseSpirit": "Vodka",
+    "season": "Autumn",
+    "alcoholInfo": "20 – 25% Alcohol",
+    "ingredients": [
+      {
+        "name": "Vodka",
+        "amount": "45",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Pear nectar",
+        "amount": "30",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Lemon juice",
+        "amount": "15",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Simple syrup",
+        "amount": "10",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Asian pear slice",
+        "note": "To garnish",
+        "isGarnish": true
+      }
+    ],
+    "steps": [
+      "Add the vodka, pear nectar, lemon juice and simple syrup to a shaker with ice.",
+      "Shake until icy cold, then strain into a chilled martini glass.",
+      "Garnish with a thin slice of Asian pear."
+    ]
+  },
+  {
+    "name": "Autumn Mulled Wine",
+    "imagePath": "/drinks/autumn-mulled-wine.png",
+    "frontBg": "#F999C7",
+    "curiosity": "Mulled wine should be warmed, not boiled — letting it simmer gently keeps the spices fragrant without driving off the good stuff.",
+    "tags": [
+      "Wine",
+      "Winter",
+      "7 – 14% Alcohol"
+    ],
+    "baseSpirit": "Wine",
+    "season": "Winter",
+    "alcoholInfo": "7 – 14% Alcohol",
+    "ingredients": [
+      {
+        "name": "Red wine",
+        "amount": "750",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Apple cider",
+        "amount": "500",
+        "unit": "ml",
+        "isGarnish": false
+      },
+      {
+        "name": "Orange",
+        "amount": "1",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Cinnamon sticks",
+        "amount": "2",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Star anise",
+        "amount": "2",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Cloves",
+        "amount": "4",
+        "unit": "unit",
+        "isGarnish": false
+      },
+      {
+        "name": "Maple syrup",
+        "amount": "2",
+        "unit": "tbsp",
+        "isGarnish": false
+      },
+      {
+        "name": "Orange slice",
+        "note": "To garnish",
+        "isGarnish": true
+      }
+    ],
+    "steps": [
+      "Add the wine, cider, orange slices, spices and maple syrup to a saucepan or slow cooker.",
+      "Warm gently over low heat for 20–30 minutes without letting it boil.",
+      "Taste, adjust sweetness if needed, then ladle into mugs and garnish with orange."
     ]
   }
 ]
