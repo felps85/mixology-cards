@@ -111,7 +111,7 @@
   },
   {
     "name": "Aperol & limoncello cocktail",
-    "imagePath": "/drinks/aperol-and-limoncello.jpg",
+    "imagePath": "/drinks/aperol-and-limoncello-cocktail.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Aperol & limoncello stands out for the way it brings together vodka, limoncello and triple sec.",
     "tags": [
@@ -220,7 +220,7 @@
   },
   {
     "name": "Apple & elderflower gin cocktail",
-    "imagePath": "/drinks/apple-and-elderflower-gin.jpg",
+    "imagePath": "/drinks/apple-and-elderflower-gin-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "Apple & elderflower gin leans warm-weather and easygoing, with gin, elderflower cordial and apple juice doing most of the character work in the glass.",
     "tags": [
@@ -336,7 +336,7 @@
   },
   {
     "name": "Apple spritz",
-    "imagePath": "/drinks/apple-spritz.jpg",
+    "imagePath": "/drinks/apple-spritz.png",
     "frontBg": "#FFBC6C",
     "curiosity": "Apple spritz is often remembered as much for its garnish as for the mix itself — apple slices to serve.",
     "tags": [
@@ -398,7 +398,7 @@
   },
   {
     "name": "Appleberry mulled wine",
-    "imagePath": "/drinks/appleberry-mulled-wine.jpg",
+    "imagePath": "/drinks/appleberry-mulled-wine.png",
     "frontBg": "#FFE86C",
     "curiosity": "Appleberry mulled wine gives the cocktail format a colder-weather turn, with red wine, apple juice and cinnamon stick shaping the flavour more than sheer strength.",
     "tags": [
@@ -576,7 +576,7 @@
   },
   {
     "name": "Bahama mama",
-    "imagePath": "/drinks/bahama-mama.jpg",
+    "imagePath": "/drinks/bahama-mama.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Bahama Mama is usually treated as a midcentury Bahamas classic, and one popular origin story links its name to Nassau performer Dottie Lee Anderson, who was known on stage as 'Bahama Mama.'",
     "tags": [
@@ -652,7 +652,7 @@
   },
   {
     "name": "Banana daiquiri",
-    "imagePath": "/drinks/banana-daiquiri.jpg",
+    "imagePath": "/drinks/banana-daiquiri.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Banana daiquiri is often remembered as much for its garnish as for the mix itself — banana slices, lime wedges or cocktail cherries.",
     "tags": [
@@ -854,7 +854,7 @@
   },
   {
     "name": "Bitter orange & cardamom martinis",
-    "imagePath": "/drinks/bitter-orange-and-cardamom-martinis.jpg",
+    "imagePath": "/drinks/bitter-orange-and-cardamom-martinis.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Bitter orange & cardamom martinis gives the cocktail format a colder-weather turn, with cardamom pod, orange marmalade and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -1277,7 +1277,7 @@
   },
   {
     "name": "Bramble",
-    "imagePath": "/drinks/bramble.jpg",
+    "imagePath": "/drinks/bramble.png",
     "frontBg": "#F580FF",
     "curiosity": "Bramble is a refreshing gin pour built around gin, crème de mure and lemon.",
     "tags": [
@@ -1388,7 +1388,7 @@
   },
   {
     "name": "Cherry sour",
-    "imagePath": "/drinks/cherry-sour.jpg",
+    "imagePath": "/drinks/cherry-sour.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Cherry sour leans into Halloween theatre with its blood-red look, making the colour as much a talking point as the flavour.",
     "tags": [
@@ -1451,7 +1451,7 @@
   },
   {
     "name": "Chocolate orange cocktail",
-    "imagePath": "/drinks/chocolate-orange.jpg",
+    "imagePath": "/drinks/chocolate-orange-cocktail.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Chocolate orange gives the cocktail format a colder-weather turn, with orange, dark chocolate and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -1527,7 +1527,7 @@
   },
   {
     "name": "Claridge’s sazerac",
-    "imagePath": "/drinks/claridge-s-sazerac.jpg",
+    "imagePath": "/drinks/claridges-sazerac.png",
     "frontBg": "#C399F9",
     "curiosity": "Claridge’s version still nods to the 19th-century Sazerac of New Orleans, a drink closely associated with Peychaud’s bitters, rye whiskey and the city’s cocktail heritage.",
     "tags": [
@@ -1694,7 +1694,7 @@
   },
   {
     "name": "Coco fizz",
-    "imagePath": "/drinks/coco-fizz.jpg",
+    "imagePath": "/drinks/coco-fizz.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Coco fizz gives the cocktail format a colder-weather turn, with rum, coconut water and lime shaping the flavour more than sheer strength.",
     "tags": [
@@ -1874,7 +1874,7 @@
   },
   {
     "name": "Courgette martini",
-    "imagePath": "/drinks/courgette-martini.jpg",
+    "imagePath": "/drinks/courgette-martini.png",
     "frontBg": "#F580FF",
     "curiosity": "Courgette martini stands out for the way it brings together courgette, lemon and vermouth.",
     "tags": [
@@ -2156,7 +2156,7 @@
   },
   {
     "name": "Dark & stormy coffee cocktail",
-    "imagePath": "/drinks/dark-and-stormy-coffee.jpg",
+    "imagePath": "/drinks/dark-and-stormy-coffee-cocktail.png",
     "frontBg": "#F580FF",
     "curiosity": "This coffee-spiked serve riffs on the Dark 'n' Stormy, one of the few cocktails whose name is trademarked and strongly tied to Bermuda and Goslings rum.",
     "tags": [
@@ -2210,7 +2210,7 @@
   },
   {
     "name": "Dizzy mezcal",
-    "imagePath": "/drinks/dizzy-mezcal.jpg",
+    "imagePath": "/drinks/dizzy-mezcal.png",
     "frontBg": "#FF6C6C",
     "curiosity": "Dizzy mezcal stands out for the way it brings together cucumber, lemon juice and absinthe.",
     "tags": [
@@ -2506,7 +2506,7 @@
   },
   {
     "name": "Elderflower & cucumber G&Ts",
-    "imagePath": "/drinks/elderflower-and-cucumber-g-and-ts.jpg",
+    "imagePath": "/drinks/elderflower-and-cucumber-gandts.png",
     "frontBg": "#F580FF",
     "curiosity": "Elderflower & cucumber G&Ts stands out for the way it brings together cucumber, elderflower cordial and gin.",
     "tags": [
@@ -2553,7 +2553,7 @@
   },
   {
     "name": "Elderflower & herb cooler",
-    "imagePath": "/drinks/elderflower-and-herb-cooler.jpg",
+    "imagePath": "/drinks/elderflower-and-herb-cooler.png",
     "frontBg": "#F580FF",
     "curiosity": "Elderflower & herb cooler stands out for the way it brings together thyme sprig, rosemary and edible flower.",
     "tags": [

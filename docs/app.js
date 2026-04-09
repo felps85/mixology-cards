@@ -5,18 +5,6 @@ const RAW_PUBLIC_BASE =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 const LOW_RES_IMAGES = new Set([
-  "/drinks/aperol-and-limoncello.jpg",
-  "/drinks/apple-and-elderflower-gin.jpg",
-  "/drinks/appleberry-mulled-wine.jpg",
-  "/drinks/bitter-orange-and-cardamom-martinis.jpg",
-  "/drinks/bramble.jpg",
-  "/drinks/chocolate-orange.jpg",
-  "/drinks/claridge-s-sazerac.jpg",
-  "/drinks/coco-fizz.jpg",
-  "/drinks/courgette-martini.jpg",
-  "/drinks/dark-and-stormy-coffee.jpg",
-  "/drinks/elderflower-and-cucumber-g-and-ts.jpg",
-  "/drinks/elderflower-and-herb-cooler.jpg",
   "/drinks/gimlet.jpg",
   "/drinks/gooseberry-and-elderflower-fizz.jpg",
   "/drinks/grasshopper.jpg",
