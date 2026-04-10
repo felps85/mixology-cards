@@ -8107,7 +8107,7 @@
   },
   {
     "name": "Winter spritz",
-    "imagePath": "/drinks/winter-spritz.jpg",
+    "imagePath": "/drinks/winter-spritz.png",
     "frontBg": "#FFE86C",
     "curiosity": "Winter spritz gives the cocktail format a colder-weather turn, with aperitif, cherry liqueur and triple sec shaping the flavour more than sheer strength.",
     "tags": [
@@ -8169,7 +8169,7 @@
   },
   {
     "name": "Witch's brew",
-    "imagePath": "/drinks/witch-s-brew.jpg",
+    "imagePath": "/drinks/witch-s-brew.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Witch's brew is built for Halloween theatrics, with a dramatic purple hue that does almost as much work as the spirit mix.",
     "tags": [
@@ -8253,7 +8253,7 @@
   },
   {
     "name": "Woo woo",
-    "imagePath": "/drinks/woo-woo.jpg",
+    "imagePath": "/drinks/woo-woo.png",
     "frontBg": "#D0FF6C",
     "curiosity": "Woo woo keeps the playful party-cocktail energy alive — lime wedge, peach schnapps and even the option of a tiny umbrella.",
     "tags": [
@@ -8314,7 +8314,7 @@
   },
   {
     "name": "Zombie cocktail",
-    "imagePath": "/drinks/zombie.jpg",
+    "imagePath": "/drinks/zombie.png",
     "frontBg": "#6CFFE2",
     "curiosity": "Zombie has become a Halloween-friendly serve, picked as much for its dramatic look as for the drink itself.",
     "tags": [

@@ -1,15 +1,10 @@
-const DATA_URL =
-  "https://raw.githubusercontent.com/felps85/mixology-cards/main/prisma/drinksSeed.json";
+const DATA_URL = "./drinksSeed.json";
 const PAGES_ASSET_BASE = "./drinks";
 const RAW_PUBLIC_BASE =
   "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 const LOW_RES_IMAGES = new Set([
   "/drinks/white-russian.png",
-  "/drinks/winter-spritz.jpg",
-  "/drinks/witch-s-brew.jpg",
-  "/drinks/woo-woo.jpg",
-  "/drinks/zombie.jpg",
 ]);
 const FILTER_PANEL_WIDTHS = {
   ingredients: 760,
@@ -748,7 +743,7 @@ window.addEventListener("popstate", () => {
 
 async function loadDrinks() {
   try {
-    grid.innerHTML = '<div class="loading">Loading drinks from the repository…</div>';
+    grid.innerHTML = '<div class="loading">Loading drinks…</div>';
     const response = await fetch(DATA_URL);
     if (!response.ok) throw new Error("Could not load drink data.");
     const json = await response.json();
