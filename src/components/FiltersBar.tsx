@@ -70,17 +70,17 @@ function FilterButton({
       aria-expanded={open}
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
-        "pointer-events-auto flex min-h-[40px] w-full items-center justify-between gap-[8px] rounded-full px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
+        "pointer-events-auto flex min-h-[42px] w-full items-center justify-between gap-[8px] rounded-full border px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
         open
-          ? "bg-[rgba(255,199,92,0.12)] text-[#ffd899]"
+          ? "border-[rgba(255,199,92,0.35)] bg-[rgba(255,199,92,0.16)] text-[#ffe4ae]"
           : activeCount
-            ? "bg-[rgba(255,255,255,0.06)] text-white hover:bg-[rgba(255,255,255,0.08)]"
-            : "bg-transparent text-white/90 hover:bg-[rgba(255,255,255,0.05)]"
+            ? "border-white/14 bg-[rgba(255,255,255,0.08)] text-white hover:bg-[rgba(255,255,255,0.1)]"
+            : "border-white/10 bg-[rgba(255,255,255,0.03)] text-white/90 hover:border-white/16 hover:bg-[rgba(255,255,255,0.06)]"
       ].join(" ")}
     >
       <div className="min-w-0 text-left">{label}</div>
       {activeCount ? (
-        <span className="ml-auto rounded-full bg-black/20 px-1.5 text-[10px] leading-[16px] text-white/92">
+        <span className="ml-auto rounded-full bg-black/35 px-1.5 text-[10px] leading-[16px] text-white/92">
           {activeCount}
         </span>
       ) : null}
@@ -256,7 +256,7 @@ export function FiltersBar({
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 overflow-visible text-[#f7edd8]">
       <div className="flex items-start gap-3 overflow-visible md:gap-4">
-        <div className="flex min-w-0 flex-1 flex-col gap-3 overflow-visible rounded-[26px] border border-white/12 bg-[rgba(32,39,54,0.96)] p-3 shadow-[0_14px_34px_rgba(11,16,32,0.24)] backdrop-blur-[14px] md:gap-4 md:px-4 md:py-3 lg:flex-row lg:items-center">
+        <div className="flex min-w-0 flex-1 flex-col gap-3 overflow-visible bg-black/95 py-1 md:gap-4 md:py-2 lg:flex-row lg:items-center">
           <div className="flex min-w-0 items-center gap-3 lg:flex-1">
             <button
               type="button"
@@ -264,9 +264,9 @@ export function FiltersBar({
                 searchInputRef.current?.focus();
               }}
               aria-label="Focus drink search"
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-transparent text-[#d8a215]"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-[rgba(255,255,255,0.04)] text-[18px]"
             >
-              <Image src="/ui/logo.svg" alt="" width={20} height={20} />
+              <span aria-hidden="true">🍸</span>
             </button>
             <div className="hidden shrink-0 leading-none sm:block">
               <div className="text-[13px] font-semibold tracking-[0.2em] text-white">
@@ -276,7 +276,7 @@ export function FiltersBar({
                 Speakeasy Index
               </div>
             </div>
-            <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-[18px] bg-[rgba(255,255,255,0.04)] px-4 text-white/64">
+            <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 text-white/64">
                 <input
                   ref={searchInputRef}
                   key={q}
@@ -299,7 +299,7 @@ export function FiltersBar({
 
           <div ref={dockRef} className="relative min-w-0 overflow-visible lg:w-auto">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-1">
-              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+              <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="Ingredients"
                   open={openKey === "ingredients"}
@@ -308,7 +308,7 @@ export function FiltersBar({
                   buttonRef={triggerRefs.ingredients}
                 />
               </div>
-              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+              <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="Alcohol"
                   open={openKey === "alcohol"}
@@ -317,7 +317,7 @@ export function FiltersBar({
                   buttonRef={triggerRefs.alcohol}
                 />
               </div>
-              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+              <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="Tags"
                   open={openKey === "tags"}
@@ -326,7 +326,7 @@ export function FiltersBar({
                   buttonRef={triggerRefs.tags}
                 />
               </div>
-              <div className="relative flex items-center justify-center rounded-[18px] bg-[rgba(255,255,255,0.04)] p-1">
+              <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="%"
                   open={openKey === "abv"}
@@ -342,7 +342,7 @@ export function FiltersBar({
                 ref={panelRef}
                 role="dialog"
                 aria-label={`${openKey} filters`}
-                className="absolute left-0 top-[calc(100%+10px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
+                className="absolute left-0 top-[calc(100%+10px)] z-[70] max-w-[calc(100vw-32px)] rounded-[24px] border border-white/10 bg-[rgba(0,0,0,0.96)] p-4 shadow-[0_30px_60px_rgba(0,0,0,0.45)] backdrop-blur-[16px]"
                 style={{
                   left: panelLeft,
                   width: `min(${getFilterPanelWidth(openKey)}px, calc(100vw - 32px))`
@@ -407,7 +407,7 @@ export function FiltersBar({
           href={SUPPORT_LINK}
           target="_blank"
           rel="noreferrer"
-          className="hidden min-h-[48px] shrink-0 items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-4 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] lg:inline-flex"
+          className="hidden min-h-[48px] shrink-0 items-center justify-center rounded-full border border-white/12 bg-[rgba(255,255,255,0.03)] px-4 py-2 text-[14px] font-semibold text-white transition hover:-translate-y-[1px] hover:border-white/22 hover:bg-[rgba(255,255,255,0.07)] lg:inline-flex"
         >
           Buy me a drink!
         </a>
@@ -417,7 +417,7 @@ export function FiltersBar({
         href={SUPPORT_LINK}
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-[max(14px,env(safe-area-inset-bottom))] left-4 z-40 inline-flex min-h-[42px] items-center justify-center rounded-full border border-white/16 bg-[rgba(11,16,32,0.96)] px-3 py-2 text-[14px] font-semibold text-white shadow-[0_14px_34px_rgba(11,16,32,0.24)] transition hover:-translate-y-[1px] hover:border-white/24 hover:bg-[rgba(24,31,45,0.98)] md:hidden"
+        className="fixed bottom-[max(14px,env(safe-area-inset-bottom))] left-4 z-40 inline-flex min-h-[42px] items-center justify-center rounded-full border border-white/12 bg-[rgba(0,0,0,0.96)] px-3 py-2 text-[14px] font-semibold text-white shadow-[0_14px_34px_rgba(0,0,0,0.24)] transition hover:-translate-y-[1px] hover:border-white/22 hover:bg-[rgba(255,255,255,0.07)] md:hidden"
       >
         Buy me a drink!
       </a>
@@ -534,28 +534,24 @@ function MultiSelectPanel({
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder={searchPlaceholder}
-        className="w-full rounded-[14px] border border-white/8 bg-white/[0.04] px-3 py-2.5 text-[14px] text-[#f7edd8] outline-none placeholder:text-white/42"
+        className="w-full rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#f7edd8] outline-none placeholder:text-white/42"
       />
-      <div className="mt-3 grid max-h-72 gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-3 flex max-h-72 flex-wrap gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8]">
         {filteredItems.map((item) => (
-          <label
+          <button
             key={item.id}
+            type="button"
+            aria-pressed={selected.includes(item.slug)}
+            onClick={() => onToggle(item.slug)}
             className={[
-              "flex cursor-pointer items-center gap-2 rounded-[14px] border px-3 py-2.5 transition",
+              "rounded-full border px-3.5 py-2 text-left transition",
               selected.includes(item.slug)
-                ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
-                : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
+                ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
+                : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
             ].join(" ")}
           >
-            <input
-              type="checkbox"
-              value={item.slug}
-              checked={selected.includes(item.slug)}
-              onChange={() => onToggle(item.slug)}
-              className="h-4 w-4 rounded border-[#78664d] bg-transparent text-[#d8a857] focus:ring-[#d8a857]/40"
-            />
             <span>{item.name}</span>
-          </label>
+          </button>
         ))}
         {!filteredItems.length ? <div className="px-2 py-6 text-white/48">No matches</div> : null}
       </div>
@@ -590,15 +586,15 @@ function AbvPanel({
           {description}
         </div>
       </div>
-      <div className="grid max-h-72 gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="flex max-h-72 flex-wrap gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8]">
       <button
         type="button"
         onClick={() => onSelect(null)}
         className={[
-          "rounded-[14px] border px-3 py-2.5 text-left transition",
+          "rounded-full border px-3.5 py-2 text-left transition",
           selected === null
-            ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
-            : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
+            ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
+            : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
         ].join(" ")}
       >
         Any %
@@ -609,10 +605,10 @@ function AbvPanel({
           type="button"
           onClick={() => onSelect(n)}
           className={[
-            "rounded-[14px] border px-3 py-2.5 text-left transition",
+            "rounded-full border px-3.5 py-2 text-left transition",
             selected === n
-              ? "border-[rgba(255,199,92,0.24)] bg-[rgba(255,199,92,0.12)] text-[#fff5df]"
-              : "border-white/8 bg-white/[0.03] hover:border-white/12 hover:bg-white/[0.06]"
+              ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
+              : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
           ].join(" ")}
         >
           Up to {n}%

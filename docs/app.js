@@ -441,11 +441,11 @@ function renderPanel() {
                   <button
                     type="button"
                     class="option-card ${config.selected.includes(item.slug) ? "is-selected" : ""}"
+                    aria-pressed="${config.selected.includes(item.slug) ? "true" : "false"}"
                     data-action="toggle-option"
                     data-kind="${state.openPanel === "tags" ? "tag" : "ingredient"}"
                     data-slug="${item.slug}"
                   >
-                    <span class="option-card__check">✓</span>
                     <span>${escapeHtml(item.name)}</span>
                   </button>
                 `

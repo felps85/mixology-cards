@@ -29,6 +29,7 @@ If a component changes in one surface, the same interaction should be reflected 
   - search sits on the first row
   - filters sit on the second row
   - page content adds enough top padding so cards never sit under the fixed bar
+  - the header mark uses a drink emoji instead of a logo asset
 
 ### Filter dropdowns
 
@@ -38,6 +39,8 @@ If a component changes in one surface, the same interaction should be reflected 
 - On desktop, dropdowns anchor under the clicked filter
 - On mobile, dropdowns use the full available toolbar width and float over the page
 - Search input focus closes any open dropdown
+- Filter options are pills, not checkbox rows
+- Selected pills change color instead of showing a checkmark
 
 ### Drink cards
 

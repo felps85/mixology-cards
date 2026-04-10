@@ -44,8 +44,8 @@ describe("FiltersBar", () => {
     await user.click(screen.getByRole("button", { name: "Alcohol" }));
 
     // Toggle Vodka (alcohol) -> should immediately call router.replace
-    const vodkaCheckbox = screen.getByRole("checkbox", { name: "Vodka" });
-    await user.click(vodkaCheckbox);
+    const vodkaOption = screen.getByRole("button", { name: "Vodka" });
+    await user.click(vodkaOption);
 
     expect(replaceMock).toHaveBeenCalled();
     const lastCall = replaceMock.mock.calls.at(-1)?.[0] as string;
@@ -141,8 +141,14 @@ describe("FiltersBar", () => {
     await user.click(screen.getByRole("button", { name: /Tags/i }));
 
     expect(screen.getAllByText("Summer")).not.toHaveLength(0);
-    expect(screen.getByRole("checkbox", { name: "Summer" })).toBeChecked();
-    expect(screen.getByRole("checkbox", { name: "Citrus" })).toBeChecked();
+    expect(screen.getByRole("button", { name: "Summer" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+    expect(screen.getByRole("button", { name: "Citrus" })).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
   });
 
   it("keeps tags and alcohol percentage in separate dropdowns with expected options", async () => {
@@ -164,8 +170,8 @@ describe("FiltersBar", () => {
     );
 
     await user.click(screen.getByRole("button", { name: "Tags" }));
-    expect(screen.getByRole("checkbox", { name: "Summer" })).toBeInTheDocument();
-    expect(screen.queryByRole("checkbox", { name: "15% ABV" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Summer" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "15% ABV" })).not.toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "%" }));
     expect(screen.getByText("Choose a maximum ABV in 5% increments.")).toBeInTheDocument();
