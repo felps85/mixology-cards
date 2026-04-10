@@ -54,20 +54,25 @@ function FilterButton({
   open,
   onClick,
   activeCount,
-  buttonRef
+  buttonRef,
+  buttonId
 }: {
   label: string;
   open: boolean;
   onClick: () => void;
   activeCount?: number;
   buttonRef?: RefObject<HTMLButtonElement>;
+  buttonId: string;
 }) {
   return (
     <button
+      id={buttonId}
       ref={buttonRef}
       type="button"
       onClick={onClick}
       aria-expanded={open}
+      aria-haspopup="dialog"
+      aria-controls="gallery-filter-panel"
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
         "pointer-events-auto flex min-h-[48px] w-full items-center justify-between gap-[8px] rounded-full border px-4 py-2 text-[11px] font-medium uppercase leading-[18px] tracking-[0.12em] transition sm:text-[12px] lg:w-auto lg:justify-start",
@@ -126,6 +131,12 @@ export function FiltersBar({
     alcohol: useRef<HTMLButtonElement>(null),
     tags: useRef<HTMLButtonElement>(null),
     abv: useRef<HTMLButtonElement>(null)
+  };
+  const triggerIds: Record<DropdownKey, string> = {
+    ingredients: "gallery-filter-trigger-ingredients",
+    alcohol: "gallery-filter-trigger-alcohol",
+    tags: "gallery-filter-trigger-tags",
+    abv: "gallery-filter-trigger-abv"
   };
 
   useEffect(() => {
@@ -269,11 +280,13 @@ export function FiltersBar({
               <span aria-hidden="true">🍸</span>
             </button>
             <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 text-white/64">
+                <span className="sr-only">Search drinks</span>
                 <input
                   ref={searchInputRef}
                   key={q}
                   type="search"
                   defaultValue={q}
+                  aria-label="Search drinks"
                   placeholder={searchPlaceholder}
                   onFocus={() => setOpenKey(null)}
                   onClick={() => setOpenKey(null)}
@@ -293,6 +306,7 @@ export function FiltersBar({
             <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-2">
               <div className="relative flex items-center justify-center">
                 <FilterButton
+                  buttonId={triggerIds.ingredients}
                   label="Ingredients"
                   open={openKey === "ingredients"}
                   onClick={() => togglePanel("ingredients")}
@@ -302,6 +316,7 @@ export function FiltersBar({
               </div>
               <div className="relative flex items-center justify-center">
                 <FilterButton
+                  buttonId={triggerIds.alcohol}
                   label="Alcohol"
                   open={openKey === "alcohol"}
                   onClick={() => togglePanel("alcohol")}
@@ -311,6 +326,7 @@ export function FiltersBar({
               </div>
               <div className="relative flex items-center justify-center">
                 <FilterButton
+                  buttonId={triggerIds.tags}
                   label="Tags"
                   open={openKey === "tags"}
                   onClick={() => togglePanel("tags")}
@@ -320,6 +336,7 @@ export function FiltersBar({
               </div>
               <div className="relative flex items-center justify-center">
                 <FilterButton
+                  buttonId={triggerIds.abv}
                   label="%"
                   open={openKey === "abv"}
                   onClick={() => togglePanel("abv")}
@@ -331,8 +348,11 @@ export function FiltersBar({
 
             {openKey ? (
               <div
+                id="gallery-filter-panel"
                 ref={panelRef}
                 role="dialog"
+                aria-modal="false"
+                aria-labelledby={triggerIds[openKey]}
                 aria-label={`${openKey} filters`}
                 className="absolute left-0 top-[calc(100%+10px)] z-[70] max-w-[calc(100vw-32px)] rounded-[24px] border border-white/10 bg-[rgba(0,0,0,0.96)] p-4 shadow-[0_30px_60px_rgba(0,0,0,0.45)] backdrop-blur-[16px]"
                 style={{
@@ -525,6 +545,7 @@ function MultiSelectPanel({
         autoFocus
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
+        aria-label={searchPlaceholder}
         placeholder={searchPlaceholder}
         className="w-full rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#f7edd8] outline-none placeholder:text-white/42"
       />
@@ -579,33 +600,35 @@ function AbvPanel({
         </div>
       </div>
       <div className="flex max-h-72 flex-wrap gap-2 overflow-auto pr-1 text-[13px] text-[#f7edd8]">
-      <button
-        type="button"
-        onClick={() => onSelect(null)}
-        className={[
-          "rounded-full border px-3.5 py-2 text-left transition",
-          selected === null
-            ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
-            : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
-        ].join(" ")}
-      >
-        Any %
-      </button>
-      {options.map((n) => (
         <button
-          key={n}
           type="button"
-          onClick={() => onSelect(n)}
+          aria-pressed={selected === null}
+          onClick={() => onSelect(null)}
           className={[
             "rounded-full border px-3.5 py-2 text-left transition",
-            selected === n
+            selected === null
               ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
               : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
           ].join(" ")}
         >
-          Up to {n}%
+          Any %
         </button>
-      ))}
+        {options.map((n) => (
+          <button
+            key={n}
+            type="button"
+            aria-pressed={selected === n}
+            onClick={() => onSelect(n)}
+            className={[
+              "rounded-full border px-3.5 py-2 text-left transition",
+              selected === n
+                ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
+                : "border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]"
+            ].join(" ")}
+          >
+            Up to {n}%
+          </button>
+        ))}
       </div>
     </div>
   );

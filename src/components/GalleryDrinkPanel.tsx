@@ -6,7 +6,7 @@ import { slugify } from "@/lib/slugify";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useId, useRef } from "react";
 
 type ActiveDrink = {
   slug: string;
@@ -49,12 +49,25 @@ export function GalleryDrinkPanel({
   fullscreen?: boolean;
 }) {
   const router = useRouter();
+  const titleId = useId();
   const accent = drink.frontBg ?? "#FFE86C";
   const ingredientCount = drink.ingredients.length;
   const lowRes = isLowResImage(drink.imagePath);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+  const mobileCloseRef = useRef<HTMLAnchorElement | null>(null);
+  const desktopCloseRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     if (!fullscreen) return;
+    previousFocusRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const isDesktop =
+      typeof window.matchMedia === "function"
+        ? window.matchMedia("(min-width: 768px)").matches
+        : false;
+    const closeTarget =
+      isDesktop ? desktopCloseRef.current : mobileCloseRef.current;
+    closeTarget?.focus();
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
@@ -64,11 +77,17 @@ export function GalleryDrinkPanel({
     }
 
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      previousFocusRef.current?.focus();
+    };
   }, [fullscreen, galleryQuery, router]);
 
   return (
     <div
+      role={fullscreen ? "dialog" : undefined}
+      aria-modal={fullscreen ? "true" : undefined}
+      aria-labelledby={fullscreen ? titleId : undefined}
       className={[
         fullscreen ? "overflow-y-auto md:overflow-hidden" : "overflow-hidden",
         fullscreen
@@ -79,6 +98,7 @@ export function GalleryDrinkPanel({
       {fullscreen ? (
         <div className="sticky top-0 z-20 flex justify-end p-4 md:hidden">
           <Link
+            ref={mobileCloseRef}
             href={buildGalleryHref(galleryQuery, { sel: null })}
             className="rounded-full border border-[#d8a857]/24 bg-[rgba(20,15,18,0.92)] p-3 text-[#f8ead0] shadow-[0_10px_24px_rgba(0,0,0,0.28)] backdrop-blur-xl transition hover:border-[#d8a857]/45 hover:bg-[#191115]"
             aria-label="Close"
@@ -140,11 +160,12 @@ export function GalleryDrinkPanel({
                 <div className="text-[11px] uppercase tracking-[0.28em] text-[#d8a857]">
                   Speakeasy Recipe Card
                 </div>
-                <h2 className="mt-3 min-w-0 text-[36px] font-semibold leading-[1.02] tracking-[-0.06em] text-[#fff4de] md:text-[52px]">
+                <h2 id={titleId} className="mt-3 min-w-0 text-[36px] font-semibold leading-[1.02] tracking-[-0.06em] text-[#fff4de] md:text-[52px]">
                   {drink.name}
                 </h2>
               </div>
               <Link
+                ref={desktopCloseRef}
                 href={buildGalleryHref(galleryQuery, { sel: null })}
                 className="mt-1 hidden shrink-0 rounded-full border border-[#d8a857]/24 bg-[#140f12] p-3 text-[#f8ead0] transition hover:border-[#d8a857]/45 hover:bg-[#191115] md:inline-flex"
                 aria-label="Close"

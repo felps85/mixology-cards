@@ -79,7 +79,9 @@ describe("FiltersBar", () => {
     expect(screen.queryByPlaceholderText("Search ingredients…")).not.toBeInTheDocument();
     expect(screen.getByPlaceholderText("Search tags…")).toBeInTheDocument();
 
-    await user.type(screen.getByPlaceholderText("Search drinks…"), "moj");
+    expect(screen.getByRole("searchbox", { name: "Search drinks" })).toBeInTheDocument();
+
+    await user.type(screen.getByRole("searchbox", { name: "Search drinks" }), "moj");
 
     await waitFor(() => {
       const lastCall = replaceMock.mock.calls.at(-1)?.[0] as string;
@@ -134,7 +136,10 @@ describe("FiltersBar", () => {
       />
     );
 
-    expect(screen.getByRole("button", { name: "Tags 2" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Tags 2" })).toHaveAttribute(
+      "aria-controls",
+      "gallery-filter-panel"
+    );
     expect(screen.getByRole("button", { name: "Alcohol 1" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "% 1" })).toBeInTheDocument();
 

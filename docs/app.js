@@ -32,6 +32,7 @@ const dialogIngredientCount = document.getElementById("dialogIngredientCount");
 const dialogIngredients = document.getElementById("dialogIngredients");
 const dialogSteps = document.getElementById("dialogSteps");
 const dialogPanel = document.querySelector(".drink-dialog__panel");
+let previousFocusedElement = null;
 
 const filterButtons = Object.fromEntries(
   Array.from(document.querySelectorAll("[data-filter-button]")).map((button) => [
@@ -284,6 +285,7 @@ function updateFilterButtons() {
     const count = counts[key] ?? 0;
     button.classList.toggle("is-open", state.openPanel === key);
     button.classList.toggle("is-active", count > 0);
+    button.setAttribute("aria-expanded", state.openPanel === key ? "true" : "false");
     const countNode = button.querySelector(`[data-count-for="${key}"]`);
     if (countNode) {
       countNode.textContent = count ? String(count) : "";
@@ -338,6 +340,7 @@ function renderPanel() {
 
   if (!state.openPanel) {
     dropdownPanel.classList.add("is-hidden");
+    dropdownPanel.removeAttribute("aria-labelledby");
     dropdownPanel.innerHTML = "";
     return;
   }
@@ -353,6 +356,7 @@ function renderPanel() {
 
   dropdownPanel.style.left = `${left}px`;
   dropdownPanel.style.width = `${panelWidth}px`;
+  dropdownPanel.setAttribute("aria-labelledby", button.id);
   dropdownPanel.classList.remove("is-hidden");
 
   if (state.openPanel === "abv") {
@@ -424,6 +428,7 @@ function renderPanel() {
       id="panelSearch"
       class="panel-search"
       type="search"
+      aria-label="${config.placeholder}"
       placeholder="${config.placeholder}"
       value="${escapeHtml(filter)}"
     />
@@ -508,6 +513,8 @@ function syncDialog(items) {
     dialog.classList.add("is-hidden");
     dialog.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    previousFocusedElement?.focus?.();
+    previousFocusedElement = null;
     return;
   }
 
@@ -570,6 +577,14 @@ function syncDialog(items) {
   dialog.classList.remove("is-hidden");
   dialog.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  if (!previousFocusedElement && document.activeElement instanceof HTMLElement) {
+    previousFocusedElement = document.activeElement;
+  }
+  const closeTarget =
+    window.matchMedia("(max-width: 840px)").matches
+      ? document.getElementById("closeDialogMobile")
+      : document.getElementById("closeDialog");
+  closeTarget?.focus();
 }
 
 function render() {

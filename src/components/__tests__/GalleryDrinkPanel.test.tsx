@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { GalleryDrinkPanel } from "@/components/GalleryDrinkPanel";
@@ -58,5 +58,42 @@ describe("GalleryDrinkPanel", () => {
       "/?q=mojito&tag=summer&ing=lime-juice&abvMax=15",
       { scroll: false }
     );
+  });
+
+  it("renders the fullscreen drink view as a labelled dialog", () => {
+    render(
+      <GalleryDrinkPanel
+        fullscreen
+        galleryQuery={{
+          q: "",
+          tag: [],
+          ing: [],
+          sel: "mojito",
+          abvMax: null
+        }}
+        drink={{
+          slug: "mojito",
+          name: "Mojito",
+          imagePath: "/drinks/mojito.png",
+          curiosity: "A classic Cuban highball.",
+          frontBg: "#D8FF58",
+          baseSpirit: "Rum",
+          alcoholInfo: "13%",
+          season: "Summer",
+          ingredients: [
+            {
+              id: "i1",
+              amount: "50",
+              unit: "ml",
+              note: null,
+              ingredient: { name: "White rum" }
+            }
+          ],
+          steps: [{ id: "s1", sortOrder: 0, text: "Build over ice and stir." }]
+        }}
+      />
+    );
+
+    expect(screen.getByRole("dialog", { name: "Mojito" })).toBeInTheDocument();
   });
 });
