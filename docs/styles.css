@@ -972,13 +972,16 @@ body::after {
   .filter-cluster {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .filter-btn {
     width: 100%;
     justify-content: space-between;
-    padding-inline: 11px;
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 11px;
   }
 
   .dropdown-panel {

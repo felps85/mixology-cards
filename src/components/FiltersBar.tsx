@@ -70,7 +70,7 @@ function FilterButton({
       aria-expanded={open}
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
-        "pointer-events-auto flex min-h-[48px] w-full items-center justify-between gap-[8px] rounded-full border px-4 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
+        "pointer-events-auto flex min-h-[48px] w-full items-center justify-between gap-[8px] rounded-full border px-4 py-2 text-[11px] font-medium uppercase leading-[18px] tracking-[0.12em] transition sm:text-[12px] lg:w-auto lg:justify-start",
         open
           ? "border-[rgba(255,199,92,0.35)] bg-[rgba(255,199,92,0.16)] text-[#ffe4ae]"
           : activeCount
@@ -290,7 +290,7 @@ export function FiltersBar({
           </div>
 
           <div ref={dockRef} className="relative min-w-0 w-full overflow-visible lg:w-auto">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-2">
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-2">
               <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="Ingredients"
