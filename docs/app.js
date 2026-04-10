@@ -11,6 +11,12 @@ const LOW_RES_IMAGES = new Set([
   "/drinks/woo-woo.jpg",
   "/drinks/zombie.jpg",
 ]);
+const FILTER_PANEL_WIDTHS = {
+  ingredients: 760,
+  alcohol: 680,
+  tags: 520,
+  abv: 340
+};
 
 const searchInput = document.getElementById("searchInput");
 const searchDock = document.getElementById("searchDock");
@@ -213,17 +219,7 @@ function buildCatalog(drinks) {
 }
 
 function panelWidthForKey(key) {
-  switch (key) {
-    case "abv":
-      return 340;
-    case "tags":
-      return 520;
-    case "alcohol":
-      return 680;
-    case "ingredients":
-    default:
-      return 760;
-  }
+  return FILTER_PANEL_WIDTHS[key] ?? FILTER_PANEL_WIDTHS.ingredients;
 }
 
 function filteredDrinks() {
