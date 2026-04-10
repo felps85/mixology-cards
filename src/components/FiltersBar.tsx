@@ -255,9 +255,9 @@ export function FiltersBar({
 
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-4 overflow-visible text-[#f7edd8]">
-      <div className="flex items-start gap-3 overflow-visible md:gap-4">
+      <div className="flex items-center gap-3 overflow-visible md:gap-4">
         <div className="flex min-w-0 flex-1 flex-col gap-3 overflow-visible bg-black/95 py-1 md:gap-4 md:py-2 lg:flex-row lg:items-center">
-          <div className="flex min-w-0 items-center gap-3 lg:flex-1">
+          <div className="flex min-w-0 w-full items-center gap-3 lg:flex-1">
             <button
               type="button"
               onClick={() => {
@@ -289,7 +289,7 @@ export function FiltersBar({
             </label>
           </div>
 
-          <div ref={dockRef} className="relative min-w-0 overflow-visible lg:w-auto">
+          <div ref={dockRef} className="relative min-w-0 w-full overflow-visible lg:w-auto">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-2">
               <div className="relative flex items-center justify-center">
                 <FilterButton

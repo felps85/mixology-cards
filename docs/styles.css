@@ -61,7 +61,7 @@ body::after {
 
 .topbar__toolbar {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   overflow: visible;
 }
@@ -932,23 +932,32 @@ body::after {
     align-items: stretch;
   }
 
-  .topbar__main,
-  .topbar__controls,
-  .searchDock {
+  .topbar__main {
     width: 100%;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    padding: 12px 0 0;
   }
 
-  .topbar__main {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 12px;
+  .topbar__brand {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .searchDock {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
   }
 
   .toolbarSearchUnified {
     min-width: 0;
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     overflow: visible;
     padding-bottom: 0;
