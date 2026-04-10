@@ -20,7 +20,7 @@ const activeFilters = document.getElementById("activeFilters");
 const grid = document.getElementById("grid");
 
 const dialog = document.getElementById("drinkDialog");
-const closeDialog = document.getElementById("closeDialog");
+const closeDialogButtons = document.querySelectorAll("[data-close-dialog]");
 const dialogImage = document.getElementById("dialogImage");
 const dialogImageBackdrop = document.getElementById("dialogImageBackdrop");
 const dialogAccentBar = document.getElementById("dialogAccentBar");
@@ -699,9 +699,11 @@ dialogMeta.addEventListener("click", (event) => {
   applyModalChip(chip.dataset.chip);
 });
 
-closeDialog.addEventListener("click", () => {
-  state.selectedSlug = null;
-  render();
+closeDialogButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    state.selectedSlug = null;
+    render();
+  });
 });
 
 dialog.addEventListener("click", (event) => {

@@ -87,44 +87,61 @@
 
     <div id="drinkDialog" class="drink-dialog is-hidden" aria-hidden="true">
       <div class="drink-dialog__panel">
+        <div class="dialog-mobile-close">
+          <button
+            class="dialog-close dialog-close--mobile"
+            id="closeDialogMobile"
+            type="button"
+            aria-label="Close"
+            data-close-dialog
+          >
+            ×
+          </button>
+        </div>
         <div class="drink-dialog__content">
-        <div class="drink-dialog__image-wrap">
-          <div id="dialogImageBackdrop" class="drink-dialog__image-backdrop" aria-hidden="true"></div>
-          <img id="dialogImage" alt="" />
-          <div id="dialogAccentBar" class="dialog-accent-bar" aria-hidden="true"></div>
-        </div>
-        <div class="drink-dialog__body">
-          <div class="dialog-header">
-            <div class="dialog-header__copy">
-              <div class="dialog-eyebrow">Speakeasy Recipe Card</div>
-              <h2 id="dialogTitle"></h2>
-            </div>
-            <button class="dialog-close" id="closeDialog" type="button" aria-label="Close">
-              ×
-            </button>
+          <div class="drink-dialog__image-wrap">
+            <div id="dialogImageBackdrop" class="drink-dialog__image-backdrop" aria-hidden="true"></div>
+            <img id="dialogImage" alt="" />
+            <div id="dialogAccentBar" class="dialog-accent-bar" aria-hidden="true"></div>
           </div>
-
-          <div id="dialogMeta" class="dialog-meta"></div>
-
-          <section class="dialog-panel">
-            <div class="dialog-label">Curiosity</div>
-            <p id="dialogCuriosity"></p>
-          </section>
-
-          <section class="dialog-section">
-            <div class="dialog-section__header">
-              <div class="dialog-label">Ingredients</div>
-              <div id="dialogIngredientCount" class="dialog-section__count"></div>
+          <div class="drink-dialog__body">
+            <div class="dialog-header">
+              <div class="dialog-header__copy">
+                <div class="dialog-eyebrow">Speakeasy Recipe Card</div>
+                <h2 id="dialogTitle"></h2>
+              </div>
+              <button
+                class="dialog-close dialog-close--desktop"
+                id="closeDialog"
+                type="button"
+                aria-label="Close"
+                data-close-dialog
+              >
+                ×
+              </button>
             </div>
-            <ul id="dialogIngredients" class="ingredient-list"></ul>
-          </section>
 
-          <section class="dialog-section">
-            <div class="dialog-label">Method</div>
-            <ol id="dialogSteps" class="step-list"></ol>
-          </section>
+            <div id="dialogMeta" class="dialog-meta"></div>
+
+            <section class="dialog-panel">
+              <div class="dialog-label">Curiosity</div>
+              <p id="dialogCuriosity"></p>
+            </section>
+
+            <section class="dialog-section">
+              <div class="dialog-section__header">
+                <div class="dialog-label">Ingredients</div>
+                <div id="dialogIngredientCount" class="dialog-section__count"></div>
+              </div>
+              <ul id="dialogIngredients" class="ingredient-list"></ul>
+            </section>
+
+            <section class="dialog-section">
+              <div class="dialog-label">Method</div>
+              <ol id="dialogSteps" class="step-list"></ol>
+            </section>
+          </div>
         </div>
-      </div>
       </div>
     </div>
 

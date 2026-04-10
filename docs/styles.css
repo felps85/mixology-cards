@@ -591,6 +591,10 @@ body::after {
   overflow: hidden;
 }
 
+.dialog-mobile-close {
+  display: none;
+}
+
 .drink-dialog__content {
   display: grid;
   grid-template-columns: minmax(320px, 0.84fr) minmax(0, 1.16fr);
@@ -716,6 +720,10 @@ body::after {
 .dialog-close:hover {
   border-color: rgba(216, 168, 87, 0.45);
   background: #191115;
+}
+
+.dialog-close--mobile {
+  display: none;
 }
 
 .dialog-meta {
@@ -937,20 +945,70 @@ body::after {
 
 @media (max-width: 840px) {
   .page-shell {
-    padding-top: 16px;
+    padding-top: 176px;
+  }
+
+  .topbar {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    left: 16px;
+    right: 16px;
+    z-index: 60;
   }
 
   .topbar__toolbar {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .topbar__main,
-  .topbar__controls {
+  .topbar__controls,
+  .searchDock {
     width: 100%;
   }
 
+  .topbar__main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
   .toolbarSearchUnified {
-    min-width: max-content;
+    min-width: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .search-shell {
+    min-width: 0;
+    width: 100%;
+    flex: none;
+  }
+
+  .filter-cluster {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .filter-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 11px;
+  }
+
+  .dropdown-panel {
+    left: 0 !important;
+    width: min(100%, calc(100vw - 32px)) !important;
+    max-width: min(760px, calc(100vw - 32px));
+  }
+
+  .active-filters {
+    display: none !important;
   }
 
   .buyButton {
@@ -984,9 +1042,42 @@ body::after {
   .drink-dialog__panel {
     width: calc(100vw - 18px);
     height: calc(100vh - 18px);
+    overflow-y: auto;
+  }
+
+  .dialog-mobile-close {
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px 14px 0;
+    background: linear-gradient(180deg, rgba(12, 8, 10, 0.96), rgba(12, 8, 10, 0));
+  }
+
+  .dialog-close--mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dialog-close--desktop {
+    display: none;
+  }
+
+  .drink-dialog__content {
+    display: block;
+    height: auto;
+  }
+
+  .drink-dialog__image-wrap {
+    min-height: 0;
+    height: clamp(280px, 42vh, 360px);
   }
 
   .drink-dialog__body {
+    min-height: auto;
+    overflow: visible;
     padding: 20px 18px 26px;
   }
 

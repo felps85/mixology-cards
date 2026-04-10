@@ -9,6 +9,11 @@ import {
   buildGalleryHref,
   parseGalleryQueryFromSearchParams
 } from "@/lib/gallery-query";
+import {
+  getFilterPanelWidth,
+  SUPPORT_LINK,
+  type FilterPanelKey
+} from "@/lib/ui-system";
 
 function isAlcoholIngredientName(name: string) {
   const n = name.toLowerCase();
@@ -42,8 +47,7 @@ function isAlcoholIngredientName(name: string) {
   return keywords.some((k) => n.includes(k));
 }
 
-type DropdownKey = "ingredients" | "alcohol" | "tags" | "abv";
-const SUPPORT_LINK = "https://buymeacoffee.com/agorafodeuy";
+type DropdownKey = FilterPanelKey;
 
 function FilterButton({
   label,
@@ -227,20 +231,6 @@ export function FiltersBar({
     return list.includes(slug) ? list.filter((s) => s !== slug) : [...list, slug];
   }
 
-  function panelWidthForKey(key: DropdownKey) {
-    switch (key) {
-      case "abv":
-        return 340;
-      case "tags":
-        return 520;
-      case "alcohol":
-        return 680;
-      case "ingredients":
-      default:
-        return 760;
-    }
-  }
-
   function togglePanel(key: DropdownKey) {
     if (openKey === key) {
       setOpenKey(null);
@@ -249,7 +239,7 @@ export function FiltersBar({
 
     const dockRect = dockRef.current?.getBoundingClientRect();
     const triggerRect = triggerRefs[key].current?.getBoundingClientRect();
-    const panelWidth = panelWidthForKey(key);
+    const panelWidth = getFilterPanelWidth(key);
 
     if (dockRect && triggerRect) {
       const relativeLeft = triggerRect.left - dockRect.left;
@@ -355,7 +345,7 @@ export function FiltersBar({
                 className="absolute left-0 top-[calc(100%+10px)] z-[70] max-w-[calc(100vw-32px)] rounded-[22px] border border-white/12 bg-[rgba(32,39,54,0.98)] p-4 shadow-[0_24px_54px_rgba(11,16,32,0.28)] backdrop-blur-[16px]"
                 style={{
                   left: panelLeft,
-                  width: `${panelWidthForKey(openKey)}px`
+                  width: `min(${getFilterPanelWidth(openKey)}px, calc(100vw - 32px))`
                 }}
               >
                 {openKey === "ingredients" ? (
