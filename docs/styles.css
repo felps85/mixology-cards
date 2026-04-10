@@ -92,34 +92,25 @@ body::after {
   appearance: none;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   color: #f1d38e;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.topbar__lead:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
 }
 
 .topbar__emoji {
   font-size: 18px;
   line-height: 1;
-}
-
-.topbar__title {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: white;
-}
-
-.topbar__subtitle {
-  margin-top: 4px;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(247, 237, 216, 0.7);
 }
 
 .topbar__controls {
@@ -189,10 +180,10 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 42px;
+  min-height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  padding: 7px 13px;
+  padding: 8px 16px;
   background: rgba(255, 255, 255, 0.03);
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;

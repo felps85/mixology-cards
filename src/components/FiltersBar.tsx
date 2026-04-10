@@ -70,7 +70,7 @@ function FilterButton({
       aria-expanded={open}
       aria-label={activeCount ? `${label} ${activeCount}` : label}
       className={[
-        "pointer-events-auto flex min-h-[42px] w-full items-center justify-between gap-[8px] rounded-full border px-3.5 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
+        "pointer-events-auto flex min-h-[48px] w-full items-center justify-between gap-[8px] rounded-full border px-4 py-2 text-[12px] font-medium uppercase leading-[18px] tracking-[0.12em] transition lg:w-auto lg:justify-start",
         open
           ? "border-[rgba(255,199,92,0.35)] bg-[rgba(255,199,92,0.16)] text-[#ffe4ae]"
           : activeCount
@@ -264,18 +264,10 @@ export function FiltersBar({
                 searchInputRef.current?.focus();
               }}
               aria-label="Focus drink search"
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-[rgba(255,255,255,0.04)] text-[18px]"
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-white/12 bg-[rgba(255,255,255,0.03)] text-[18px] text-[#f1d38e] transition hover:border-white/22 hover:bg-[rgba(255,255,255,0.07)]"
             >
               <span aria-hidden="true">🍸</span>
             </button>
-            <div className="hidden shrink-0 leading-none sm:block">
-              <div className="text-[13px] font-semibold tracking-[0.2em] text-white">
-                Sipsmith
-              </div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
-                Speakeasy Index
-              </div>
-            </div>
             <label className="flex min-h-[48px] min-w-0 flex-1 items-center gap-3 rounded-full border border-white/10 bg-[rgba(255,255,255,0.03)] px-4 text-white/64">
                 <input
                   ref={searchInputRef}
@@ -298,7 +290,7 @@ export function FiltersBar({
           </div>
 
           <div ref={dockRef} className="relative min-w-0 overflow-visible lg:w-auto">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-1">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:flex lg:min-w-max lg:items-center lg:gap-2">
               <div className="relative flex items-center justify-center">
                 <FilterButton
                   label="Ingredients"

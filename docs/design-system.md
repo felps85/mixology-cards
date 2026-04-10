@@ -30,6 +30,7 @@ If a component changes in one surface, the same interaction should be reflected 
   - filters sit on the second row
   - page content adds enough top padding so cards never sit under the fixed bar
   - the header mark uses a drink emoji instead of a logo asset
+  - there is no title/subtitle text in the top bar
 
 ### Filter dropdowns
 
