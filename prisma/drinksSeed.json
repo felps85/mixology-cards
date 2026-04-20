@@ -1,7 +1,7 @@
 [
   {
     "name": "Amaretto espresso martini",
-    "imagePath": "/drinks/amaretto-espresso-martini.png",
+    "imagePath": "/drinks/detail/amaretto-espresso-martini.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Amaretto espresso martini stands out for the way it brings together espresso, vodka and amaretto.",
     "tags": [
@@ -52,11 +52,12 @@
     "steps": [
       "Put two martini glasses in the fridge to chill.",
       "Pour all the ingredients into a cocktail shaker and shake until it feels icy cold in your hand. Strain into the chilled glasses to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/amaretto-espresso-martini.webp"
   },
   {
     "name": "Amaretto Sour",
-    "imagePath": "/drinks/amaretto-sour.png",
+    "imagePath": "/drinks/detail/amaretto-sour.webp",
     "frontBg": "#FFE86C",
     "curiosity": "Legend has it that Leonardo da Vinci's student Bernardino Luini was gifted a drink made from apricot kernels soaked in brandy by a young, widowed innkeeper.",
     "tags": [
@@ -107,11 +108,12 @@
     "steps": [
       "Mix all the ingredients except the ice and mix until it is pale and starting to increase in volume.",
       "If your blender is suitable for use with ice, add a few handfuls and pulse just twice more to chill the mixture. Alternatively, just stir in the ice until the outside of the jug feels cold."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/amaretto-sour.webp"
   },
   {
     "name": "Aperol & limoncello cocktail",
-    "imagePath": "/drinks/aperol-and-limoncello-cocktail.png",
+    "imagePath": "/drinks/detail/aperol-and-limoncello-cocktail.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Aperol & limoncello stands out for the way it brings together vodka, limoncello and triple sec.",
     "tags": [
@@ -175,11 +177,12 @@
     ],
     "steps": [
       "Mix together all the ingredients in a jug. Chill until ready to serve. Pour into 4 highball glasses with ice. Decorate with citrus skewers."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/aperol-and-limoncello-cocktail.webp"
   },
   {
     "name": "Aperol Spritz",
-    "imagePath": "/drinks/aperol-spritz.png",
+    "imagePath": "/drinks/detail/aperol-spritz.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "At the beginning of 1900 the Habsburg Empire used to soften Northern Italy wines, with some sparkling water. The verb used to describe it was “spritzen”.",
     "tags": [
@@ -216,11 +219,12 @@
     ],
     "steps": [
       "Put a couple of cubes of ice into 2 glasses and add a 50 ml measure of Aperol to each. Divide the prosecco between the glasses and then top up with soda, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/aperol-spritz.webp"
   },
   {
     "name": "Apple & elderflower gin cocktail",
-    "imagePath": "/drinks/apple-and-elderflower-gin-cocktail.png",
+    "imagePath": "/drinks/detail/apple-and-elderflower-gin-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "Apple & elderflower gin leans warm-weather and easygoing, with gin, elderflower cordial and apple juice doing most of the character work in the glass.",
     "tags": [
@@ -263,11 +267,12 @@
     ],
     "steps": [
       "In a jam jar, mix the gin with cordial. When ready to serve, divide the mixture between 8 glasses, top up with apple juice, apple slices and ice."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/apple-and-elderflower-gin-cocktail.webp"
   },
   {
     "name": "Apple prosecco punch",
-    "imagePath": "/drinks/apple-prosecco-punch.png",
+    "imagePath": "/drinks/detail/apple-prosecco-punch.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Apple prosecco punch stands out for the way it brings together apple juice, vodka and lemon.",
     "tags": [
@@ -332,11 +337,12 @@
     "steps": [
       "Pour the apple juice, vodka and lemon juice into a punch bowl and chill for 1-2 hrs.",
       "When you’re ready to serve add the prosecco, ice and apple and lemon slices to garnish."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/apple-prosecco-punch.webp"
   },
   {
     "name": "Apple spritz",
-    "imagePath": "/drinks/apple-spritz.png",
+    "imagePath": "/drinks/detail/apple-spritz.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Apple spritz is often remembered as much for its garnish as for the mix itself — apple slices to serve.",
     "tags": [
@@ -394,11 +400,12 @@
     "steps": [
       "Put a couple of ice cubes and two apple slices in two glasses, then divide the Aperol between them.",
       "Divide the cider and prosecco between the glasses, then top up with soda water, if you like. Stir briefly to combine, then serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/apple-spritz.webp"
   },
   {
     "name": "Appleberry mulled wine",
-    "imagePath": "/drinks/appleberry-mulled-wine.png",
+    "imagePath": "/drinks/detail/appleberry-mulled-wine.webp",
     "frontBg": "#FFE86C",
     "curiosity": "Appleberry mulled wine gives the cocktail format a colder-weather turn, with red wine, apple juice and cinnamon stick shaping the flavour more than sheer strength.",
     "tags": [
@@ -470,11 +477,12 @@
     "steps": [
       "Pour the wine and apple juice into a large saucepan and add the sugar, cinnamon stick and star anise. Heat gently, stirring once or twice, until the sugar has dissolved, then continue heating gently for another 15 minutes.",
       "Just before serving, swirl in the Curaçao or Cointreau, throw in the frozen fruits and add the apple slices."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/appleberry-mulled-wine.webp"
   },
   {
     "name": "Appletini",
-    "imagePath": "/drinks/appletini.png",
+    "imagePath": "/drinks/detail/appletini.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "This drink, originally called an Adam's Apple Martini was created in 1996 at Lola's West Hollywood restaurant. The drink Adam's Apple was advertised by Smirnoff in the July 1972 issue of Playboy on the inside front cover.",
     "tags": [
@@ -519,11 +527,12 @@
     "steps": [
       "Shake the vodka, cloudy apple juice, lemon juice and maple syrup in an ice-filled shaker until the outside of the shaker feels very cold.",
       "Strain into a martini glass and garnish with a slice of apple."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/appletini.webp"
   },
   {
     "name": "Aviation",
-    "imagePath": "/drinks/aviation.png",
+    "imagePath": "/drinks/detail/aviation.webp",
     "frontBg": "#F580FF",
     "curiosity": "Named thanks to the crème de violette giving the cocktail a pale sky-blue colour. It dates from the early age of aeronautics when air travel was a glamorous luxury that only the rich could afford.",
     "tags": [
@@ -572,11 +581,12 @@
     ],
     "steps": [
       "Mix all the ingredients into a cocktail shaker and shake well. Taste, then add a splash of chilled water to dilute, if you like. Strain into four chilled cocktail glasses and garnish with blueberries and lemon zest."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/aviation.webp"
   },
   {
     "name": "Bahama mama",
-    "imagePath": "/drinks/bahama-mama.png",
+    "imagePath": "/drinks/detail/bahama-mama.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Bahama Mama is usually treated as a midcentury Bahamas classic, and one popular origin story links its name to Nassau performer Dottie Lee Anderson, who was known on stage as 'Bahama Mama.'",
     "tags": [
@@ -648,11 +658,12 @@
     "steps": [
       "Divide the golden rum, coconut rum and all the juices between four hurricane glass. Top each drink up with ice.",
       "Stir well, then drizzle in the grenadine to create an ombre effect. Garnish each glass with a pineapple wedge and maraschino cherry."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bahama-mama.webp"
   },
   {
     "name": "Banana daiquiri",
-    "imagePath": "/drinks/banana-daiquiri.png",
+    "imagePath": "/drinks/detail/banana-daiquiri.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Banana daiquiri is often remembered as much for its garnish as for the mix itself — banana slices, lime wedges or cocktail cherries.",
     "tags": [
@@ -710,11 +721,12 @@
     "steps": [
       "Put the rum, banana liqueur, lime juice, banana and ice in a blender suitable for crushing ice, and blitz until smooth.",
       "Pour the drink into a hurricane or other tall glass, and garnish with banana slices or chips, lime wedges or cocktail cherries, if you like (we skewered two cocktail cherries and a lime wedge on a cocktail stick)."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/banana-daiquiri.webp"
   },
   {
     "name": "Bellini",
-    "imagePath": "/drinks/bellini.png",
+    "imagePath": "/drinks/detail/bellini.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "The Bellini was invented sometime between 1934 and 1948 by Giuseppe Cipriani, founder of Harry's Bar in Venice, Italy. He named the drink the Bellini because its unique pink color reminded him of the toga of a saint in a painting by 15th-century Venetian artist Giovanni Bellini.",
     "tags": [
@@ -741,11 +753,12 @@
     ],
     "steps": [
       "Put the peach puree in a Champagne flute up to about 1/3 full and slowly top up with Prosecco."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bellini.webp"
   },
   {
     "name": "Between the sheets",
-    "imagePath": "/drinks/between-the-sheets.png",
+    "imagePath": "/drinks/detail/between-the-sheets.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Between the Sheets is usually credited to Harry MacElhone at Harry’s New York Bar in Paris in the 1930s, where it emerged as a rum-and-cognac riff on the Sidecar.",
     "tags": [
@@ -802,11 +815,12 @@
     ],
     "steps": [
       "Pour the rum, cognac, triple sec and lemon juice into a cocktail shaker along with a handful of ice. Shake well, then strain into a glass (a Nick & Nora style glass is ideal). Garnish with orange peel before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/between-the-sheets.webp"
   },
   {
     "name": "Bicyclette cocktail",
-    "imagePath": "/drinks/bicyclette-cocktail.png",
+    "imagePath": "/drinks/detail/bicyclette-cocktail.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Bicyclette stands out for the way it layers the classic bitter, Campari - add wedges of lemon for a refreshing fruity hit into a more memorable serve.",
     "tags": [
@@ -850,11 +864,12 @@
     "steps": [
       "Divide the Campari between 2 wine glasses, add 2-3 ice cubes to each glass, then top with the dry white wine.",
       "Add the lemon wedges, stir to gently combine the flavours and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bicyclette-cocktail.webp"
   },
   {
     "name": "Bitter orange & cardamom martinis",
-    "imagePath": "/drinks/bitter-orange-and-cardamom-martinis.png",
+    "imagePath": "/drinks/detail/bitter-orange-and-cardamom-martinis.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Bitter orange & cardamom martinis gives the cocktail format a colder-weather turn, with cardamom pod, orange marmalade and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -913,11 +928,12 @@
       "Bash 6 cardamom pods in a pestle and mortar until they split.",
       "Melt the marmalade in a pan, then whisk in the vodka. Add the crushed pods. Don’t boil the mix, simply warm it for a few mins. Leave to infuse off the heat for 20 mins, then strain.",
       "Add the orange liqueur and lemon juice and chill (or keep in the freezer). Serve in glasses with a little more marmalade in the bottom, ice and a cardamom pod floating on top."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bitter-orange-and-cardamom-martinis.webp"
   },
   {
     "name": "Black Russian",
-    "imagePath": "/drinks/black-russian.png",
+    "imagePath": "/drinks/detail/black-russian.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "The Cold War was just starting, so creating a dark, mysterious drink by mixing Russian vodka with Coffee Liqueur was appropriate.",
     "tags": [
@@ -960,11 +976,12 @@
     ],
     "steps": [
       "Put the vodka and the coffee liqueur into a tumbler filled with ice and stir gently for 30 secs - 1min. Add the cherry and serve. Top with a splash of chilled cola if you prefer a longer drink."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/black-russian.webp"
   },
   {
     "name": "Blackberry vodka",
-    "imagePath": "/drinks/blackberry-vodka.png",
+    "imagePath": "/drinks/detail/blackberry-vodka.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Blackberry vodka doubles as a bottle-worthy homemade liqueur — once made, it keeps surprisingly well for months.",
     "tags": [
@@ -1015,11 +1032,12 @@
     "steps": [
       "Tip the blackberries, cinnamon stick, bay leaf and sugar into a large sterilised jar. Pour over the vodka, seal the jar and swirl around to dissolve the sugar. Store in a cool, dark place and turn the jar once a day for the first week.",
       "After two to three weeks, strain the vodka through a fine mesh sieve (see tip, below) and decant into bottles, then label. It will keep its colour for a few months, and will be drinkable for up to a year. Use the infused blackberries in bakes or meringue-based desserts."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/blackberry-vodka.webp"
   },
   {
     "name": "Blood beetroot cocktails",
-    "imagePath": "/drinks/blood-beetroot-cocktails.png",
+    "imagePath": "/drinks/detail/blood-beetroot-cocktails.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Blood beetroot cocktails leans into Halloween theatre with its blood-red look, making the colour as much a talking point as the flavour.",
     "tags": [
@@ -1077,11 +1095,12 @@
     "steps": [
       "First, make the beetroot lemonade. In a bowl, stir together the beetroot, lemon juice and sugar. Steep in the fridge for at least 1 hr, stirring occasionally to dissolve the sugar. Pour the mixture through a sieve into a large jug to get rid of the pulp.",
       "To make the cocktail, pour 25ml of the beetroot lemonade into each glass, followed by 50ml of Aperol and a few ice cubes. Top with Prosecco and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/blood-beetroot-cocktails.webp"
   },
   {
     "name": "Bloody Mary",
-    "imagePath": "/drinks/bloody-mary.png",
+    "imagePath": "/drinks/detail/bloody-mary.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "In 1553, Mary Tudor was crowned as the first Queen of England. Her famous religious persecutions lead to her winning the nickname of “Bloody Mary”.",
     "tags": [
@@ -1151,11 +1170,12 @@
     ],
     "steps": [
       "Put the ice in a tall glass. Stir all the ingredients together."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bloody-mary.webp"
   },
   {
     "name": "Blueberry mojito",
-    "imagePath": "/drinks/blueberry-mojito.png",
+    "imagePath": "/drinks/detail/blueberry-mojito.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Blueberry mojito stands out for the way it brings together blueberries, lemon and white rum.",
     "tags": [
@@ -1212,11 +1232,12 @@
     ],
     "steps": [
       "Put the blueberries, lemons and sugar in a jug and muddle. Bruise the mint leaves and add them to the jug with lots of ice. Pour over the rum and sparkling water and stir together."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/blueberry-mojito.webp"
   },
   {
     "name": "Bourbon cocktail",
-    "imagePath": "/drinks/bourbon-cocktail.png",
+    "imagePath": "/drinks/detail/bourbon-cocktail.webp",
     "frontBg": "#C399F9",
     "curiosity": "Bourbon stands out for the way it brings together bourbon, crème de cacao and lemon juice.",
     "tags": [
@@ -1273,11 +1294,12 @@
     ],
     "steps": [
       "Put all the ingredients in a cocktail shaker with some ice. Shake together, then pour into Martini glasses, add the zest, and serve. Alternatively, serve over ice in highball glasses."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bourbon-cocktail.webp"
   },
   {
     "name": "Bramble",
-    "imagePath": "/drinks/bramble.png",
+    "imagePath": "/drinks/detail/bramble.webp",
     "frontBg": "#F580FF",
     "curiosity": "Bramble is a refreshing gin pour built around gin, crème de mure and lemon.",
     "tags": [
@@ -1341,11 +1363,12 @@
     ],
     "steps": [
       "Shake the gin, lemon juice and sugar syrup in a cocktail shaker with a good handful of ice cubes then strain into a rocks glass full of crushed ice. Drizzle the crème de mure over the top so it ‘bleeds’ into the drink. Garnish with the lemon slice and blackberry, if using."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/bramble.webp"
   },
   {
     "name": "Caipiroska",
-    "imagePath": "/drinks/caipiroska.png",
+    "imagePath": "/drinks/detail/caipiroska.webp",
     "frontBg": "#6CFFA7",
     "curiosity": "Caipirinha is a cocktail that was born in Brazil in 1918, during the Spanish flu epidemic. Caipirinha refers to someone from the countryside, where the drink was born (Piracicaba).",
     "tags": [
@@ -1384,11 +1407,12 @@
     "steps": [
       "Cut the lime into small chunks, then put it into the bottom of a sturdy tumbler and add the golden granulated sugar. Crush really well with a pestle.",
       "Top up the tumbler with crushed ice, then add the vodka. Stir well to mix all the ingredients together, and serve"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/caipiroska.webp"
   },
   {
     "name": "Cherry sour",
-    "imagePath": "/drinks/cherry-sour.png",
+    "imagePath": "/drinks/detail/cherry-sour.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Cherry sour leans into Halloween theatre with its blood-red look, making the colour as much a talking point as the flavour.",
     "tags": [
@@ -1447,11 +1471,12 @@
       "Fill a cocktail shaker with ice, pour in the vodka and both juices, and shake for 5-10 seconds.",
       "Combine the honey with a drop of food colouring and mix together on a small plate using a cocktail stick until bright red. Dip the rims of two martini glasses into the mixture, swirling gently until coated. Turn the glasses upright again and allow the honey to drip down the sides.",
       "Shake the cocktail shaker a final time, then pour into the glasses."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/cherry-sour.webp"
   },
   {
     "name": "Chocolate orange cocktail",
-    "imagePath": "/drinks/chocolate-orange-cocktail.png",
+    "imagePath": "/drinks/detail/chocolate-orange-cocktail.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Chocolate orange gives the cocktail format a colder-weather turn, with orange, dark chocolate and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -1523,11 +1548,12 @@
     "steps": [
       "First make an orange syrup. Combine 100ml water with the golden caster sugar and the orange or clementine zest in a pan and bring to the boil. Cool and strain the syrup.",
       "Chill 4 coupé glasses, then dampen the rims with a little water and dip in the grated dark chocolate. In a cocktail shaker, shake the vodka, crème de cacao, orange syrup and orange juice with ice (you may need to make in 2 batches). Pour into the glasses."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/chocolate-orange-cocktail.webp"
   },
   {
     "name": "Claridge’s sazerac",
-    "imagePath": "/drinks/claridge-s-sazerac.png",
+    "imagePath": "/drinks/detail/claridge-s-sazerac.webp",
     "frontBg": "#C399F9",
     "curiosity": "Claridge’s version still nods to the 19th-century Sazerac of New Orleans, a drink closely associated with Peychaud’s bitters, rye whiskey and the city’s cocktail heritage.",
     "tags": [
@@ -1586,11 +1612,12 @@
       "Put a tumbler in the freezer. When it’s freezing cold, pour in the absinthe, swirl it so it thinly coats the inside of the glass, then tip it away. This is called rinsing.",
       "Stir the remaining ingredients, except the lemon peel garnish, together in a mixing glass, then strain into the prepared tumbler.",
       "Garnish with the lemon peel and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/claridge-s-sazerac.webp"
   },
   {
     "name": "Classic champagne cocktail",
-    "imagePath": "/drinks/classic-champagne-cocktail.png",
+    "imagePath": "/drinks/detail/classic-champagne-cocktail.webp",
     "frontBg": "#FFE86C",
     "curiosity": "A classic champagne cocktail gets a little table-side theatre from the sugar cube at the bottom of the flute, which helps drive the bubbles upward.",
     "tags": [
@@ -1641,11 +1668,12 @@
     "steps": [
       "Put the sugar cube on a small dish, then drizzle with the bitters, turning a few times so it’s fully coated.",
       "Drop the cube into a champagne flute, then top up with the cognac. Slowly pour over the champagne."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/classic-champagne-cocktail.webp"
   },
   {
     "name": "Clementina frizzante",
-    "imagePath": "/drinks/clementina-frizzante.png",
+    "imagePath": "/drinks/detail/clementina-frizzante.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Clementina frizzante gives the cocktail format a colder-weather turn, with clementine, campari and prosecco shaping the flavour more than sheer strength.",
     "tags": [
@@ -1690,11 +1718,12 @@
       "Pour the juice into a pan with the sugar and heat gently, stirring until the sugar has dissolved. Raise the heat and simmer vigorously for 10 mins until reduced by a third.",
       "Strain the syrup through a fine sieve and set aside to cool completely. Stir in the Campari, then put in the fridge to chill.",
       "Pour the cold syrup into coupes or flutes and top up with the prosecco."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/clementina-frizzante.webp"
   },
   {
     "name": "Coco fizz",
-    "imagePath": "/drinks/coco-fizz.png",
+    "imagePath": "/drinks/detail/coco-fizz.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Coco fizz gives the cocktail format a colder-weather turn, with rum, coconut water and lime shaping the flavour more than sheer strength.",
     "tags": [
@@ -1744,11 +1773,12 @@
     ],
     "steps": [
       "Put the coconut rum, coconut water and lime juice into a cocktail shaker, add ice and shake until the outside of the shaker is icy-cold to the touch. Strain into a chilled coupe glass, top with the Prosecco and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/coco-fizz.webp"
   },
   {
     "name": "Corpse reviver no. 2",
-    "imagePath": "/drinks/corpse-reviver-no-2.png",
+    "imagePath": "/drinks/detail/corpse-reviver-no-2.webp",
     "frontBg": "#F580FF",
     "curiosity": "Corpse reviver no. 2 is the brighter, more citrus-led relative of Corpse Reviver No. 1, with absinthe giving it its extra edge.",
     "tags": [
@@ -1827,11 +1857,12 @@
     "steps": [
       "Pour all of the ingredients into a cocktail shaker with a large handful of ice. Shake until the outside feels cold and frosty.",
       "Strain into a chilled coupe or martini glass. Garnish with a strip of orange peel."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/corpse-reviver-no-2.webp"
   },
   {
     "name": "Cosmopolitan",
-    "imagePath": "/drinks/cosmopolitan.png",
+    "imagePath": "/drinks/detail/cosmopolitan.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "The Cosmopolitan was popularised by the movie Sex and the City, since it was a favourite drink of the actors in the series.",
     "tags": [
@@ -1870,11 +1901,12 @@
     ],
     "steps": [
       "Stir the ingredients and a little ice together or put them in a cocktail shaker to combine. Strain into two chilled martini glasses."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/cosmopolitan.webp"
   },
   {
     "name": "Courgette martini",
-    "imagePath": "/drinks/courgette-martini.png",
+    "imagePath": "/drinks/detail/courgette-martini.webp",
     "frontBg": "#F580FF",
     "curiosity": "Courgette martini stands out for the way it brings together courgette, lemon and vermouth.",
     "tags": [
@@ -1939,11 +1971,12 @@
     "steps": [
       "Mix the courgette with the lemon juice and sugar and leave to steep for 1 hr. In the meantime, place a martini glass in the fridge to chill.",
       "Strain the courgette mixture through a sieve into a jug. Fill a cocktail shaker with ice then add 25ml of the courgette syrup followed by the vermouth and gin. Stir gently a few times then strain into your chilled glass. Garnish with a mint leaf and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/courgette-martini.webp"
   },
   {
     "name": "Cranberry whiskey sour",
-    "imagePath": "/drinks/cranberry-whiskey-sour.png",
+    "imagePath": "/drinks/detail/cranberry-whiskey-sour.webp",
     "frontBg": "#C399F9",
     "curiosity": "Cranberry whiskey sour gives the cocktail format a colder-weather turn, with bourbon, cranberry juice and lemon juice shaping the flavour more than sheer strength.",
     "tags": [
@@ -2000,11 +2033,12 @@
     ],
     "steps": [
       "Put all the ingredients in a cocktail shaker and shake hard until it feels cold. Strain into two short tumblers."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/cranberry-whiskey-sour.webp"
   },
   {
     "name": "Crangria",
-    "imagePath": "/drinks/crangria.png",
+    "imagePath": "/drinks/detail/crangria.webp",
     "frontBg": "#8085FF",
     "curiosity": "Crangria gives the cocktail format a colder-weather turn, with cranberry juice, pineapple juice and pineapple shaping the flavour more than sheer strength.",
     "tags": [
@@ -2069,11 +2103,12 @@
     "steps": [
       "Pour the cranberry and pineapple juice into a large pitcher along with a large handful of ice.",
       "Tip in the remaining ingredients and stir well before pouring into glasses to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/crangria.webp"
   },
   {
     "name": "Cuba Libre",
-    "imagePath": "/drinks/cuba-libre.png",
+    "imagePath": "/drinks/detail/cuba-libre.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "In 1900, a captain of the U.S. Army stationed in Havana during the Spanish-American War poured Coca-Cola and a squeeze of lime into his Bacardí and toasted his Cuban comrades by calling out in the bar, “Por Cuba Libre!”",
     "tags": [
@@ -2110,11 +2145,12 @@
     ],
     "steps": [
       "Cut ½ a lime into four small wedges. Squeeze the juice from two of the wedges into a tall glass. Drop the remaining wedges into the glass and fill with ice. Pour in the rum then fill up with cola and stir gently."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/cuba-libre.webp"
   },
   {
     "name": "Daiquiri",
-    "imagePath": "/drinks/daiquiri.png",
+    "imagePath": "/drinks/detail/daiquiri.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "It was one of the favourite drinks of writer Ernest Hemingway and President John F. Kennedy. During WW II period whiskey was rationed in US, so Daiquiri helped rum based drinks take off.",
     "tags": [
@@ -2152,11 +2188,12 @@
     ],
     "steps": [
       "Shake all the ingredients in a cocktail shaker and strain into a cocktail glass."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/daiquiri.webp"
   },
   {
     "name": "Dark & stormy coffee cocktail",
-    "imagePath": "/drinks/dark-and-stormy-coffee-cocktail.png",
+    "imagePath": "/drinks/detail/dark-and-stormy-coffee-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "This coffee-spiked serve riffs on the Dark 'n' Stormy, one of the few cocktails whose name is trademarked and strongly tied to Bermuda and Goslings rum.",
     "tags": [
@@ -2206,11 +2243,12 @@
     ],
     "steps": [
       "Fill a highball glass with ice and pour in the rum and tequila. Stir then top with ginger beer. Slowly pour in the espresso."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/dark-and-stormy-coffee-cocktail.webp"
   },
   {
     "name": "Dizzy mezcal",
-    "imagePath": "/drinks/dizzy-mezcal.png",
+    "imagePath": "/drinks/detail/dizzy-mezcal.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Dizzy mezcal stands out for the way it brings together cucumber, lemon juice and absinthe.",
     "tags": [
@@ -2268,11 +2306,12 @@
     "steps": [
       "Put the cucumber, lemon juice, agave and absinthe into the bottom of a cocktail shaker and muddle together. Add the mezcal, fill the shaker with ice and give it a good shake.",
       "Strain the drink through a fine strainer into a martini glass or coupette. Garnish with a"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/dizzy-mezcal.webp"
   },
   {
     "name": "Eastern breeze",
-    "imagePath": "/drinks/eastern-breeze.png",
+    "imagePath": "/drinks/detail/eastern-breeze.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Eastern breeze gives the cocktail format a colder-weather turn, with vodka, mint leaves and seeds shaping the flavour more than sheer strength.",
     "tags": [
@@ -2322,11 +2361,12 @@
     ],
     "steps": [
       "Fill six highball or big wine glasses with ice and divide 300ml vodka between them. Add 24 mint leaves, seeds from 1 pomegranate (about 1 heaped tsp per glass) and 600ml apple juice, then stir with a straw or chopstick to muddle."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/eastern-breeze.webp"
   },
   {
     "name": "Easy bloody mary",
-    "imagePath": "/drinks/easy-bloody-mary.png",
+    "imagePath": "/drinks/detail/easy-bloody-mary.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Easy bloody mary stands out for the way it brings together tomato juice, vodka and amontillado sherry.",
     "tags": [
@@ -2412,11 +2452,12 @@
     "steps": [
       "Put the ice in a tall glass. Pour over the tomato juice, vodka, amontillado and sherry vinegar. Stir in the celery salt, then season to taste with the Worcestershire sauce, Tabasco and lemon juice. Taste again to see if more sherry vinegar is needed.",
       "Serve with celery sticks, lemon wedges and a sprinkle of freshly ground black pepper, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/easy-bloody-mary.webp"
   },
   {
     "name": "Easy sangria",
-    "imagePath": "/drinks/easy-sangria.png",
+    "imagePath": "/drinks/detail/easy-sangria.webp",
     "frontBg": "#F999C7",
     "curiosity": "Sangria takes its name from the Spanish word for 'bloodletting' and grew out of Spain’s long tradition of wine-and-fruit punches before taking off internationally in the 20th century.",
     "tags": [
@@ -2502,11 +2543,12 @@
     "steps": [
       "Put the chopped fruit in a bowl and sprinkle over the sugar and cinnamon, then stir to coat. Cover and leave to macerate in the fridge for at least 1 hr, or ideally overnight.",
       "Fill a large jug with ice. Stir the macerated fruit mixture to ensure the sugar is dissolved, then tip into the jug with the wine and brandy. Stir, then top up with the sparkling water and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/easy-sangria.webp"
   },
   {
     "name": "Elderflower & cucumber G&Ts",
-    "imagePath": "/drinks/elderflower-and-cucumber-gandts.png",
+    "imagePath": "/drinks/detail/elderflower-and-cucumber-gandts.webp",
     "frontBg": "#F580FF",
     "curiosity": "Elderflower & cucumber G&Ts stands out for the way it brings together cucumber, elderflower cordial and gin.",
     "tags": [
@@ -2549,11 +2591,12 @@
     ],
     "steps": [
       "Peel 2 long strips from the piece of cucumber and put in a small tupperware for transporting. Grate the remaining cucumber into a sieve set over a bowl and press down on it with the back of a spoon to extract as much juice as possible. Add the elderflower cordial and gin to the cucumber juice and put in a bottle ready for travelling. At your picnic, wind the strips of cucumber around inside 2 glasses, pour in a quarter of the cucumber gin mixture, and top up with with a quarter of the bottle of tonic water to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/elderflower-and-cucumber-gandts.webp"
   },
   {
     "name": "Elderflower & herb cooler",
-    "imagePath": "/drinks/elderflower-and-herb-cooler.png",
+    "imagePath": "/drinks/detail/elderflower-and-herb-cooler.webp",
     "frontBg": "#F580FF",
     "curiosity": "Elderflower & herb cooler stands out for the way it brings together thyme sprig, rosemary and edible flower.",
     "tags": [
@@ -2618,11 +2661,12 @@
     "steps": [
       "Pop the herbs and flowers into the holes of an ice cube tray, fill with water and freeze for 2-3 hrs or until frozen solid.",
       "Pour the elderflower cordial, elderflower liqueur, gin and a large handful of ice cubes into a large jug. Stir until the outside of the jug feels cold then strain into 4 tall glasses or champagne flutes. Top with the soda and add a few more ice cubes and the floral ones too. Serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/elderflower-and-herb-cooler.webp"
   },
   {
     "name": "Electric lemonade",
-    "imagePath": "/drinks/electric-lemonade.png",
+    "imagePath": "/drinks/detail/electric-lemonade.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Electric lemonade is often remembered as much for its garnish as for the mix itself — a maraschino cherry and lemon slice to serve.",
     "tags": [
@@ -2680,11 +2724,12 @@
     "steps": [
       "Fill a tall tumbler or collins glass with ice. Pour in the vodka and lemon & lime sparkling drink, and top up with some soda water, if you like. Or, top up with a little more of the lemon & lime drink.",
       "Pour over the blue curaçao, garnish with the cherry and lemon slice, then serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/electric-lemonade.webp"
   },
   {
     "name": "Espresso eggnog martini",
-    "imagePath": "/drinks/espresso-eggnog-martini.png",
+    "imagePath": "/drinks/detail/espresso-eggnog-martini.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Espresso eggnog martini gives the cocktail format a colder-weather turn, with espresso, spiced rum and coffee liqueur shaping the flavour more than sheer strength.",
     "tags": [
@@ -2742,11 +2787,12 @@
     "steps": [
       "Put a handful of ice in a cocktail shaker . Add the espresso, rum, coffee liqueur and custard.",
       "Shake well. Pour into a martini or coupe glass. Grate over the nutmeg."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/espresso-eggnog-martini.webp"
   },
   {
     "name": "Espresso Martini",
-    "imagePath": "/drinks/espresso-martini.png",
+    "imagePath": "/drinks/detail/espresso-martini.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "It’s original name was simply vodka espresso, but it became known as a Pharmaceutical Stimulant in the late 1990s.",
     "tags": [
@@ -2796,11 +2842,12 @@
     "steps": [
       "Mix the sugar syrup in the shaker along with ice, vodka, espresso and the coffee liqueur. Shake until the outside of the cocktail shaker feels icy cold.",
       "Strain into martini chilled glasses. Garnish each one with coffee beans if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/espresso-martini.webp"
   },
   {
     "name": "Festive rum & ginger punch",
-    "imagePath": "/drinks/festive-rum-and-ginger-punch.png",
+    "imagePath": "/drinks/detail/festive-rum-and-ginger-punch.webp",
     "frontBg": "#F580FF",
     "curiosity": "Festive rum & ginger punch gives the cocktail format a colder-weather turn, with mince pie rum, dark rum and grenadine shaping the flavour more than sheer strength.",
     "tags": [
@@ -2865,11 +2912,12 @@
     "steps": [
       "Fill a large jug with ice, then tip in the mince pie or spiced rum, dark rum, grenadine, lime juice and orange slices, and mix well.",
       "Top up with the ginger beer, stir gently, and serve in ice-filled tumblers (we used star-shaped ice-cube moulds for a festive touch)."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/festive-rum-and-ginger-punch.webp"
   },
   {
     "name": "Frozen caipirinha",
-    "imagePath": "/drinks/frozen-caipirinha.png",
+    "imagePath": "/drinks/detail/frozen-caipirinha.webp",
     "frontBg": "#6CFFA7",
     "curiosity": "Even in frozen form, this drink points back to Brazil’s national cocktail: the caipirinha became so culturally central that it was later recognized as Brazilian cultural heritage.",
     "tags": [
@@ -2913,11 +2961,12 @@
     "steps": [
       "Cut each of the lime halves into four chunks. Put in a large mortar with the sugar and squish well with a pestle to break them down – they will release their juices, leaving you with a sweet lime syrup. Remove the lime peel, squeeze to release the last bits of juice, then discard. Transfer the lime syrup to a small plastic container and freeze for at least 4 hrs, ideally overnight.",
       "When you’re ready to make the cocktail, put the ice in a blender suitable for crushing ice, then add the frozen syrup and cachaça. Blend at a high speed until smooth and thick. Transfer to cocktail glasses or tumblers and serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/frozen-caipirinha.webp"
   },
   {
     "name": "Frozen margarita",
-    "imagePath": "/drinks/frozen-margarita.png",
+    "imagePath": "/drinks/detail/frozen-margarita.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Frozen margaritas became a modern bar icon after Dallas restaurateur Mariano Martinez adapted a soft-serve machine into the first frozen margarita machine in 1971.",
     "tags": [
@@ -2974,11 +3023,12 @@
     ],
     "steps": [
       "Put all the ingredients except the lime wedge in a blender and blitz until smooth. Tip into a cocktail, margarita or rocks glass, garnish and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/frozen-margarita.webp"
   },
   {
     "name": "Frozen strawberry margarita",
-    "imagePath": "/drinks/frozen-strawberry-margarita.png",
+    "imagePath": "/drinks/detail/frozen-strawberry-margarita.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Frozen strawberry margarita stands out for the way it brings together sea salt flakes, strawberries and tequila.",
     "tags": [
@@ -3029,11 +3079,12 @@
     "steps": [
       "Tip the sea salt onto a saucer. Dampen the rims of two margarita glasses, then turn the glass upside down in the salt and",
       "Add all remaining ingredients to a blender and blitz until smooth. Pour into glasses and serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/frozen-strawberry-margarita.webp"
   },
   {
     "name": "Garibaldi cocktail",
-    "imagePath": "/drinks/garibaldi-cocktail.png",
+    "imagePath": "/drinks/detail/garibaldi-cocktail.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "The Garibaldi is named after Giuseppe Garibaldi, and its classic Campari-and-orange pairing is often read as a symbol of northern and southern Italy coming together.",
     "tags": [
@@ -3076,11 +3127,12 @@
     ],
     "steps": [
       "Put a handful of ice in a highball glass, then pour over the Campari and orange juice. Stir, then garnish with the orange slice and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/garibaldi-cocktail.webp"
   },
   {
     "name": "Gibson cocktail",
-    "imagePath": "/drinks/gibson-cocktail.png",
+    "imagePath": "/drinks/detail/gibson-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "The Gibson’s identity was already being defined in print by 1908, and the cocktail became famous for swapping the martini’s olive for a pickled onion.",
     "tags": [
@@ -3125,11 +3177,12 @@
       "Start by making the garnish by charring the onions in a hot non-stick frying pan to obtain colour (about 4-5mins) then set aside to cool.",
       "Pour all of the ingredients into a mixing glass or jug, add cubed ice and stir for around 30 seconds to achieve the desired dilution. Strain into a chilled cocktail glass, or for extra flair pour it into a small glass bottle and sit it in an ice-filled tumbler to act as a mini ice bucket. Serve with a small liqueur or port glass on the side to pour it into.",
       "Thread the cooled onions onto a cocktail stick and use to garnish the drink."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/gibson-cocktail.webp"
   },
   {
     "name": "Gimlet cocktail",
-    "imagePath": "/drinks/gimlet-cocktail.png",
+    "imagePath": "/drinks/detail/gimlet-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "The Gimlet has long been linked to British naval lime rations and is often associated—though not definitively—with surgeon Sir Thomas Gimlette.",
     "tags": [
@@ -3189,11 +3242,12 @@
       "Pour 50ml of the lime syrup (see recipe, below) or cordial into a jug or tall glass and add a few ice cubes and the gin. Stir until the outside of the container feels very cold.",
       "Strain the mixture into your chilled glass and garnish with a slice of lime and an edible flower.",
       "For the homemade lime syrup, put the lime zest into a saucepan. Squeeze the juice from both limes into a measuring jug – stop when you get to about 60ml, then top it up with water so you have 100ml of liquid in total. Pour this into your pan with the caster sugar. Heat very gently, stirring occasionally just until the sugar has dissolved, but don’t let it boil. Strain the mixture into a heatproof jug and leave to cool. Makes 280-300ml. Lasts up to two weeks."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/gimlet-cocktail.webp"
   },
   {
     "name": "Gin & Tonic",
-    "imagePath": "/drinks/gin-and-tonic.png",
+    "imagePath": "/drinks/detail/gin-and-tonic.webp",
     "frontBg": "#F580FF",
     "curiosity": "Officers in India in the early 19th century mixed gin with quinine tonic to make it more palatable, and the gin and tonic was born.",
     "tags": [
@@ -3230,11 +3284,12 @@
     ],
     "steps": [
       "Mix all ingredients in a glass filled with cubed ice."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/gin-and-tonic.webp"
   },
   {
     "name": "Godfather",
-    "imagePath": "/drinks/godfather.png",
+    "imagePath": "/drinks/detail/godfather.webp",
     "frontBg": "#C399F9",
     "curiosity": "The Godfather cocktail allegedly got its name because it was a favourite of Marlon Brando, who was famous for his role as Don Corleone in The Godfather movies.",
     "tags": [
@@ -3272,11 +3327,12 @@
     "steps": [
       "Pour the whisky and amaretto into a mixing glass or jug. Add a large handful of ice, then stir with a long-handled spoon until the outside of the glass feels very cold. Taste to check the dilution, then fill a tumbler or rocks glass with ice.",
       "Strain the cocktail into the ice-filled glass. Either drop in the strip of orange peel or, to make a"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/godfather.webp"
   },
   {
     "name": "Gooseberry & elderflower fizz",
-    "imagePath": "/drinks/gooseberry-and-elderflower-fizz.png",
+    "imagePath": "/drinks/detail/gooseberry-and-elderflower-fizz.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Gooseberry & elderflower fizz stands out for the way it brings together gooseberry, lemon and elderflower cordial.",
     "tags": [
@@ -3326,11 +3382,12 @@
     ],
     "steps": [
       "Tip gooseberries and sugar into a cocktail shaker or large jam jar with a lid. Using the end of a rolling pin, mush the gooseberries and sugar together. Add lemon juice, cordial and 4 ice cubes, pop on the lid and shake well. Strain into glasses and top up with white wine, then stir before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/gooseberry-and-elderflower-fizz.webp"
   },
   {
     "name": "Grapefruit negroni",
-    "imagePath": "/drinks/grapefruit-negroni.png",
+    "imagePath": "/drinks/detail/grapefruit-negroni.webp",
     "frontBg": "#F580FF",
     "curiosity": "Grapefruit negroni leans warm-weather and easygoing, with gin, sweet vermouth and campari doing most of the character work in the glass.",
     "tags": [
@@ -3388,11 +3445,12 @@
     "steps": [
       "Pour the gin, vermouth, Campari and grapefruit juice into a cocktail shaker or jug filled with ice. Stir well until the mixture is fully combined and the outside of the shaker or jug feels cold.",
       "Strain into a tumbler filled with ice and garnish with a grapefruit wedge to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/grapefruit-negroni.webp"
   },
   {
     "name": "Grasshopper cocktail",
-    "imagePath": "/drinks/grasshopper-cocktail.png",
+    "imagePath": "/drinks/detail/grasshopper-cocktail.webp",
     "frontBg": "#8085FF",
     "curiosity": "Grasshopper earned Halloween status thanks to its bright green colour and minty, dessert-like profile.",
     "tags": [
@@ -3450,11 +3508,12 @@
     "steps": [
       "Start by making the garnish. Take a sprig of mint, strip off the leaves at the base and dip the stalk in the melted chocolate, holding the upper leaves gently. Leave to set on a plate or tray.",
       "Fill a cocktail shaker with ice then pour in the liqueurs and cream. Shake hard until the outside of the cocktail shaker is cold, then strain in to a cocktail glass or small coupe. Garnish with the chocolate-dipped sprig of mint."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/grasshopper-cocktail.webp"
   },
   {
     "name": "Hibiscus & prosecco cocktail",
-    "imagePath": "/drinks/hibiscus-and-prosecco-cocktail.png",
+    "imagePath": "/drinks/detail/hibiscus-and-prosecco-cocktail.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Hibiscus & prosecco stands out for the way it brings together vodka, ginger cordial and orange.",
     "tags": [
@@ -3519,11 +3578,12 @@
     "steps": [
       "Pour the vodka into a cocktail shaker with the ginger cordial, orange and lemon juice. Add a handful of ice and shake until the cocktail shaker is frosty.",
       "Line up 4 champagne flutes, put a hibiscus flower in each, then strain the cocktail into the glasses. Divide the prosecco between the glasses, then drop 1 tsp syrup from the hibiscus flower jar into each and allow it to sink before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/hibiscus-and-prosecco-cocktail.webp"
   },
   {
     "name": "Hugo cocktail",
-    "imagePath": "/drinks/hugo-cocktail.png",
+    "imagePath": "/drinks/detail/hugo-cocktail.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "The Hugo is a relatively young classic: it was created in South Tyrol in 2005 by bartender Roland Gruber as an alternative to the Spritz Veneziano.",
     "tags": [
@@ -3588,11 +3648,12 @@
     "steps": [
       "Gently scrunch the mint in your hands to lightly bruise it, then put in the bottom of a large wine glass. Pour over the elderflower cordial and gin and leave to infuse for 1-2 mins.",
       "Fill the glass with ice, then pour over the soda water and prosecco. Stir gently to combine. Garnish with the lime wedge and mint sprig before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/hugo-cocktail.webp"
   },
   {
     "name": "Hurricane cocktail",
-    "imagePath": "/drinks/hurricane-cocktail.png",
+    "imagePath": "/drinks/detail/hurricane-cocktail.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "The New Orleans Hurricane is closely tied to Pat O’Brien’s, where the drink is said to have been popularized in hurricane-lamp-shaped glasses during the rum-heavy 1940s.",
     "tags": [
@@ -3672,11 +3733,12 @@
       "Fill a cocktail shaker with ice then add the rums. Scoop the flesh and seeds from the passion fruit and add to the shaker along with the orange and lemon juices, sugar syrup and grenadine.",
       "Shake well until the outside of the cocktail shaker feels icy cold. Fill two hurricane glasses with fresh ice then double strain the drink into the prepared glasses.",
       "Garnish each one with an orange slice skewered onto a cocktail stick and a couple of cocktail cherries."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/hurricane-cocktail.webp"
   },
   {
     "name": "Jessica rabbit cocktail",
-    "imagePath": "/drinks/jessica-rabbit-cocktail.png",
+    "imagePath": "/drinks/detail/jessica-rabbit-cocktail.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Jessica rabbit stands out for the way it brings together strawberries, cherry tomatoes and lime juice.",
     "tags": [
@@ -3755,11 +3817,12 @@
     "steps": [
       "Put the strawberries, tomatoes, agave and lime juice in the bottom of a cocktail shaker and muddle together. Add the mezcal, tequila and pineapple juice and fill with ice.",
       "Shake hard to create a nice foam head on the drink and fine strain into a martini glass or coupette. Garnish with a mint sprig inserted into a cherry tomato."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/jessica-rabbit-cocktail.webp"
   },
   {
     "name": "Kneecapper cocktail",
-    "imagePath": "/drinks/kneecapper-cocktail.png",
+    "imagePath": "/drinks/detail/kneecapper-cocktail.webp",
     "frontBg": "#8085FF",
     "curiosity": "Kneecapper stands out for the way it brings together poitín, lemon juice and honey water.",
     "tags": [
@@ -3795,11 +3858,12 @@
     ],
     "steps": [
       "Shake all the ingredients together and double strain into a sours or cocktail glass."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/kneecapper-cocktail.webp"
   },
   {
     "name": "Lemongrass gimlet",
-    "imagePath": "/drinks/lemongrass-gimlet.png",
+    "imagePath": "/drinks/detail/lemongrass-gimlet.webp",
     "frontBg": "#F580FF",
     "curiosity": "Lemongrass gimlet stands out for the way it brings together lemongrass stalk, lime and gin.",
     "tags": [
@@ -3858,11 +3922,12 @@
       "For the sugar syrup, put the lemongrass and caster sugar in a small pan over a medium heat. Pour over 50ml water. Bring to the boil, then simmer for 5 mins until thickened slightly. Remove from the heat and leave to cool completely and infuse.",
       "Pour the cooled syrup into a cocktail shaker , including the lemongrass chunks. Add the lime juice, gin and a handful of ice. Shake until the outside of the cocktail shaker feels cold.",
       "Strain into chilled glasses filled with ice. Garnish with a lime slice."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/lemongrass-gimlet.webp"
   },
   {
     "name": "Limoncello",
-    "imagePath": "/drinks/limoncello.png",
+    "imagePath": "/drinks/detail/limoncello.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "The most plausible story states that Limoncello was created at the beginning of the 20th century by Maria Antonia Farace. The woman was the owner of a small hotel in Capri and had a garden full of lemons and oranges that she used to make Limoncello to offer her guests.",
     "tags": [
@@ -3903,11 +3968,12 @@
       "Pare the zest from all the lemons, taking care not to include any white pith. Put the zest in a large clean jar and pour over the vodka. Cover with a tightly fitting lid and leave for a week, shaking the jar each day.",
       "Put the sugar in a heatproof bowl and pour over the boiling water, stirring until the sugar has dissolved. Add the vodka and peels and leave for a further week, shaking the jar regularly.",
       "Strain into decorative bottles, adding a few strips of lemon zest to each bottle."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/limoncello.webp"
   },
   {
     "name": "Limoncello mojito",
-    "imagePath": "/drinks/limoncello-mojito.png",
+    "imagePath": "/drinks/detail/limoncello-mojito.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Limoncello mojito is often remembered as much for its garnish as for the mix itself — the remaining mint leaves to serve.",
     "tags": [
@@ -3973,11 +4039,12 @@
       "Put the lemon juice, sugar and half the mint leaves in a cocktail shaker . Bash with a cocktail muddler or the end of a rolling pin until the sugar has dissolved.",
       "Pour the rum and limoncello into the shaker and add a handful of ice. Cover with the lid and shake until the outside of the shaker feels cold.",
       "Fill two tall glasses with ice, then strain in the cocktail and top up with the soda water. Garnish with the remaining mint leaves to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/limoncello-mojito.webp"
   },
   {
     "name": "Long Island",
-    "imagePath": "/drinks/long-island.png",
+    "imagePath": "/drinks/detail/long-island.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Invented in the '70s as part of a contest at the Oak Beach Inn on Long Island. There is even a mini documentary about its origins.",
     "tags": [
@@ -4039,11 +4106,12 @@
     "steps": [
       "Mix the alcohol into a large (1.5l) jug, and add lime juice. Half fill the jug with ice, then stir until the outside feels cold.",
       "Add the cola then stir to combine. Drop in the lime wedges."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/long-island.webp"
   },
   {
     "name": "Lychee spritz",
-    "imagePath": "/drinks/lychee-spritz.png",
+    "imagePath": "/drinks/detail/lychee-spritz.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Lychee spritz leans warm-weather and easygoing, with lychee juice, rosewater and prosecco doing most of the character work in the glass.",
     "tags": [
@@ -4094,11 +4162,12 @@
     "steps": [
       "Divide the lychee juice between four champagne flutes , then add ¼ tsp rosewater to each.",
       "Divide the prosecco between the glasses, then top up with soda water. Drop a raspberry into each glass, then serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/lychee-spritz.webp"
   },
   {
     "name": "Mai Tai",
-    "imagePath": "/drinks/mai-tai.png",
+    "imagePath": "/drinks/detail/mai-tai.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "In 1944, Trader Vic, was the owner of a tiki restaurant of the same name. After the first sip, his friend exclaimed, \"mai tai-roa aé\", which in Tahitian means 'out of this world - the best!'",
     "tags": [
@@ -4160,11 +4229,12 @@
     "steps": [
       "Pour the golden rum, curacao, orgeat, lime juice and sugar syrup into a cocktail shaker with a handful of ice cubes. Shake until the outside of the shaker feels really cold.",
       "Fill a tumbler with crushed ice then strain the cocktail over it. Slowly pour the dark rum over the top so it stains the top of the drink a rusty gold."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mai-tai.webp"
   },
   {
     "name": "Mango & pineapple mojito",
-    "imagePath": "/drinks/mango-and-pineapple-mojito.png",
+    "imagePath": "/drinks/detail/mango-and-pineapple-mojito.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Mango & pineapple mojito leans warm-weather and easygoing, with pineapple, mango and limes doing most of the character work in the glass.",
     "tags": [
@@ -4242,11 +4312,12 @@
     ],
     "steps": [
       "Tip the pineapple, mango, limes and sugar into a large jug and muddle together. Bruise and add the mint leaves, then top with ice. Stir in the white rum, pineapple rum and sparkling water."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mango-and-pineapple-mojito.webp"
   },
   {
     "name": "Manhattan",
-    "imagePath": "/drinks/manhattan.png",
+    "imagePath": "/drinks/detail/manhattan.webp",
     "frontBg": "#C399F9",
     "curiosity": "According to some sources, it was created at the Manhattan Club, New York. During this era, people ordered a cocktail by the name of the club in which they first had the drink.",
     "tags": [
@@ -4296,11 +4367,12 @@
     "steps": [
       "Pour all of the ingredients into a mixing glass, add cubed ice and stir.",
       "When the desired dilution has been achieved, strain into a martini coupe."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/manhattan.webp"
   },
   {
     "name": "Margarita",
-    "imagePath": "/drinks/margarita.png",
+    "imagePath": "/drinks/detail/margarita.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "The National Margarita Day is celebrated every year on February 22nd by thousands of Americans and Mexican restaurants around the country.",
     "tags": [
@@ -4349,11 +4421,12 @@
     ],
     "steps": [
       "Put all the ingredients except the lime wedge in a blender and blitz until smooth. Tip into a cocktail, margarita or rocks glass, garnish and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/margarita.webp"
   },
   {
     "name": "Martini",
-    "imagePath": "/drinks/martini.png",
+    "imagePath": "/drinks/detail/martini.webp",
     "frontBg": "#F580FF",
     "curiosity": "Maybe it evolved from a cocktail called the Martinez served sometime in the early 1860s at the Occidental Hotel in San Francisco, which people frequented before taking the ferry to the nearby town of Martinez.",
     "tags": [
@@ -4387,11 +4460,12 @@
     "steps": [
       "Stir the vodka, dry vermouth and a little ice together or put them in a cocktail shaker to combine.",
       "Strain into a chilled martini glass. Serve with an olive on a cocktail stick or a"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/martini.webp"
   },
   {
     "name": "Marzipan old fashioned",
-    "imagePath": "/drinks/marzipan-old-fashioned.png",
+    "imagePath": "/drinks/detail/marzipan-old-fashioned.webp",
     "frontBg": "#FFE86C",
     "curiosity": "Marzipan old fashioned is often remembered as much for its garnish as for the mix itself — an orange peel twist for citrussy notes.",
     "tags": [
@@ -4456,11 +4530,12 @@
     "steps": [
       "Tip the amaretto, sugar syrup, bitters and almond essence into a cocktail mixing glass or jug. Add a few ice cubes and slowly stir with a mixing spoon until the outside of the glass feels cold. Pour in the brandy and add a few more ice cubes, then stir until just combined.",
       "Strain the drink into an ice-filled rocks glass or tumbler and garnish with an orange peel"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/marzipan-old-fashioned.webp"
   },
   {
     "name": "Mezcalita verde cocktail",
-    "imagePath": "/drinks/mezcalita-verde-cocktail.png",
+    "imagePath": "/drinks/detail/mezcalita-verde-cocktail.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Mezcalita verde stands out for the way it brings together pineapple, parsley and lime.",
     "tags": [
@@ -4525,11 +4600,12 @@
     "steps": [
       "Make the jugo verde by whizzing the pineapple, parsley, lime juice, cucumber and 200-250ml water in a blender . Add the jalapeño (the amount will depend on how spicy you’d like it) and blend. Adjust the sweetness by adding some agave syrup. Strain into a jug and chill – this makes about 800ml, use for another round of cocktails, or freeze the leftovers.",
       "Mix the mezcal with a dash of agave syrup, 50ml of the jugo verde and some ice cubes in a cocktail shaker. Shake and strain into glasses with a slice of cucumber for garnish."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mezcalita-verde-cocktail.webp"
   },
   {
     "name": "Midori sour",
-    "imagePath": "/drinks/midori-sour.png",
+    "imagePath": "/drinks/detail/midori-sour.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "The Midori Sour became a neon emblem of late-1970s and ’80s cocktail culture after Midori’s U.S. debut at New York’s Studio 54 in 1978.",
     "tags": [
@@ -4586,11 +4662,12 @@
     ],
     "steps": [
       "Fill a tumbler with ice, then pour in the Midori, vodka and citrus juices. Stir, then top up with soda water to taste. Garnish with a lime peel"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/midori-sour.webp"
   },
   {
     "name": "Mimosa",
-    "imagePath": "/drinks/mimosa.png",
+    "imagePath": "/drinks/detail/mimosa.webp",
     "frontBg": "#8085FF",
     "curiosity": "The origin story of the Mimosa is somewhat debated, most credit Frank Meier, a bartender at the Ritz Hotel in Paris, with creating the cocktail in 1925. The cocktail is named after the yellow-flowered mimosa plant, Acacia dealbata.",
     "tags": [
@@ -4617,11 +4694,12 @@
     ],
     "steps": [
       "Half-fill each of 6 glasses with champagne, then carefully pour in the orange juice until the glass is full."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mimosa.webp"
   },
   {
     "name": "Mojito",
-    "imagePath": "/drinks/mojito.png",
+    "imagePath": "/drinks/detail/mojito.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Mojito comes from mojar, Spanish for “to wet”, and mojo, a Cuban culinary preparation made from lime.",
     "tags": [
@@ -4665,11 +4743,12 @@
     "steps": [
       "Pour over the rum, stirring with a long-handled spoon. Top up with soda water, garnish with mint and serve.",
       "Muddle the lime juice, sugar and mint leaves in a small jug, crushing the mint as you go – you can use the end of a rolling pin for this. Pour into a tall glass and add a handful of ice."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mojito.webp"
   },
   {
     "name": "Moscow Mule",
-    "imagePath": "/drinks/moscow-mule.png",
+    "imagePath": "/drinks/detail/moscow-mule.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Invented in the '70s as part of a contest at the Oak Beach Inn on Long Island. There is even a mini documentary about its origins.",
     "tags": [
@@ -4718,11 +4797,12 @@
     "steps": [
       "Add the vodka and load up ¾ full with crushed ice, then fill to the top with the ginger beer and stir gently to combine.",
       "Add a few dashes of ginger bitters. Serve with a sprig of mint to garnish and the lime to squeeze over."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/moscow-mule.webp"
   },
   {
     "name": "Mrs momoiro cocktail",
-    "imagePath": "/drinks/mrs-momoiro-cocktail.png",
+    "imagePath": "/drinks/detail/mrs-momoiro-cocktail.webp",
     "frontBg": "#F999C7",
     "curiosity": "Mrs momoiro leans warm-weather and easygoing, with japanese vodka, strawberry liqueur and rosé wine doing most of the character work in the glass.",
     "tags": [
@@ -4780,11 +4860,12 @@
     "steps": [
       "Fill a wine glass with ice. Pour in the vodka, strawberry liqueur and rosé, shake over two dashes of absinthe and stir well.",
       "Stir in the strawberry slices to garnish, then serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mrs-momoiro-cocktail.webp"
   },
   {
     "name": "Mudslide",
-    "imagePath": "/drinks/mudslide.png",
+    "imagePath": "/drinks/detail/mudslide.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "The original Mudslide was allegedly invented during the 1950s at the Wreck Bar on Grand Cayman in the Cayman Islands. In its heyday the frozen drink was often made with a mix that came in a plastic bottle.",
     "tags": [
@@ -4835,11 +4916,12 @@
     "steps": [
       "Melt 30g of the chocolate and dip the rim of chilled glasses in them. Stand the glass upright and return to the fridge until you're ready to serve.",
       "Fill a cocktail shaker with all the ingredients (except the chocolate) and shake until the outside of the shaker is very cold. Put a few ice cubes in the prepared glasses, then strain in the cocktail. Finely grate over the remaining chocolate and serve with a paper straw."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mudslide.webp"
   },
   {
     "name": "Mulled gin",
-    "imagePath": "/drinks/mulled-gin.png",
+    "imagePath": "/drinks/detail/mulled-gin.webp",
     "frontBg": "#F580FF",
     "curiosity": "Mulled gin gives the cocktail format a colder-weather turn, with gin, apple juice and bay leaf shaping the flavour more than sheer strength.",
     "tags": [
@@ -4932,11 +5014,12 @@
     "steps": [
       "Divide the gin between four small heatproof glasses or teacups.",
       "Tip the apple juice into a saucepan with the rest of the ingredients. Heat gently until simmering, then strain into a jug. Pour the mulled apple juice into the glasses with the gin and stir gently to combine. Garnish each glass with a bay leaf and half a lemon slice and serve warm."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mulled-gin.webp"
   },
   {
     "name": "Mulled orange wine",
-    "imagePath": "/drinks/mulled-orange-wine.png",
+    "imagePath": "/drinks/detail/mulled-orange-wine.webp",
     "frontBg": "#F999C7",
     "curiosity": "Mulled orange wine gives the cocktail format a colder-weather turn, with wine, orange and apple shaping the flavour more than sheer strength.",
     "tags": [
@@ -5008,11 +5091,12 @@
     "steps": [
       "Tip all the ingredients into a saucepan and bring to a simmer over a medium heat.",
       "Reduce the heat and continue to simmer for 10-15 mins until the wine is infused with the spices. Serve in mugs or heatproof glasses."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mulled-orange-wine.webp"
   },
   {
     "name": "Mulled Wine",
-    "imagePath": "/drinks/mulled-wine.png",
+    "imagePath": "/drinks/detail/mulled-wine.webp",
     "frontBg": "#F999C7",
     "curiosity": "The Romans couldn’t stand the average quality wines, so they invented mulled wine as an efficient way to make unremarkable wine tastier and more aromatic.",
     "tags": [
@@ -5075,11 +5159,12 @@
     "steps": [
       "Put the muscovado sugar in a pan with 1 star anise, 1 cinnamon stick, 4 cloves and 150ml water. Bring slowly to the boil to dissolve the sugar. and rest.",
       "Add the lemon and clementines, thinly sliced, to the jug along with the Cointreau and the wine. Stir well, then cover and chill for at least 2 hrs or overnight if you can."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/mulled-wine.webp"
   },
   {
     "name": "Negroni",
-    "imagePath": "/drinks/negroni.png",
+    "imagePath": "/drinks/detail/negroni.webp",
     "frontBg": "#F580FF",
     "curiosity": "Is believed to have been invented in Florence, Italy, in a café previously called Café Casoni. Now, the supposed birthplace of the famed cocktail goes by Giacosa Café. Although the cafe has closed, you can still visit a plaque in the former birthplace of the Negroni.",
     "tags": [
@@ -5123,11 +5208,12 @@
     "steps": [
       "Pour the gin, vermouth and Campari into a mixing glass or jug with ice. Stir well until the outside of the glass feels cold.",
       "Strain into a tumbler and add 1 large ice sphere or some fresh ice, and garnish with an orange slice, using a blood orange when in season."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/negroni.webp"
   },
   {
     "name": "Non-alcoholic punch",
-    "imagePath": "/drinks/non-alcoholic-punch.png",
+    "imagePath": "/drinks/detail/non-alcoholic-punch.webp",
     "frontBg": "#8085FF",
     "curiosity": "Non-alcoholic punch proves a booze-free serve can still feel layered and bar-worthy, especially with cranberry, cranberry juice and orange juice in the mix.",
     "tags": [
@@ -5193,11 +5279,12 @@
       "Put the cranberries into a medium size, rigid freezer container, cover with water (by about 2.5cm), freeze until solid.",
       "Mix the cranberry juice in a large jug (about 1.5 litre) with the orange and lime juices.",
       "To serve, smash the sheet of frozen cranberries into shards and put in the bottom of eight highball glasses. Put a wedge of lime and orange and a mint sprig in each glass, then pour in the mixed fruit juices and top up with Appletise."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/non-alcoholic-punch.webp"
   },
   {
     "name": "Old Fashioned",
-    "imagePath": "/drinks/old-fashioned.png",
+    "imagePath": "/drinks/detail/old-fashioned.webp",
     "frontBg": "#C399F9",
     "curiosity": "The name comes from the way it is made, with people heading to cocktail bars and requesting for their drink to be created in the 'old fashioned way'.",
     "tags": [
@@ -5245,11 +5332,12 @@
     "steps": [
       "Put the sugar, bitters and water in a small tumbler. Mix until the sugar dissolves if using granulated.",
       "Fill your glass with ice and stir in the whisky. Add a splash of soda water if you like and mix. Garnish with the orange and cherry."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/old-fashioned.webp"
   },
   {
     "name": "Orange blossom Bellinis",
-    "imagePath": "/drinks/orange-blossom-bellinis.png",
+    "imagePath": "/drinks/detail/orange-blossom-bellinis.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Orange blossom Bellinis stands out for the way it brings together orange juice, orange blossom water and prosecco.",
     "tags": [
@@ -5292,11 +5380,12 @@
     ],
     "steps": [
       "Mix together orange juice and orange blossom water, then divide between 6 cocktail glasses. Top up with champagne or prosecco and serve with nibbles like olives and salted almonds."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/orange-blossom-bellinis.webp"
   },
   {
     "name": "Paloma",
-    "imagePath": "/drinks/paloma.png",
+    "imagePath": "/drinks/detail/paloma.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Some believe that it is named after La Paloma (“The Dove”), the popular folk song composed in the early 1860s.",
     "tags": [
@@ -5346,11 +5435,12 @@
     "steps": [
       "Dip the rim of the glass in water, shake off the excess, then sprinkle a spoonful of salt onto a plate and dip the glass into that to coat the rim.",
       "Fill a cocktail shaker with ice, then add all the remaining ingredients minus the soda water. Shake until the outside of the shaker feels cold, then strain into your glass. Add a few fresh ice cubes and top with soda water to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/paloma.webp"
   },
   {
     "name": "Palomezcal",
-    "imagePath": "/drinks/palomezcal.png",
+    "imagePath": "/drinks/detail/palomezcal.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Palomezcal leans warm-weather and easygoing, with lime juice, espadin mezcal and grapefruit juice doing most of the character work in the glass.",
     "tags": [
@@ -5416,11 +5506,12 @@
       "If you're choosing to salt the rim of your glass like a classic margarita, dip the rim in a saucer of lime juice, followed by a saucer of sea salt.",
       "Put all the ingredients except the soda water into a cocktail shaker, fill with ice and give it a good shake.",
       "Strain into a tall collins glass over fresh ice and top with soda water and a slice of grapefruit to garnish."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/palomezcal.webp"
   },
   {
     "name": "Passion fruit martini",
-    "imagePath": "/drinks/passion-fruit-martini.png",
+    "imagePath": "/drinks/detail/passion-fruit-martini.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Passion fruit martini is a modern London classic created by Douglas Ankrah in the early 2000s, originally under the more provocative Porn Star Martini name.",
     "tags": [
@@ -5477,11 +5568,12 @@
     ],
     "steps": [
       "Scoop the seeds from one of the passion fruits into the glass of a cocktail shaker, add the vodka, passoa, lime juice and sugar syrup. Add a handful of ice and shake well, strain into 2 martini glasses, top up with prosecco, then add half a passion fruit to each. Serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/passion-fruit-martini.webp"
   },
   {
     "name": "Passion fruit mule",
-    "imagePath": "/drinks/passion-fruit-mule.png",
+    "imagePath": "/drinks/detail/passion-fruit-mule.webp",
     "frontBg": "#F580FF",
     "curiosity": "Passion fruit mule works as a riff on a familiar classic, changing the mood with a fruit-forward twist rather than rebuilding the structure from scratch.",
     "tags": [
@@ -5539,11 +5631,12 @@
     "steps": [
       "Pour the vodka and passion fruit liqueur into a tumbler or copper cup. Add the fresh passion fruit pulp and mix to combine.",
       "Add ice to a tumbler until it is three-quarters full, then top up with the ginger beer. Stir gently. Finish with a lime wedge to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/passion-fruit-mule.webp"
   },
   {
     "name": "Peach punch",
-    "imagePath": "/drinks/peach-punch.png",
+    "imagePath": "/drinks/detail/peach-punch.webp",
     "frontBg": "#F999C7",
     "curiosity": "Peach punch leans warm-weather and easygoing, with lemon, rosé wine and schnapps doing most of the character work in the glass.",
     "tags": [
@@ -5615,11 +5708,12 @@
     "steps": [
       "Heat the sugar with the lemon zest and 100ml water until the sugar dissolves. Cool, pour into a jug and add the wine, lemon juice and schnapps.",
       "When ready to serve add plenty of ice and the fruit and top up with the soda or tonic to taste."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/peach-punch.webp"
   },
   {
     "name": "Picante",
-    "imagePath": "/drinks/picante.png",
+    "imagePath": "/drinks/detail/picante.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Picante is a modern club-era classic that evolved from a spicier Miami Margarita-style serve before settling into the now-famous Picante de la Casa format in the 2010s.",
     "tags": [
@@ -5678,11 +5772,12 @@
       "Put the tequila, coriander and chilli in a cocktail shaker , and bash with a muddler or the end of a rolling pin to release the chilli oils.",
       "Add the honey, lime juice and a handful of ice. Cover the shaker and shake until the outside feels cold.",
       "Dampen the rim of a tumbler and dip in salt. Strain in the cocktail and garnish with a slice of chilli to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/picante.webp"
   },
   {
     "name": "Pimm's",
-    "imagePath": "/drinks/pimm-s.png",
+    "imagePath": "/drinks/detail/pimm-s.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Pimm’s traces back to James Pimm’s 1820s London oyster bar, where his No. 1 Cup was first served as a house digestive before becoming a summer staple.",
     "tags": [
@@ -5718,12 +5813,13 @@
     ],
     "steps": [
       "Fill a jug with ice and pour over the Pimm’s and lemonade. Give it a good stir then add the mint, cucumber and fruit."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pimm-s.webp"
   },
   {
     "name": "Piña Colada",
     "slug": "pina-colada",
-    "imagePath": "/drinks/pi-a-colada.png",
+    "imagePath": "/drinks/detail/pi-a-colada.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "According to the legend, it was invented by a Robert Cofresí who was born rich in Puerto Rico but turned into a pirate when the state began failing in the 1800s.",
     "tags": [
@@ -5762,11 +5858,12 @@
     "steps": [
       "Pour the pineapple juice into an ice cube tray and freeze until solid.",
       "Pour the white rum into a blender. Add the coconut cream and the pineapple ice cubes and blend together. Pour into tall glasses to serve and garnish with pineapple chunks."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pi-a-colada.webp"
   },
   {
     "name": "Pink gin 75",
-    "imagePath": "/drinks/pink-gin-75.png",
+    "imagePath": "/drinks/detail/pink-gin-75.webp",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin 75 stands out for the way it brings together pink gin, raspberries and pink grapefruit juice.",
     "tags": [
@@ -5831,11 +5928,12 @@
     "steps": [
       "Tip the pink gin, raspberries, grapefruit juice and sugar syrup, if using, into a cocktail shaker along with a handful of ice. Shake until the outside of the shaker feels ice-cold.",
       "Double-strain the drink into a champagne flute or coupe glass, then top up with champagne or prosecco. Drop in a raspberry or garnish with edible flower petals."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pink-gin-75.webp"
   },
   {
     "name": "Pink gin iced tea",
-    "imagePath": "/drinks/pink-gin-iced-tea.png",
+    "imagePath": "/drinks/detail/pink-gin-iced-tea.webp",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin iced tea stands out for the way it layers spiced rum, elderflower and pink grapefruit into a more memorable serve.",
     "tags": [
@@ -5900,11 +5998,12 @@
     "steps": [
       "Brew the chamomile tea bag with 500ml boiling water, steep for 2-3 mins or following pack instructions. Remove the bag and leave to cool for 5 mins.",
       "Pour into a large jug with the pink gin, rum, elderflower cordial and juice. Add ice and stir, then add the thyme sprigs and stir again before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pink-gin-iced-tea.webp"
   },
   {
     "name": "Pink gin spritz",
-    "imagePath": "/drinks/pink-gin-spritz.png",
+    "imagePath": "/drinks/detail/pink-gin-spritz.webp",
     "frontBg": "#F580FF",
     "curiosity": "Pink gin spritz leans warm-weather and easygoing, with gin and lychee liqueur doing most of the character work in the glass.",
     "tags": [
@@ -5948,11 +6047,12 @@
     "steps": [
       "Fill a highball glass with ice.",
       "Pour over the gin and lychee liqueur, then top up with sparkling water."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pink-gin-spritz.webp"
   },
   {
     "name": "Pink negroni",
-    "imagePath": "/drinks/pink-negroni.png",
+    "imagePath": "/drinks/detail/pink-negroni.webp",
     "frontBg": "#F580FF",
     "curiosity": "Pink negroni became an easy Valentine's Day riff on the classic, turning blush-toned with pink gin and Aperol.",
     "tags": [
@@ -6003,11 +6103,12 @@
     "steps": [
       "Combine the gin, vermouth and Aperol in a tumbler along with a small handful of ice. Stir until the outside of the glass feels cold.",
       "Garnish with a grapefruit or lemon wedge, and a basil leaf, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pink-negroni.webp"
   },
   {
     "name": "Pomegranate martini mocktail",
-    "imagePath": "/drinks/pomegranate-martini-mocktail.png",
+    "imagePath": "/drinks/detail/pomegranate-martini-mocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "Pomegranate martini mocktail gives the cocktail format a colder-weather turn, with gin, pomegranate juice and orange shaping the flavour more than sheer strength.",
     "tags": [
@@ -6051,11 +6152,12 @@
     "steps": [
       "Put a handful of ice, the gin alternative, pomegranate juice and orange juice in a cocktail shaker , and shake hard until the outside of the shaker feels cold.",
       "Strain into two martini glasses and drop in the pomegranate seeds, if using, to serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/pomegranate-martini-mocktail.webp"
   },
   {
     "name": "Prosecco & elderflower cocktail",
-    "imagePath": "/drinks/prosecco-and-elderflower-cocktail.png",
+    "imagePath": "/drinks/detail/prosecco-and-elderflower-cocktail.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Prosecco & elderflower stands out for its edible flower ice cubes, leaning into a more decorative spritz style than a standard prosecco serve.",
     "tags": [
@@ -6128,11 +6230,12 @@
       "Before the Contest, freeze the 8 edible flowers in 8 ice cubes, if you like.",
       "Pour the jasmine tea into a cocktail shaker with the orange blossom honey, elderflower cordial, grapefruit juice and vodka. Add a handful of (normal) ice cubes and shake well.",
       "Strain into 4 tall glasses. Divide the Prosecco between the glasses, then add extra ice and the flowery ice cubes (if using)."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/prosecco-and-elderflower-cocktail.webp"
   },
   {
     "name": "Ramos gin fizz",
-    "imagePath": "/drinks/ramos-gin-fizz.png",
+    "imagePath": "/drinks/detail/ramos-gin-fizz.webp",
     "frontBg": "#F580FF",
     "curiosity": "Henry C. Ramos created the Ramos Gin Fizz in New Orleans in 1888, and its famously long shake once required teams of 'shaker boys' during Carnival.",
     "tags": [
@@ -6219,11 +6322,12 @@
       "Put all the ingredients, except the ice, soda water and garnish, in a cocktail shaker. Shake for 1 min until the outside of the shaker feels cold.",
       "Add a handful of ice to the shaker and shake again vigorously for 2 mins until foam begins to form – the long shake is key to a foamy finish.",
       "Fill a tall glass with ice and pour in the soda water. Strain in the cocktail, then garnish with a dried orange slice."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/ramos-gin-fizz.webp"
   },
   {
     "name": "Rhubarb & custard cocktail",
-    "imagePath": "/drinks/rhubarb-and-custard-cocktail.png",
+    "imagePath": "/drinks/detail/rhubarb-and-custard-cocktail.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Rhubarb & custard stands out for the way it layers creamy advocaat liqueur and homemade fruit syrup into a more memorable serve.",
     "tags": [
@@ -6277,11 +6381,12 @@
       "Chill 4 cocktail glasses with ice or in your freezer. Shake the vodka and 100ml of the rhubarb syrup together with ice until mixed and chilled down. Make small shreds of rhubarb using a vegetable peeler and place into iced water – this will make them curl up.",
       "In a separate jug, whisk together the advocaat and lemonade with more ice to lighten. Divide the vodka and rhubarb mixture between the glasses, straining through a small sieve to catch the ice.",
       "Carefully pour 25ml of your advocaat mixture into each glass over an upsidedown spoon (the mixture should float on the surface of the vodka syrup mixture). Drain the rhubarb shreds well and use to garnish your cocktails."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/rhubarb-and-custard-cocktail.webp"
   },
   {
     "name": "Rhubarb & elderflower gin punch",
-    "imagePath": "/drinks/rhubarb-and-elderflower-gin-punch.png",
+    "imagePath": "/drinks/detail/rhubarb-and-elderflower-gin-punch.webp",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb & elderflower gin punch is built like a crowd-pleaser, with rhubarb, lemon and london dry gin giving it most of its personality.",
     "tags": [
@@ -6374,11 +6479,12 @@
     "steps": [
       "Tip the sugar and 75ml water into a saucepan over a medium heat. Heat gently until the sugar has dissolved, then stir in the chopped rhubarb. Simmer for 15 mins until the rhubarb is soft and falling apart. Leave to cool before passing through a fine sieve , using a ladle or the back of a spoon to extract as much liquid as possible.",
       "Peel the extra stick of rhubarb into strips using a vegetable peeler . To serve, tip some ice, the mint leaves and cucumber slices into a large punch bowl or jug, then pour over the rhubarb syrup, lemon juice, gin, elderflower liqueur, elderflower cordial, prosecco and soda water. Stir well."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/rhubarb-and-elderflower-gin-punch.webp"
   },
   {
     "name": "Rhubarb fizz",
-    "imagePath": "/drinks/rhubarb-fizz.png",
+    "imagePath": "/drinks/detail/rhubarb-fizz.webp",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb fizz stands out for the way it layers a blend of sparkling wine and gin into a more memorable serve.",
     "tags": [
@@ -6450,11 +6556,12 @@
     "steps": [
       "First, make the cordial. Tip the sugar and 75ml water into a saucepan set over a medium heat. Bring to a simmer, then add the lemon zest and juice, rhubarb and ginger. Cook until the rhubarb starts to break down and collapse, about 5-10 mins. Pour into a heatproof jug through a fine mesh sieve and set aside to cool. (You will make enough cordial for two drinks.)",
       "Pour the gin into an ice-filled coupe glass, then stir in 50ml of the cordial. Top up with sparkling wine."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/rhubarb-fizz.webp"
   },
   {
     "name": "Rhubarb gin",
-    "imagePath": "/drinks/rhubarb-gin.png",
+    "imagePath": "/drinks/detail/rhubarb-gin.webp",
     "frontBg": "#F580FF",
     "curiosity": "Rhubarb gin leans warm-weather and easygoing, with rhubarb and gin doing most of the character work in the glass.",
     "tags": [
@@ -6491,11 +6598,12 @@
     "steps": [
       "Wash the rhubarb, trim the stalks and discard the base and any leaves. Cut the stalks into 3cm lengths. Put in a large jar with the sugar. Shake everything around, put the lid on and leave overnight. The sugar will draw the juice out of the rhubarb.",
       "After 24 hrs, add the gin, seal and shake everything around. Leave for about 4 weeks before drinking. You can strain the liquor off through a muslin-lined sieve and transfer to a bottle, but I often just leave the rhubarb and booze in the jar and ladle it into drinks that way. Over time the rhubarb and the gin go a much paler colour – this doesn’t look as dramatic. The upside is you that have to get through it fairly quickly!"
-    ]
+    ],
+    "imageCardPath": "/drinks/card/rhubarb-gin.webp"
   },
   {
     "name": "Rhubarb vodka",
-    "imagePath": "/drinks/rhubarb-vodka.png",
+    "imagePath": "/drinks/detail/rhubarb-vodka.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Rhubarb vodka leans warm-weather and easygoing, with rhubarb, vodka and golden granulated sugar doing most of the character work in the glass.",
     "tags": [
@@ -6539,11 +6647,12 @@
     "steps": [
       "Put the rhubarb in a 2-litre sterilised preserving jar or bottle, then pour in the vodka and sugar. Add the vanilla pod, if using.",
       "Mix until the sugar has dissolved, then seal the jar or bottle and leave to infuse in a cool, dark place for two months. Strain through a muslin cloth or fine sieve and decant into a bottle before using. Will keep in a cool, dark place for up to six months."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/rhubarb-vodka.webp"
   },
   {
     "name": "Salted caramel pecan sour",
-    "imagePath": "/drinks/salted-caramel-pecan-sour.png",
+    "imagePath": "/drinks/detail/salted-caramel-pecan-sour.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Salted caramel pecan sour gives the cocktail format a colder-weather turn, with pecan, sea salt and vodka shaping the flavour more than sheer strength.",
     "tags": [
@@ -6629,11 +6738,12 @@
     "steps": [
       "Toast the pecans in a dry saucepan for 1-2 mins, then take off the heat. Quickly add the sugar and 80ml water, stir rapidly to dissolve the sugar, add the salt, then leave the mixture to cool completely. Pour through a sieve to remove the pecans.",
       "Pour the pecan salted caramel syrup, vodka, egg whites, clementine juice and bitters into a cocktail shaker. Shake hard for 30 secs to add volume to the egg white. Add some ice and shake again for a further 15 secs, then strain into rocks or coupe glasses. Garnish each with a dehydrated orange slice and grate fresh nutmeg over, to taste. Serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/salted-caramel-pecan-sour.webp"
   },
   {
     "name": "Sangria",
-    "imagePath": "/drinks/sangria.png",
+    "imagePath": "/drinks/detail/sangria.webp",
     "frontBg": "#F999C7",
     "curiosity": "Only Spain and Portugal can officially produce and sell Sangria. Similar version might be sold, but they can not have the name “sangria” on them.",
     "tags": [
@@ -6710,11 +6820,12 @@
     "steps": [
       "Stir the chopped fruit in a bowl and sprinkle over the sugar and cinnamon. Cover and leave in the fridge for at least 1 hr, or ideally overnight.",
       "Fill a large jug with ice. Mix the wine and brandy into the jug with the bowl. Stir, then top up with the sparkling water and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sangria.webp"
   },
   {
     "name": "Scotch & soda",
-    "imagePath": "/drinks/scotch-and-soda.png",
+    "imagePath": "/drinks/detail/scotch-and-soda.webp",
     "frontBg": "#C399F9",
     "curiosity": "Scotch & soda is often remembered as much for its garnish as for the mix itself — a lemon slice to serve.",
     "tags": [
@@ -6757,11 +6868,12 @@
     ],
     "steps": [
       "Add a few ice cubes to a tumbler or highball glass, depending on preference. Add the whisky and stir to chill the glass. Top up with soda water, depending on how strong you like it. Stir briefly, add a lemon slice if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/scotch-and-soda.webp"
   },
   {
     "name": "Sex on the Beach",
-    "imagePath": "/drinks/sex-on-the-beach.png",
+    "imagePath": "/drinks/detail/sex-on-the-beach.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "A Florida bartender named it after “sex” and “the beach” which he considered to be the two main attractions of Spring Break.",
     "tags": [
@@ -6811,11 +6923,12 @@
     "steps": [
       "Fill two tall glasses with ice cubes. Pour the vodka, peach schnapps and fruit juices into a large jug and stir.",
       "Divide the mixture between the two glasses and stir gently to combine. Garnish with the cocktail cherries and orange slices."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sex-on-the-beach.webp"
   },
   {
     "name": "Shirley temple",
-    "imagePath": "/drinks/shirley-temple.png",
+    "imagePath": "/drinks/detail/shirley-temple.webp",
     "frontBg": "#F580FF",
     "curiosity": "The Shirley Temple is usually linked to Hollywood’s Chasen’s restaurant, where bartenders are said to have mixed it for the child star—who later fought commercial uses of her name.",
     "tags": [
@@ -6866,11 +6979,12 @@
     "steps": [
       "Fill a tall glass with ice, then pour in the ginger ale and lime juice.",
       "Slowly pour in the grenadine, then garnish with the maraschino cherry. Top up with more ginger ale, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/shirley-temple.webp"
   },
   {
     "name": "Sidecar",
-    "imagePath": "/drinks/sidecar.png",
+    "imagePath": "/drinks/detail/sidecar.webp",
     "frontBg": "#6CB0FF",
     "curiosity": "The invention of the drink was inspired on an American army captain in Paris during World War I and named after the motorcycle sidecar that the captain used.",
     "tags": [
@@ -6914,11 +7028,12 @@
     "steps": [
       "Put a coupe glass in the fridge to chill. Tip all of the ingredients into a cocktail shaker.",
       "Shake well, until the outside of the shaker feels cold, then strain the cocktail into the chilled glass. If the lemon juice is too sharp, add the bitters to taste."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sidecar.webp"
   },
   {
     "name": "Sloe gin cocktail",
-    "imagePath": "/drinks/sloe-gin-cocktail.png",
+    "imagePath": "/drinks/detail/sloe-gin-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "Sloe gin has been a bar-book ingredient since at least Harry Johnson’s 1900 Bartenders Manual, so even newer serves like this one lean on a much older British liqueur tradition.",
     "tags": [
@@ -6976,11 +7091,12 @@
     "steps": [
       "Start by making the juniper syrup. Put the sugar in a small saucepan , then add 100ml water and the juniper berries. Bring to the boil, then take off the heat and gently squash the berries in the liquid using a potato masher. Leave to steep until completely cold, then strain into a sterilised bottle or jar. Will keep in the fridge for up to 2 weeks.",
       "Put the sloe gin, lemon juice, gin and 2 tsp of the syrup in a cocktail shaker with a few ice cubes. Shake well and strain into a tumbler filled with crushed ice. Serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sloe-gin-cocktail.webp"
   },
   {
     "name": "Snowball cocktail",
-    "imagePath": "/drinks/snowball-cocktail.png",
+    "imagePath": "/drinks/detail/snowball-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "The Snowball dates back to the 1940s but became a full-on British Christmas icon in the 1970s, when advocaat-and-lemonade drinks turned into festive party shorthand.",
     "tags": [
@@ -7031,11 +7147,12 @@
     "steps": [
       "First make a ginger syrup. Combine 100ml water with the golden caster sugar and a handful of sliced ginger in a pan and bring to the boil. Cool the mixture and strain through a sieve.",
       "Fill a highball glass with ice and pour the advocaat and ginger syrup into a cocktail shaker . Shake well, pour into the glasses, top with Babycham and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/snowball-cocktail.webp"
   },
   {
     "name": "Sparkling mint & lemon juleps",
-    "imagePath": "/drinks/sparkling-mint-and-lemon-juleps.png",
+    "imagePath": "/drinks/detail/sparkling-mint-and-lemon-juleps.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Sparkling mint & lemon juleps stands out for the way it brings together lemon juice, wine and fresh mint.",
     "tags": [
@@ -7079,11 +7196,12 @@
     "steps": [
       "Put the sugar and lemon juice in a small pan and heat gently to dissolve the sugar. Simmer for 2 minutes to make a syrup. Remove from the heat and leave to cool. This can be made in advance and kept in the fridge for up to a week.",
       "To serve, pour the lemon syrup into 6 champagne flutes or tall glasses, top up each glass with the chilled sparkling wine, then stir quickly to mix before serving with mint sprigs tucked in the top."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sparkling-mint-and-lemon-juleps.webp"
   },
   {
     "name": "Spiced Aperol spritz",
-    "imagePath": "/drinks/spiced-aperol-spritz.png",
+    "imagePath": "/drinks/detail/spiced-aperol-spritz.webp",
     "frontBg": "#F580FF",
     "curiosity": "Spiced Aperol spritz gives the cocktail format a colder-weather turn, with aperol, prosecco and angostura bitters shaping the flavour more than sheer strength.",
     "tags": [
@@ -7140,11 +7258,12 @@
     ],
     "steps": [
       "Fill a wine glass with ice. Pour in the Aperol, prosecco and Angostura bitters, then top up with ginger beer and gently stir. Garnish with a few fresh cranberries and a rosemary sprig before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/spiced-aperol-spritz.webp"
   },
   {
     "name": "Spiced apple strudel & brandy cocktail",
-    "imagePath": "/drinks/spiced-apple-strudel-and-brandy-cocktail.png",
+    "imagePath": "/drinks/detail/spiced-apple-strudel-and-brandy-cocktail.webp",
     "frontBg": "#6CB0FF",
     "curiosity": "Spiced apple strudel & brandy stands out for the way it brings together apple juice, cinnamon stick and cognac.",
     "tags": [
@@ -7217,11 +7336,12 @@
       "Dip the rim of 4 Martini glasses in a saucer of water, then into a saucer or small dish of golden caster sugar. Pop the glasses into the fridge until ready to serve.",
       "Warm the apple juice in a small saucepan with the cinnamon stick. Bring to the boil, then turn off the heat and leave to go cold. Once cold, discard the cinnamon stick and pour into a jug.",
       "Put the Cognac, Disaronno, Madeira wine and lemon juice into a cocktail shaker with a large handful of ice. Shake together until the mixture is chilled. Strain into your glasses, top up with the spiced apple juice and serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/spiced-apple-strudel-and-brandy-cocktail.webp"
   },
   {
     "name": "Spiced clementine mulled whisky",
-    "imagePath": "/drinks/spiced-clementine-mulled-whisky.png",
+    "imagePath": "/drinks/detail/spiced-clementine-mulled-whisky.webp",
     "frontBg": "#F580FF",
     "curiosity": "Spiced clementine mulled whisky gives the cocktail format a colder-weather turn, with ginger beer, clementine juice and cinnamon sticks shaping the flavour more than sheer strength.",
     "tags": [
@@ -7286,11 +7406,12 @@
     "steps": [
       "Tip the ginger beer, clementine juice, honey, cinnamon sticks, cloves and allspice into a saucepan , and bring to a simmer over a low heat. Cook for 5 mins to warm through.",
       "Remove from the heat and stir in the whisky. Divide between four heatproof glasses or mugs, drop in a few clementine slices and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/spiced-clementine-mulled-whisky.webp"
   },
   {
     "name": "Spicy margarita",
-    "imagePath": "/drinks/spicy-margarita.png",
+    "imagePath": "/drinks/detail/spicy-margarita.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "Spicy margarita stands out for the way it brings together tequila, triple sec and chilli syrup.",
     "tags": [
@@ -7399,11 +7520,12 @@
       "For the salt rim garnish, mix all the ingredients together and tip onto a shallow plate. Brush the rims of four tumblers with a little water, then dip the rims in the chilli-salt mixture. Set aside while you make the margarita.",
       "Tip all the cocktail ingredients into a large cocktail shaker or blender and shake vigorously until the outside of the shaker feels cold, or pulse two or three times to combine. You want to chill, aerate and dilute the drink, but not completely crush the ice.",
       "Fill a large jug and the prepared tumblers with ice cubes, then strain the cocktail into the jug and stir well before pouring into the tumblers."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/spicy-margarita.webp"
   },
   {
     "name": "Strawberry daiquiri",
-    "imagePath": "/drinks/strawberry-daiquiri.png",
+    "imagePath": "/drinks/detail/strawberry-daiquiri.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Strawberry Daiquiris piggyback on the older Cuban daiquiri tradition, but the fruit-blended version really took off once bar blenders and frozen cocktails boomed in the 20th century.",
     "tags": [
@@ -7475,11 +7597,12 @@
     "steps": [
       "Blend the strawberries then push the resulting puree through a sieve to remove some of the seeds. Tip the sieved puree into the blender again and add the ice, rum, 1-2 tbsp sugar syrup depending on how sweet you like your drinks and lime juice. Blend again and divide the mixture between 2 Martini glasses.",
       "Thread the lime slices and strawberry halves onto the cocktail sticks and place onto the edge of the glass, serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/strawberry-daiquiri.webp"
   },
   {
     "name": "Summer punch",
-    "imagePath": "/drinks/summer-punch.png",
+    "imagePath": "/drinks/detail/summer-punch.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Summer punch leans warm-weather and easygoing, with lemon juice, elderflower liqueur and vodka doing most of the character work in the glass.",
     "tags": [
@@ -7557,11 +7680,12 @@
     ],
     "steps": [
       "In a bowl, mix the lemon juice and sugar until the sugar dissolves. Transfer into a large serving bowl, add the other liquid ingredients, fill to the top with ice and stir gently. Serve immediately, with herbs and lemon slices, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/summer-punch.webp"
   },
   {
     "name": "Sweet manhattan cocktail",
-    "imagePath": "/drinks/sweet-manhattan-cocktail.png",
+    "imagePath": "/drinks/detail/sweet-manhattan-cocktail.webp",
     "frontBg": "#C399F9",
     "curiosity": "Sweet manhattan stands out for the way it layers whiskey, vermouth and bitters into a more memorable serve.",
     "tags": [
@@ -7625,11 +7749,12 @@
     ],
     "steps": [
       "Stir the ingredients with ice in a mixing glass, then strain into a cocktail glass. Garnish and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/sweet-manhattan-cocktail.webp"
   },
   {
     "name": "Tequila Sunrise",
-    "imagePath": "/drinks/tequila-sunrise.png",
+    "imagePath": "/drinks/detail/tequila-sunrise.webp",
     "frontBg": "#FF6C6C",
     "curiosity": "No one knows for sure who invented the Tequila Sunrise, but it was listed in bar guides of the 1960s. The Tequila Sunrise was also featured the 1976 novel by Cyra McFaden 'The Serial.'",
     "tags": [
@@ -7678,11 +7803,12 @@
     "steps": [
       "Pour the grenadine into the base of a tall glass and set aside. Fill a cocktail shaker with ice and add the tequila, triple sec and fruit juices. Shake until the outside of the shaker feels cold.",
       "Add a few ice cubes to glass then carefully double strain the cocktail into it, trying not to disturb the grenadine layer too much."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/tequila-sunrise.webp"
   },
   {
     "name": "Toffee apple sour cocktail",
-    "imagePath": "/drinks/toffee-apple-sour-cocktail.png",
+    "imagePath": "/drinks/detail/toffee-apple-sour-cocktail.webp",
     "frontBg": "#6CB0FF",
     "curiosity": "Toffee apple sour has become a Halloween-friendly serve, picked as much for its dramatic look as for the drink itself.",
     "tags": [
@@ -7733,11 +7859,12 @@
     "steps": [
       "Put all the ingredients, except the cider, into a cocktail shaker and dry shake (no ice).",
       "Add ice to the shaker and shake again. Strain into a small wine glass and top with the Breton cider."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/toffee-apple-sour-cocktail.webp"
   },
   {
     "name": "Tom Collins",
-    "imagePath": "/drinks/tom-collins.png",
+    "imagePath": "/drinks/detail/tom-collins.webp",
     "frontBg": "#F580FF",
     "curiosity": "Named after a silly joke, a bartender created the drink, so if anyone came rushing into his bar seeking revenge and asking for Tom Collins, they would have ordered a tall gin drink instead.",
     "tags": [
@@ -7782,11 +7909,12 @@
     ],
     "steps": [
       "Build the drink over plenty of ice in a Collins glass, stir gently and garnish with a slice of lemon."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/tom-collins.webp"
   },
   {
     "name": "Vodka & cranberry blush",
-    "imagePath": "/drinks/vodka-and-cranberry-blush.png",
+    "imagePath": "/drinks/detail/vodka-and-cranberry-blush.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Vodka & cranberry blush is built like a crowd-pleaser, with vodka, cranberry juice and orange juice giving it most of its personality.",
     "tags": [
@@ -7837,11 +7965,12 @@
     "steps": [
       "Pour the vodka and Cointreau into a jug, then add the cranberry juice and orange juice. Stir well.",
       "Pare strips of peel from 2-3 limes. Fill 12 glasses with the crushed ice, then pour over the cocktail. Finish each glass with a strip of lime peel."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/vodka-and-cranberry-blush.webp"
   },
   {
     "name": "Watermelon gin spritzer",
-    "imagePath": "/drinks/watermelon-gin-spritzer.png",
+    "imagePath": "/drinks/detail/watermelon-gin-spritzer.webp",
     "frontBg": "#F580FF",
     "curiosity": "Watermelon gin spritzer leans warm-weather and easygoing, with lime, watermelon and gin doing most of the character work in the glass.",
     "tags": [
@@ -7884,11 +8013,12 @@
     ],
     "steps": [
       "Cut the limes into 16 pieces. Squeeze 2 pieces of lime into each of the 8 glasses, then drop in the squeezed flesh. Chop the watermelon and divide among the glasses, and throw in some ice cubes. Pour gin over each and top up with chilled tonic water."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/watermelon-gin-spritzer.webp"
   },
   {
     "name": "Whiskey Sour",
-    "imagePath": "/drinks/whiskey-sour.png",
+    "imagePath": "/drinks/detail/whiskey-sour.webp",
     "frontBg": "#C399F9",
     "curiosity": "For years whiskey sours were enjoyed by sailors on the sea. Once it finally made it to the shores of the United States, its popularity continued. Bartenders today often add egg white to create the classic foam texture.",
     "tags": [
@@ -7946,11 +8076,12 @@
     ],
     "steps": [
       "Shake all of the ingredients (except for the lemon zest) hard with ice and strain into an ice-filled rocks glass. Squeeze the lemon zest, shiny side down over the drink so the scented oils spray across the surface. Discard the zest, add the garnish and serve."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/whiskey-sour.webp"
   },
   {
     "name": "Whisky mac",
-    "imagePath": "/drinks/whisky-mac.png",
+    "imagePath": "/drinks/detail/whisky-mac.webp",
     "frontBg": "#C399F9",
     "curiosity": "The Whisky Mac is generally attributed to Colonel Hector 'Fighting Mac' MacDonald, who is said to have mixed Scotch with ginger wine while serving in British India.",
     "tags": [
@@ -7993,11 +8124,12 @@
     ],
     "steps": [
       "Put a few ice cubes in a rocks glass, then pour over the ginger wine and scotch. Stir gently to combine, then serve with a strip of freshly pared lemon zest."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/whisky-mac.webp"
   },
   {
     "name": "White rabbit cocktail",
-    "imagePath": "/drinks/white-rabbit-cocktail.png",
+    "imagePath": "/drinks/detail/white-rabbit-cocktail.webp",
     "frontBg": "#F580FF",
     "curiosity": "White rabbit stands out for the way it brings together gin, amaretto and double cream.",
     "tags": [
@@ -8061,11 +8193,12 @@
     ],
     "steps": [
       "Put the gin, amaretto, double cream, lemon curd and vanilla paste into a cocktail shaker with a handful of ice and shake until the outside of the shaker feels very cold. Strain into two small cocktail or coupe glasses and garnish with edible flowers before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/white-rabbit-cocktail.webp"
   },
   {
     "name": "White Russian",
-    "imagePath": "/drinks/white-russian.png",
+    "imagePath": "/drinks/detail/white-russian.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "“The Big Lebowski,” catapulted the drink to cult-classic status. The Dude, drinks eight of them throughout the course of the film.",
     "tags": [
@@ -8103,11 +8236,13 @@
     ],
     "steps": [
       "Put the vodka and the coffee liqueur into a tumbler filled with ice and stir gently for 30 secs - 1min. Add the cherry and serve. Top with a splash of chilled cola if you prefer a longer drink."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/white-russian.webp",
+    "imageSourceLowRes": true
   },
   {
     "name": "Winter spritz",
-    "imagePath": "/drinks/winter-spritz.png",
+    "imagePath": "/drinks/detail/winter-spritz.webp",
     "frontBg": "#FFE86C",
     "curiosity": "Winter spritz gives the cocktail format a colder-weather turn, with aperitif, cherry liqueur and triple sec shaping the flavour more than sheer strength.",
     "tags": [
@@ -8165,11 +8300,12 @@
     "steps": [
       "Drop an ice cube into a champagne flute , then pour in the apéritif, cherry liqueur, triple sec and maraschino cherry syrup.",
       "Top up with prosecco, then garnish with the cherry."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/winter-spritz.webp"
   },
   {
     "name": "Witch's brew",
-    "imagePath": "/drinks/witch-s-brew.png",
+    "imagePath": "/drinks/detail/witch-s-brew.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Witch's brew is built for Halloween theatrics, with a dramatic purple hue that does almost as much work as the spirit mix.",
     "tags": [
@@ -8249,11 +8385,12 @@
       "Start by making the fruit base. Pour 60ml water into a saucepan and add the caster sugar, if using (use 75ml water if not using the sugar), and tip in the berries. Cook for 3-4 mins over a medium heat until the berries have defrosted and are starting to soften, and the liquid is bubbling. Turn off the heat and leave to cool. Strain and pour into a jug.",
       "Pour the fruit base (you should have approximately 80ml) into a cocktail shaker with the vodka, raspberry liqueur, blue curaçao, lemon juice and a large handful of ice. Shake well until the outside of the shaker feels cold and frosty.",
       "Double strain into four chilled coupe or martini glasses. Sprinkle with a little edible glitter, if using, and stir. Garnish with a skewered cocktail cherry, too, if you like."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/witch-s-brew.webp"
   },
   {
     "name": "Woo woo",
-    "imagePath": "/drinks/woo-woo.png",
+    "imagePath": "/drinks/detail/woo-woo.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Woo woo keeps the playful party-cocktail energy alive — lime wedge, peach schnapps and even the option of a tiny umbrella.",
     "tags": [
@@ -8310,11 +8447,12 @@
     ],
     "steps": [
       "Fill a cocktail shaker with ice then add the vodka, peach schnapps, cranberry juice and a few drops of lime juice. Shake really well then strain into a tumbler with extra ice. Garnish with a wedge of lime."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/woo-woo.webp"
   },
   {
     "name": "Zombie cocktail",
-    "imagePath": "/drinks/zombie.png",
+    "imagePath": "/drinks/detail/zombie.webp",
     "frontBg": "#6CFFE2",
     "curiosity": "Zombie has become a Halloween-friendly serve, picked as much for its dramatic look as for the drink itself.",
     "tags": [
@@ -8394,11 +8532,12 @@
       "Pour the rums and fruit juices into a cocktail shaker filled with ice and shake hard until the outside of the shaker feels really cold.",
       "Strain the mixture into a tall glass or hurricane glass filled with ice, then slowly pour in the grenadine to colour the drink.",
       "Skewer the orange wedge and cherries on a cocktail stick. Garnish the drink with mint sprigs and the skewered fruit."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/zombie.webp"
   },
   {
     "name": "Apricot Anise Sour",
-    "imagePath": "/drinks/apricot-anise-sour.png",
+    "imagePath": "/drinks/detail/apricot-anise-sour.webp",
     "frontBg": "#FFE86C",
     "curiosity": "This sour leans into the theater of the garnish — star anise perfumes the drink before the apricot and lemon even hit your palate.",
     "tags": [
@@ -8456,11 +8595,12 @@
       "Add all ingredients to a shaker and dry shake first to build the foam.",
       "Add ice, shake again until well chilled, then fine-strain into a coupe glass.",
       "Garnish with a star anise pod and serve immediately."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/apricot-anise-sour.webp"
   },
   {
     "name": "Apricot Gin",
-    "imagePath": "/drinks/apricot-gin.png",
+    "imagePath": "/drinks/detail/apricot-gin.webp",
     "frontBg": "#FFBC6C",
     "curiosity": "Homemade apricot gin rewards patience — the best trick is to stash the bottle somewhere safe enough to forget about it for a while.",
     "tags": [
@@ -8495,11 +8635,12 @@
       "Halve the apricots, remove the stones and place the fruit in a sterilised jar with the sugar.",
       "Pour over the gin, seal, then shake until the sugar starts dissolving.",
       "Leave to infuse in a cool dark place, shaking occasionally, then strain before serving."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/apricot-gin.webp"
   },
   {
     "name": "Asian Pear Martini",
-    "imagePath": "/drinks/asian-pear-martini.png",
+    "imagePath": "/drinks/detail/asian-pear-martini.webp",
     "frontBg": "#D0FF6C",
     "curiosity": "Asian pears are often called apple pears — they stay crisp instead of going buttery-soft, which makes them great for bright, chilled cocktails.",
     "tags": [
@@ -8545,11 +8686,12 @@
       "Add the vodka, pear nectar, lemon juice and simple syrup to a shaker with ice.",
       "Shake until icy cold, then strain into a chilled martini glass.",
       "Garnish with a thin slice of Asian pear."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/asian-pear-martini.webp"
   },
   {
     "name": "Autumn Mulled Wine",
-    "imagePath": "/drinks/autumn-mulled-wine.png",
+    "imagePath": "/drinks/detail/autumn-mulled-wine.webp",
     "frontBg": "#F999C7",
     "curiosity": "Mulled wine should be warmed, not boiled — letting it simmer gently keeps the spices fragrant without driving off the good stuff.",
     "tags": [
@@ -8613,6 +8755,7 @@
       "Add the wine, cider, orange slices, spices and maple syrup to a saucepan or slow cooker.",
       "Warm gently over low heat for 20–30 minutes without letting it boil.",
       "Taste, adjust sweetness if needed, then ladle into mugs and garnish with orange."
-    ]
+    ],
+    "imageCardPath": "/drinks/card/autumn-mulled-wine.webp"
   }
 ]

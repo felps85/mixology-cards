@@ -58,17 +58,19 @@ model VerificationToken {
 }
 
 model Drink {
-  id          String  @id @default(cuid())
-  slug        String  @unique
-  name        String
-  curiosity   String
-  blurb       String?
-  imagePath   String
-  frontBg     String?
-  baseSpirit  String?
-  season      String?
-  alcoholInfo String?
-  variations  String?
+  id                 String  @id @default(cuid())
+  slug               String  @unique
+  name               String
+  curiosity          String
+  blurb              String?
+  imagePath          String
+  imageCardPath      String
+  imageSourceLowRes Boolean @default(false)
+  frontBg            String?
+  baseSpirit         String?
+  season             String?
+  alcoholInfo        String?
+  variations         String?
 
   tags        DrinkTag[]
   ingredients DrinkIngredient[]

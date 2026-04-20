@@ -1,7 +1,7 @@
 "use client";
 
 import { buildGalleryHref, type GalleryQueryState } from "@/lib/gallery-query";
-import { isLowResImage } from "@/lib/low-res-images";
+import { isLowResDrink } from "@/lib/drink-images";
 import { slugify } from "@/lib/slugify";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +12,8 @@ type ActiveDrink = {
   slug: string;
   name: string;
   imagePath: string;
+  imageCardPath: string;
+  imageSourceLowRes: boolean;
   curiosity: string;
   frontBg: string | null;
   baseSpirit: string | null;
@@ -52,7 +54,7 @@ export function GalleryDrinkPanel({
   const titleId = useId();
   const accent = drink.frontBg ?? "#FFE86C";
   const ingredientCount = drink.ingredients.length;
-  const lowRes = isLowResImage(drink.imagePath);
+  const lowRes = isLowResDrink(drink);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const mobileCloseRef = useRef<HTMLAnchorElement | null>(null);
   const desktopCloseRef = useRef<HTMLAnchorElement | null>(null);

@@ -51,6 +51,7 @@ If a component changes in one surface, the same interaction should be reflected 
   - contained foreground image
   - blurred backdrop fill
 - Pills should stay compact and readable over the overlay only
+- Ingestion and optimization rules live in `/Users/eldorado/Documents/Codex/drinks/docs/drink-image-ingestion.md`
 
 ### Fullscreen drink modal
 

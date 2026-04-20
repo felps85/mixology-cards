@@ -32,7 +32,9 @@ describe("GalleryDrinkPanel", () => {
         drink={{
           slug: "mojito",
           name: "Mojito",
-          imagePath: "/drinks/mojito.png",
+          imagePath: "/drinks/detail/mojito.webp",
+          imageCardPath: "/drinks/card/mojito.webp",
+          imageSourceLowRes: false,
           curiosity: "A classic Cuban highball.",
           frontBg: "#D8FF58",
           baseSpirit: "Rum",
@@ -74,7 +76,9 @@ describe("GalleryDrinkPanel", () => {
         drink={{
           slug: "mojito",
           name: "Mojito",
-          imagePath: "/drinks/mojito.png",
+          imagePath: "/drinks/detail/mojito.webp",
+          imageCardPath: "/drinks/card/mojito.webp",
+          imageSourceLowRes: false,
           curiosity: "A classic Cuban highball.",
           frontBg: "#D8FF58",
           baseSpirit: "Rum",

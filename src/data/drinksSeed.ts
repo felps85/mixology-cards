@@ -4,6 +4,8 @@ export type DrinksSeed = Array<{
   curiosity: string;
   blurb?: string;
   imagePath: string;
+  imageCardPath: string;
+  imageSourceLowRes?: boolean;
   frontBg?: string;
   baseSpirit?: string;
   season?: string;
@@ -23,7 +25,8 @@ export type DrinksSeed = Array<{
 export const drinksSeed: DrinksSeed = [
   {
     name: "Mojito",
-    imagePath: "/drinks/mojito.png",
+    imagePath: "/drinks/detail/mojito.webp",
+    imageCardPath: "/drinks/card/mojito.webp",
     frontBg: "#6CFFE2",
     curiosity:
       "Mojito comes from mojar, Spanish for “to wet”, and mojo, a Cuban culinary preparation made from lime.",
@@ -48,7 +51,8 @@ export const drinksSeed: DrinksSeed = [
   },
   {
     name: "Amaretto Sour",
-    imagePath: "/drinks/amaretto-sour.png",
+    imagePath: "/drinks/detail/amaretto-sour.webp",
+    imageCardPath: "/drinks/card/amaretto-sour.webp",
     frontBg: "#FFE86C",
     curiosity:
       "Legend has it that Leonardo da Vinci's student Bernardino Luini was gifted a drink made from apricot kernels soaked in brandy by a young, widowed innkeeper.",
@@ -72,7 +76,8 @@ export const drinksSeed: DrinksSeed = [
   },
   {
     name: "Gin & Tonic",
-    imagePath: "/drinks/gin-and-tonic.png",
+    imagePath: "/drinks/detail/gin-and-tonic.webp",
+    imageCardPath: "/drinks/card/gin-and-tonic.webp",
     frontBg: "#F580FF",
     curiosity:
       "Officers in India in the early 19th century mixed gin with quinine tonic to make it more palatable, and the gin and tonic was born.",

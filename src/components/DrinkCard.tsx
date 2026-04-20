@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { isLowResImage } from "@/lib/low-res-images";
+import { isLowResDrink } from "@/lib/drink-images";
 import type { GalleryDrink } from "@/lib/drinks-data";
 
 export function DrinkCard({
@@ -15,7 +15,7 @@ export function DrinkCard({
   chips: string[];
 }) {
   const accent = drink.frontBg || "#FFE86C";
-  const lowRes = isLowResImage(drink.imagePath);
+  const lowRes = isLowResDrink(drink);
 
   return (
     <Link
@@ -32,11 +32,11 @@ export function DrinkCard({
           <div
             className="absolute inset-0 scale-[1.08] bg-cover bg-center blur-2xl opacity-45"
             aria-hidden="true"
-            style={{ backgroundImage: `url(${drink.imagePath})` }}
+            style={{ backgroundImage: `url(${drink.imageCardPath})` }}
           />
         ) : null}
         <Image
-          src={drink.imagePath}
+          src={drink.imageCardPath}
           alt={drink.name}
           fill
           className={[

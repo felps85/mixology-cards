@@ -38,7 +38,10 @@ jobs:
           cp -R docs/. _site/
           cp prisma/drinksSeed.json _site/drinksSeed.json
           mkdir -p _site/drinks
-          cp -R public/drinks/. _site/drinks/
+          cp public/drinks/placeholder.svg _site/drinks/placeholder.svg
+          mkdir -p _site/drinks/card _site/drinks/detail
+          cp -R public/drinks/card/. _site/drinks/card/
+          cp -R public/drinks/detail/. _site/drinks/detail/
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3

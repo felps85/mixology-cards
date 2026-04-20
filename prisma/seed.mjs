@@ -29,6 +29,8 @@ async function main() {
       curiosity: drink.curiosity,
       blurb: drink.blurb ?? null,
       imagePath: drink.imagePath,
+      imageCardPath: drink.imageCardPath,
+      imageSourceLowRes: Boolean(drink.imageSourceLowRes),
       frontBg: drink.frontBg ?? null,
       baseSpirit: drink.baseSpirit ?? null,
       season: drink.season ?? null,

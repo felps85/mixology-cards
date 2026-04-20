@@ -9,6 +9,7 @@ type DrinkDetail = {
   curiosity: string;
   blurb?: string | null;
   imagePath: string;
+  imageCardPath?: string;
   frontBg?: string | null;
   baseSpirit?: string | null;
   season?: string | null;
@@ -86,7 +87,7 @@ export function FlipDrinkCard({ drink }: { drink: DrinkDetail }) {
 
               <div className="absolute right-[-86px] top-[94px] h-[290px] w-[290px] overflow-hidden rounded-full bg-black/10">
                 <Image
-                  src={drink.imagePath}
+                  src={drink.imageCardPath ?? drink.imagePath}
                   alt={drink.name}
                   fill
                   className="object-cover"

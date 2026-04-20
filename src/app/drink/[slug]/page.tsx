@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import Image from "next/image";
+import { isLowResDrink } from "@/lib/drink-images";
 import { slugify } from "@/lib/slugify";
 
 export const dynamic = "force-dynamic";
@@ -46,6 +47,7 @@ export default async function DrinkPage({
   }
 
   const accent = drink.frontBg || "#6CFFE2";
+  const lowRes = isLowResDrink(drink);
   const chips = [drink.baseSpirit, drink.alcoholInfo, drink.season].filter(
     Boolean
   ) as string[];
@@ -63,11 +65,18 @@ export default async function DrinkPage({
         <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
           <div className="grid lg:grid-cols-[460px_1fr]">
             <div className="relative min-h-[360px] bg-black/10">
+              {lowRes ? (
+                <div
+                  className="absolute inset-0 scale-[1.06] bg-cover bg-center blur-3xl opacity-45"
+                  aria-hidden="true"
+                  style={{ backgroundImage: `url(${drink.imagePath})` }}
+                />
+              ) : null}
               <Image
                 src={drink.imagePath}
                 alt={drink.name}
                 fill
-                className="object-cover"
+                className={lowRes ? "object-contain p-6" : "object-cover"}
                 sizes="(max-width: 1024px) 100vw, 460px"
                 priority
               />

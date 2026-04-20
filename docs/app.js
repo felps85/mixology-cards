@@ -1,11 +1,6 @@
 const DATA_URL = "./drinksSeed.json";
 const PAGES_ASSET_BASE = "./drinks";
-const RAW_PUBLIC_BASE =
-  "https://raw.githubusercontent.com/felps85/mixology-cards/main/public";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
-const LOW_RES_IMAGES = new Set([
-  "/drinks/white-russian.png",
-]);
 const FILTER_PANEL_WIDTHS = {
   ingredients: 760,
   alcohol: 680,
@@ -137,16 +132,12 @@ function isAlcoholIngredientName(name) {
   ].some((keyword) => n.includes(keyword));
 }
 
-function galleryImageSrc(path) {
-  return fullImageSrc(path);
-}
-
 function fullImageSrc(path) {
-  if (/^\/drinks\/.+\.(png|jpe?g|svg)$/i.test(path)) {
+  if (/^\/drinks\/.+\.(webp|png|jpe?g|svg)$/i.test(path)) {
     return `.${path}`;
   }
 
-  return path.startsWith("http") ? path : `${RAW_PUBLIC_BASE}${path}`;
+  return path;
 }
 
 function normalizeDrink(drink) {
@@ -178,8 +169,9 @@ function normalizeDrink(drink) {
     ingredientSlugs: ingredients.map((ingredient) => ingredient.slug),
     steps,
     abv: parseAbv(drink.alcoholInfo),
-    imageThumbUrl: galleryImageSrc(drink.imagePath),
-    imageFullUrl: fullImageSrc(drink.imagePath)
+    imageCardUrl: fullImageSrc(drink.imageCardPath ?? drink.imagePath),
+    imageFullUrl: fullImageSrc(drink.imagePath),
+    imageSourceLowRes: Boolean(drink.imageSourceLowRes)
   };
 }
 
@@ -477,11 +469,11 @@ function renderGrid(items) {
     .map((drink) => {
       const accent = drink.frontBg ?? "#dfa74f";
       const chips = [drink.baseSpirit, drink.alcoholInfo, drink.season].filter(Boolean);
-      const lowResClass = LOW_RES_IMAGES.has(drink.imagePath) ? "is-low-res" : "";
+      const lowResClass = drink.imageSourceLowRes ? "is-low-res" : "";
       return `
         <button class="drink-card ${state.selectedSlug === drink.slug ? "is-selected" : ""} ${lowResClass}" type="button" data-action="open-drink" data-slug="${drink.slug}">
-          <div class="drink-card__image-backdrop" style="background-image:url('${drink.imageThumbUrl}')"></div>
-          <img src="${drink.imageThumbUrl}" alt="${escapeHtml(
+          <div class="drink-card__image-backdrop" style="background-image:url('${drink.imageCardUrl}')"></div>
+          <img src="${drink.imageCardUrl}" alt="${escapeHtml(
             drink.name
           )}" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER_IMAGE}'" />
           <div class="drink-card__overlay" style="background:radial-gradient(circle at bottom left, ${accent}40, transparent 34%), linear-gradient(180deg, rgba(7,5,7,0) 0%, rgba(7,5,7,0.08) 18%, rgba(7,5,7,0.42) 52%, rgba(7,5,7,0.94) 100%);"></div>
@@ -521,7 +513,7 @@ function syncDialog(items) {
   const accent = drink.frontBg ?? "#FFE86C";
   dialog
     .querySelector(".drink-dialog__image-wrap")
-    ?.classList.toggle("is-low-res", LOW_RES_IMAGES.has(drink.imagePath));
+    ?.classList.toggle("is-low-res", drink.imageSourceLowRes);
   if (dialogImageBackdrop) {
     dialogImageBackdrop.style.backgroundImage = `url('${drink.imageFullUrl}')`;
   }
