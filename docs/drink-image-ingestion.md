@@ -24,8 +24,8 @@ The seed contract must be:
 ## Budgets and dimensions
 
 - Minimum source width: `1280px`
-- Card derivative: `640px` wide, WebP quality `72`, max `160 KB`
-- Detail derivative: `1280px` wide, WebP quality `80`, max `400 KB`
+- Card derivative: `960px` wide, WebP quality `88`, max `160 KB`
+- Detail derivative: `1600px` wide, WebP quality `92`, max `400 KB`
 
 ## Workflow
 

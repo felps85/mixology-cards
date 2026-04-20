@@ -11,10 +11,10 @@ const PUBLIC_DRINKS_DIR = path.join(ROOT, 'public', 'drinks');
 const CARD_DIR = path.join(PUBLIC_DRINKS_DIR, 'card');
 const DETAIL_DIR = path.join(PUBLIC_DRINKS_DIR, 'detail');
 
-const CARD_WIDTH = 640;
-const DETAIL_WIDTH = 1280;
-const CARD_QUALITY = 72;
-const DETAIL_QUALITY = 80;
+const CARD_WIDTH = 960;
+const DETAIL_WIDTH = 1600;
+const CARD_QUALITY = 88;
+const DETAIL_QUALITY = 92;
 const MIN_SOURCE_WIDTH = 1280;
 const VALID_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.avif'];
 
@@ -139,7 +139,7 @@ async function generateDerivative(sourcePath, width, quality) {
   return sharp(sourcePath)
     .rotate()
     .resize({ width, withoutEnlargement: true })
-    .webp({ quality })
+    .webp({ quality, effort: 6 })
     .toBuffer();
 }
 

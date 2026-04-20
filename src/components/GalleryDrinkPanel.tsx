@@ -133,12 +133,12 @@ export function GalleryDrinkPanel({
             src={drink.imagePath}
             alt={drink.name}
             fill
+            unoptimized
             className={[
               "object-center",
               lowRes ? "object-contain p-6" : "object-cover scale-[1.02]"
             ].join(" ")}
             sizes="(max-width: 1024px) 100vw, 36vw"
-            quality={80}
             priority
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,5,7,0.1),rgba(8,5,7,0.32)_40%,rgba(8,5,7,0.84)_100%)]" />

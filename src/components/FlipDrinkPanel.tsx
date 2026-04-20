@@ -101,6 +101,7 @@ export function FlipDrinkPanel({ drink }: { drink: DrinkDetail }) {
                     src={drink.imagePath}
                     alt={drink.name}
                     fill
+                    unoptimized
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 420px"
                     priority
@@ -182,4 +183,3 @@ export function FlipDrinkPanel({ drink }: { drink: DrinkDetail }) {
     </button>
   );
 }
-

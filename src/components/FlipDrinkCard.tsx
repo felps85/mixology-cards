@@ -90,6 +90,7 @@ export function FlipDrinkCard({ drink }: { drink: DrinkDetail }) {
                   src={drink.imageCardPath ?? drink.imagePath}
                   alt={drink.name}
                   fill
+                  unoptimized
                   className="object-cover"
                   sizes="290px"
                 />

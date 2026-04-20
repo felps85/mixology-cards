@@ -39,6 +39,7 @@ export function DrinkCard({
           src={drink.imageCardPath}
           alt={drink.name}
           fill
+          unoptimized
           className={[
             "transition duration-700",
             lowRes
@@ -46,7 +47,6 @@ export function DrinkCard({
               : "object-cover group-hover:scale-[1.08]"
           ].join(" ")}
           sizes="(max-width: 640px) 92vw, (max-width: 900px) 44vw, (max-width: 1280px) 30vw, (max-width: 1680px) 220px, 220px"
-          quality={76}
           priority={false}
         />
         <div

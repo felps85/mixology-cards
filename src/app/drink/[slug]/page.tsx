@@ -76,6 +76,7 @@ export default async function DrinkPage({
                 src={drink.imagePath}
                 alt={drink.name}
                 fill
+                unoptimized
                 className={lowRes ? "object-contain p-6" : "object-cover"}
                 sizes="(max-width: 1024px) 100vw, 460px"
                 priority
