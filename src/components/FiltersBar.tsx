@@ -135,7 +135,7 @@ function FilterTrigger({
 
 function sectionClasses(tone: "ingredients" | "alcohol" | "tags" | "abv", selected: boolean) {
   const base =
-    "rounded-full border px-3.5 py-2 text-left text-[13px] transition";
+    "w-full rounded-[18px] border px-4 py-3 text-left text-[14px] leading-[20px] transition";
 
   if (!selected) {
     return `${base} border-white/10 bg-[rgba(255,255,255,0.04)] text-white/84 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)]`;
@@ -191,7 +191,7 @@ function FilterSection({
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="grid gap-2">
         {items.map((item) => {
           const isSelected = selected.includes(item.slug);
           return (
@@ -235,7 +235,7 @@ function AbvSection({
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="grid gap-2">
         <button
           type="button"
           aria-pressed={selected === null}
