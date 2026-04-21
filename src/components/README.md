@@ -12,6 +12,7 @@ This folder has two kinds of UI pieces:
   - Mobile contract: fixed top bar with search and the icon-only filter trigger on one row
   - Desktop contract: single unified toolbar row with one tabbed filter sheet
   - Ingredient filter options are normalized through `/Users/eldorado/Documents/Codex/drinks/src/lib/ingredient-filters.ts`
+  - Category ownership and cross-category de-duplication live in `/Users/eldorado/Documents/Codex/drinks/src/lib/filter-taxonomy.ts`
 - `DrinkCard.tsx`
   - Gallery card used in the main grid
   - Handles low-resolution image fallback behavior

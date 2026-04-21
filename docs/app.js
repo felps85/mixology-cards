@@ -1,13 +1,14 @@
 const DATA_URL = "./drinksSeed.json";
 const ALIASES_URL = "./ingredientAliases.json";
+const TAXONOMY_URL = "./filterTaxonomy.json";
 const PAGES_ASSET_BASE = "./drinks";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 const FILTER_PANEL_WIDTH = 860;
 const FILTER_TABS = [
   {
-    id: "alcohol",
+    id: "spirits",
     label: "Spirits",
-    description: "Spirits, liqueurs, bitters, and wine-based ingredients."
+    description: "Spirit, liqueur, bitters, and wine-style filters from the drink cards."
   },
   {
     id: "ingredients",
@@ -53,16 +54,16 @@ const state = {
   abvMax: null,
   selectedSlug: null,
   openPanel: false,
-  activeTab: "alcohol"
+  activeTab: "spirits"
 };
 
 const store = {
   drinks: [],
   ingredients: [],
-  alcoholIngredients: [],
-  otherIngredients: [],
+  spirits: [],
   tags: [],
-  ingredientAliases: {}
+  ingredientAliases: {},
+  filterTaxonomy: null
 };
 
 function parseStateFromLocation() {
@@ -77,7 +78,7 @@ function parseStateFromLocation() {
         : null,
     selectedSlug: params.get("sel"),
     openPanel: false,
-    activeTab: "alcohol"
+    activeTab: "spirits"
   };
 }
 
@@ -116,6 +117,18 @@ function ingredientCanonicalDescriptor(name) {
   };
 }
 
+function normalizeTaxonomySlug(value) {
+  return String(value)
+    .normalize("NFD")
+    .replace(/\p{Diacritic}+/gu, "")
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "and")
+    .replace(/[’']/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
 function displayNameScore(name) {
   let score = 0;
   if (/^[A-ZÀ-ÖØ-Þ]/.test(name)) score += 3;
@@ -130,33 +143,57 @@ function parseAbv(value) {
   return nums.length ? Math.max(...nums) : null;
 }
 
-function isAlcoholIngredientName(name) {
-  const n = name.toLowerCase();
-  return [
-    "vodka",
-    "gin",
-    "rum",
-    "tequila",
-    "whisky",
-    "whiskey",
-    "bourbon",
-    "scotch",
-    "brandy",
-    "cognac",
-    "vermouth",
-    "prosecco",
-    "champagne",
-    "wine",
-    "sherry",
-    "aperol",
-    "amaretto",
-    "cointreau",
-    "triple sec",
-    "curaçao",
-    "curacao",
-    "liqueur",
-    "bitters"
-  ].some((keyword) => n.includes(keyword));
+function isSpiritTagSlug(slug) {
+  return store.filterTaxonomy?.spiritTagSlugs.has(normalizeTaxonomySlug(slug)) ?? false;
+}
+
+function isAlcoholIngredientOption(option) {
+  const taxonomy = store.filterTaxonomy;
+  if (!taxonomy) return false;
+
+  const candidates = [option.slug, option.name ?? "", ...(option.sourceSlugs ?? [])]
+    .map(normalizeTaxonomySlug)
+    .filter(Boolean);
+
+  return candidates.some((slug) => {
+    if (taxonomy.blockedAlcoholIngredientSlugs.has(slug)) {
+      return false;
+    }
+
+    const tokens = slug.split("-").filter(Boolean);
+    if (!tokens.length) return false;
+
+    if (tokens.some((token) => taxonomy.alcoholIngredientTokenSlugs.has(token))) {
+      return true;
+    }
+
+    for (let size = 2; size <= Math.min(4, tokens.length); size += 1) {
+      for (let index = 0; index <= tokens.length - size; index += 1) {
+        const phrase = tokens.slice(index, index + size).join("-");
+        if (taxonomy.alcoholIngredientPhraseSlugs.has(phrase)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  });
+}
+
+function formatFilterLabel(value) {
+  const compact = value.trim().replace(/\s+/g, " ");
+  if (!compact) return compact;
+
+  return compact
+    .toLocaleLowerCase()
+    .replace(/\b([a-zà-öø-ÿ])([a-zà-öø-ÿ'’]*)/giu, (match, first, rest, offset) => {
+      const lowerWord = `${first}${rest}`;
+      if (offset !== 0 && store.filterTaxonomy?.titleCaseLowerWords.has(lowerWord)) {
+        return lowerWord;
+      }
+
+      return `${first.toLocaleUpperCase()}${rest}`;
+    });
 }
 
 function fullImageSrc(path) {
@@ -261,7 +298,7 @@ function buildCatalog(drinks) {
       return {
         id: group.id,
         slug: group.slug,
-        name: group.name ?? displayCandidates[0]?.[0] ?? group.slug,
+        name: formatFilterLabel(group.name ?? displayCandidates[0]?.[0] ?? group.slug),
         sourceSlugs: [...group.sourceSlugs].sort()
       };
     })
@@ -282,21 +319,23 @@ function buildCatalog(drinks) {
     }))
   }));
 
-  const tags = uniqueBySlug(
+  const allTags = uniqueBySlug(
     normalizedDrinks
       .flatMap((drink) => drink.tags)
       .filter((tag) => !/\b\d+\s*%|\balcohol\b/i.test(tag.name))
+      .map((tag) => ({
+        ...tag,
+        name: formatFilterLabel(tag.name)
+      }))
       .sort((a, b) => a.name.localeCompare(b.name))
   );
 
+  const spirits = allTags.filter((tag) => isSpiritTagSlug(tag.slug) || isSpiritTagSlug(tag.name));
+  const tags = allTags.filter((tag) => !isSpiritTagSlug(tag.slug) && !isSpiritTagSlug(tag.name));
+
   store.drinks = normalizedDrinks;
-  store.ingredients = ingredients;
-  store.alcoholIngredients = ingredients.filter((item) =>
-    isAlcoholIngredientName(item.name)
-  );
-  store.otherIngredients = ingredients.filter(
-    (item) => !isAlcoholIngredientName(item.name)
-  );
+  store.ingredients = ingredients.filter((item) => !isAlcoholIngredientOption(item));
+  store.spirits = spirits;
   store.tags = tags;
 }
 
@@ -373,25 +412,17 @@ function updateFilterButtons() {
 }
 
 function selectedTabFallback() {
-  if (
-    state.ingredientSlugs.some((slug) =>
-      store.alcoholIngredients.some((item) => item.slug === slug)
-    )
-  ) {
-    return "alcohol";
+  if (state.tagSlugs.some((slug) => store.spirits.some((item) => item.slug === slug))) {
+    return "spirits";
   }
 
-  if (
-    state.ingredientSlugs.some((slug) =>
-      store.otherIngredients.some((item) => item.slug === slug)
-    )
-  ) {
+  if (state.ingredientSlugs.length) {
     return "ingredients";
   }
 
   if (state.tagSlugs.length) return "tags";
   if (state.abvMax !== null) return "abv";
-  return "alcohol";
+  return "spirits";
 }
 
 function optionClass(tone, selected) {
@@ -492,20 +523,20 @@ function renderPanel() {
   const activeTab = FILTER_TABS.find((tab) => tab.id === state.activeTab) ?? FILTER_TABS[0];
   let panelBody = "";
 
-  if (activeTab.id === "alcohol") {
+  if (activeTab.id === "spirits") {
     panelBody = renderFilterSection({
       title: activeTab.label,
       description: activeTab.description,
-      items: store.alcoholIngredients,
-      selected: state.ingredientSlugs,
-      kind: "ingredient",
-      tone: "alcohol"
+      items: store.spirits,
+      selected: state.tagSlugs,
+      kind: "tag",
+      tone: "spirits"
     });
   } else if (activeTab.id === "ingredients") {
     panelBody = renderFilterSection({
       title: activeTab.label,
       description: activeTab.description,
-      items: store.otherIngredients,
+      items: store.ingredients,
       selected: state.ingredientSlugs,
       kind: "ingredient",
       tone: "ingredients"
@@ -828,17 +859,35 @@ window.addEventListener("popstate", () => {
 async function loadDrinks() {
   try {
     grid.innerHTML = '<div class="loading">Loading drinks…</div>';
-    const [drinksResponse, aliasesResponse] = await Promise.all([
+    const [drinksResponse, aliasesResponse, taxonomyResponse] = await Promise.all([
       fetch(DATA_URL),
-      fetch(ALIASES_URL)
+      fetch(ALIASES_URL),
+      fetch(TAXONOMY_URL)
     ]);
     if (!drinksResponse.ok) throw new Error("Could not load drink data.");
     if (!aliasesResponse.ok) throw new Error("Could not load ingredient aliases.");
-    const [json, aliases] = await Promise.all([
+    if (!taxonomyResponse.ok) throw new Error("Could not load filter taxonomy.");
+    const [json, aliases, taxonomy] = await Promise.all([
       drinksResponse.json(),
-      aliasesResponse.json()
+      aliasesResponse.json(),
+      taxonomyResponse.json()
     ]);
     store.ingredientAliases = aliases;
+    store.filterTaxonomy = {
+      spiritTagSlugs: new Set((taxonomy.spiritTagSlugs ?? []).map(normalizeTaxonomySlug)),
+      blockedAlcoholIngredientSlugs: new Set(
+        (taxonomy.blockedAlcoholIngredientSlugs ?? []).map(normalizeTaxonomySlug)
+      ),
+      alcoholIngredientTokenSlugs: new Set(
+        (taxonomy.alcoholIngredientTokenSlugs ?? []).map(normalizeTaxonomySlug)
+      ),
+      alcoholIngredientPhraseSlugs: new Set(
+        (taxonomy.alcoholIngredientPhraseSlugs ?? []).map(normalizeTaxonomySlug)
+      ),
+      titleCaseLowerWords: new Set(
+        (taxonomy.titleCaseLowerWords ?? []).map((word) => String(word).toLowerCase())
+      )
+    };
     const drinks = json.map(normalizeDrink);
     buildCatalog(drinks);
     searchInput.placeholder = `Search ${store.drinks.length} drinks...`;

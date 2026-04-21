@@ -30,7 +30,7 @@ export default async function HomePage({
   const selectedSlug = galleryQuery.sel ?? "";
   const selectedAbvMax = galleryQuery.abvMax;
 
-  const [{ tags, ingredients, totalDrinks }, drinks, selectedDrink] = await Promise.all([
+  const [{ spirits, tags, ingredients, totalDrinks }, drinks, selectedDrink] = await Promise.all([
     getGalleryMetadata(),
     getFilteredDrinks(q, tagSlugs, ingredientSlugs),
     getDrinkBySlug(selectedSlug)
@@ -66,6 +66,7 @@ export default async function HomePage({
             <div className="mx-auto w-full max-w-[1680px]">
               <FiltersBar
                 q={q}
+                spirits={spirits}
                 tags={tags}
                 ingredients={ingredients}
                 selectedTagSlugs={tagSlugs}

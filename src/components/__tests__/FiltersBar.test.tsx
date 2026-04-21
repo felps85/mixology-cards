@@ -1,7 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { FiltersBar } from "@/components/FiltersBar";
-import type { Tag } from "@prisma/client";
-import type { IngredientFilterOption } from "@/lib/drinks-data";
+import type {
+  GalleryFilterOption,
+  IngredientFilterOption
+} from "@/lib/drinks-data";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, vi } from "vitest";
 
@@ -22,15 +24,18 @@ describe("FiltersBar", () => {
 
   it("renders one filter trigger and opens a tabbed filter panel", async () => {
     const user = userEvent.setup();
-    const tags: Tag[] = [{ id: "t1", name: "Summer", slug: "summer" }];
+    const spirits: GalleryFilterOption[] = [
+      { id: "s1", name: "Vodka", slug: "vodka" }
+    ];
+    const tags: GalleryFilterOption[] = [{ id: "t1", name: "Summer", slug: "summer" }];
     const ingredients: IngredientFilterOption[] = [
-      { id: "1", name: "Vodka", slug: "vodka", sourceSlugs: ["vodka"] },
       { id: "2", name: "Lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
     ];
 
     render(
       <FiltersBar
         q=""
+        spirits={spirits}
         tags={tags}
         ingredients={ingredients}
         selectedTagSlugs={[]}
@@ -47,7 +52,7 @@ describe("FiltersBar", () => {
     expect(screen.getByRole("tab", { name: "Ingredients" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Tags" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Alcohol %" })).toBeInTheDocument();
-    expect(screen.getByRole("tabpanel")).toHaveTextContent("Spirits, liqueurs, bitters, and wine-based ingredients.");
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Spirit, liqueur, bitters, and wine-style filters from the drink cards.");
     expect(screen.queryByRole("button", { name: "Lime juice" })).not.toBeInTheDocument();
   });
 
@@ -57,6 +62,7 @@ describe("FiltersBar", () => {
     render(
       <FiltersBar
         q=""
+        spirits={[]}
         tags={[]}
         ingredients={[]}
         selectedTagSlugs={[]}
@@ -75,17 +81,20 @@ describe("FiltersBar", () => {
     });
   });
 
-  it("toggles alcohol, ingredient, and tag pills from the grouped panel", async () => {
+  it("toggles spirit, ingredient, and tag rows from the grouped panel", async () => {
     const user = userEvent.setup();
-    const tags: Tag[] = [{ id: "t1", name: "Summer", slug: "summer" }];
+    const spirits: GalleryFilterOption[] = [
+      { id: "s1", name: "Vodka", slug: "vodka" }
+    ];
+    const tags: GalleryFilterOption[] = [{ id: "t1", name: "Summer", slug: "summer" }];
     const ingredients: IngredientFilterOption[] = [
-      { id: "1", name: "Vodka", slug: "vodka", sourceSlugs: ["vodka"] },
       { id: "2", name: "Lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
     ];
 
     render(
       <FiltersBar
         q=""
+        spirits={spirits}
         tags={tags}
         ingredients={ingredients}
         selectedTagSlugs={[]}
@@ -98,7 +107,7 @@ describe("FiltersBar", () => {
     await user.click(screen.getByRole("button", { name: "Vodka" }));
 
     let lastCall = replaceMock.mock.calls.at(-1)?.[0] as string;
-    expect(lastCall).toContain("ing=vodka");
+    expect(lastCall).toContain("tag=vodka");
 
     await user.click(screen.getByRole("tab", { name: "Ingredients" }));
     await user.click(screen.getByRole("button", { name: "Lime juice" }));
@@ -115,6 +124,7 @@ describe("FiltersBar", () => {
     render(
       <FiltersBar
         q="mojito"
+        spirits={[]}
         tags={[]}
         ingredients={[]}
         selectedTagSlugs={["summer", "citrus"]}
@@ -132,6 +142,7 @@ describe("FiltersBar", () => {
     render(
       <FiltersBar
         q=""
+        spirits={[]}
         tags={[]}
         ingredients={[]}
         selectedTagSlugs={["summer"]}

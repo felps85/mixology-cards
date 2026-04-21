@@ -6,6 +6,10 @@ import {
   buildIngredientDisplayMap,
   buildIngredientFilterOptions
 } from "@/lib/ingredient-filters";
+import {
+  splitIngredientFilterOptions,
+  splitTagFilterOptions
+} from "@/lib/filter-taxonomy";
 import { prisma } from "@/lib/prisma";
 
 const galleryDrinkSelect = {
@@ -69,6 +73,12 @@ export type IngredientFilterOption = ReturnType<
   typeof buildIngredientFilterOptions
 >[number];
 
+export type GalleryFilterOption = {
+  id: string;
+  slug: string;
+  name: string;
+};
+
 export type ActiveDrink = Prisma.DrinkGetPayload<{
   select: typeof activeDrinkSelect;
 }>;
@@ -130,13 +140,27 @@ const getIngredientDisplayMap = unstable_cache(
 
 export const getGalleryMetadata = unstable_cache(
   async () => {
-    const [tags, ingredients, totalDrinks] = await Promise.all([
+    const [rawTags, ingredientGroups, totalDrinks] = await Promise.all([
       prisma.tag.findMany({ orderBy: { name: "asc" } }),
       getIngredientFilterGroups(),
       prisma.drink.count()
     ]);
 
-    return { tags, ingredients, totalDrinks };
+    const { spiritTags, styleTags } = splitTagFilterOptions(
+      rawTags.map((tag) => ({
+        id: tag.id,
+        slug: tag.slug,
+        name: tag.name
+      }))
+    );
+    const { otherIngredients } = splitIngredientFilterOptions(ingredientGroups);
+
+    return {
+      spirits: spiritTags,
+      tags: styleTags,
+      ingredients: otherIngredients,
+      totalDrinks
+    };
   },
   ["gallery-metadata"],
   {

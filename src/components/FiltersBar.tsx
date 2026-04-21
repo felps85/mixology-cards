@@ -1,6 +1,5 @@
 "use client";
 
-import type { Tag } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Ref } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -8,10 +7,13 @@ import {
   buildGalleryHref,
   parseGalleryQueryFromSearchParams
 } from "@/lib/gallery-query";
-import type { IngredientFilterOption } from "@/lib/drinks-data";
+import type {
+  GalleryFilterOption,
+  IngredientFilterOption
+} from "@/lib/drinks-data";
 import { FILTER_PANEL_WIDTH, SUPPORT_LINK } from "@/lib/ui-system";
 
-type FilterTabId = "alcohol" | "ingredients" | "tags" | "abv";
+type FilterTabId = "spirits" | "ingredients" | "tags" | "abv";
 
 const FILTER_TABS: Array<{
   id: FilterTabId;
@@ -19,9 +21,9 @@ const FILTER_TABS: Array<{
   description: string;
 }> = [
   {
-    id: "alcohol",
+    id: "spirits",
     label: "Spirits",
-    description: "Spirits, liqueurs, bitters, and wine-based ingredients."
+    description: "Spirit, liqueur, bitters, and wine-style filters from the drink cards."
   },
   {
     id: "ingredients",
@@ -39,38 +41,6 @@ const FILTER_TABS: Array<{
     description: "Choose a maximum ABV in 5% increments."
   }
 ];
-
-function isAlcoholIngredientName(name: string) {
-  const n = name.toLowerCase();
-
-  const keywords = [
-    "vodka",
-    "gin",
-    "rum",
-    "tequila",
-    "whisky",
-    "whiskey",
-    "bourbon",
-    "scotch",
-    "brandy",
-    "cognac",
-    "vermouth",
-    "prosecco",
-    "champagne",
-    "wine",
-    "sherry",
-    "aperol",
-    "amaretto",
-    "cointreau",
-    "triple sec",
-    "curaçao",
-    "curacao",
-    "liqueur",
-    "bitters"
-  ];
-
-  return keywords.some((keyword) => n.includes(keyword));
-}
 
 function FilterIcon() {
   return (
@@ -133,7 +103,7 @@ function FilterTrigger({
   );
 }
 
-function sectionClasses(tone: "ingredients" | "alcohol" | "tags" | "abv", selected: boolean) {
+function sectionClasses(tone: "ingredients" | "spirits" | "tags" | "abv", selected: boolean) {
   const base =
     "w-full rounded-[18px] border px-4 py-3 text-left text-[14px] leading-[20px] transition";
 
@@ -175,7 +145,7 @@ function FilterSection({
 }: {
   title: string;
   description: string;
-  tone: "ingredients" | "alcohol" | "tags";
+  tone: "ingredients" | "spirits" | "tags";
   items: Array<{ id: string; name: string; slug: string }>;
   selected: string[];
   onToggle: (slug: string) => void;
@@ -262,6 +232,7 @@ function AbvSection({
 
 export function FiltersBar({
   q,
+  spirits,
   tags,
   ingredients,
   selectedTagSlugs,
@@ -270,7 +241,8 @@ export function FiltersBar({
   searchPlaceholder = "Search drinks…"
 }: {
   q: string;
-  tags: Tag[];
+  spirits: GalleryFilterOption[];
+  tags: GalleryFilterOption[];
   ingredients: IngredientFilterOption[];
   selectedTagSlugs: string[];
   selectedIngredientSlugs: string[];
@@ -282,7 +254,7 @@ export function FiltersBar({
   const searchParams = useSearchParams();
 
   const [panelOpen, setPanelOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<FilterTabId>("alcohol");
+  const [activeTab, setActiveTab] = useState<FilterTabId>("spirits");
   const [panelLeft, setPanelLeft] = useState(0);
   const dockRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -323,33 +295,20 @@ export function FiltersBar({
     };
   }, []);
 
-  const alcoholIngredients = ingredients.filter((ingredient) =>
-    isAlcoholIngredientName(ingredient.name)
+  const spiritSlugSet = useMemo(
+    () => new Set(spirits.map((spirit) => spirit.slug)),
+    [spirits]
   );
-  const otherIngredients = ingredients.filter(
-    (ingredient) => !isAlcoholIngredientName(ingredient.name)
-  );
-
-  const percentTagRegex = useMemo(() => /\b\d+\s*%|\bAlcohol\b/i, []);
-  const nonPercentTags = useMemo(
-    () => tags.filter((tag) => !percentTagRegex.test(tag.name)),
-    [tags, percentTagRegex]
+  const tagSlugSet = useMemo(
+    () => new Set(tags.map((tag) => tag.slug)),
+    [tags]
   );
 
-  const alcoholSlugSet = useMemo(
-    () => new Set(alcoholIngredients.map((ingredient) => ingredient.slug)),
-    [alcoholIngredients]
+  const selectedSpiritSlugs = selectedTagSlugs.filter((slug) =>
+    spiritSlugSet.has(slug)
   );
-  const otherSlugSet = useMemo(
-    () => new Set(otherIngredients.map((ingredient) => ingredient.slug)),
-    [otherIngredients]
-  );
-
-  const ingredientSlugsInAlcohol = selectedIngredientSlugs.filter((slug) =>
-    alcoholSlugSet.has(slug)
-  );
-  const ingredientSlugsInOther = selectedIngredientSlugs.filter((slug) =>
-    otherSlugSet.has(slug)
+  const selectedStyleTagSlugs = selectedTagSlugs.filter((slug) =>
+    tagSlugSet.has(slug)
   );
 
   const activeFilterCount =
@@ -358,16 +317,16 @@ export function FiltersBar({
     Number(selectedAbvMax !== null);
 
   const selectedTabFallback = useMemo<FilterTabId>(() => {
-    if (ingredientSlugsInAlcohol.length) return "alcohol";
-    if (ingredientSlugsInOther.length) return "ingredients";
-    if (selectedTagSlugs.length) return "tags";
+    if (selectedSpiritSlugs.length) return "spirits";
+    if (selectedIngredientSlugs.length) return "ingredients";
+    if (selectedStyleTagSlugs.length) return "tags";
     if (selectedAbvMax !== null) return "abv";
-    return "alcohol";
+    return "spirits";
   }, [
-    ingredientSlugsInAlcohol.length,
-    ingredientSlugsInOther.length,
+    selectedIngredientSlugs.length,
     selectedAbvMax,
-    selectedTagSlugs.length
+    selectedSpiritSlugs.length,
+    selectedStyleTagSlugs.length
   ]);
 
   function replaceUrl(next: {
@@ -531,16 +490,16 @@ export function FiltersBar({
                 aria-labelledby={`filter-tab-${activeTabConfig.id}`}
                 className="max-h-[min(68vh,640px)] overflow-auto pr-1"
               >
-                {activeTab === "alcohol" ? (
+                {activeTab === "spirits" ? (
                   <FilterSection
                     title={activeTabConfig.label}
                     description={activeTabConfig.description}
-                    tone="alcohol"
-                    items={alcoholIngredients}
-                    selected={ingredientSlugsInAlcohol}
+                    tone="spirits"
+                    items={spirits}
+                    selected={selectedSpiritSlugs}
                     onToggle={(slug) =>
                       replaceUrl({
-                        nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
+                        nextTagSlugs: toggleSlug(selectedTagSlugs, slug)
                       })
                     }
                   />
@@ -551,8 +510,8 @@ export function FiltersBar({
                     title={activeTabConfig.label}
                     description={activeTabConfig.description}
                     tone="ingredients"
-                    items={otherIngredients}
-                    selected={ingredientSlugsInOther}
+                    items={ingredients}
+                    selected={selectedIngredientSlugs}
                     onToggle={(slug) =>
                       replaceUrl({
                         nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
@@ -566,8 +525,8 @@ export function FiltersBar({
                     title={activeTabConfig.label}
                     description={activeTabConfig.description}
                     tone="tags"
-                    items={nonPercentTags}
-                    selected={selectedTagSlugs}
+                    items={tags}
+                    selected={selectedStyleTagSlugs}
                     onToggle={(slug) =>
                       replaceUrl({
                         nextTagSlugs: toggleSlug(selectedTagSlugs, slug)

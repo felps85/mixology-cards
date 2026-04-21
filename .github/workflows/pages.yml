@@ -38,6 +38,7 @@ jobs:
           cp -R docs/. _site/
           cp prisma/drinksSeed.json _site/drinksSeed.json
           cp src/data/ingredient-filter-aliases.json _site/ingredientAliases.json
+          cp src/data/filter-taxonomy.json _site/filterTaxonomy.json
           mkdir -p _site/drinks
           cp public/drinks/placeholder.svg _site/drinks/placeholder.svg
           mkdir -p _site/drinks/card _site/drinks/detail

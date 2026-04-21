@@ -42,6 +42,11 @@ assertIncludes(
 );
 assertIncludes(
   docsApp,
+  'const TAXONOMY_URL = "./filterTaxonomy.json";',
+  "Pages app is missing the shared filter taxonomy feed."
+);
+assertIncludes(
+  docsApp,
   "const FILTER_PANEL_WIDTH = 860;",
   "Pages app is missing the unified filter panel width."
 );
