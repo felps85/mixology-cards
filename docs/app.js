@@ -1,7 +1,30 @@
 const DATA_URL = "./drinksSeed.json";
+const ALIASES_URL = "./ingredientAliases.json";
 const PAGES_ASSET_BASE = "./drinks";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
 const FILTER_PANEL_WIDTH = 860;
+const FILTER_TABS = [
+  {
+    id: "alcohol",
+    label: "Spirits",
+    description: "Spirits, liqueurs, bitters, and wine-based ingredients."
+  },
+  {
+    id: "ingredients",
+    label: "Ingredients",
+    description: "Non-alcohol ingredients used in the drinks."
+  },
+  {
+    id: "tags",
+    label: "Tags",
+    description: "Flavor, season, and style tags from the drink cards."
+  },
+  {
+    id: "abv",
+    label: "Alcohol %",
+    description: "Choose a maximum ABV in 5% increments."
+  }
+];
 
 const searchInput = document.getElementById("searchInput");
 const searchDock = document.getElementById("searchDock");
@@ -29,7 +52,8 @@ const state = {
   tagSlugs: [],
   abvMax: null,
   selectedSlug: null,
-  openPanel: false
+  openPanel: false,
+  activeTab: "alcohol"
 };
 
 const store = {
@@ -37,7 +61,8 @@ const store = {
   ingredients: [],
   alcoholIngredients: [],
   otherIngredients: [],
-  tags: []
+  tags: [],
+  ingredientAliases: {}
 };
 
 function parseStateFromLocation() {
@@ -51,7 +76,8 @@ function parseStateFromLocation() {
         ? Number(params.get("abvMax"))
         : null,
     selectedSlug: params.get("sel"),
-    openPanel: false
+    openPanel: false,
+    activeTab: "alcohol"
   };
 }
 
@@ -77,6 +103,17 @@ function slugify(input) {
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
+}
+
+function ingredientCanonicalDescriptor(name) {
+  const raw = name.trim();
+  const lower = raw.toLowerCase();
+  const alias = store.ingredientAliases[lower];
+
+  return {
+    key: alias ? alias.toLowerCase() : lower,
+    aliasDisplay: alias ?? null
+  };
 }
 
 function parseAbv(value) {
@@ -149,6 +186,13 @@ function normalizeDrink(drink) {
     tagSlugs: tags.map((tag) => tag.slug),
     ingredients,
     ingredientSlugs: ingredients.map((ingredient) => ingredient.slug),
+    filterIngredientSlugs: Array.from(
+      new Set(
+        ingredients.map((ingredient) =>
+          slugify(ingredientCanonicalDescriptor(ingredient.name).key)
+        )
+      )
+    ),
     steps,
     abv: parseAbv(drink.alcoholInfo),
     imageCardUrl: fullImageSrc(drink.imageCardPath ?? drink.imagePath),
@@ -167,9 +211,54 @@ function uniqueBySlug(items) {
 }
 
 function buildCatalog(drinks) {
-  const ingredients = uniqueBySlug(
-    drinks.flatMap((drink) => drink.ingredients).sort((a, b) => a.name.localeCompare(b.name))
-  );
+  const ingredientGroups = new Map();
+
+  for (const ingredient of drinks.flatMap((drink) => drink.ingredients)) {
+    const canonical = ingredientCanonicalDescriptor(ingredient.name);
+    const canonicalSlug = slugify(canonical.key);
+    const group =
+      ingredientGroups.get(canonicalSlug) ??
+      (() => {
+        const next = {
+          id: canonicalSlug,
+          slug: canonicalSlug,
+          name: canonical.aliasDisplay,
+          displayCounts: new Map(),
+          sourceSlugs: new Set()
+        };
+        ingredientGroups.set(canonicalSlug, next);
+        return next;
+      })();
+
+    if (!group.name && canonical.aliasDisplay) {
+      group.name = canonical.aliasDisplay;
+    }
+    group.displayCounts.set(
+      ingredient.name,
+      (group.displayCounts.get(ingredient.name) ?? 0) + 1
+    );
+    group.sourceSlugs.add(ingredient.slug);
+  }
+
+  const ingredients = [...ingredientGroups.values()]
+    .map((group) => {
+      const displayCandidates = [...group.displayCounts.entries()].sort((a, b) => {
+        if (b[1] !== a[1]) return b[1] - a[1];
+        const aLower = a[0] === a[0].toLowerCase();
+        const bLower = b[0] === b[0].toLowerCase();
+        if (aLower !== bLower) return aLower ? -1 : 1;
+        return a[0].localeCompare(b[0]);
+      });
+
+      return {
+        id: group.id,
+        slug: group.slug,
+        name: group.name ?? displayCandidates[0]?.[0] ?? group.slug,
+        sourceSlugs: [...group.sourceSlugs].sort()
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
   const tags = uniqueBySlug(
     drinks
       .flatMap((drink) => drink.tags)
@@ -198,7 +287,7 @@ function filteredDrinks() {
       drink.curiosity.toLowerCase().includes(query);
     const matchesIngredients =
       !state.ingredientSlugs.length ||
-      state.ingredientSlugs.every((slug) => drink.ingredientSlugs.includes(slug));
+      state.ingredientSlugs.every((slug) => drink.filterIngredientSlugs.includes(slug));
     const matchesTags =
       !state.tagSlugs.length ||
       state.tagSlugs.every((slug) => drink.tagSlugs.includes(slug));
@@ -248,12 +337,38 @@ function updateFilterButtons() {
   filterButton.classList.toggle("is-open", state.openPanel);
   filterButton.classList.toggle("is-active", count > 0);
   filterButton.setAttribute("aria-expanded", state.openPanel ? "true" : "false");
+  filterButton.setAttribute(
+    "aria-label",
+    count ? `Open filters, ${count} selected` : "Open filters"
+  );
 
   const countNode = filterButton.querySelector('[data-count-for="filters"]');
   if (countNode) {
     countNode.textContent = count ? String(count) : "";
     countNode.classList.toggle("has-value", count > 0);
   }
+}
+
+function selectedTabFallback() {
+  if (
+    state.ingredientSlugs.some((slug) =>
+      store.alcoholIngredients.some((item) => item.slug === slug)
+    )
+  ) {
+    return "alcohol";
+  }
+
+  if (
+    state.ingredientSlugs.some((slug) =>
+      store.otherIngredients.some((item) => item.slug === slug)
+    )
+  ) {
+    return "ingredients";
+  }
+
+  if (state.tagSlugs.length) return "tags";
+  if (state.abvMax !== null) return "abv";
+  return "alcohol";
 }
 
 function optionClass(tone, selected) {
@@ -351,11 +466,60 @@ function renderPanel() {
   dropdownPanel.setAttribute("aria-labelledby", filterButton.id);
   dropdownPanel.classList.remove("is-hidden");
 
+  const activeTab = FILTER_TABS.find((tab) => tab.id === state.activeTab) ?? FILTER_TABS[0];
+  let panelBody = "";
+
+  if (activeTab.id === "alcohol") {
+    panelBody = renderFilterSection({
+      title: activeTab.label,
+      description: activeTab.description,
+      items: store.alcoholIngredients,
+      selected: state.ingredientSlugs,
+      kind: "ingredient",
+      tone: "alcohol"
+    });
+  } else if (activeTab.id === "ingredients") {
+    panelBody = renderFilterSection({
+      title: activeTab.label,
+      description: activeTab.description,
+      items: store.otherIngredients,
+      selected: state.ingredientSlugs,
+      kind: "ingredient",
+      tone: "ingredients"
+    });
+  } else if (activeTab.id === "tags") {
+    panelBody = renderFilterSection({
+      title: activeTab.label,
+      description: activeTab.description,
+      items: store.tags,
+      selected: state.tagSlugs,
+      kind: "tag",
+      tone: "tags"
+    });
+  } else {
+    panelBody = renderAbvSection();
+  }
+
   dropdownPanel.innerHTML = `
     <div class="panel-topbar">
-      <div class="panel-heading">
-        <div class="panel-title">All filters</div>
-        <div class="panel-description">Refine the gallery by alcohol, ingredients, tags, or ABV.</div>
+      <div class="panel-tabs" role="tablist" aria-label="Filter categories">
+        ${FILTER_TABS.map(
+          (tab) => `
+            <button
+              type="button"
+              id="tab-${tab.id}"
+              class="panel-tab ${state.activeTab === tab.id ? "is-active" : ""}"
+              role="tab"
+              aria-selected="${state.activeTab === tab.id ? "true" : "false"}"
+              aria-controls="panel-${tab.id}"
+              tabindex="${state.activeTab === tab.id ? "0" : "-1"}"
+              data-action="set-tab"
+              data-tab="${tab.id}"
+            >
+              ${tab.label}
+            </button>
+          `
+        ).join("")}
       </div>
       ${
         state.ingredientSlugs.length || state.tagSlugs.length || state.abvMax !== null
@@ -363,32 +527,8 @@ function renderPanel() {
           : ""
       }
     </div>
-    <div class="panel-sections">
-      ${renderFilterSection({
-        title: "Alcohol",
-        description: "Spirits, liqueurs, bitters, and wine-based ingredients.",
-        items: store.alcoholIngredients,
-        selected: state.ingredientSlugs,
-        kind: "ingredient",
-        tone: "alcohol"
-      })}
-      ${renderFilterSection({
-        title: "Ingredients",
-        description: "Non-alcohol ingredients used in the drinks.",
-        items: store.otherIngredients,
-        selected: state.ingredientSlugs,
-        kind: "ingredient",
-        tone: "ingredients"
-      })}
-      ${renderFilterSection({
-        title: "Tags",
-        description: "Flavor, season, and style tags from the drink cards.",
-        items: store.tags,
-        selected: state.tagSlugs,
-        kind: "tag",
-        tone: "tags"
-      })}
-      ${renderAbvSection()}
+    <div class="panel-sections" id="panel-${activeTab.id}" role="tabpanel" aria-labelledby="tab-${activeTab.id}">
+      ${panelBody}
     </div>
   `;
 }
@@ -524,6 +664,9 @@ function render() {
 }
 
 function togglePanel() {
+  if (!state.openPanel) {
+    state.activeTab = selectedTabFallback();
+  }
   state.openPanel = !state.openPanel;
   renderPanel();
 }
@@ -563,6 +706,12 @@ filterButton.addEventListener("click", () => {
 dropdownPanel.addEventListener("click", (event) => {
   const actionNode = event.target.closest("[data-action]");
   if (!actionNode) return;
+
+  if (actionNode.dataset.action === "set-tab") {
+    state.activeTab = actionNode.dataset.tab;
+    renderPanel();
+    return;
+  }
 
   if (actionNode.dataset.action === "toggle-option") {
     const slug = actionNode.dataset.slug;
@@ -656,9 +805,17 @@ window.addEventListener("popstate", () => {
 async function loadDrinks() {
   try {
     grid.innerHTML = '<div class="loading">Loading drinks…</div>';
-    const response = await fetch(DATA_URL);
-    if (!response.ok) throw new Error("Could not load drink data.");
-    const json = await response.json();
+    const [drinksResponse, aliasesResponse] = await Promise.all([
+      fetch(DATA_URL),
+      fetch(ALIASES_URL)
+    ]);
+    if (!drinksResponse.ok) throw new Error("Could not load drink data.");
+    if (!aliasesResponse.ok) throw new Error("Could not load ingredient aliases.");
+    const [json, aliases] = await Promise.all([
+      drinksResponse.json(),
+      aliasesResponse.json()
+    ]);
+    store.ingredientAliases = aliases;
     const drinks = json.map(normalizeDrink);
     buildCatalog(drinks);
     searchInput.placeholder = `Search ${store.drinks.length} drinks...`;

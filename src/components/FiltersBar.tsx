@@ -1,6 +1,6 @@
 "use client";
 
-import type { Ingredient, Tag } from "@prisma/client";
+import type { Tag } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Ref } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -8,7 +8,37 @@ import {
   buildGalleryHref,
   parseGalleryQueryFromSearchParams
 } from "@/lib/gallery-query";
+import type { IngredientFilterOption } from "@/lib/drinks-data";
 import { FILTER_PANEL_WIDTH, SUPPORT_LINK } from "@/lib/ui-system";
+
+type FilterTabId = "alcohol" | "ingredients" | "tags" | "abv";
+
+const FILTER_TABS: Array<{
+  id: FilterTabId;
+  label: string;
+  description: string;
+}> = [
+  {
+    id: "alcohol",
+    label: "Spirits",
+    description: "Spirits, liqueurs, bitters, and wine-based ingredients."
+  },
+  {
+    id: "ingredients",
+    label: "Ingredients",
+    description: "Non-alcohol ingredients used in the drinks."
+  },
+  {
+    id: "tags",
+    label: "Tags",
+    description: "Flavor, season, and style tags from the drink cards."
+  },
+  {
+    id: "abv",
+    label: "Alcohol %",
+    description: "Choose a maximum ABV in 5% increments."
+  }
+];
 
 function isAlcoholIngredientName(name: string) {
   const n = name.toLowerCase();
@@ -81,9 +111,11 @@ function FilterTrigger({
       aria-expanded={open}
       aria-haspopup="dialog"
       aria-controls="gallery-filter-panel"
-      aria-label={activeCount ? `Filters ${activeCount}` : "Filters"}
+      aria-label={
+        activeCount ? `Open filters, ${activeCount} selected` : "Open filters"
+      }
       className={[
-        "pointer-events-auto inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-medium uppercase tracking-[0.12em] transition",
+        "pointer-events-auto inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-full border px-3 py-2 text-[12px] font-medium uppercase tracking-[0.12em] transition",
         open
           ? "border-[rgba(255,199,92,0.35)] bg-[rgba(255,199,92,0.16)] text-[#ffe4ae]"
           : activeCount
@@ -92,7 +124,6 @@ function FilterTrigger({
       ].join(" ")}
     >
       <FilterIcon />
-      <span>Filters</span>
       {activeCount ? (
         <span className="rounded-full bg-black/35 px-1.5 text-[10px] leading-[16px] text-white/92">
           {activeCount}
@@ -123,6 +154,15 @@ function sectionClasses(tone: "ingredients" | "alcohol" | "tags" | "abv", select
   }
 
   return `${base} border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]`;
+}
+
+function tabClasses(active: boolean) {
+  return [
+    "rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] transition",
+    active
+      ? "border-[rgba(255,199,92,0.34)] bg-[rgba(255,199,92,0.2)] text-[#fff5df]"
+      : "border-white/10 bg-[rgba(255,255,255,0.03)] text-white/64 hover:border-white/18 hover:bg-[rgba(255,255,255,0.08)] hover:text-white/88"
+  ].join(" ");
 }
 
 function FilterSection({
@@ -231,7 +271,7 @@ export function FiltersBar({
 }: {
   q: string;
   tags: Tag[];
-  ingredients: Ingredient[];
+  ingredients: IngredientFilterOption[];
   selectedTagSlugs: string[];
   selectedIngredientSlugs: string[];
   selectedAbvMax: number | null;
@@ -242,6 +282,7 @@ export function FiltersBar({
   const searchParams = useSearchParams();
 
   const [panelOpen, setPanelOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<FilterTabId>("alcohol");
   const [panelLeft, setPanelLeft] = useState(0);
   const dockRef = useRef<HTMLDivElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -316,6 +357,19 @@ export function FiltersBar({
     selectedIngredientSlugs.length +
     Number(selectedAbvMax !== null);
 
+  const selectedTabFallback = useMemo<FilterTabId>(() => {
+    if (ingredientSlugsInAlcohol.length) return "alcohol";
+    if (ingredientSlugsInOther.length) return "ingredients";
+    if (selectedTagSlugs.length) return "tags";
+    if (selectedAbvMax !== null) return "abv";
+    return "alcohol";
+  }, [
+    ingredientSlugsInAlcohol.length,
+    ingredientSlugsInOther.length,
+    selectedAbvMax,
+    selectedTagSlugs.length
+  ]);
+
   function replaceUrl(next: {
     nextQ?: string;
     nextTagSlugs?: string[];
@@ -366,6 +420,7 @@ export function FiltersBar({
     }
 
     positionPanel();
+    setActiveTab(selectedTabFallback);
     setPanelOpen(true);
   }
 
@@ -376,6 +431,9 @@ export function FiltersBar({
       nextAbvMax: null
     });
   }
+
+  const activeTabConfig =
+    FILTER_TABS.find((tab) => tab.id === activeTab) ?? FILTER_TABS[0];
 
   return (
     <div className="pointer-events-auto relative z-[60] flex w-full flex-col gap-3 overflow-visible text-[#f7edd8]">
@@ -434,14 +492,27 @@ export function FiltersBar({
                 width: `min(${FILTER_PANEL_WIDTH}px, calc(100vw - 32px))`
               }}
             >
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <div className="text-[12px] font-semibold uppercase leading-[20px] tracking-[0.14em] text-[#f3ddb2]">
-                    All filters
-                  </div>
-                  <div className="text-[12px] leading-[18px] text-white/56">
-                    Refine the gallery by alcohol, ingredients, tags, or ABV.
-                  </div>
+              <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div
+                  role="tablist"
+                  aria-label="Filter categories"
+                  className="flex flex-wrap gap-2"
+                >
+                  {FILTER_TABS.map((tab) => (
+                    <button
+                      key={tab.id}
+                      id={`filter-tab-${tab.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={activeTab === tab.id}
+                      aria-controls={`filter-panel-${tab.id}`}
+                      tabIndex={activeTab === tab.id ? 0 : -1}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={tabClasses(activeTab === tab.id)}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
                 </div>
                 {activeFilterCount ? (
                   <button
@@ -454,50 +525,63 @@ export function FiltersBar({
                 ) : null}
               </div>
 
-              <div className="max-h-[min(68vh,640px)] space-y-5 overflow-auto pr-1">
-                <FilterSection
-                  title="Alcohol"
-                  description="Spirits, liqueurs, bitters, and wine-based ingredients."
-                  tone="alcohol"
-                  items={alcoholIngredients}
-                  selected={ingredientSlugsInAlcohol}
-                  onToggle={(slug) =>
-                    replaceUrl({
-                      nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
-                    })
-                  }
-                />
+              <div
+                id={`filter-panel-${activeTabConfig.id}`}
+                role="tabpanel"
+                aria-labelledby={`filter-tab-${activeTabConfig.id}`}
+                className="max-h-[min(68vh,640px)] overflow-auto pr-1"
+              >
+                {activeTab === "alcohol" ? (
+                  <FilterSection
+                    title={activeTabConfig.label}
+                    description={activeTabConfig.description}
+                    tone="alcohol"
+                    items={alcoholIngredients}
+                    selected={ingredientSlugsInAlcohol}
+                    onToggle={(slug) =>
+                      replaceUrl({
+                        nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
+                      })
+                    }
+                  />
+                ) : null}
 
-                <FilterSection
-                  title="Ingredients"
-                  description="Non-alcohol ingredients used in the drinks."
-                  tone="ingredients"
-                  items={otherIngredients}
-                  selected={ingredientSlugsInOther}
-                  onToggle={(slug) =>
-                    replaceUrl({
-                      nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
-                    })
-                  }
-                />
+                {activeTab === "ingredients" ? (
+                  <FilterSection
+                    title={activeTabConfig.label}
+                    description={activeTabConfig.description}
+                    tone="ingredients"
+                    items={otherIngredients}
+                    selected={ingredientSlugsInOther}
+                    onToggle={(slug) =>
+                      replaceUrl({
+                        nextIngredientSlugs: toggleSlug(selectedIngredientSlugs, slug)
+                      })
+                    }
+                  />
+                ) : null}
 
-                <FilterSection
-                  title="Tags"
-                  description="Flavor, season, and style tags from the drink cards."
-                  tone="tags"
-                  items={nonPercentTags}
-                  selected={selectedTagSlugs}
-                  onToggle={(slug) =>
-                    replaceUrl({
-                      nextTagSlugs: toggleSlug(selectedTagSlugs, slug)
-                    })
-                  }
-                />
+                {activeTab === "tags" ? (
+                  <FilterSection
+                    title={activeTabConfig.label}
+                    description={activeTabConfig.description}
+                    tone="tags"
+                    items={nonPercentTags}
+                    selected={selectedTagSlugs}
+                    onToggle={(slug) =>
+                      replaceUrl({
+                        nextTagSlugs: toggleSlug(selectedTagSlugs, slug)
+                      })
+                    }
+                  />
+                ) : null}
 
-                <AbvSection
-                  selected={selectedAbvMax}
-                  onSelect={(value) => replaceUrl({ nextAbvMax: value })}
-                />
+                {activeTab === "abv" ? (
+                  <AbvSection
+                    selected={selectedAbvMax}
+                    onSelect={(value) => replaceUrl({ nextAbvMax: value })}
+                  />
+                ) : null}
               </div>
             </div>
           ) : null}

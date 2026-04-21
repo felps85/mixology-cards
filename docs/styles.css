@@ -151,11 +151,12 @@ body::after {
 .filter-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   min-height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.03);
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
@@ -264,8 +265,41 @@ body::after {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 16px;
+}
+
+.panel-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.panel-tab {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.panel-tab:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.panel-tab.is-active {
+  border-color: rgba(255, 199, 92, 0.34);
+  background: rgba(255, 199, 92, 0.2);
+  color: #fff5df;
 }
 
 .panel-sections {

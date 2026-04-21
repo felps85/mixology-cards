@@ -37,8 +37,18 @@ assertIncludes(
 );
 assertIncludes(
   docsApp,
+  'const ALIASES_URL = "./ingredientAliases.json";',
+  "Pages app is missing the shared ingredient alias feed."
+);
+assertIncludes(
+  docsApp,
   "const FILTER_PANEL_WIDTH = 860;",
   "Pages app is missing the unified filter panel width."
+);
+assertIncludes(
+  docsApp,
+  "const FILTER_TABS = [",
+  "Pages app is missing the tabbed filter category contract."
 );
 assertIncludes(
   docsIndex,
@@ -57,6 +67,11 @@ assertMatches(
   "Pages dialog close controls are missing."
 );
 
+assertIncludes(
+  docsStyles,
+  ".panel-tab",
+  "Pages styles are missing the filter tab styling."
+);
 assertIncludes(
   docsStyles,
   ".dialog-mobile-close",

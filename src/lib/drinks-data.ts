@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { Prisma } from "@prisma/client";
+import { buildIngredientFilterOptions } from "@/lib/ingredient-filters";
 import { prisma } from "@/lib/prisma";
 
 const galleryDrinkSelect = {
@@ -59,15 +60,40 @@ export type GalleryDrink = Prisma.DrinkGetPayload<{
   select: typeof galleryDrinkSelect;
 }>;
 
+export type IngredientFilterOption = ReturnType<
+  typeof buildIngredientFilterOptions
+>[number];
+
 export type ActiveDrink = Prisma.DrinkGetPayload<{
   select: typeof activeDrinkSelect;
 }>;
+
+const ingredientFilterSourceSelect = {
+  id: true,
+  slug: true,
+  name: true
+} satisfies Prisma.IngredientSelect;
+
+const getIngredientFilterGroups = unstable_cache(
+  async () => {
+    const ingredients = await prisma.ingredient.findMany({
+      orderBy: { name: "asc" },
+      select: ingredientFilterSourceSelect
+    });
+
+    return buildIngredientFilterOptions(ingredients);
+  },
+  ["ingredient-filter-groups"],
+  {
+    revalidate: 60 * 60
+  }
+);
 
 export const getGalleryMetadata = unstable_cache(
   async () => {
     const [tags, ingredients, totalDrinks] = await Promise.all([
       prisma.tag.findMany({ orderBy: { name: "asc" } }),
-      prisma.ingredient.findMany({ orderBy: { name: "asc" } }),
+      getIngredientFilterGroups(),
       prisma.drink.count()
     ]);
 
@@ -80,7 +106,11 @@ export const getGalleryMetadata = unstable_cache(
 );
 
 const getFilteredDrinksCached = unstable_cache(
-  async (q: string, sortedTagSlugs: string[], sortedIngredientSlugs: string[]) =>
+  async (
+    q: string,
+    sortedTagSlugs: string[],
+    ingredientSlugGroups: string[][]
+  ) =>
     prisma.drink.findMany({
       where: {
         ...(q
@@ -101,15 +131,17 @@ const getFilteredDrinksCached = unstable_cache(
               }
             }
           : {}),
-        ...(sortedIngredientSlugs.length
+        ...(ingredientSlugGroups.length
           ? {
-              ingredients: {
-                some: {
-                  ingredient: {
-                    slug: { in: sortedIngredientSlugs }
+              AND: ingredientSlugGroups.map((ingredientSlugs) => ({
+                ingredients: {
+                  some: {
+                    ingredient: {
+                      slug: { in: ingredientSlugs }
+                    }
                   }
                 }
-              }
+              }))
             }
           : {})
       },
@@ -127,10 +159,18 @@ export async function getFilteredDrinks(
   tagSlugs: string[],
   ingredientSlugs: string[]
 ) {
+  const sortedIngredientSlugs = [...ingredientSlugs].sort();
+  const ingredientGroups = sortedIngredientSlugs.length
+    ? await getIngredientFilterGroups()
+    : [];
+  const ingredientSlugMap = new Map(
+    ingredientGroups.map((group) => [group.slug, group.sourceSlugs])
+  );
+
   return getFilteredDrinksCached(
     q.trim(),
     [...tagSlugs].sort(),
-    [...ingredientSlugs].sort()
+    sortedIngredientSlugs.map((slug) => ingredientSlugMap.get(slug) ?? [slug])
   );
 }
 
