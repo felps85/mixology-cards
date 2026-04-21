@@ -84,50 +84,18 @@ body::after {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: nowrap;
   padding: 8px 0;
   background: rgba(0, 0, 0, 0.95);
   overflow: visible;
 }
 
-.topbar__brand,
-.topbar__controls,
 .topbar__main {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: nowrap;
-}
-
-.topbar__lead {
-  appearance: none;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
-  color: #f1d38e;
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-}
-
-.topbar__lead:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-1px);
-}
-
-.topbar__emoji {
-  font-size: 18px;
-  line-height: 1;
-}
-
-.topbar__controls {
-  min-width: 0;
-  flex: 1 1 auto;
 }
 
 .searchDock {
@@ -142,13 +110,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-  scrollbar-width: none;
-}
-
-.toolbarSearchUnified::-webkit-scrollbar {
-  display: none;
+  overflow: visible;
 }
 
 .search-shell {
@@ -161,6 +123,13 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
   padding: 0 16px;
+}
+
+.search-shell__emoji {
+  flex: 0 0 auto;
+  font-size: 18px;
+  line-height: 1;
+  color: #f1d38e;
 }
 
 .search-shell input {
@@ -177,15 +146,6 @@ body::after {
 
 .search-shell input::placeholder {
   color: rgba(255, 255, 255, 0.56);
-}
-
-.filter-cluster {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  flex: none;
-  align-items: center;
-  gap: 8px;
 }
 
 .filter-btn {
@@ -223,9 +183,19 @@ body::after {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.filter-btn__icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+.filter-btn__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .filter-btn__count {
   display: none;
-  margin-left: auto;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.2);
   padding: 0 6px;
@@ -235,11 +205,6 @@ body::after {
 
 .filter-btn__count.has-value {
   display: inline-block;
-}
-
-.filter-btn__caret {
-  font-size: 11px;
-  line-height: 1;
 }
 
 .dropdown-panel {
@@ -295,6 +260,24 @@ body::after {
   display: none;
 }
 
+.panel-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel-sections {
+  max-height: min(68vh, 640px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.panel-section + .panel-section {
+  margin-top: 20px;
+}
+
 .panel-heading {
   margin-bottom: 12px;
 }
@@ -330,14 +313,30 @@ body::after {
   color: rgba(255, 255, 255, 0.42);
 }
 
+.panel-clear {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: transparent;
+  padding: 6px 12px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.panel-clear:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
 .option-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-height: 18rem;
-  overflow: auto;
   margin-top: 12px;
-  padding-right: 4px;
 }
 
 .option-grid.option-grid--compact {
@@ -372,38 +371,22 @@ body::after {
   color: #fff5df;
 }
 
-.active-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 2px;
+.option-card.is-selected--ingredients {
+  border-color: rgba(114, 214, 170, 0.34);
+  background: rgba(114, 214, 170, 0.2);
+  color: #eafff5;
 }
 
-.active-filters.is-hidden {
-  display: none;
+.option-card.is-selected--tags {
+  border-color: rgba(179, 148, 255, 0.34);
+  background: rgba(179, 148, 255, 0.2);
+  color: #f2ebff;
 }
 
-.chip-btn {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 8px 14px;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  cursor: pointer;
-}
-
-.chip-btn--clear {
-  border-color: rgba(255, 255, 255, 0.1);
-  background: transparent;
-  color: rgba(255, 255, 255, 0.58);
-}
-
-.chip-btn--clear:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  color: white;
+.option-card.is-selected--abv {
+  border-color: rgba(255, 157, 94, 0.34);
+  background: rgba(255, 157, 94, 0.2);
+  color: #fff1e5;
 }
 
 .card-grid {
@@ -928,7 +911,7 @@ body::after {
 
 @media (max-width: 840px) {
   .page-shell {
-    padding-top: 176px;
+    padding-top: 112px;
   }
 
   .topbar {
@@ -940,70 +923,45 @@ body::after {
   }
 
   .topbar__toolbar {
-    flex-direction: column;
     align-items: stretch;
   }
 
   .topbar__main {
     width: 100%;
-    display: grid;
-    grid-template-columns: 48px minmax(0, 1fr);
-    gap: 10px;
-    align-items: start;
-    padding: 12px 0 0;
-  }
-
-  .topbar__brand {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: start;
+    padding: 8px 0 0;
   }
 
   .searchDock {
-    grid-column: 2;
-    grid-row: 1;
     width: 100%;
     min-width: 0;
   }
 
   .toolbarSearchUnified {
     min-width: 0;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
+    align-items: center;
     gap: 10px;
     overflow: visible;
-    padding-bottom: 0;
   }
 
   .search-shell {
     min-width: 0;
     width: 100%;
-    flex: none;
-  }
-
-  .filter-cluster {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    flex: 1 1 auto;
   }
 
   .filter-btn {
-    width: 100%;
-    justify-content: space-between;
-    min-width: 0;
+    flex: 0 0 auto;
+    justify-content: center;
     padding-inline: 12px;
     font-size: 11px;
   }
 
   .dropdown-panel {
-    left: 0 !important;
-    width: min(100%, calc(100vw - 32px)) !important;
-    max-width: min(760px, calc(100vw - 32px));
-  }
-
-  .active-filters {
-    display: none !important;
+    left: auto !important;
+    right: 0 !important;
+    width: min(100vw - 32px, 860px) !important;
+    max-width: min(860px, calc(100vw - 32px));
   }
 
   .buyButton {

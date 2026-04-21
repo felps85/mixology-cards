@@ -30,23 +30,26 @@ assertIncludes(
   "UI system support link is missing or changed unexpectedly."
 );
 
-for (const [key, value] of Object.entries({
-  ingredients: 760,
-  alcohol: 680,
-  tags: 520,
-  abv: 340
-})) {
-  assertIncludes(
-    uiSystem,
-    `${key}: ${value}`,
-    `UI system is missing filter panel width for ${key}.`
-  );
-  assertIncludes(
-    docsApp,
-    `${key}: ${value}`,
-    `Pages app is missing filter panel width for ${key}.`
-  );
-}
+assertIncludes(
+  uiSystem,
+  "export const FILTER_PANEL_WIDTH = 860;",
+  "UI system is missing the unified filter panel width."
+);
+assertIncludes(
+  docsApp,
+  "const FILTER_PANEL_WIDTH = 860;",
+  "Pages app is missing the unified filter panel width."
+);
+assertIncludes(
+  docsIndex,
+  'id="filterButton"',
+  "Pages index is missing the single filter trigger."
+);
+assertIncludes(
+  docsIndex,
+  'class="search-shell__emoji"',
+  "Pages index is missing the search emoji slot."
+);
 
 assertMatches(
   docsIndex,
@@ -76,7 +79,7 @@ assertIncludes(
 );
 assertIncludes(
   docsStyles,
-  "padding-top: 176px;",
+  "padding-top: 112px;",
   "Pages styles are missing the page offset for the fixed mobile top bar."
 );
 assertIncludes(

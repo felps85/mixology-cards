@@ -26,22 +26,26 @@ If a component changes in one surface, the same interaction should be reflected 
   - selecting a drink opens a fullscreen overlay
 - Mobile:
   - top bar is fixed
-  - search sits on the first row
-  - filters sit on the second row
+  - search and the filter trigger share the first row
   - page content adds enough top padding so cards never sit under the fixed bar
-  - the header mark uses a drink emoji instead of a logo asset
+  - the header mark lives inside the search field as a drink emoji
   - there is no title/subtitle text in the top bar
 
 ### Filter dropdowns
 
-- Only one dropdown can be open at a time
-- Clicking outside closes the open dropdown
-- Pressing `Escape` closes the open dropdown
-- On desktop, dropdowns anchor under the clicked filter
-- On mobile, dropdowns use the full available toolbar width and float over the page
-- Search input focus closes any open dropdown
+- Only one filter sheet can be open at a time
+- Clicking outside closes the open filter sheet
+- Pressing `Escape` closes the open filter sheet
+- The top bar exposes a single `Filters` trigger with a selected-count badge
+- The filter sheet groups options into:
+  - Alcohol
+  - Ingredients
+  - Tags
+  - Alcohol %
+- Search input focus closes the filter sheet
 - Filter options are pills, not checkbox rows
 - Selected pills change color instead of showing a checkmark
+- `Clear all` lives inside the filter sheet, not in a separate chip row
 
 ### Drink cards
 
@@ -71,12 +75,12 @@ If a component changes in one surface, the same interaction should be reflected 
 ### `FiltersBar`
 
 - Search placeholder includes the drink count
+- Search field includes the `🍸` mark inside the input shell
+- The only filter control in the bar is the single `Filters` trigger
 - Support button placement:
   - desktop: right side of top bar
   - mobile: bottom-left floating button
-- Active filter chips:
-  - shown on desktop
-  - hidden on mobile to preserve space
+- Active filter count appears on the filter trigger
 
 ### `DrinkCard`
 

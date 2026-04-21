@@ -15,41 +15,24 @@
       <section class="topbar" aria-label="Drink search and filters">
         <div class="topbar__toolbar">
           <div class="topbar__main">
-            <div class="topbar__brand" aria-hidden="true">
-              <button class="topbar__lead" type="button" tabindex="-1" aria-hidden="true">
-                <span class="topbar__emoji" aria-hidden="true">🍸</span>
-              </button>
-            </div>
-
             <div id="searchDock" class="searchDock">
               <div class="toolbarSearchUnified">
                 <label class="search-shell">
+                  <span class="search-shell__emoji" aria-hidden="true">🍸</span>
                   <span class="sr-only">Search drinks</span>
                   <input id="searchInput" type="search" aria-label="Search drinks" placeholder="Search drinks..." />
                 </label>
-
-                <div id="filterCluster" class="filter-cluster">
-                  <button id="filterButtonIngredients" class="filter-btn" type="button" data-filter-button="ingredients" aria-expanded="false" aria-controls="dropdownPanel" aria-haspopup="dialog">
-                    <span>Ingredients</span>
-                    <span class="filter-btn__count" data-count-for="ingredients"></span>
-                    <span class="filter-btn__caret">▾</span>
-                  </button>
-                  <button id="filterButtonAlcohol" class="filter-btn" type="button" data-filter-button="alcohol" aria-expanded="false" aria-controls="dropdownPanel" aria-haspopup="dialog">
-                    <span>Alcohol</span>
-                    <span class="filter-btn__count" data-count-for="alcohol"></span>
-                    <span class="filter-btn__caret">▾</span>
-                  </button>
-                  <button id="filterButtonTags" class="filter-btn" type="button" data-filter-button="tags" aria-expanded="false" aria-controls="dropdownPanel" aria-haspopup="dialog">
-                    <span>Tags</span>
-                    <span class="filter-btn__count" data-count-for="tags"></span>
-                    <span class="filter-btn__caret">▾</span>
-                  </button>
-                  <button id="filterButtonAbv" class="filter-btn" type="button" data-filter-button="abv" aria-expanded="false" aria-controls="dropdownPanel" aria-haspopup="dialog">
-                    <span>%</span>
-                    <span class="filter-btn__count" data-count-for="abv"></span>
-                    <span class="filter-btn__caret">▾</span>
-                  </button>
-                </div>
+                <button id="filterButton" class="filter-btn" type="button" aria-expanded="false" aria-controls="dropdownPanel" aria-haspopup="dialog">
+                  <span class="filter-btn__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 7h16"></path>
+                      <path d="M7 12h10"></path>
+                      <path d="M10 17h4"></path>
+                    </svg>
+                  </span>
+                  <span>Filters</span>
+                  <span class="filter-btn__count" data-count-for="filters"></span>
+                </button>
               </div>
               <div id="dropdownPanel" class="dropdown-panel is-hidden" role="dialog" aria-modal="false" aria-live="polite"></div>
             </div>
@@ -63,8 +46,6 @@
             Buy me a drink!
           </a>
         </div>
-
-        <div id="activeFilters" class="active-filters is-hidden"></div>
       </section>
 
       <a

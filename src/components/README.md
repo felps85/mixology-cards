@@ -9,8 +9,8 @@ This folder has two kinds of UI pieces:
 
 - `FiltersBar.tsx`
   - Main search + filter control surface
-  - Mobile contract: fixed top bar, search on first row, filters on second row
-  - Desktop contract: single unified toolbar row
+  - Mobile contract: fixed top bar with search and the single filter trigger on one row
+  - Desktop contract: single unified toolbar row with one grouped filter sheet
 - `DrinkCard.tsx`
   - Gallery card used in the main grid
   - Handles low-resolution image fallback behavior

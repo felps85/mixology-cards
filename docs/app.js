@@ -1,18 +1,12 @@
 const DATA_URL = "./drinksSeed.json";
 const PAGES_ASSET_BASE = "./drinks";
 const PLACEHOLDER_IMAGE = `${PAGES_ASSET_BASE}/placeholder.svg`;
-const FILTER_PANEL_WIDTHS = {
-  ingredients: 760,
-  alcohol: 680,
-  tags: 520,
-  abv: 340
-};
+const FILTER_PANEL_WIDTH = 860;
 
 const searchInput = document.getElementById("searchInput");
 const searchDock = document.getElementById("searchDock");
-const filterCluster = document.getElementById("filterCluster");
+const filterButton = document.getElementById("filterButton");
 const dropdownPanel = document.getElementById("dropdownPanel");
-const activeFilters = document.getElementById("activeFilters");
 const grid = document.getElementById("grid");
 
 const dialog = document.getElementById("drinkDialog");
@@ -29,25 +23,13 @@ const dialogSteps = document.getElementById("dialogSteps");
 const dialogPanel = document.querySelector(".drink-dialog__panel");
 let previousFocusedElement = null;
 
-const filterButtons = Object.fromEntries(
-  Array.from(document.querySelectorAll("[data-filter-button]")).map((button) => [
-    button.dataset.filterButton,
-    button
-  ])
-);
-
 const state = {
   query: "",
   ingredientSlugs: [],
   tagSlugs: [],
   abvMax: null,
   selectedSlug: null,
-  openPanel: null,
-  panelSearch: {
-    ingredients: "",
-    alcohol: "",
-    tags: ""
-  }
+  openPanel: false
 };
 
 const store = {
@@ -69,7 +51,7 @@ function parseStateFromLocation() {
         ? Number(params.get("abvMax"))
         : null,
     selectedSlug: params.get("sel"),
-    openPanel: null
+    openPanel: false
   };
 }
 
@@ -206,10 +188,6 @@ function buildCatalog(drinks) {
   store.tags = tags;
 }
 
-function panelWidthForKey(key) {
-  return FILTER_PANEL_WIDTHS[key] ?? FILTER_PANEL_WIDTHS.ingredients;
-}
-
 function filteredDrinks() {
   const query = state.query.trim().toLowerCase();
 
@@ -262,69 +240,93 @@ function escapeHtml(value) {
 }
 
 function updateFilterButtons() {
-  const counts = {
-    ingredients: state.ingredientSlugs.filter((slug) =>
-      store.otherIngredients.some((item) => item.slug === slug)
-    ).length,
-    alcohol: state.ingredientSlugs.filter((slug) =>
-      store.alcoholIngredients.some((item) => item.slug === slug)
-    ).length,
-    tags: state.tagSlugs.length,
-    abv: state.abvMax !== null ? 1 : 0
-  };
+  const count =
+    state.ingredientSlugs.length +
+    state.tagSlugs.length +
+    (state.abvMax !== null ? 1 : 0);
 
-  for (const [key, button] of Object.entries(filterButtons)) {
-    const count = counts[key] ?? 0;
-    button.classList.toggle("is-open", state.openPanel === key);
-    button.classList.toggle("is-active", count > 0);
-    button.setAttribute("aria-expanded", state.openPanel === key ? "true" : "false");
-    const countNode = button.querySelector(`[data-count-for="${key}"]`);
-    if (countNode) {
-      countNode.textContent = count ? String(count) : "";
-      countNode.classList.toggle("has-value", count > 0);
-    }
+  filterButton.classList.toggle("is-open", state.openPanel);
+  filterButton.classList.toggle("is-active", count > 0);
+  filterButton.setAttribute("aria-expanded", state.openPanel ? "true" : "false");
+
+  const countNode = filterButton.querySelector('[data-count-for="filters"]');
+  if (countNode) {
+    countNode.textContent = count ? String(count) : "";
+    countNode.classList.toggle("has-value", count > 0);
   }
 }
 
-function renderActiveFilters() {
-  activeFilters.replaceChildren();
+function optionClass(tone, selected) {
+  const base =
+    "option-card";
 
-  function appendChip(label, action, { slug = null, clear = false } = {}) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = clear ? "chip-btn chip-btn--clear" : "chip-btn";
-    button.dataset.action = action;
-    if (slug) {
-      button.dataset.slug = slug;
-    }
-    button.textContent = label;
-    activeFilters.append(button);
-  }
+  if (!selected) return base;
+  if (tone === "ingredients") return `${base} is-selected is-selected--ingredients`;
+  if (tone === "tags") return `${base} is-selected is-selected--tags`;
+  if (tone === "abv") return `${base} is-selected is-selected--abv`;
+  return `${base} is-selected`;
+}
 
-  if (state.query.trim()) {
-    appendChip(`Search: ${state.query.trim()} ×`, "clear-query");
-  }
+function renderFilterSection({ title, description, items, selected, kind, tone }) {
+  return `
+    <section class="panel-section">
+      <div class="panel-heading">
+        <div class="panel-title">${title}</div>
+        <div class="panel-description">${description}</div>
+      </div>
+      <div class="option-grid">
+        ${items
+          .map(
+            (item) => `
+              <button
+                type="button"
+                class="${optionClass(tone, selected.includes(item.slug))}"
+                aria-pressed="${selected.includes(item.slug) ? "true" : "false"}"
+                data-action="toggle-option"
+                data-kind="${kind}"
+                data-slug="${item.slug}"
+              >
+                <span>${escapeHtml(item.name)}</span>
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
+}
 
-  for (const slug of state.ingredientSlugs) {
-    const item = store.ingredients.find((entry) => entry.slug === slug);
-    appendChip(`${item?.name ?? slug} ×`, "remove-ingredient", { slug });
-  }
+function renderAbvSection() {
+  const options = Array.from({ length: 13 }, (_, index) => index * 5);
 
-  for (const slug of state.tagSlugs) {
-    const item = store.tags.find((entry) => entry.slug === slug);
-    appendChip(`${item?.name ?? slug} ×`, "remove-tag", { slug });
-  }
-
-  if (state.abvMax !== null) {
-    appendChip(`Up to ${state.abvMax}% ×`, "clear-abv");
-  }
-
-  const hasChips = activeFilters.childElementCount > 0;
-  if (hasChips) {
-    appendChip("Clear all", "clear-all", { clear: true });
-  }
-
-  activeFilters.classList.toggle("is-hidden", !hasChips);
+  return `
+    <section class="panel-section">
+      <div class="panel-heading">
+        <div class="panel-title">Alcohol %</div>
+        <div class="panel-description">Choose a maximum ABV in 5% increments.</div>
+      </div>
+      <div class="option-grid">
+        <button type="button" class="${optionClass("abv", state.abvMax === null)}" aria-pressed="${state.abvMax === null ? "true" : "false"}" data-action="set-abv" data-value="">
+          <span>Any %</span>
+        </button>
+        ${options
+          .map(
+            (value) => `
+              <button
+                type="button"
+                class="${optionClass("abv", state.abvMax === value)}"
+                aria-pressed="${state.abvMax === value ? "true" : "false"}"
+                data-action="set-abv"
+                data-value="${value}"
+              >
+                <span>Up to ${value}%</span>
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    </section>
+  `;
 }
 
 function renderPanel() {
@@ -337,125 +339,58 @@ function renderPanel() {
     return;
   }
 
-  const button = filterButtons[state.openPanel];
   const dockRect = searchDock.getBoundingClientRect();
-  const buttonRect = button.getBoundingClientRect();
-  const panelWidth = panelWidthForKey(state.openPanel);
-  const relativeLeft = buttonRect.left - dockRect.left;
+  const buttonRect = filterButton.getBoundingClientRect();
+  const relativeLeft = buttonRect.right - dockRect.left - FILTER_PANEL_WIDTH;
   const minLeft = 0;
-  const maxLeft = Math.max(0, dockRect.width - panelWidth);
+  const maxLeft = Math.max(0, dockRect.width - FILTER_PANEL_WIDTH);
   const left = Math.max(minLeft, Math.min(relativeLeft, maxLeft));
 
   dropdownPanel.style.left = `${left}px`;
-  dropdownPanel.style.width = `${panelWidth}px`;
-  dropdownPanel.setAttribute("aria-labelledby", button.id);
+  dropdownPanel.style.width = `${FILTER_PANEL_WIDTH}px`;
+  dropdownPanel.setAttribute("aria-labelledby", filterButton.id);
   dropdownPanel.classList.remove("is-hidden");
 
-  if (state.openPanel === "abv") {
-    const options = Array.from({ length: 13 }, (_, index) => index * 5);
-    dropdownPanel.innerHTML = `
-      <div class="panel-heading">
-        <div class="panel-title">Alcohol %</div>
-        <div class="panel-description">Choose a maximum ABV in 5% increments.</div>
-      </div>
-      <div class="option-grid option-grid--compact">
-        <button type="button" class="option-card ${state.abvMax === null ? "is-selected" : ""}" data-action="set-abv" data-value="">
-          <span>Any %</span>
-        </button>
-        ${options
-          .map(
-            (value) => `
-              <button
-                type="button"
-                class="option-card ${state.abvMax === value ? "is-selected" : ""}"
-                data-action="set-abv"
-                data-value="${value}"
-              >
-                <span>Up to ${value}%</span>
-              </button>
-            `
-          )
-          .join("")}
-      </div>
-    `;
-    return;
-  }
-
-  const config =
-    state.openPanel === "ingredients"
-      ? {
-          title: "Ingredients",
-          description: "Non-alcohol ingredients used in the drinks.",
-          placeholder: "Search ingredients…",
-          items: store.otherIngredients,
-          selected: state.ingredientSlugs
-        }
-      : state.openPanel === "alcohol"
-        ? {
-            title: "Alcohol",
-            description: "Spirits, liqueurs, bitters, and wine-based ingredients.",
-            placeholder: "Search alcohol…",
-            items: store.alcoholIngredients,
-            selected: state.ingredientSlugs
-          }
-        : {
-            title: "Tags",
-            description: "Flavor, season, and style tags from the drink cards.",
-            placeholder: "Search tags…",
-            items: store.tags,
-            selected: state.tagSlugs
-          };
-
-  const filter = state.panelSearch[state.openPanel] ?? "";
-  const filteredItems = config.items.filter((item) =>
-    item.name.toLowerCase().includes(filter.trim().toLowerCase())
-  );
-
   dropdownPanel.innerHTML = `
-    <div class="panel-heading">
-      <div class="panel-title">${config.title}</div>
-      <div class="panel-description">${config.description}</div>
-    </div>
-    <input
-      id="panelSearch"
-      class="panel-search"
-      type="search"
-      aria-label="${config.placeholder}"
-      placeholder="${config.placeholder}"
-      value="${escapeHtml(filter)}"
-    />
-    <div class="option-grid ${state.openPanel === "tags" ? "option-grid--compact" : ""}">
+    <div class="panel-topbar">
+      <div class="panel-heading">
+        <div class="panel-title">All filters</div>
+        <div class="panel-description">Refine the gallery by alcohol, ingredients, tags, or ABV.</div>
+      </div>
       ${
-        filteredItems.length
-          ? filteredItems
-              .map(
-                (item) => `
-                  <button
-                    type="button"
-                    class="option-card ${config.selected.includes(item.slug) ? "is-selected" : ""}"
-                    aria-pressed="${config.selected.includes(item.slug) ? "true" : "false"}"
-                    data-action="toggle-option"
-                    data-kind="${state.openPanel === "tags" ? "tag" : "ingredient"}"
-                    data-slug="${item.slug}"
-                  >
-                    <span>${escapeHtml(item.name)}</span>
-                  </button>
-                `
-              )
-              .join("")
-          : `<div class="option-card"><span>No matches</span></div>`
+        state.ingredientSlugs.length || state.tagSlugs.length || state.abvMax !== null
+          ? '<button type="button" class="panel-clear" data-action="clear-filters">Clear all</button>'
+          : ""
       }
     </div>
+    <div class="panel-sections">
+      ${renderFilterSection({
+        title: "Alcohol",
+        description: "Spirits, liqueurs, bitters, and wine-based ingredients.",
+        items: store.alcoholIngredients,
+        selected: state.ingredientSlugs,
+        kind: "ingredient",
+        tone: "alcohol"
+      })}
+      ${renderFilterSection({
+        title: "Ingredients",
+        description: "Non-alcohol ingredients used in the drinks.",
+        items: store.otherIngredients,
+        selected: state.ingredientSlugs,
+        kind: "ingredient",
+        tone: "ingredients"
+      })}
+      ${renderFilterSection({
+        title: "Tags",
+        description: "Flavor, season, and style tags from the drink cards.",
+        items: store.tags,
+        selected: state.tagSlugs,
+        kind: "tag",
+        tone: "tags"
+      })}
+      ${renderAbvSection()}
+    </div>
   `;
-
-  const panelSearch = dropdownPanel.querySelector("#panelSearch");
-  if (panelSearch) {
-    panelSearch.focus();
-    panelSearch.addEventListener("input", (event) => {
-      state.panelSearch[state.openPanel] = event.target.value;
-      renderPanel();
-    });
-  }
 }
 
 function renderGrid(items) {
@@ -583,14 +518,13 @@ function render() {
   const items = filteredDrinks();
   searchInput.value = state.query;
   syncLocation();
-  renderActiveFilters();
   renderPanel();
   renderGrid(items);
   syncDialog(items);
 }
 
-function openPanel(key) {
-  state.openPanel = state.openPanel === key ? null : key;
+function togglePanel() {
+  state.openPanel = !state.openPanel;
   renderPanel();
 }
 
@@ -618,17 +552,15 @@ searchInput.addEventListener("input", (event) => {
 
 searchInput.addEventListener("focus", () => {
   if (!state.openPanel) return;
-  state.openPanel = null;
+  state.openPanel = false;
   renderPanel();
 });
 
-filterCluster.addEventListener("click", (event) => {
-  const filterButton = event.target.closest("[data-filter-button]");
-  if (filterButton) {
-    openPanel(filterButton.dataset.filterButton);
-    return;
-  }
+filterButton.addEventListener("click", () => {
+  togglePanel();
+});
 
+dropdownPanel.addEventListener("click", (event) => {
   const actionNode = event.target.closest("[data-action]");
   if (!actionNode) return;
 
@@ -645,43 +577,16 @@ filterCluster.addEventListener("click", (event) => {
 
   if (actionNode.dataset.action === "set-abv") {
     state.abvMax = actionNode.dataset.value ? Number(actionNode.dataset.value) : null;
-    state.openPanel = null;
     render();
+    return;
   }
-});
 
-activeFilters.addEventListener("click", (event) => {
-  const actionNode = event.target.closest("[data-action]");
-  if (!actionNode) return;
-
-  switch (actionNode.dataset.action) {
-    case "clear-query":
-      state.query = "";
-      searchInput.value = "";
-      break;
-    case "remove-ingredient":
-      state.ingredientSlugs = state.ingredientSlugs.filter(
-        (slug) => slug !== actionNode.dataset.slug
-      );
-      break;
-    case "remove-tag":
-      state.tagSlugs = state.tagSlugs.filter((slug) => slug !== actionNode.dataset.slug);
-      break;
-    case "clear-abv":
-      state.abvMax = null;
-      break;
-    case "clear-all":
-      state.query = "";
-      searchInput.value = "";
+  if (actionNode.dataset.action === "clear-filters") {
       state.ingredientSlugs = [];
       state.tagSlugs = [];
       state.abvMax = null;
-      break;
-    default:
-      break;
+      render();
   }
-
-  render();
 });
 
 grid.addEventListener("click", (event) => {
@@ -714,7 +619,7 @@ dialog.addEventListener("click", (event) => {
 document.addEventListener("pointerdown", (event) => {
   if (!state.openPanel) return;
   if (searchDock.contains(event.target)) return;
-  state.openPanel = null;
+  state.openPanel = false;
   renderPanel();
 });
 
@@ -728,7 +633,7 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (state.openPanel) {
-    state.openPanel = null;
+    state.openPanel = false;
     renderPanel();
   }
 });
@@ -744,7 +649,7 @@ window.addEventListener("popstate", () => {
   state.tagSlugs = next.tagSlugs;
   state.abvMax = next.abvMax;
   state.selectedSlug = next.selectedSlug;
-  state.openPanel = null;
+  state.openPanel = false;
   render();
 });
 
