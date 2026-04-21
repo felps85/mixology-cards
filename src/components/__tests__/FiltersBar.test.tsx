@@ -24,8 +24,8 @@ describe("FiltersBar", () => {
     const user = userEvent.setup();
     const tags: Tag[] = [{ id: "t1", name: "Summer", slug: "summer" }];
     const ingredients: IngredientFilterOption[] = [
-      { id: "1", name: "vodka", slug: "vodka", sourceSlugs: ["vodka"] },
-      { id: "2", name: "lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
+      { id: "1", name: "Vodka", slug: "vodka", sourceSlugs: ["vodka"] },
+      { id: "2", name: "Lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
     ];
 
     render(
@@ -48,7 +48,7 @@ describe("FiltersBar", () => {
     expect(screen.getByRole("tab", { name: "Tags" })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: "Alcohol %" })).toBeInTheDocument();
     expect(screen.getByRole("tabpanel")).toHaveTextContent("Spirits, liqueurs, bitters, and wine-based ingredients.");
-    expect(screen.queryByRole("button", { name: "lime juice" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Lime juice" })).not.toBeInTheDocument();
   });
 
   it("shows the emoji inside the search shell and applies search without submit", async () => {
@@ -79,8 +79,8 @@ describe("FiltersBar", () => {
     const user = userEvent.setup();
     const tags: Tag[] = [{ id: "t1", name: "Summer", slug: "summer" }];
     const ingredients: IngredientFilterOption[] = [
-      { id: "1", name: "vodka", slug: "vodka", sourceSlugs: ["vodka"] },
-      { id: "2", name: "lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
+      { id: "1", name: "Vodka", slug: "vodka", sourceSlugs: ["vodka"] },
+      { id: "2", name: "Lime juice", slug: "lime-juice", sourceSlugs: ["lime-juice"] }
     ];
 
     render(
@@ -95,13 +95,13 @@ describe("FiltersBar", () => {
     );
 
     await user.click(screen.getByRole("button", { name: "Open filters" }));
-    await user.click(screen.getByRole("button", { name: "vodka" }));
+    await user.click(screen.getByRole("button", { name: "Vodka" }));
 
     let lastCall = replaceMock.mock.calls.at(-1)?.[0] as string;
     expect(lastCall).toContain("ing=vodka");
 
     await user.click(screen.getByRole("tab", { name: "Ingredients" }));
-    await user.click(screen.getByRole("button", { name: "lime juice" }));
+    await user.click(screen.getByRole("button", { name: "Lime juice" }));
     lastCall = replaceMock.mock.calls.at(-1)?.[0] as string;
     expect(lastCall).toContain("ing=lime-juice");
 

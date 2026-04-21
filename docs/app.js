@@ -116,6 +116,14 @@ function ingredientCanonicalDescriptor(name) {
   };
 }
 
+function displayNameScore(name) {
+  let score = 0;
+  if (/^[A-ZÀ-ÖØ-Þ]/.test(name)) score += 3;
+  if (name !== name.toLowerCase()) score += 2;
+  if (/\b[A-ZÀ-ÖØ-Þ][a-zà-öø-ÿ]+ [A-ZÀ-ÖØ-Þ]/.test(name)) score += 1;
+  return score;
+}
+
 function parseAbv(value) {
   if (!value) return null;
   const nums = value.match(/\d+/g)?.map(Number) ?? [];
@@ -243,10 +251,10 @@ function buildCatalog(drinks) {
   const ingredients = [...ingredientGroups.values()]
     .map((group) => {
       const displayCandidates = [...group.displayCounts.entries()].sort((a, b) => {
+        const aScore = displayNameScore(a[0]);
+        const bScore = displayNameScore(b[0]);
+        if (bScore !== aScore) return bScore - aScore;
         if (b[1] !== a[1]) return b[1] - a[1];
-        const aLower = a[0] === a[0].toLowerCase();
-        const bLower = b[0] === b[0].toLowerCase();
-        if (aLower !== bLower) return aLower ? -1 : 1;
         return a[0].localeCompare(b[0]);
       });
 

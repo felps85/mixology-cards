@@ -47,6 +47,7 @@ If a component changes in one surface, the same interaction should be reflected 
 - Selected pills change color instead of showing a checkmark
 - `Clear all` lives inside the filter sheet, not in a separate chip row
 - Ingredient filter options are normalized so case variants and a few obvious garnish/plural aliases collapse into one filter
+- Canonical ingredient names should prefer human-friendly casing in both filters and recipe ingredient lists
 
 ### Drink cards
 
