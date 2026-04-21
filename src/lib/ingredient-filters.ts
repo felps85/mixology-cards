@@ -15,6 +15,13 @@ export type IngredientFilterOption = {
   sourceSlugs: string[];
 };
 
+type IngredientCanonicalGroup = {
+  slug: string;
+  aliasDisplay: string | null;
+  displayCounts: Map<string, number>;
+  sourceSlugs: Set<string>;
+};
+
 function slugify(input: string) {
   return input
     .toLowerCase()
@@ -37,15 +44,41 @@ function canonicalDescriptor(name: string) {
 export function buildIngredientFilterOptions(
   ingredients: IngredientFilterSource[]
 ): IngredientFilterOption[] {
-  const groups = new Map<
-    string,
-    {
-      slug: string;
-      aliasDisplay: string | null;
-      displayCounts: Map<string, number>;
-      sourceSlugs: Set<string>;
+  return [...buildIngredientCanonicalGroups(ingredients).entries()]
+    .map(([slug, group]) => {
+      const displayCandidates = pickDisplayCandidates(group);
+
+      return {
+        id: slug,
+        slug,
+        name: group.aliasDisplay ?? displayCandidates[0]?.[0] ?? slug,
+        sourceSlugs: [...group.sourceSlugs].sort()
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function buildIngredientDisplayMap(
+  ingredients: IngredientFilterSource[]
+): Map<string, string> {
+  const groups = buildIngredientCanonicalGroups(ingredients);
+  const nameMap = new Map<string, string>();
+
+  for (const [, group] of groups) {
+    const displayCandidates = pickDisplayCandidates(group);
+    const canonicalName = group.aliasDisplay ?? displayCandidates[0]?.[0];
+    if (!canonicalName) continue;
+
+    for (const [displayName] of group.displayCounts) {
+      nameMap.set(displayName, canonicalName);
     }
-  >();
+  }
+
+  return nameMap;
+}
+
+function buildIngredientCanonicalGroups(ingredients: IngredientFilterSource[]) {
+  const groups = new Map<string, IngredientCanonicalGroup>();
 
   for (const ingredient of ingredients) {
     const canonical = canonicalDescriptor(ingredient.name);
@@ -75,22 +108,15 @@ export function buildIngredientFilterOptions(
     group.sourceSlugs.add(ingredient.slug);
   }
 
-  return [...groups.entries()]
-    .map(([slug, group]) => {
-      const displayCandidates = [...group.displayCounts.entries()].sort((a, b) => {
-        if (b[1] !== a[1]) return b[1] - a[1];
-        const aLower = a[0] === a[0].toLowerCase();
-        const bLower = b[0] === b[0].toLowerCase();
-        if (aLower !== bLower) return aLower ? -1 : 1;
-        return a[0].localeCompare(b[0]);
-      });
+  return groups;
+}
 
-      return {
-        id: slug,
-        slug,
-        name: group.aliasDisplay ?? displayCandidates[0]?.[0] ?? slug,
-        sourceSlugs: [...group.sourceSlugs].sort()
-      };
-    })
-    .sort((a, b) => a.name.localeCompare(b.name));
+function pickDisplayCandidates(group: IngredientCanonicalGroup) {
+  return [...group.displayCounts.entries()].sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    const aLower = a[0] === a[0].toLowerCase();
+    const bLower = b[0] === b[0].toLowerCase();
+    if (aLower !== bLower) return aLower ? -1 : 1;
+    return a[0].localeCompare(b[0]);
+  });
 }

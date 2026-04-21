@@ -259,14 +259,29 @@ function buildCatalog(drinks) {
     })
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const ingredientNameMap = new Map();
+  for (const group of ingredients) {
+    for (const sourceSlug of group.sourceSlugs) {
+      ingredientNameMap.set(sourceSlug, group.name);
+    }
+  }
+
+  const normalizedDrinks = drinks.map((drink) => ({
+    ...drink,
+    ingredients: drink.ingredients.map((ingredient) => ({
+      ...ingredient,
+      name: ingredientNameMap.get(ingredient.slug) ?? ingredient.name
+    }))
+  }));
+
   const tags = uniqueBySlug(
-    drinks
+    normalizedDrinks
       .flatMap((drink) => drink.tags)
       .filter((tag) => !/\b\d+\s*%|\balcohol\b/i.test(tag.name))
       .sort((a, b) => a.name.localeCompare(b.name))
   );
 
-  store.drinks = drinks;
+  store.drinks = normalizedDrinks;
   store.ingredients = ingredients;
   store.alcoholIngredients = ingredients.filter((item) =>
     isAlcoholIngredientName(item.name)

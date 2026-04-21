@@ -1,6 +1,11 @@
+import fs from "node:fs/promises";
+import { resolve } from "node:path";
 import { unstable_cache } from "next/cache";
 import { Prisma } from "@prisma/client";
-import { buildIngredientFilterOptions } from "@/lib/ingredient-filters";
+import {
+  buildIngredientDisplayMap,
+  buildIngredientFilterOptions
+} from "@/lib/ingredient-filters";
 import { prisma } from "@/lib/prisma";
 
 const galleryDrinkSelect = {
@@ -68,22 +73,56 @@ export type ActiveDrink = Prisma.DrinkGetPayload<{
   select: typeof activeDrinkSelect;
 }>;
 
-const ingredientFilterSourceSelect = {
-  id: true,
-  slug: true,
-  name: true
-} satisfies Prisma.IngredientSelect;
+type SeedIngredient = {
+  name: string;
+};
+
+type SeedDrink = {
+  ingredients?: SeedIngredient[];
+};
+
+const getSeedIngredientSources = unstable_cache(
+  async () => {
+    const seedPath = resolve(process.cwd(), "prisma/drinksSeed.json");
+    const raw = await fs.readFile(seedPath, "utf8");
+    const seed = JSON.parse(raw) as SeedDrink[];
+
+    return seed.flatMap((drink, drinkIndex) =>
+      (drink.ingredients ?? []).map((ingredient, ingredientIndex) => ({
+        id: `${drinkIndex}-${ingredientIndex}-${ingredient.name}`,
+        slug: ingredient.name
+          .toLowerCase()
+          .trim()
+          .replace(/&/g, "and")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)+/g, ""),
+        name: ingredient.name
+      }))
+    );
+  },
+  ["seed-ingredient-sources"],
+  {
+    revalidate: 60 * 60
+  }
+);
 
 const getIngredientFilterGroups = unstable_cache(
   async () => {
-    const ingredients = await prisma.ingredient.findMany({
-      orderBy: { name: "asc" },
-      select: ingredientFilterSourceSelect
-    });
-
+    const ingredients = await getSeedIngredientSources();
     return buildIngredientFilterOptions(ingredients);
   },
   ["ingredient-filter-groups"],
+  {
+    revalidate: 60 * 60
+  }
+);
+
+const getIngredientDisplayMap = unstable_cache(
+  async () => {
+    const ingredients = await getSeedIngredientSources();
+    return buildIngredientDisplayMap(ingredients);
+  },
+  ["ingredient-display-map"],
   {
     revalidate: 60 * 60
   }
@@ -188,5 +227,21 @@ const getDrinkBySlugCached = unstable_cache(
 
 export async function getDrinkBySlug(slug: string) {
   if (!slug) return null;
-  return getDrinkBySlugCached(slug);
+  const drink = await getDrinkBySlugCached(slug);
+  if (!drink) return null;
+
+  const ingredientNameMap = await getIngredientDisplayMap();
+
+  return {
+    ...drink,
+    ingredients: drink.ingredients.map((ingredient) => ({
+      ...ingredient,
+      ingredient: {
+        ...ingredient.ingredient,
+        name:
+          ingredientNameMap.get(ingredient.ingredient.name) ??
+          ingredient.ingredient.name
+      }
+    }))
+  };
 }
